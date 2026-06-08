@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economics & National Environment — Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3ede0;
+    --paper-2:#ece3d2;
+    --card:#fbf8f1;
+    --ink:#211d18;
+    --ink-soft:#4f463a;
+    --ink-faint:#857a68;
+    --clay:#9c3a26;
+    --clay-deep:#7a2c1c;
+    --olive:#566023;
+    --olive-soft:#eef0dc;
+    --gold:#b7892f;
+    --line:#d8cdb6;
+    --shadow:0 1px 2px rgba(33,29,24,.06),0 12px 30px rgba(33,29,24,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Hanken Grotesk',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 1px 1px, rgba(33,29,24,.035) 1px, transparent 0);
+    background-size:22px 22px;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header.masthead{padding:64px 0 28px;border-bottom:2px solid var(--ink);margin-bottom:0}
+  .kicker{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--clay);font-weight:700;margin-bottom:18px}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.4rem,6vw,4rem);line-height:.98;letter-spacing:-.015em}
+  h1 em{font-style:italic;color:var(--clay)}
+  .sub{margin-top:18px;font-size:1.02rem;color:var(--ink-soft);max-width:60ch}
+  .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+  .tag{font-size:.74rem;letter-spacing:.04em;background:var(--paper-2);border:1px solid var(--line);padding:5px 11px;border-radius:100px;color:var(--ink-soft);font-weight:600}
+
+  /* Nav toggle */
+  nav.modes{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line);padding:14px 0;margin-bottom:40px;backdrop-filter:blur(6px)}
+  nav.modes .wrap{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .mode-btn{font-family:'Hanken Grotesk';font-weight:600;font-size:.9rem;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);padding:9px 18px;border-radius:100px;cursor:pointer;transition:all .18s ease}
+  .mode-btn:hover{border-color:var(--ink-faint);color:var(--ink)}
+  .mode-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .scorepill{margin-left:auto;font-size:.82rem;font-weight:600;color:var(--ink-faint)}
+  .scorepill b{color:var(--clay)}
+
+  section.view{display:none;animation:fade .4s ease}
+  section.view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* Module blocks */
+  .module{margin-bottom:14px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
+  .module-head{display:flex;align-items:baseline;gap:14px;padding:20px 24px;cursor:pointer;user-select:none}
+  .module-head:hover{background:var(--paper-2)}
+  .module-num{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--clay);min-width:34px}
+  .module-title{font-family:'Fraunces',serif;font-size:1.34rem;font-weight:600;letter-spacing:-.01em;flex:1}
+  .module-sub{font-size:.78rem;color:var(--ink-faint);font-weight:500}
+  .chev{transition:transform .25s ease;color:var(--ink-faint);font-size:1.1rem}
+  .module.open .chev{transform:rotate(180deg)}
+  .module-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .module.open .module-body{max-height:4000px}
+  .module-inner{padding:4px 24px 22px}
+
+  .concept{padding:16px 0;border-top:1px solid var(--line)}
+  .concept:first-child{border-top:none}
+  .concept-name{font-family:'Fraunces',serif;font-size:1.06rem;font-weight:600;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .case{font-family:'Hanken Grotesk';font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;font-weight:700;color:var(--olive);background:var(--olive-soft);padding:3px 8px;border-radius:5px}
+  .concept-def{margin-top:7px;color:var(--ink-soft);font-size:.96rem}
+  .concept-def b{color:var(--ink);font-weight:600}
+  .frame{margin-top:8px;font-size:.9rem;color:var(--ink-soft);border-left:2px solid var(--clay);padding-left:12px}
+  .frame span{font-weight:700;color:var(--clay);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:2px}
+
+  /* Exam questions */
+  .intro-note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin-bottom:28px;font-size:.92rem;color:var(--ink-soft)}
+  .intro-note b{color:var(--ink)}
+  .setdivider{margin:38px 0 22px;padding-top:26px;border-top:2px solid var(--ink);text-align:center}
+  .setdivider span{font-family:'Hanken Grotesk';font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--clay);background:var(--paper);padding:0 14px;position:relative;top:-37px}
+  .setdivider p{margin-top:-22px;font-size:.92rem;color:var(--ink-soft);max-width:54ch;margin-left:auto;margin-right:auto}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:18px;box-shadow:var(--shadow)}
+  .q-top{display:flex;gap:14px;align-items:baseline}
+  .q-num{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--clay);min-width:38px}
+  .q-stem{font-size:1.04rem;font-weight:500;color:var(--ink);flex:1}
+  .q-concept{margin:12px 0 16px 52px;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;font-weight:700;color:var(--olive)}
+  .opts{list-style:none;margin-left:52px;display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;gap:11px;align-items:flex-start;padding:12px 15px;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;transition:all .15s ease;font-size:.95rem}
+  .opt:hover{border-color:var(--ink-faint);background:var(--paper-2)}
+  .opt .letter{font-weight:700;color:var(--ink-faint);font-family:'Fraunces',serif}
+  .opt.correct{background:var(--olive-soft);border-color:var(--olive)}
+  .opt.correct .letter{color:var(--olive)}
+  .opt.wrong{background:#f6e3df;border-color:var(--clay)}
+  .opt.wrong .letter{color:var(--clay)}
+  .opt.locked{cursor:default}
+  .opt .mark{margin-left:auto;font-weight:700;opacity:0;transition:opacity .2s}
+  .opt.correct .mark{opacity:1;color:var(--olive)}
+  .opt.wrong .mark{opacity:1;color:var(--clay)}
+  .explain{margin:14px 0 0 52px;padding:15px 18px;background:var(--paper-2);border-radius:10px;border-left:3px solid var(--olive);font-size:.92rem;color:var(--ink-soft);display:none}
+  .explain.show{display:block;animation:fade .3s ease}
+  .explain b{color:var(--ink)}
+  .explain .why-wrong{margin-top:8px;color:var(--ink-faint);font-size:.88rem}
+
+  /* Calc callout */
+  .calc{font-family:'Fraunces',serif;font-size:1rem;background:var(--ink);color:var(--paper);padding:4px 10px;border-radius:6px;display:inline-block;margin:4px 0}
+  .fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:6px 0 4px}
+  .fw-col h4{font-family:'Hanken Grotesk';font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;text-align:center;padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:8px}
+  .fw-box{border-radius:8px;padding:8px 9px;margin-bottom:7px;font-size:.78rem;line-height:1.3}
+  .fw-box b{display:block;font-weight:700;font-size:.82rem;margin-bottom:1px}
+  .fw-box small{color:var(--ink-faint);font-size:.72rem}
+  .fw-agent{background:var(--paper-2);border:1px solid var(--line)}
+  .fw-inst{background:#e4efe6;border:1px solid #bcd6c0}
+  .fw-ind{background:#e8e6f4;border:1px solid #c8c3e2}
+  .fw-obj{background:#f4ecd8;border:1px solid #e0d0a8}
+  .fw-note{margin-top:10px;font-size:.9rem;color:var(--ink-soft);border-left:2px solid var(--gold);padding-left:12px}
+  .fw-note b{color:var(--ink)}
+  @media(max-width:600px){.fw-grid{grid-template-columns:1fr 1fr}}
+
+  footer{margin:60px 0 40px;padding-top:24px;border-top:1px solid var(--line);font-size:.84rem;color:var(--ink-faint)}
+  footer b{color:var(--ink-soft)}
+  .reset{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--clay);background:none;border:none;cursor:pointer;text-decoration:underline;padding:0}
+
+  @media(max-width:600px){
+    .q-concept,.opts,.explain{margin-left:0}
+    .wrap{padding:0 16px}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="kicker">IPADE · MEDE · Partial Exam Prep · May 2026</div>
+    <h1>Economics &amp; the<br><em>National Environment</em></h1>
+    <p class="sub">The full concept map from the case sessions, cross-referenced against every question on the partial exam. Study the concepts, then test yourself on the real questions.</p>
+    <div class="meta">
+      <span class="tag">Prof. César Calderón Barrios</span>
+      <span class="tag">8 cases · 31 questions</span>
+      <span class="tag">Macro policy · BoP · Currency</span>
+    </div>
+  </div>
+</header>
+
+<nav class="modes">
+  <div class="wrap">
+    <button class="mode-btn active" data-view="concepts">Concept Map</button>
+    <button class="mode-btn" data-view="exam">Practice Exam</button>
+    <span class="scorepill" id="scorepill">Answered <b id="answered">0</b> / 31 · Correct <b id="correct">0</b></span>
+  </div>
+</nav>
+
+<!-- ================= CONCEPTS ================= -->
+<section class="view active" id="concepts">
+<div class="wrap">
+
+  <div class="module open">
+    <div class="module-head">
+      <span class="module-num">00</span>
+      <span class="module-title">Course Framework</span>
+      <span class="module-sub">From your R3 notebook · Intro page</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept">
+        <div class="concept-name">Economic analysis framework and common ground</div>
+        <div class="concept-def">The single map the course hangs everything on: which <b>agents</b> act, through which <b>instruments</b>, measured by which <b>indicators</b>, toward which <b>objectives</b>.</div>
+        <div class="fw-grid">
+          <div class="fw-col">
+            <h4>Agents</h4>
+            <div class="fw-box fw-agent"><b>Consumers</b></div>
+            <div class="fw-box fw-agent"><b>Investors</b></div>
+            <div class="fw-box fw-agent"><b>Government</b></div>
+            <div class="fw-box fw-agent"><b>Rest of the world</b></div>
+            <div class="fw-box fw-agent"><b>Central bank</b></div>
+          </div>
+          <div class="fw-col">
+            <h4>Instruments</h4>
+            <div class="fw-box fw-inst"><b>Fiscal policy</b><small>Taxes, expenditures, debt</small></div>
+            <div class="fw-box fw-inst"><b>Exchange rate / foreign trade</b><small>Exchange rate and tariffs</small></div>
+            <div class="fw-box fw-inst"><b>Monetary policy</b><small>Reference rate and reserves</small></div>
+            <div class="fw-box fw-inst"><b>Industrial policy</b></div>
+          </div>
+          <div class="fw-col">
+            <h4>Indicators</h4>
+            <div class="fw-box fw-ind"><b>Treasury balance</b><small>Taxes minus government spending (Tx − GS)</small></div>
+            <div class="fw-box fw-ind"><b>Balance of payments</b><small>Current + capital + financial account</small></div>
+            <div class="fw-box fw-ind"><b>Liquidity</b><small>Monetary base and broad money</small></div>
+          </div>
+          <div class="fw-col">
+            <h4>Objectives</h4>
+            <div class="fw-box fw-obj"><b>GDP</b><small>Growth</small></div>
+            <div class="fw-box fw-obj"><b>Inflation</b><small>Stability and purchasing power</small></div>
+            <div class="fw-box fw-obj"><b>Employment</b><small>Labor force</small></div>
+          </div>
+        </div>
+        <div class="fw-note"><b>Output identity:</b> Output = government spending + consumption + investments + net exports (exports − imports). In symbols, Y = C + I + G + (X − M).</div>
+        <div class="fw-note"><b>Inflation rule of thumb:</b> to lower inflation, take money out of circulation.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">How the framework maps to the exam</div>
+        <div class="concept-def">The <b>objectives</b> column is Question 2 verbatim (GDP, price stability, employment). The <b>instruments</b> column drives Questions 3, 4, and 6 (telling fiscal from monetary). The <b>indicators</b> sit behind the balance-of-payments and treasury-balance questions, and the output identity is Question 12 in the Extended Bank.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <span class="module-num">01</span>
+      <span class="module-title">Economic Policy</span>
+      <span class="module-sub">FOMC · Tariff cases</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept">
+        <div class="concept-name">Objectives of economic policy</div>
+        <div class="concept-def">The three targets policy steers toward: <b>GDP growth</b>, <b>price stability</b> (controlled inflation), and <b>employment</b>. Instruments push the economy toward Potential GDP or cool it down, always "with side effects."</div>
+        <div class="frame"><span>Exam link</span>Question 2 lists these three as the definition; Question 4 and 6 are about the instruments used to hit them.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Potential GDP &amp; the business cycle</div>
+        <div class="concept-def">Potential GDP is the maximum sustainable output at full employment. The gap between actual and potential output defines the <b>business cycle</b>. Policy boosts growth in downturns or cools an overheating economy.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Inflation <span class="case">FOMC</span></div>
+        <div class="concept-def">When the same money buys less over time. Split into <b>headline</b> vs <b>core</b> (core strips volatile food and energy). <b>Expected inflation</b> is the forward rate built from risk premiums, real rates, safe-asset yields, swaps, and sentiment surveys.</div>
+        <div class="frame"><span>Exam link</span>Question 1 is the pure definition: prices up means money worth less, which is inflation.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Real interest rate <span class="case">FOMC</span></div>
+        <div class="concept-def">The nominal rate (Fed funds plus premium) adjusted for inflation. The decision is whether borrowing is expensive or cheap <b>in real terms</b> when timing an expansion now versus later.</div>
+        <div class="frame"><span>Exam link</span>Core to Question 5: timing a fixed-rate loan against the inflation path.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">AD–AS model <span class="case">FOMC / Tariff</span></div>
+        <div class="concept-def">Framework for shocks. The Fed can influence the demand side but cannot fix supply-chain or energy shocks (supply side).</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Quantity Theory of Money (MV = PY) <span class="case">FOMC</span></div>
+        <div class="concept-def">Explains persistent inflation: if money grows faster than output, inflation follows. AD–AS explains the <b>shock</b>; MV = PY explains the <b>persistence</b>.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Fiscal vs monetary policy</div>
+        <div class="concept-def"><b>Fiscal</b> = government spending and taxes. <b>Monetary</b> = central bank moving the reference rate and money supply. Expansionary fiscal = more spending or lower taxes; contractionary = the reverse.</div>
+        <div class="frame"><span>Exam link</span>Question 3 (which is NOT expansionary fiscal), Question 4 (cooling tool must be a central-bank tool, not a fiscal one), Question 6.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Fed's dual mandate <span class="case">FOMC</span></div>
+        <div class="concept-def">Balancing price stability and employment. The dilemma is acting too late or too early, and whether to hold or move the rate by 25, 50, or 75 bps. Introduces <b>self-fulfilling prophecies</b> in expectations and <b>sticky inflation</b>.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <span class="module-num">02</span>
+      <span class="module-title">Balance of Payments</span>
+      <span class="module-sub">US Current Account Deficit case</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept">
+        <div class="concept-name">Current account</div>
+        <div class="concept-def">Records trade and income flows. A deficit means the country is a <b>net borrower</b> from the rest of the world, funding investment and consumption beyond national income.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Trade balance (X − M)</div>
+        <div class="concept-def">The key insight: a trade deficit is an accounting manifestation of the domestic saving-investment imbalance, <b>not its cause</b>.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Balance of Payments &amp; Financial Account</div>
+        <div class="concept-def">Where the imbalance shows up. The Financial Account records Assets (outflow of domestic savings) and Liabilities (inflow of external savings).</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Net International Investment Position (NIIP)</div>
+        <div class="concept-def">A country's balance sheet: foreign assets held by residents minus liabilities to non-residents. A negative NIIP signals a <b>debtor nation</b>.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Debt sustainability</div>
+        <div class="concept-def">External financing must fund <b>productive investment</b> (generating growth that sustains trust), not just consumption. Otherwise deficits pile up liabilities and raise crisis risk.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <span class="module-num">03</span>
+      <span class="module-title">Labor &amp; Social Protection</span>
+      <span class="module-sub">France: Modernizing or Dismantling</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept">
+        <div class="concept-name">Structural reforms</div>
+        <div class="concept-def">Measures that change the institutional rules of the game to raise Potential GDP. Used against productivity stagnation, high structural unemployment, high debt, or demographic imbalance. They may cost short-term stability for long-term gains.</div>
+        <div class="frame"><span>Exam link</span>Question 10 turns on exactly this trade-off.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Welfare state vs private-sector-led model</div>
+        <div class="concept-def">In a <b>private-sector-led</b> model growth is the engine of wellbeing. In a <b>welfare-state</b> model growth is the financial backbone that funds redistribution through tax revenue. Both ultimately depend on growth.</div>
+        <div class="frame"><span>Exam link</span>This distinction is the whole point of Question 10's correct answer.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Labor market segmentation</div>
+        <div class="concept-def">Workforce (ages 15 to 65) splits into Economically Active vs Non-active, occupied vs unoccupied. Watch the <b>unemployment trap</b> and <b>low-wage trap</b> where transfers distort job-seeking, plus informality and underemployment.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Social security trilemma</div>
+        <div class="concept-def">Balancing <b>coverage</b> (how many), <b>adequacy</b> (benefit level), and <b>financial sustainability</b>.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Dependency ratio</div>
+        <div class="concept-def">The tax burden carried by younger workers. The striking figure: roughly 20.6M young workers financing benefits for roughly 43M, worsened by ageing. Spending that does not raise productivity becomes future taxes, debt, or weaker consumption.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <span class="module-num">04</span>
+      <span class="module-title">Macro-themed Investing</span>
+      <span class="module-sub">Global Asset Allocation case</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept">
+        <div class="concept-name">Asset allocation</div>
+        <div class="concept-def">How investors such as pension funds distribute capital across asset classes given debt and uncertainty (framed through "Chen's portfolio").</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Yield curve &amp; inversion</div>
+        <div class="concept-def">A normal curve slopes up (longer duration, higher yield). The <b>term premium</b> is the extra yield for holding long term, approximated by the 10-year minus 2-year spread. An <b>inverted curve</b> reflects pessimism and turns negative before every recession.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Fixed income: T-Bills &amp; T-Bonds</div>
+        <div class="concept-def">The short end reflects the <b>current</b> cost of money; longer terms reflect the <b>expected</b> cost of money plus risk.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Expansionary policy to liquidity</div>
+        <div class="concept-def">More market liquidity raises risk appetite and valuations.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <span class="module-num">05</span>
+      <span class="module-title">Trade Uncertainty</span>
+      <span class="module-sub">Tariff Trouble: Caterpillar</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept">
+        <div class="concept-name">Tariff</div>
+        <div class="concept-def">A tax on imports. Government is one of the biggest winners (tax revenue). The traditional model is contrasted with reality, where firms depend on imported inputs.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Tax incidence</div>
+        <div class="concept-def">Who <b>legally</b> pays a tariff is not who <b>economically</b> bears it. Empirics cited: short-term demand contraction (+10 bps unemployment and −10 bps inflation per +1pp tariff), then a medium-term negative supply shock from costlier inputs.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Global value chains</div>
+        <div class="concept-def">Modern tariffs hit inputs, exporters, and fragmented chains, blurring domestic vs foreign and producer vs consumer. Caterpillar is American but economically global. Includes retaliation risk and the reshoring decision.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <span class="module-num">06</span>
+      <span class="module-title">Currency Exposure</span>
+      <span class="module-sub">Dollar, Debt &amp; Destiny: Marfrig</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept">
+        <div class="concept-name">Reserve currency &amp; safe haven</div>
+        <div class="concept-def">A currency trusted internationally for liquidity, trust, institutional credibility, and safe assets, not only economic size. A country can be large without being the preferred reserve asset.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Money supply to exchange rate</div>
+        <div class="concept-def">Expansionary monetary policy raises the supply of a currency; a relative oversupply <b>depreciates</b> it in the short term, holding other factors constant.</div>
+        <div class="frame"><span>Exam link</span>This is the entire mechanism behind Question 7.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Triffin dilemma</div>
+        <div class="concept-def">The world needs the US to issue debt to supply dollar liquidity, but rising debt can eventually undermine confidence in the dollar itself.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Yield to Maturity &amp; DXY</div>
+        <div class="concept-def">YTM drives refinancing risk (what if investors demand higher yields). The DXY reflects confidence and capital flows as much as trade. Reserve transitions happen <b>structurally</b>; firms finance <b>tactically</b>.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <span class="module-num">07</span>
+      <span class="module-title">Institutions &amp; Transition</span>
+      <span class="module-sub">Estonia · economic way of thinking</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept">
+        <div class="concept-name">Institutions (economic way of thinking)</div>
+        <div class="concept-def">Not organizations or agencies. Institutions are the <b>humanly devised constraints</b> that structure economic action, the rules of the game (North's definition).</div>
+        <div class="frame"><span>Exam link</span>Question 11 tests this directly, with "formal organizations" as the trap.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Currency board &amp; exchange-rate regimes</div>
+        <div class="concept-def">A <b>monetary</b> tool for currency stability: pegging the domestic currency to a hard anchor. Estonia pegged the kroon to the German mark. Distinguish from fiscal moves (flat tax) and structural moves (privatization, e-Residency).</div>
+        <div class="frame"><span>Exam link</span>Question 8 asks which Estonian policy is specifically monetary.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Nominal vs real growth</div>
+        <div class="concept-def">Real growth strips out inflation. As an approximation, <span class="calc">real ≈ nominal − inflation</span>. If nominal growth is below inflation, real growth is negative even though the nominal figure is positive.</div>
+        <div class="frame"><span>Exam link</span>Question 9: 17% nominal vs 20% inflation means negative real growth.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <span class="module-num">08</span>
+      <span class="module-title">Development, Transition &amp; Growth</span>
+      <span class="module-sub">Washington Consensus · China · Productivity</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="module-body"><div class="module-inner">
+      <div class="concept" style="border-top:none">
+        <div class="concept-def" style="margin-top:0;font-style:italic;color:var(--ink-faint)">These three are pages in your Economia notebook that I could see listed but could not open in the browser. The entries below are built from standard course content for each topic, so treat them as a scaffold to check against your own notes rather than a transcription.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Washington Consensus</div>
+        <div class="concept-def">The market-reform policy package promoted for developing economies in the late twentieth century. Its prescriptions cluster around <b>fiscal discipline</b> (control deficits), <b>tax reform</b> (broaden the base, lower marginal rates), <b>market-determined interest and exchange rates</b>, <b>trade and capital-account liberalization</b>, <b>privatization</b> of state enterprises, <b>deregulation</b>, and <b>secure property rights</b>. The standard critique: it underweighted institutions, sequencing, and social protection, so identical reforms produced very different outcomes across countries.</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">China growth model</div>
+        <div class="concept-def">A state-directed, investment- and export-led model: high savings and investment rates, gradual and partial market liberalization, a large state-owned-enterprise sector, and a managed exchange rate that supported export competitiveness. The live debate is the transition from investment and exports toward <b>domestic consumption</b>, against headwinds of debt, demographics, and productivity slowdown. Connects to the trade and currency cases (global value chains, reserve dynamics).</div>
+      </div>
+      <div class="concept">
+        <div class="concept-name">Productivity</div>
+        <div class="concept-def">Output per unit of input, the ultimate engine of long-run growth and rising living standards. Raising <b>potential GDP</b> sustainably comes from productivity, which is why structural reforms target it even at short-term cost. Ties directly to the France case and to exam Question 10: both private-sector-led and welfare-state models depend on productivity growth to fund well-being.</div>
+        <div class="frame"><span>Exam link</span>Question 10 rests on this; the long-run logic is productivity, not redistribution alone.</div>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+</section>
+
+<!-- ================= EXAM ================= -->
+<section class="view" id="exam">
+<div class="wrap">
+  <div class="intro-note">
+    The first eleven are the real questions from the partial exam, with the correct answer keyed in. Below them, an <b>Extended Bank</b> of twenty more written in the same style, covering every module including the Intro framework (the output identity and money-in-circulation note from your R3 notebook). Click any option to lock your choice and reveal the reasoning. The <b>concept tag</b> under each question points back to the matching entry in the Concept Map.
+  </div>
+  <div id="quizroot"></div>
+  <p style="margin-top:18px"><button class="reset" id="resetbtn">Reset all answers</button></p>
+</div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <p>Built from your case-session summary, the photographed partial exam, and the Intro framework page of your R3 Economia notebook. <b>Two questions reward reasoning over recall:</b> Q5 (time the fixed-rate loan to the inflation peak) and Q9 (nominal minus inflation gives negative real growth). The other twelve notebook pages were visible but could not be opened in the browser; Module 08 is scaffolded from standard content for those topics. To make it exact, open any of those pages in your own Chrome tab and screenshot them, and I will transcribe and add questions from the real notes.</p>
+  </footer>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    n:1, concept:"Module 01 · Inflation",
+    stem:"If the general price level increases, then money will be worth ____ and this is an example of ____.",
+    opts:["less, inflation","less, deflation","more, inflation","more, deflation"],
+    answer:0,
+    explain:"Higher prices mean each unit of money buys less, so its purchasing power falls. That erosion of purchasing power is the definition of inflation.",
+    wrong:"Deflation is the opposite (prices falling). \u201cMore\u201d contradicts the premise that prices rose."
+  },
+  {
+    n:2, concept:"Module 01 · Objectives of economic policy",
+    stem:"What are the main objectives of economic policy?",
+    opts:["Taxation and exchange rate","Interest rate, external debt, and exchange rate","Gross Domestic Product (GDP), price stability (inflation), and employment"],
+    answer:2,
+    explain:"The objectives are the macro triad: growth (GDP), price stability (controlling inflation), and employment. Taxes, rates, and the exchange rate are instruments, not objectives.",
+    wrong:"Options a and b list policy tools and external variables, not the goals those tools serve."
+  },
+  {
+    n:3, concept:"Module 01 · Fiscal policy direction",
+    stem:"Which of the following would NOT be an example of expansionary fiscal policy?",
+    opts:["The government hires 2,000 workers for an infrastructure project in the south of the country.","The government lowers income and corporate tax rates.","During a recession, the government transfers 1,500 pesos per month to unemployed individuals to cover their expenses.","The government increases corporate taxes."],
+    answer:3,
+    explain:"Expansionary fiscal policy injects demand through more spending or lower taxes. Raising corporate taxes pulls money out of the economy, which is contractionary.",
+    wrong:"Hiring (a), tax cuts (b), and transfers (c) all add demand, so they are expansionary."
+  },
+  {
+    n:4, concept:"Module 01 · Monetary vs fiscal tools",
+    stem:"A country's economy is going through an expansionary cycle. If the Central Bank wants to contain (cool down) a sharp rise in inflation, what policy could it implement?",
+    opts:["Decrease government spending (e.g., social spending)","Increase corporate taxes to influence aggregate supply","Raise the reference interest rate to increase the cost of money"],
+    answer:2,
+    explain:"Cooling inflation calls for contractionary policy, and the question specifies the Central Bank. Its tool is the reference interest rate: raising it makes money more expensive and slows demand.",
+    wrong:"Spending cuts (a) and tax hikes (b) are contractionary too, but they are fiscal tools the government controls, not the Central Bank."
+  },
+  {
+    n:5, concept:"Module 01 · Real rates & inflation expectations",
+    stem:"Your medical equipment company secured new contracts for H2 2026; inventory runs out around mid-June 2026. You need more inventory and a warehouse, both on fixed-rate loans, at the lowest possible rate. Analysts expect inflation to peak in June 2026 then decline toward target. What should you do?",
+    opts:["Buy the inventory in July and take out the mortgage loan today","Buy the inventory today and take out the mortgage loan in July","Buy the inventory and take out the mortgage loan both in July","Buy the inventory today and take out the mortgage loan in September"],
+    answer:1,
+    explain:"Two clocks run at once. The inventory is operational: it runs out mid-June, so you buy it today. The mortgage is a fixed-rate loan, and you lock the rate the day you sign. Since inflation peaks in June then falls, rates should be lower just after the peak, so you wait until July to lock the cheaper fixed rate.",
+    wrong:"Waiting on inventory (a, c) risks running out before mid-June. September (d) overshoots: you still need the warehouse for H2, and July already captures the post-peak drop without delaying the acquisition."
+  },
+  {
+    n:6, concept:"Module 01 · Monetary transmission",
+    stem:"What would be an expected effect on the economy if the Central Bank decides to lower the interest rate?",
+    opts:["More private consumption and business financing","Lower levels of portfolio investment","Lower taxes","None of the above"],
+    answer:0,
+    explain:"Cheaper credit encourages households to consume and firms to borrow and invest. That is the standard expansionary transmission of a rate cut.",
+    wrong:"Lower rates tend to push investors toward more (not less) risk-taking; taxes are fiscal, not set by the Central Bank."
+  },
+  {
+    n:7, concept:"Module 06 · Money supply & exchange rate",
+    stem:"If the Federal Reserve significantly increases the money supply through expansionary monetary policy, what is the most likely short-term effect on the U.S. Dollar value, assuming other factors remain constant?",
+    opts:["The dollar will increase because it becomes more attractive to investors","The dollar will decrease due to the relative oversupply of dollars in the global market","The dollar will remain unchanged because money supply does not influence exchange rates","The dollar will increase because U.S. interest rates will rise sharply with the money supply increase"],
+    answer:1,
+    explain:"More dollars in circulation, with demand held constant, is a relative oversupply, which depreciates the currency in the short term.",
+    wrong:"Expansionary policy lowers rates rather than raising them (a, d), and the money supply clearly does affect the exchange rate (c)."
+  },
+  {
+    n:8, concept:"Module 07 · Exchange-rate regimes",
+    stem:"Which of the following Estonian transition policies is an example of a monetary policy change seeking currency stability?",
+    opts:["The introduction of a flat tax rate of 20%","The establishment of a currency board that pegged the Estonian kroon to the German mark","The rapid privatization of state-owned enterprises","The creation of e-Residency and digital public services"],
+    answer:1,
+    explain:"A currency board pegging the kroon to the German mark is a monetary tool aimed squarely at currency stability.",
+    wrong:"A flat tax is fiscal; privatization and e-Residency are structural reforms, not monetary policy."
+  },
+  {
+    n:9, concept:"Module 07 · Nominal vs real growth",
+    stem:"A soja company in Argentina forecasts annual gross profit (revenue minus COGS) to grow 17% in nominal terms, while expected annual inflation is 20%. Will it experience real gross profit growth?",
+    opts:["Yes, because any positive nominal growth means more sales and profit","Yes, because inflation only affects consumer prices, not corporate profit","No, because the Argentinian economy will go through recession","No, because the growth is below the inflation rate"],
+    answer:3,
+    explain:"Real growth strips out inflation: roughly 17% minus 20% gives about -3% (precisely 1.17 / 1.20 - 1 \u2248 -2.5%). Nominal growth below inflation means real profit shrinks.",
+    wrong:"Nominal gains can be illusory once prices rise (a, b); the reason here is arithmetic, not a forecast recession (c)."
+  },
+  {
+    n:10, concept:"Module 03 · Growth & wellbeing",
+    stem:"Which statement best explains the relationship between economic growth and sustainable well-being?",
+    opts:["Though structural reforms may reduce short-term stability, long-term productivity growth is essential because both private-sector-led and welfare-state models ultimately depend on economic growth to sustain well-being","Welfare-state economies can sustainably experience high well-being indefinitely through redistribution, even without economic growth","Government spending always increases long-term well-being, regardless of fiscal and debt conditions","Private-sector-led economies generate sustainable well-being because market outcomes naturally guarantee equal distribution of income and opportunities"],
+    answer:0,
+    explain:"Both models rest on growth: the private-sector model uses it as the engine, the welfare state uses it as the tax base for redistribution. Structural reforms may cost short-term stability but lift long-term productivity.",
+    wrong:"Redistribution without growth is not indefinitely sustainable (b); spending is not unconditionally good (c); markets do not automatically equalize outcomes (d)."
+  },
+  {
+    n:11, concept:"Module 07 · Institutions",
+    stem:"From the economic way of thinking perspective, how are institutions more generally defined?",
+    opts:["Government agencies responsible for enforcing public policy","Formal organizations that provide public goods","Humanly devised constraints for economic action","Cultural traditions that remain outside economic analysis"],
+    answer:2,
+    explain:"Institutions are the humanly devised constraints (the rules of the game) that shape economic action, in the North tradition.",
+    wrong:"Agencies and organizations (a, b) are players within the rules, not the rules themselves; institutions are very much inside economic analysis (d)."
+  },
+
+  { ext:true, n:12, concept:"Module 01 · Output identity",
+    stem:"Using the expenditure identity from the course framework, which expression correctly defines an economy's output (GDP)?",
+    opts:["Consumption + Investment + Government spending + Imports","Consumption + Investment + Government spending + (Exports \u2212 Imports)","Consumption + Investment + Government spending + Exports","Government spending + Consumption + Investment only"],
+    answer:1,
+    explain:"GDP by expenditure is C + I + G + net exports, and net exports are exports minus imports. Imports are subtracted because they are not domestically produced.",
+    wrong:"Adding imports (a) or only exports (c) double-counts or ignores the netting; dropping net exports entirely (d) leaves out the external sector."
+  },
+  { ext:true, n:13, concept:"Module 01 · Money in circulation",
+    stem:"Your notes say that to lower inflation a central bank needs to take money out of circulation. Which action is consistent with that?",
+    opts:["Buying government bonds in open-market operations","Selling government bonds and raising reserve requirements","Lowering the reference interest rate","Increasing government transfer payments"],
+    answer:1,
+    explain:"Selling bonds pulls cash out of the system, and higher reserve requirements force banks to hold more and lend less. Both shrink money in circulation, which cools inflation.",
+    wrong:"Buying bonds and cutting rates (a, c) add liquidity; transfers (d) are fiscal and expand demand."
+  },
+  { ext:true, n:14, concept:"Module 01 · Agents vs instruments",
+    stem:"In the agents-to-instruments map, which instrument is the one the Central Bank controls?",
+    opts:["Fiscal policy","Industrial policy","Monetary policy","Trade and tariff policy"],
+    answer:2,
+    explain:"The Central Bank's lever is monetary policy: the reference rate, reserve requirements, and open-market operations.",
+    wrong:"Fiscal (a) belongs to the government, while industrial (b) and trade policy (d) sit with other ministries."
+  },
+  { ext:true, n:15, concept:"Module 01 · Real interest rate",
+    stem:"A government bond pays a nominal yield of 8% while inflation runs at 5%. The approximate real return is:",
+    opts:["About 13%","About 8%","About 3%","About 40%"],
+    answer:2,
+    explain:"Real return is roughly nominal minus inflation: 8% minus 5% gives about 3%. That is the gain in actual purchasing power.",
+    wrong:"Adding the two (a) or ignoring inflation (b) overstates the real gain; 40% (d) confuses a ratio for a difference."
+  },
+  { ext:true, n:16, concept:"Module 01 · Timing fixed-rate debt",
+    stem:"A firm must take out a fixed-rate loan within the next few months. Analysts expect inflation to keep accelerating and the Central Bank to hike rates repeatedly. To borrow at the lowest fixed rate, the firm should:",
+    opts:["Lock the fixed rate now, before rates rise","Wait several months and borrow after the hikes","Take a variable-rate loan instead and hope rates fall","Split the loan evenly across the next year"],
+    answer:0,
+    explain:"A fixed rate is set the day you sign. If rates are heading up, today's fixed rate is the cheapest you will see, so you lock it now. This is the mirror image of the exam's mid-June inventory question, where rates were expected to fall.",
+    wrong:"Waiting (b) means borrowing after rates have climbed; a variable loan (c) exposes you to the rising path; splitting (d) just averages into higher rates."
+  },
+  { ext:true, n:17, concept:"Module 02 · Balance of payments",
+    stem:"A country runs a persistent current account deficit that foreigners finance by buying its bonds. In the balance of payments, this financing appears as:",
+    opts:["A current account surplus","A financial account surplus (an inflow of external savings)","A fall in the country's external liabilities","A surplus in the trade balance"],
+    answer:1,
+    explain:"A current account deficit is mirrored by a financial account surplus: capital flows in as foreigners acquire domestic assets, raising the country's liabilities to the rest of the world.",
+    wrong:"The current and trade accounts are in deficit, not surplus (a, d); liabilities rise rather than fall (c)."
+  },
+  { ext:true, n:18, concept:"Module 02 · Trade deficit",
+    stem:"Consistent with the U.S. current account case, the best description of a trade deficit is:",
+    opts:["The root cause of a country's economic decline","An accounting manifestation of the domestic saving-investment imbalance","Always a sign that a country is uncompetitive","Proof that tariffs are too low"],
+    answer:1,
+    explain:"The case's key point: the deficit reflects a country investing and consuming more than it saves. It is the symptom of that gap, not its cause.",
+    wrong:"Treating it as a root cause, a competitiveness verdict, or a tariff signal (a, c, d) misreads an accounting identity as a diagnosis."
+  },
+  { ext:true, n:19, concept:"Module 02 · NIIP",
+    stem:"A nation whose residents owe more to foreigners than they own in foreign assets has:",
+    opts:["A positive Net International Investment Position","A negative NIIP, marking it as a debtor nation","A balanced current account by definition","No exposure to external financing risk"],
+    answer:1,
+    explain:"The NIIP is foreign assets held minus liabilities owed. When liabilities exceed assets it is negative, the balance-sheet signature of a debtor nation.",
+    wrong:"Owing more than you own is negative, not positive (a); the NIIP says nothing automatic about the current account (c) and a debtor position raises, not removes, financing risk (d)."
+  },
+  { ext:true, n:20, concept:"Module 03 · Dependency ratio",
+    stem:"An economy's population is ageing: fewer young workers must finance benefits for a growing number of retirees. Which part of the social security trilemma comes under most pressure?",
+    opts:["Coverage","Adequacy","Financial sustainability","None, the trilemma is unaffected by demographics"],
+    answer:2,
+    explain:"A rising dependency ratio strains financial sustainability: the contributor base shrinks relative to beneficiaries, so funding the same benefits gets harder.",
+    wrong:"Coverage and adequacy (a, b) are about who is included and how generous benefits are; demographics hit the funding leg most directly, so (d) is wrong."
+  },
+  { ext:true, n:21, concept:"Module 03 · Structural reforms",
+    stem:"Macron-style structural reforms are best described as:",
+    opts:["Short-term stimulus checks to boost demand","Changes to institutional rules aimed at raising potential GDP, sometimes at the cost of short-term stability","Central Bank rate cuts to fight recession","Tariffs designed to protect domestic industry"],
+    answer:1,
+    explain:"Structural reforms rewrite the rules of the game (labor, pensions, regulation) to lift the economy's productive capacity over time, even if they create friction in the near term.",
+    wrong:"Stimulus (a) and rate cuts (c) are cyclical demand tools, not structural; tariffs (d) are trade policy."
+  },
+  { ext:true, n:22, concept:"Module 04 · Yield curve",
+    stem:"The yield on 10-year government bonds falls below the yield on 2-year bonds (an inverted curve). This most often signals:",
+    opts:["Strong expected growth and rising inflation","Market pessimism and an elevated risk of recession","That the Central Bank has lost control of short rates permanently","No information about future activity"],
+    answer:1,
+    explain:"An inverted curve reflects expectations of weaker growth and future rate cuts. Historically it has turned negative before every recession.",
+    wrong:"Inversion signals pessimism, not strength (a); it is a forward-looking indicator, so (d) is wrong, and it does not imply permanent loss of control (c)."
+  },
+  { ext:true, n:23, concept:"Module 04 · Term premium",
+    stem:"The extra yield investors require for holding longer-duration government bonds rather than short ones is called the:",
+    opts:["Liquidity discount","Term (risk) premium, approximated by the 10-year minus 2-year spread","Coupon rate","Inflation floor"],
+    answer:1,
+    explain:"The term premium compensates for the added risk of locking money up for longer. It is commonly proxied by the spread between 10-year and 2-year yields.",
+    wrong:"It is a premium, not a discount (a); the coupon (c) and an inflation floor (d) are unrelated concepts."
+  },
+  { ext:true, n:24, concept:"Module 05 · Tax incidence",
+    stem:"A tariff is legally collected from the importer, yet the higher cost is passed on to domestic consumers through higher shelf prices. This gap between who pays and who bears the cost is:",
+    opts:["Retaliation risk","Tax incidence","A trade surplus","The term premium"],
+    answer:1,
+    explain:"Tax incidence distinguishes the legal payer from the party that economically bears the burden. With tariffs, domestic consumers often carry much of it.",
+    wrong:"Retaliation risk (a) is about partner-country responses; a trade surplus (c) and the term premium (d) are different ideas entirely."
+  },
+  { ext:true, n:25, concept:"Module 06 · Reserve currency",
+    stem:"Why can an economy be one of the largest in the world yet still not issue the dominant global reserve currency?",
+    opts:["Because reserve status depends on liquidity, trust, institutional credibility, and safe assets, not size alone","Because only the largest economy can ever hold reserve status","Because reserve status is assigned by the IMF each year","Because trade volume is the single deciding factor"],
+    answer:0,
+    explain:"Reserve status rests on whether the world trusts the currency: deep liquid markets, credible institutions, and abundant safe assets. Sheer economic size is necessary but not sufficient.",
+    wrong:"Size alone does not decide it (b, d), and no annual IMF assignment confers it (c)."
+  },
+  { ext:true, n:26, concept:"Module 00 · Treasury balance",
+    stem:"In the course framework, the treasury balance indicator is defined as:",
+    opts:["Government spending minus taxes","Taxes minus government spending (Tx \u2212 GS)","Exports minus imports","The monetary base plus broad money"],
+    answer:1,
+    explain:"The treasury (fiscal) balance is taxes collected minus government spending. A positive figure is a surplus; a negative one is a deficit financed by debt.",
+    wrong:"Reversing the terms (a) flips the sign; exports minus imports (c) is net exports, and base plus broad money (d) is the liquidity indicator."
+  },
+  { ext:true, n:27, concept:"Module 00 · Balance of payments",
+    stem:"In the framework, the balance of payments indicator is the sum of which three accounts?",
+    opts:["Treasury, monetary, and fiscal accounts","Current account, capital account, and financial account","Trade, tax, and tariff accounts","Consumption, investment, and government accounts"],
+    answer:1,
+    explain:"The balance of payments aggregates the current account, the capital account, and the financial account. The current account deficit you studied in the U.S. case is mirrored by financial-account inflows.",
+    wrong:"The other groupings mix unrelated fiscal and expenditure categories that are not the BoP components."
+  },
+  { ext:true, n:28, concept:"Module 08 · Washington Consensus",
+    stem:"Which set of measures best characterizes the Washington Consensus?",
+    opts:["Fiscal discipline, trade and capital liberalization, privatization, deregulation, and secure property rights","Permanent capital controls, nationalization, and fixed prices","Higher tariffs, expanded state ownership, and protected industries","Unconditional foreign aid with no policy conditions"],
+    answer:0,
+    explain:"The Washington Consensus prescribed market-oriented reforms: control deficits, liberalize trade and capital, privatize, deregulate, and protect property rights. Its critique is that it underweighted institutions and sequencing.",
+    wrong:"Nationalization, controls, and protectionism (b, c) are the opposite of its prescriptions; it was explicitly conditional, not unconditional aid (d)."
+  },
+  { ext:true, n:29, concept:"Module 08 · China growth model",
+    stem:"China's growth model has historically relied most on:",
+    opts:["Domestic consumption and a freely floating currency","High investment and exports, a large state sector, and a managed exchange rate","Pure laissez-faire markets with no state direction","Commodity exports alone, like a typical resource economy"],
+    answer:1,
+    explain:"The model has been investment- and export-led, with a substantial state-owned sector and a managed exchange rate supporting competitiveness. The current challenge is rebalancing toward domestic consumption.",
+    wrong:"Consumption-led with a free float (a) is the goal, not the historical model; the state has been heavily involved (c); and growth was manufacturing- and export-driven, not commodity-only (d)."
+  },
+  { ext:true, n:30, concept:"Module 01 · Indirect fiscal effects",
+    stem:"A government finances a large spending program by borrowing heavily, which pushes up interest rates and reduces private investment. This indirect effect is known as:",
+    opts:["The multiplier effect","Crowding out","Tax incidence","Quantitative easing"],
+    answer:1,
+    explain:"Crowding out is the indirect effect by which government borrowing raises rates and displaces private investment, offsetting part of the direct fiscal stimulus.",
+    wrong:"The multiplier (a) is the amplifying direct effect; tax incidence (c) is about who bears a tax; quantitative easing (d) is a monetary operation."
+  },
+  { ext:true, n:31, concept:"Module 08 · Productivity",
+    stem:"Why is productivity growth treated as the ultimate driver of long-run well-being in the course?",
+    opts:["Because it is the only thing that raises potential GDP sustainably, funding both private-sector-led and welfare-state models","Because it lowers inflation directly in the short run","Because it is set by the Central Bank's reference rate","Because redistribution alone can sustain rising living standards indefinitely"],
+    answer:0,
+    explain:"Productivity raises potential GDP over time, which is the resource base both growth-led and redistribution-led models draw on. Without it, higher living standards are not sustainable.",
+    wrong:"Productivity is a supply-side, long-run force, not a short-run inflation lever (b) or a Central Bank rate (c); redistribution without growth is not indefinitely sustainable (d)."
+  }
+];
+
+const root = document.getElementById('quizroot');
+const state = {};
+
+function render(){
+  root.innerHTML = '';
+  let dividerDone = false;
+  QUESTIONS.forEach(q=>{
+    if(q.ext && !dividerDone){
+      const div = document.createElement('div');
+      div.className = 'setdivider';
+      div.innerHTML = '<span>Extended Bank</span><p>Twenty additional questions written in the partial\u2019s style, covering the same modules. Same rules: click to lock and reveal the reasoning.</p>';
+      root.appendChild(div);
+      dividerDone = true;
+    }
+    const card = document.createElement('div');
+    card.className = 'q';
+    const answered = state[q.n] !== undefined;
+    const letters = ['a','b','c','d'];
+    let optsHTML = '';
+    q.opts.forEach((o,i)=>{
+      let cls = 'opt';
+      let mark = '';
+      if(answered){
+        cls += ' locked';
+        if(i===q.answer){cls+=' correct'; mark='<span class="mark">Correct</span>';}
+        else if(i===state[q.n]){cls+=' wrong'; mark='<span class="mark">Your pick</span>';}
+      }
+      optsHTML += `<li class="${cls}" data-q="${q.n}" data-i="${i}">
+        <span class="letter">${letters[i]}</span><span>${o}</span>${mark}</li>`;
+    });
+    card.innerHTML = `
+      <div class="q-top"><span class="q-num">${q.n}</span><span class="q-stem">${q.stem}</span></div>
+      <div class="q-concept">${q.concept}</div>
+      <ul class="opts">${optsHTML}</ul>
+      <div class="explain ${answered?'show':''}">
+        <b>Why ${letters[q.answer]}:</b> ${q.explain}
+        <div class="why-wrong">${q.wrong}</div>
+      </div>`;
+    root.appendChild(card);
+  });
+  bind();
+  updateScore();
+}
+
+function bind(){
+  document.querySelectorAll('.opt:not(.locked)').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const qn = +el.dataset.q;
+      if(state[qn]!==undefined) return;
+      state[qn] = +el.dataset.i;
+      render();
+    });
+  });
+}
+
+function updateScore(){
+  const keys = Object.keys(state);
+  let correct = 0;
+  keys.forEach(k=>{ const q = QUESTIONS.find(x=>x.n==k); if(state[k]===q.answer) correct++; });
+  document.getElementById('answered').textContent = keys.length;
+  document.getElementById('correct').textContent = correct;
+}
+
+document.getElementById('resetbtn').addEventListener('click',()=>{
+  for(const k in state) delete state[k];
+  render();
+});
+
+// view toggle
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.getElementById(btn.dataset.view).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+
+// accordion
+document.querySelectorAll('.module-head').forEach(h=>{
+  h.addEventListener('click',()=>h.parentElement.classList.toggle('open'));
+});
+
+render();
+</script>
+</body>
+</html>
