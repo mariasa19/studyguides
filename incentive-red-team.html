@@ -1,0 +1,262 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg:#1d1e21; --surface:#26282c; --surface-2:#2f3136;
+    --text:#f0e9da; --muted:#aaa498; --line:#3c3f44;
+    --gold:#d4af55; --gold-2:#c79a4b;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 44px rgba(0,0,0,.5);
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; }
+  body {
+    font-family:"Hanken Grotesk",-apple-system,sans-serif; color:var(--text); line-height:1.6;
+    background:
+      radial-gradient(1100px 540px at 88% -10%, rgba(240,233,218,.05), transparent 60%),
+      radial-gradient(820px 460px at -5% 4%, rgba(212,175,85,.05), transparent 55%),
+      var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:900px; margin:0 auto; padding:44px 20px 80px; }
+  .eyebrow { font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  h1 { font-family:"Fraunces",serif; font-weight:600; font-optical-sizing:auto; font-size:clamp(32px,5.5vw,50px); line-height:1.02; margin:12px 0 0; letter-spacing:-.015em; }
+  h1 em { font-style:italic; color:var(--gold); }
+  .lede { color:var(--muted); font-size:15px; max-width:62ch; margin:14px 0 0; }
+  .lede b { color:var(--text); }
+  .rule { height:1px; background:linear-gradient(90deg,var(--line),transparent); margin:30px 0 24px; }
+
+  .panel { background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:20px 22px; box-shadow:var(--shadow); }
+  h2 { font-family:"Fraunces",serif; font-weight:600; font-size:19px; margin:0 0 14px; }
+  .field { display:block; margin-bottom:14px; }
+  .field label { display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:5px; }
+  .field input, .field textarea { width:100%; background:var(--surface-2); border:1px solid var(--line); border-radius:4px; color:var(--text); font-family:inherit; font-size:14px; padding:9px 11px; outline:none; }
+  .field textarea { resize:vertical; min-height:46px; }
+  .field input:focus, .field textarea:focus, td input:focus { border-color:var(--gold); }
+
+  .gridwrap { overflow-x:auto; border:1px solid var(--line); border-radius:6px; }
+  table { border-collapse:collapse; width:100%; min-width:760px; }
+  th { background:var(--surface-2); color:var(--gold); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  td { padding:0; border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:middle; }
+  td:last-child { border-right:none; }
+  td input { width:100%; background:transparent; border:none; color:var(--text); font-family:inherit; font-size:13.5px; padding:10px; outline:none; }
+  td input::placeholder { color:#6f6a5f; }
+  .del { width:34px; text-align:center; }
+  .del button { background:transparent; border:none; color:var(--muted); font-size:16px; cursor:pointer; padding:6px; line-height:1; border-radius:4px; }
+  .del button:hover { color:var(--gold); }
+
+  .gridbtns { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+  button.act { font-family:inherit; cursor:pointer; font-size:13px; font-weight:600; border-radius:4px; padding:9px 15px; border:1px solid var(--line); background:transparent; color:var(--text); transition:all .15s; }
+  button.act:hover { border-color:var(--gold); }
+  .cta { margin-top:22px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .primary { font-family:"Fraunces",serif; font-weight:600; font-size:15px; cursor:pointer; background:var(--gold); color:var(--bg); border:none; border-radius:4px; padding:13px 22px; transition:background .15s; }
+  .primary:hover { background:#e0bd66; }
+  .copied { background:var(--gold-2) !important; color:var(--bg) !important; }
+  .hint { color:var(--muted); font-size:12.5px; }
+
+  details.promptbox { margin-top:18px; }
+  details.promptbox summary { cursor:pointer; color:var(--muted); font-size:13px; font-weight:600; }
+  details.promptbox summary:hover { color:var(--text); }
+  details.promptbox pre { background:var(--bg); border:1px solid var(--line); border-radius:5px; padding:14px; font-size:11.5px; line-height:1.55; overflow:auto; max-height:320px; color:var(--muted); white-space:pre-wrap; margin-top:10px; }
+  .steps { display:grid; gap:10px; counter-reset:s; margin:14px 0 0; padding:0; list-style:none; }
+  .steps li { display:flex; gap:12px; align-items:baseline; font-size:14px; }
+  .steps li::before { counter-increment:s; content:counter(s); font-family:"Fraunces",serif; font-size:12px; color:var(--bg); background:var(--gold); width:22px; height:22px; min-width:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:600; }
+  .steps b { color:var(--gold); }
+
+  .report { margin-top:24px; background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:6px; padding:18px 22px; box-shadow:var(--shadow); }
+  .report ul { margin:8px 0 0; padding-left:18px; } .report li { margin:6px 0; font-size:13.5px; }
+  .report b { color:var(--gold); }
+  .foot { text-align:center; color:var(--muted); font-size:12px; margin-top:36px; } .foot b { color:var(--gold); }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Management Control · GenAI</div>
+  <h1>The <em>Incentive</em> Red-Team</h1>
+  <p class="lede">Fill in how your organization rewards people (base, bonuses, commissions, recognition, OKRs) in the grid below. No writing required. One click packages it for Claude, which hunts for how each lever gets <b>gamed</b> and hands back a prioritized fix list.</p>
+
+  <div class="rule"></div>
+
+  <div class="panel">
+    <h2>Your reward system</h2>
+
+    <div class="field">
+      <label for="org">What the team or organization does</label>
+      <input id="org" type="text" placeholder="e.g. 30-person SaaS sales org; we want reps landing good, lasting customers, not just signatures" />
+    </div>
+
+    <div class="gridwrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="min-width:150px">Reward / incentive</th>
+            <th style="min-width:120px">Who gets it</th>
+            <th style="min-width:230px">How it's earned (formula, %, threshold)</th>
+            <th style="min-width:130px">Timing / payout</th>
+            <th style="min-width:170px">Meant to drive</th>
+            <th class="del"></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+    <div class="gridbtns">
+      <button class="act" id="addRow">+ Add reward / incentive</button>
+      <button class="act" id="loadEx">Load an example</button>
+      <button class="act" id="clearAll">Clear</button>
+    </div>
+
+    <div class="field" style="margin-top:18px">
+      <label for="notes">Anything you've already noticed (optional)</label>
+      <textarea id="notes" placeholder="e.g. end-of-quarter scrambles, churn climbing, complaints about deal quality"></textarea>
+    </div>
+
+    <div class="cta">
+      <button class="primary" id="copyAll">Copy everything for Claude</button>
+      <span class="hint">Paste into a new Claude chat and send. It'll ask a couple of quick follow-ups, then return your report.</span>
+    </div>
+
+    <ol class="steps">
+      <li>Click <b>Copy everything for Claude</b> above.</li>
+      <li>Open a new chat at <b>claude.ai</b> (or a custom GPT) and paste.</li>
+      <li>Answer the couple of follow-ups it asks, then read your gaming-risk register.</li>
+    </ol>
+
+    <details class="promptbox">
+      <summary>Advanced: view / copy just the instructions (for a reusable Claude Project)</summary>
+      <button class="act" id="copyPrompt" style="margin-top:10px">Copy prompt only</button>
+      <pre id="promptPre"></pre>
+    </details>
+  </div>
+
+  <div class="report">
+    <h2 style="margin-bottom:6px">What comes back</h2>
+    <ul>
+      <li><b>Gaming-risk register</b>: each lever, how it gets gamed, rated Likelihood &times; Harm, with a fix beside it.</li>
+      <li><b>Top 3 interventions</b>: ranked by impact and ease.</li>
+      <li><b>What's missing</b>: absent balancing metrics, and levers people are held to but can't control.</li>
+    </ul>
+  </div>
+
+  <div class="foot">Built with <b>Claude</b> · the grid runs entirely in your browser, nothing is sent anywhere until you paste it into your own Claude.</div>
+</div>
+
+<script>
+const PROMPT = `# ROLE
+You are the Reward-System Red-Team, an advisor that stress-tests how an organization rewards its people and finds where those rewards will be gamed before they cause damage. You think like a clever, self-interested employee hunting for the easiest way to maximize a reward while betraying its intent (Goodhart's law). Ground your analysis in management control: KPIs and the Balanced Scorecard, incentive design, financial responsibility centers, and the principle that people optimize what is measured and paid, not what is intended. Be practical and diagnostic, not academic. Analyze structures and incentives, never individuals.
+
+# WHAT YOU DELIVER
+A prioritized GAMING-RISK REGISTER: for each reward lever, the specific ways it gets gamed, rated by Likelihood and Harm, each paired with a concrete fix, plus the top 3 interventions ranked by impact and ease, and a short note on what's missing.
+
+# CONVERSATION FLOW
+If the user has ALREADY pasted a structured list or table of reward levers (roles, formulas, timing, intended behavior), treat that as your context, and do NOT re-ask it. Briefly confirm what you received, then ask only the clarifiers below that genuinely matter, then produce the report.
+If they have NOT, ask one short cluster: what the team does and which roles are rewarded; the actual reward levers (formulas, thresholds, timing); and what each reward is meant to drive.
+
+Clarifiers worth asking (only if unclear): how each metric is measured and who reports it; whether the rewarded people actually control the lever they're measured on (e.g. held to profit but can't set price or volume); any symptoms already seen (sandbagging, quarter-end spikes, quality complaints, churn, gaming of "qualified"). Keep it to a few questions, then report.
+
+# THE RED-TEAM (the core)
+For each reward lever, FULLY adopt the persona of a clever, self-interested person whose only goal is to maximize the reward against the spirit of the goal. Do not hedge or be polite. Find the exploits. For each:
+- Name the specific exploit (how they hit the number while betraying its intent).
+- Rate Likelihood (Low/Med/High) and Harm (Low/Med/High).
+- Propose a fix: a balancing metric, a cap, a quality gate, a clawback or vesting delay, a changed accountability, or a reframed measure.
+Also flag: (a) ACCOUNTABILITY MISMATCHES: someone rewarded for something they can't control; (b) MISSING BALANCING METRICS: a single number with no counterweight (volume without quality, new revenue without retention, speed without safety); (c) TIMING GAMES the payout schedule invites (pull-ins, sandbagging, channel stuffing). The goal is to strengthen the system, never to conclude that measurement is pointless.
+
+# OUTPUT (the report)
+1. GAMING-RISK REGISTER, a markdown table: Reward lever | How it gets gamed | Likelihood | Harm | Fix.
+2. TOP 3 INTERVENTIONS, ranked by impact and ease; one or two lines each.
+3. WHAT'S MISSING: balancing metrics absent, levers held without control, perspectives ignored.
+Keep it concrete and prioritized; no generic consulting boilerplate.
+
+# GUARDRAILS
+- Analyze structures and incentives, not individuals. Don't name or judge real people.
+- Work from what the user tells you; mark inferences as assumptions to verify.
+- If a scheme is mostly healthy, say so and focus on the few real risks, and don't invent problems.
+
+# START
+In two sentences, explain that you stress-test reward systems for how they'll be gamed and then propose fixes. If a reward table is already present, acknowledge it and ask only the clarifiers that matter; otherwise ask for the reward levers.`;
+
+const COLS = ["reward","who","earned","timing","drive"];
+const PLACE = {reward:"e.g. Commission", who:"e.g. Account Executives", earned:"e.g. 8% of closed ACV; 12% above quota", timing:"e.g. at signing", drive:"e.g. close new revenue"};
+const EXAMPLE_ORG = "30-person SaaS sales org; we want reps landing good, lasting customers, not just signatures.";
+const EXAMPLE_ROWS = [
+  {reward:"Base salary", who:"AEs & SDRs", earned:"Fixed", timing:"Monthly", drive:"Stability / retention of staff"},
+  {reward:"Commission", who:"Account Executives", earned:"8% of closed ACV; accelerator to 12% above quota", timing:"Paid at contract signing", drive:"Close new revenue"},
+  {reward:"Meeting bonus", who:"SDRs", earned:"$50 per \"qualified\" meeting booked", timing:"Per meeting", drive:"Pipeline creation"},
+  {reward:"Promotion to Senior AE", who:"Account Executives", earned:"Based on quarterly revenue rank vs peers", timing:"Quarterly", drive:"Top performance"},
+  {reward:"None (salaried)", who:"Customer Success", earned:"Salary only, no variable pay", timing:"n/a", drive:"Retention & expansion"}
+];
+const EXAMPLE_NOTES = "We've started seeing end-of-quarter scrambles and a few noisy churned accounts.";
+
+let rows = [];
+const tbody = document.getElementById("rows");
+document.getElementById("promptPre").textContent = PROMPT;
+
+function blankRow(){ return {reward:"",who:"",earned:"",timing:"",drive:""}; }
+function render(){
+  tbody.innerHTML = "";
+  rows.forEach((r,i) => {
+    const tr = document.createElement("tr");
+    COLS.forEach(c => {
+      const td = document.createElement("td");
+      const inp = document.createElement("input");
+      inp.type = "text"; inp.value = r[c]; inp.placeholder = PLACE[c];
+      inp.oninput = e => { rows[i][c] = e.target.value; };
+      td.appendChild(inp); tr.appendChild(td);
+    });
+    const del = document.createElement("td");
+    del.className = "del";
+    const b = document.createElement("button");
+    b.innerHTML = "&times;"; b.title = "Remove row";
+    b.onclick = () => { rows.splice(i,1); if(!rows.length) rows.push(blankRow()); render(); };
+    del.appendChild(b); tr.appendChild(del);
+    tbody.appendChild(tr);
+  });
+}
+function buildPayload(){
+  const org = document.getElementById("org").value.trim();
+  const notes = document.getElementById("notes").value.trim();
+  const filled = rows.filter(r => COLS.some(c => r[c].trim()));
+  let out = "Here is our reward system. Please red-team it for how each lever gets gamed.\n\n";
+  out += "Team / organization: " + (org || "(not specified)") + "\n\n";
+  out += "Reward levers:\n\n";
+  out += "| Reward / incentive | Who gets it | How it's earned | Timing / payout | Meant to drive |\n";
+  out += "|---|---|---|---|---|\n";
+  if (filled.length){
+    filled.forEach(r => {
+      const cell = v => (v.trim() || "n/a").replace(/\|/g,"/");
+      out += "| "+cell(r.reward)+" | "+cell(r.who)+" | "+cell(r.earned)+" | "+cell(r.timing)+" | "+cell(r.drive)+" |\n";
+    });
+  } else {
+    out += "| (none entered yet) |  |  |  |  |\n";
+  }
+  out += "\nSymptoms already noticed: " + (notes || "none mentioned") + "\n";
+  return out;
+}
+function flash(btn,msg){ const o=btn.textContent; btn.textContent=msg; btn.classList.add("copied"); setTimeout(()=>{btn.textContent=o; btn.classList.remove("copied");},1600); }
+async function copyText(text,btn){
+  try { await navigator.clipboard.writeText(text); flash(btn,"Copied \u2713"); }
+  catch(e){
+    const ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    let ok=false; try{ok=document.execCommand("copy");}catch(_){}
+    document.body.removeChild(ta); flash(btn, ok?"Copied \u2713":"Press \u2318/Ctrl+C");
+  }
+}
+
+document.getElementById("addRow").onclick = () => { rows.push(blankRow()); render(); };
+document.getElementById("clearAll").onclick = () => { rows=[blankRow(),blankRow(),blankRow()]; document.getElementById("org").value=""; document.getElementById("notes").value=""; render(); };
+document.getElementById("loadEx").onclick = () => {
+  rows = EXAMPLE_ROWS.map(r=>({...r}));
+  document.getElementById("org").value = EXAMPLE_ORG;
+  document.getElementById("notes").value = EXAMPLE_NOTES;
+  render();
+};
+document.getElementById("copyAll").onclick = function(){ copyText(PROMPT + "\n\n----- MY REWARD SYSTEM -----\n\n" + buildPayload(), this); };
+document.getElementById("copyPrompt").onclick = function(){ copyText(PROMPT, this); };
+
+rows = [blankRow(), blankRow(), blankRow()];
+render();
+</script>
