@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corporate Finance, Theory Review</title>
+<style>
+  :root{
+    --paper:#F4F6F9; --card:#FFFFFF; --ink:#16202F; --ink-soft:#414C5E;
+    --muted:#76808F; --rule:#DCE1E9; --rule-soft:#E9EDF3;
+    --blue:#1E50A0; --blue-deep:#14305C; --blue-tint:#EAF0FB;
+    --green:#1E7A52; --green-tint:#E6F3EC;
+    --amber:#8A5E12; --amber-tint:#FBF3DF;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* top bar */
+  header.bar{
+    position:sticky; top:0; z-index:20;
+    background:rgba(244,246,249,.92); backdrop-filter:saturate(140%) blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .bar-inner{max-width:1040px; margin:0 auto; padding:12px 22px; display:flex; align-items:baseline; gap:18px; flex-wrap:wrap}
+  .bar-title{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--blue-deep); letter-spacing:.2px}
+  .bar-nav{display:flex; gap:4px 14px; flex-wrap:wrap; margin-left:auto}
+  .bar-nav a{color:var(--ink-soft); text-decoration:none; font-size:13.5px; padding:3px 2px; border-bottom:2px solid transparent}
+  .bar-nav a:hover{color:var(--blue); border-bottom-color:var(--blue)}
+
+  .wrap{max-width:1040px; margin:0 auto; padding:0 22px}
+
+  /* hero */
+  .hero{padding:64px 0 30px; border-bottom:1px solid var(--rule)}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--blue)}
+  .hero h1{font-family:var(--serif); font-weight:600; font-size:clamp(34px,5vw,52px); line-height:1.05; margin:14px 0 0; max-width:18ch}
+  .hero p.lede{font-size:18px; color:var(--ink-soft); max-width:62ch; margin:18px 0 0}
+  .hero .src{font-size:13.5px; color:var(--muted); margin-top:18px}
+
+  /* part headings */
+  section.part{padding:54px 0 8px; scroll-margin-top:70px}
+  .part-head{display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--blue); padding-bottom:10px}
+  .part-num{font-family:var(--mono); font-size:13px; color:var(--blue); font-weight:600}
+  .part-head h2{font-family:var(--serif); font-weight:600; font-size:27px; margin:0}
+
+  h3{font-family:var(--serif); font-weight:600; font-size:20px; margin:30px 0 6px; color:var(--blue-deep)}
+  h3 .tag{font-family:var(--mono); font-size:11px; color:var(--muted); font-weight:400; margin-left:8px; letter-spacing:.04em}
+  p{margin:10px 0}
+  .lead-in{color:var(--ink-soft)}
+  ul{margin:10px 0; padding-left:22px}
+  li{margin:5px 0}
+  b,strong{font-weight:600}
+  .term{font-weight:600; color:var(--blue-deep)}
+
+  /* formula card */
+  .fx{
+    border-left:3px solid var(--blue); background:var(--blue-tint);
+    border-radius:0 8px 8px 0; padding:12px 16px; margin:14px 0;
+    font-family:var(--mono); font-size:14px; line-height:1.7; color:var(--blue-deep); overflow-x:auto;
+  }
+  .fx .lbl{display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); margin-bottom:4px}
+
+  /* callout */
+  .tip{
+    border:1px solid var(--amber); background:var(--amber-tint); color:#5e4310;
+    border-radius:8px; padding:12px 16px; margin:16px 0; font-size:14.5px;
+  }
+  .tip .h{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--amber); display:block; margin-bottom:4px}
+
+  /* compact inline example */
+  .eg{font-size:14px; background:#FAFBFD; border:1px solid var(--rule-soft); border-left:3px solid var(--muted); border-radius:0 6px 6px 0; padding:8px 13px; margin:10px 0; line-height:1.55}
+  .eg .lbl{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:8px}
+  .eg code{font-family:var(--mono); font-size:13px; color:var(--blue-deep)}
+
+  /* connective flow band */
+  .flow{background:var(--card); border:1px solid var(--rule); border-radius:12px; padding:22px 22px 16px; margin:18px 0}
+  .flow .chain{display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin:4px 0 14px}
+  .chip{font-family:var(--mono); font-size:12.5px; background:var(--blue-tint); color:var(--blue-deep); border:1px solid #CADCF4; border-radius:20px; padding:6px 13px; white-space:nowrap}
+  .chip.alt{background:var(--green-tint); color:var(--green); border-color:#BFE3CD}
+  .arrow{color:var(--blue); font-family:var(--mono); font-size:15px; font-weight:600}
+  .flow p{margin:8px 0}
+
+  /* insight / boundary cases */
+  .insight{background:var(--card); border:1px solid #C7D5EA; border-left:3px solid var(--blue-deep); border-radius:0 12px 12px 0; padding:18px 22px 8px; margin:18px 0}
+  .ins-h{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--blue-deep); margin-bottom:8px}
+  .ins-list{list-style:none; margin:0; padding:0}
+  .ins-list li{position:relative; padding:9px 0 9px 26px; border-top:1px solid var(--rule-soft); font-size:14.5px; line-height:1.55}
+  .ins-list li:first-child{border-top:none}
+  .ins-list li::before{content:"="; position:absolute; left:2px; top:9px; font-family:var(--mono); font-weight:700; color:var(--blue)}
+  .ins-list code{font-family:var(--mono); font-size:13px; color:var(--blue-deep); background:var(--blue-tint); padding:1px 5px; border-radius:4px}
+
+  /* MCQ */
+  .mcq{background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:18px 20px; margin:14px 0}
+  .mcq .q{font-weight:600; margin:0 0 10px}
+  .mcq .qn{font-family:var(--mono); color:var(--blue); font-size:13px; margin-right:6px}
+  .mcq ol{list-style:upper-alpha; margin:8px 0 6px; padding-left:26px}
+  .mcq ol li{margin:4px 0}
+  .reveal{margin-top:10px}
+  .reveal button{
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--blue);
+    background:transparent; border:1px solid var(--blue); border-radius:6px;
+    padding:5px 12px; cursor:pointer;
+  }
+  .reveal button:hover{background:var(--blue); color:#fff}
+  .ans{display:none; margin-top:12px; border-top:1px dashed var(--rule); padding-top:11px; font-size:14.5px}
+  .ans.show{display:block}
+  .ans .key{font-weight:600; color:var(--green)}
+  .ans .why{color:var(--ink-soft); margin-top:3px}
+
+  .controls{display:flex; gap:10px; margin:6px 0 4px}
+  .controls button{
+    font-family:var(--mono); font-size:12px; color:var(--ink-soft); background:var(--card);
+    border:1px solid var(--rule); border-radius:6px; padding:6px 12px; cursor:pointer;
+  }
+  .controls button:hover{border-color:var(--blue); color:var(--blue)}
+
+  /* worked example */
+  .we{background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--green); border-radius:0 10px 10px 0; padding:18px 20px; margin:16px 0}
+  .we h4{font-family:var(--serif); font-size:18px; margin:0 0 4px; color:var(--ink)}
+  .we .setup{color:var(--ink-soft); font-size:15px; margin:2px 0 10px}
+  .step{font-family:var(--mono); font-size:13.5px; line-height:1.75; background:#FAFBFD; border:1px solid var(--rule-soft); border-radius:8px; padding:11px 14px; margin:8px 0; overflow-x:auto}
+  .step .c{color:var(--muted)}
+  .result{font-weight:600; color:var(--green)}
+
+  table.cmp{border-collapse:collapse; width:100%; margin:10px 0; font-size:14px}
+  table.cmp th,table.cmp td{border:1px solid var(--rule); padding:7px 10px; text-align:left}
+  table.cmp th{background:var(--blue-tint); color:var(--blue-deep); font-weight:600}
+  table.cmp td.num{font-family:var(--mono); text-align:right}
+  table.cmp td.na{color:var(--muted); text-align:center; font-family:var(--mono)}
+  table.cmp tr.tot td{font-weight:700; background:var(--green-tint)}
+  table.cmp tr.tot td.num{color:var(--green)}
+
+  footer{border-top:1px solid var(--rule); margin-top:60px; padding:28px 0 60px; color:var(--muted); font-size:13.5px}
+
+  @media (max-width:640px){
+    body{font-size:15px}
+    .bar-nav{display:none}
+    .hero{padding:42px 0 24px}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-inner">
+    <span class="bar-title">Finance, Theory Review</span>
+    <nav class="bar-nav">
+      <a href="#p1">Money &amp; rates</a>
+      <a href="#p2">Decision rules</a>
+      <a href="#p3">Bonds</a>
+      <a href="#p4">Valuation</a>
+      <a href="#p5">Cases</a>
+      <a href="#mcq">Questions</a>
+      <a href="#worked">Worked examples</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="eyebrow">Corporate finance &middot; exam preparation</span>
+    <h1>The theory, in plain terms.</h1>
+    <p class="lede">Every topic from the board, explained simply, then a question bank you can self-test with, then numerical examples worked end to end. Read the concept sections first, cover the answers and try the questions, then check your method against the worked examples.</p>
+    <p class="src">Built from the class index: time value of money, investment rules, bonds, cash flows, company valuation, and the Spotify and Harley Davidson cases.</p>
+  </div>
+
+  <!-- ============ PART 1 ============ -->
+  <section class="part" id="p1">
+    <div class="part-head"><span class="part-num">Part 1</span><h2>Time value of money and rates</h2></div>
+
+    <h3>Present value and future value</h3>
+    <p>Money today is worth more than the same amount later, because today's money can be invested and earn a return. Two moves cover most of the course.</p>
+    <ul>
+      <li><span class="term">Future value (FV):</span> what an amount today grows into.</li>
+      <li><span class="term">Present value (PV):</span> what a future amount is worth in today's money.</li>
+    </ul>
+    <div class="fx"><span class="lbl">Core formulas</span>
+      FV = PV &times; (1 + r)^n<br>
+      PV = FV / (1 + r)^n<br>
+      <span class="c" style="color:#7A8494">r = rate per period, n = number of periods</span>
+    </div>
+    <p>A higher rate or a longer wait makes a future cash flow worth less today. This single idea drives discounting, NPV, bond pricing, and valuation.</p>
+    <div class="eg"><span class="lbl">Example</span>Worth 1,000 in 3 years, rate 6%. Today it is worth <code>1,000 / (1.06)^3 = 839.6</code>. Run it forward and 839.6 grows back to 1,000.</div>
+
+    <h3>Payments (annuities)</h3>
+    <p>A payment stream is a series of equal cash flows at regular intervals: loan instalments, lease payments, bond coupons. The present value of an ordinary annuity (payments at the end of each period) is:</p>
+    <div class="fx"><span class="lbl">Annuity present value</span>
+      PV = PMT &times; [ 1 - (1 + r)^(-n) ] / r
+    </div>
+    <p>You use this to find a loan payment, the value of a coupon stream, or the price of anything that pays a level amount for a fixed number of periods.</p>
+    <div class="eg"><span class="lbl">Example</span>A 5-year stream of 200 a year, discounted at 8%, is worth <code>200 &times; [1 - 1.08^-5] / 0.08 = 200 &times; 3.993 = 798.5</code> today.</div>
+
+    <h3>Recapitalization</h3>
+    <p>Recapitalization means changing the mix of debt and equity in the capital structure, for example borrowing money to buy back shares. It does not change the operating business, but it changes financial risk, the cost of equity, and often the share price. This is the lever behind the American Greetings buyback discussion.</p>
+    <div class="eg"><span class="lbl">Example</span>A firm borrows 100 and uses it to buy back 100 of stock. The assets and operating profit are unchanged, but debt rises by 100 and equity falls by 100, so the remaining shares now carry more financial risk.</div>
+
+    <h3>Simple versus compound interest</h3>
+    <p><span class="term">Simple interest</span> is earned only on the original principal. <span class="term">Compound interest</span> earns interest on previously earned interest, so it grows faster over time.</p>
+    <div class="fx"><span class="lbl">The difference</span>
+      Simple:    Interest = P &times; r &times; n<br>
+      Compound:  FV = P &times; (1 + r)^n
+    </div>
+    <p>Over a single period the two are the same. Over many periods compound pulls ahead, and the gap is exactly the interest earned on interest.</p>
+    <div class="eg"><span class="lbl">Example</span>1,000 at 10% for 2 years. Simple gives <code>1,000 + 1,000 &times; 0.10 &times; 2 = 1,200</code>. Compound gives <code>1,000 &times; 1.10^2 = 1,210</code>. The extra 10 is interest earned on the first year's interest.</div>
+
+    <h3>Capitalization (compounding frequency) <span class="tag">capitalizaci&oacute;n</span></h3>
+    <p>Capitalization is the act of adding earned interest to the principal so that it also earns interest in the next period. How often you do this, the capitalization period, can be annual, semiannual, quarterly, monthly, daily, or continuous. It is the engine behind compound interest and the reason APR and EAR differ. The more frequently interest is capitalized, the faster the balance grows, because interest starts earning interest sooner.</p>
+    <div class="fx"><span class="lbl">Growth with m capitalizations per year</span>
+      FV = PV &times; (1 + r / m)^(m &times; n)<br>
+      Continuous limit:  FV = PV &times; e^(r &times; n),   EAR = e^r - 1<br>
+      <span class="c" style="color:#7A8494">r = nominal annual rate, m = capitalization periods per year, n = years</span>
+    </div>
+    <div class="eg"><span class="lbl">Example</span>1,000 at 12% nominal for one year. Annual (m=1): <code>1,120.0</code>. Monthly (m=12): <code>1,000 &times; (1 + 0.12/12)^12 = 1,126.8</code>. Daily (m=365): about <code>1,127.5</code>. Same nominal rate, more interest as capitalization gets more frequent.</div>
+    <div class="tip"><span class="h">Do not confuse the two</span>Capitalization here means compounding interest over time. Recapitalization, above, means changing a company's mix of debt and equity. Same root word, completely different idea. On the board, the capitalization note sits next to Payments because it governs how any interest or payment stream accumulates.</div>
+
+    <h3>Discount rate</h3>
+    <p>The discount rate is the rate you use to bring future cash flows back to today. It captures two things: the time value of money and the riskiness of the cash flows. More risk means a higher discount rate, which means a lower present value. The right rate depends on whose cash flows you are valuing: use the cost of equity for cash flows that belong to shareholders, and the weighted average cost of capital (WACC) for cash flows that belong to all investors.</p>
+    <div class="eg"><span class="lbl">Example</span>1,000 due in one year. At a 5% rate it is worth <code>952.4</code> today; at 10% only <code>909.1</code>. The riskier you judge the cash flow, the higher the rate, and the less it is worth now.</div>
+
+    <h3>MARR <span class="tag">minimum acceptable rate of return</span></h3>
+    <p>MARR, also called the hurdle rate, is the lowest return a project must earn to be worth doing. A company sets it at or above its cost of capital. It plays two roles: it is the discount rate you put into the NPV calculation, and it is the bar you compare the IRR against. If a project cannot beat the MARR, you reject it.</p>
+    <div class="eg"><span class="lbl">Example</span>A project returns 9% (its IRR) while the company's MARR is 12%. It falls short of the hurdle, so reject it, even though 9% is a positive return.</div>
+
+    <h3>APR versus EAR (nominal versus effective)</h3>
+    <p>These two rates describe the same loan or investment but answer different questions. They are also called the <span class="term">nominal rate</span> and the <span class="term">effective rate</span>, the words your course is likely to use. APR is the nominal rate, EAR is the effective rate.</p>
+    <ul>
+      <li><span class="term">APR, the nominal annual rate:</span> the stated yearly rate, which ignores compounding within the year. APR = periodic rate &times; number of periods per year, so the periodic rate is just APR / m.</li>
+      <li><span class="term">EAR, the effective annual rate:</span> the true annual cost or return once you account for compounding inside the year.</li>
+    </ul>
+    <div class="fx"><span class="lbl">Converting between them</span>
+      Nominal to effective:  EAR = (1 + APR / m)^m - 1<br>
+      Effective to nominal:  APR = m &times; [ (1 + EAR)^(1/m) - 1 ]<br>
+      <span class="c" style="color:#7A8494">m = capitalization (compounding) periods per year</span>
+    </div>
+    <div class="eg"><span class="lbl">Example</span>24% APR compounded monthly. The periodic rate is <code>24% / 12 = 2%</code> a month, and the effective annual rate is <code>(1 + 0.24/12)^12 - 1 = 26.82%</code>, noticeably above the quoted 24%.</div>
+    <div class="tip"><span class="h">Exam trap</span>Nominal and effective are equal only when compounding is annual (m = 1). With monthly or daily compounding, the effective rate is always higher than the nominal. When two products quote different compounding, compare them on the effective rate, never the nominal.</div>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section class="part" id="p2">
+    <div class="part-head"><span class="part-num">Part 2</span><h2>Investment decision rules</h2></div>
+
+    <h3>Net present value (NPV)</h3>
+    <p>NPV is the value a project adds, measured in today's money. You discount every future cash flow back to today and subtract the initial investment.</p>
+    <div class="fx"><span class="lbl">NPV</span>
+      NPV = - I&#8320; + &#931; [ CF&#8341; / (1 + r)^t ]   for t = 1 to n<br>
+      <span class="c" style="color:#7A8494">Rule: accept if NPV &gt; 0</span>
+    </div>
+    <div class="eg"><span class="lbl">Example</span>Invest 50 now, receive 30 and 40 in years 1 and 2 at a 10% rate. Discounted inflows are <code>27.3 + 33.1 = 60.4</code>, so <code>NPV = -50 + 60.4 = +10.4</code>. Positive, so accept.</div>
+    <div class="tip"><span class="h">Common slip</span>The most frequent error is forgetting the minus I&#8320; term. The discounted cash flows alone are gross present value. NPV is that total net of the upfront outlay. If you only sum the discounted inflows, you have overstated the result by the full investment.</div>
+
+    <h3>Internal rate of return (IRR)</h3>
+    <p>The IRR is the discount rate that makes a project's NPV exactly zero. It is the project's own built-in rate of return.</p>
+    <div class="fx"><span class="lbl">IRR</span>
+      Find r such that:  - I&#8320; + &#931; [ CF&#8341; / (1 + r)^t ] = 0<br>
+      <span class="c" style="color:#7A8494">Rule: accept if IRR &gt; MARR (the hurdle)</span>
+    </div>
+    <p>NPV and IRR usually agree, but IRR has two weak spots. With unconventional cash flows (the sign of the cash flow changes more than once) a project can have several IRRs. And when ranking mutually exclusive projects of different size, IRR can favor the smaller one even when the larger one adds more value. When NPV and IRR disagree, trust NPV.</p>
+    <div class="eg"><span class="lbl">Example</span>Invest 100 now for a single 121 received in 2 years. The IRR solves <code>100 = 121 / (1+r)^2</code>, so <code>r = &radic;(121/100) - 1 = 10%</code>. If the MARR is 8%, accept; if it is 12%, reject.</div>
+
+    <h3>Payback period and adjusted payback</h3>
+    <p>The <span class="term">payback period</span> is how long it takes to recover the initial investment from the project's cash flows. It is quick and intuitive, but it has two flaws: it ignores the time value of money, and it ignores everything that happens after the cutoff.</p>
+    <p>The <span class="term">adjusted (discounted) payback</span> fixes the first flaw by discounting the cash flows before adding them up. It is more conservative, so the discounted payback is always longer than the simple payback. It still ignores cash flows after the cutoff, so it is a screening tool, not a final decision rule.</p>
+    <div class="eg"><span class="lbl">Example</span>Invest 90, receive 50 a year. Simple payback is <code>90 / 50 = 1.8 years</code>. Discounted at 10% the first two inflows are 45.5 and 41.3, only 86.8 by year 2, so the discounted payback is just over 2 years.</div>
+
+    <h3>How these pieces connect</h3>
+    <p class="lead-in">PV, the discount rate, NPV, IRR, and MARR are not separate tools. They are one chain of reasoning seen from different angles.</p>
+    <div class="flow">
+      <div class="chain">
+        <span class="chip">Future cash flows</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip">Discount rate</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip">Present value</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip">NPV</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip alt">IRR</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip alt">MARR</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip alt">Accept or reject</span>
+      </div>
+      <p>Start with future <b>cash flows</b>. Apply a <b>discount rate</b>, the price of time and risk, to bring each one back to today as a <b>present value</b>. Add up those present values and subtract the upfront investment, and you have the <b>NPV</b>, the value created in today's money.</p>
+      <p>Now turn the question around. Instead of fixing the rate and solving for value, fix the value at zero and solve for the rate. That break-even rate is the <b>IRR</b>, the project's own return. To judge it you need a bar, and that bar is the <b>MARR</b>, the hurdle rate, which is also the discount rate you fed into the NPV in the first place.</p>
+      <p>So the two decision rules are the same idea twice. NPV uses the MARR as the discount rate and asks, is value positive. IRR finds the rate that makes value zero and asks, does it beat the MARR. When the discount rate equals the MARR, accept if NPV &gt; 0 is the same verdict as accept if IRR &gt; MARR.</p>
+    </div>
+
+    <div class="insight">
+      <div class="ins-h">Boundary cases worth memorizing</div>
+      <ul class="ins-list">
+        <li>When <code>NPV = 0</code>, the IRR equals the discount rate. If you discounted at the MARR and got NPV = 0, the project's IRR is exactly the MARR. That is the accept-reject line itself, the point where the project is just worth doing.</li>
+        <li><code>NPV &gt; 0</code> says the same thing as <code>IRR &gt; discount rate</code>, and <code>NPV &lt; 0</code> says the same as <code>IRR &lt; discount rate</code>. For one normal project the two rules can never disagree; they only diverge when you rank competing projects.</li>
+        <li>If the discount rate were <code>0</code>, NPV would just be the plain sum of the cash flows minus the investment. Every positive rate pulls NPV down from that ceiling, which is why a higher hurdle makes projects harder to pass.</li>
+        <li>A bond sits at par when <code>coupon rate = YTM</code>. Above that yield it falls to a discount, below it rises to a premium. Same logic as NPV: the price is just the cash flows discounted at the market rate.</li>
+        <li>In Gordon growth, if <code>g = 0</code> the value is simply <code>CF / r</code>, a flat perpetuity. As g climbs toward r the denominator shrinks to nothing and the value runs to infinity, which is why g must stay below r and why terminal value is so sensitive.</li>
+        <li>When <code>net debt = 0</code> (debt equals cash), enterprise value equals equity value. The bridge EV = Equity + Net debt collapses, so the firm path and the equity path land on the same number.</li>
+        <li>With no debt there is no interest and no borrowing, so <code>FCFF = FCFE</code> and <code>WACC = Ke</code>. The two DCF paths become one. Debt is the only reason they differ.</li>
+        <li><code>EAR = APR</code> only when compounding is annual, and simple interest equals compound interest only over a single period. Add periods or within-year compounding and the two pull apart.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PART 3 ============ -->
+  <section class="part" id="p3">
+    <div class="part-head"><span class="part-num">Part 3</span><h2>Bonds</h2></div>
+
+    <h3>The building blocks</h3>
+    <ul>
+      <li><span class="term">Face value (principal, nominal):</span> the amount repaid at maturity, and the base on which the coupon is calculated. Often 100 or 1,000.</li>
+      <li><span class="term">Coupon rate:</span> the annual interest the bond pays, as a percent of face value. Coupon payment = coupon rate &times; face value. For a plain bond it is fixed.</li>
+      <li><span class="term">Yield to maturity (YTM):</span> the single discount rate that makes the present value of all the bond's future cash flows (the coupons plus the face value) equal to its current market price. It is the bond's IRR if you buy it now and hold it to maturity.</li>
+    </ul>
+    <p>Face value, principal, and nominal value are three names for the same number, the amount the issuer promises to repay at maturity. Each name looks at it from a different angle. <span class="term">Face value</span> is the literal sense, the amount written on the face of the bond. <span class="term">Principal</span> is the borrowing sense, since a bond is a loan and the principal is the original sum that must be paid back, separate from interest. <span class="term">Nominal value</span> is the stated sense, the amount in name, as opposed to what the bond actually trades for in the market.</p>
+    <p>The point that trips people up is that this number is fixed and does two jobs, while the market price floats. It is what you receive back at maturity no matter what the price did in between, and it is the base for the coupon: the coupon payment is the coupon rate times the face value, never times the price. So a 5% coupon on a 1,000 face bond pays 50 a year whether the bond trades at 920 or 1,080. The price is the present value of those coupons plus the face value discounted at the current yield, so the price moves while the face value stays anchored.</p>
+    <div class="eg"><span class="lbl">Example</span>A 1,000 face bond with a 5% coupon pays <code>50</code> every year and returns <code>1,000</code> at maturity, even if its market price falls to 920. The 50 and the 1,000 come from the face value; only the 920 comes from the market.</div>
+
+    <p><span class="term">The coupon rate</span> is the interest rate the bond promises at the moment it is issued. It is set once, printed on the bond, and for a plain fixed-rate bond it never changes. It is always quoted on the face value, so the cash you collect each period is coupon rate times face value, a fixed amount. The thing to hold onto is that the coupon rate describes the cash the bond pays, not the return you earn. If you buy the bond for less or more than its face value, your actual return will not equal the coupon rate, even though the coupon cheque is the same every year.</p>
+    <div class="eg"><span class="lbl">Example</span>A 6% coupon on a 1,000 face bond pays <code>60</code> a year, every year, for the life of the bond. That 60 does not change when the market price changes, because the coupon is figured on the 1,000 face, not on the price.</div>
+
+    <p><span class="term">Yield to maturity (YTM)</span> answers the question the coupon rate cannot: what return do I actually earn if I buy at today's price and hold the bond to the end. It is the one discount rate that makes the price equal the present value of every cash flow the bond will pay, the coupons plus the face value at maturity. That is exactly the IRR idea from projects, the rate that sets the present value of the cash flows equal to what you pay.</p>
+    <p>YTM differs from the coupon rate because you rarely pay exactly the face value. Your true return blends two things: the coupon income, and the gain or loss between the price you pay today and the face value you get back at maturity.</p>
+    <ul>
+      <li>Buy below face (a discount): you also collect a gain at maturity, so <span class="term">YTM is above the coupon rate</span>.</li>
+      <li>Buy above face (a premium): you take a loss back down to face at maturity, so <span class="term">YTM is below the coupon rate</span>.</li>
+      <li>Buy at face (at par): no gain or loss, so <span class="term">YTM equals the coupon rate</span>.</li>
+    </ul>
+    <p>One more contrast worth fixing in mind: the coupon rate never moves, but the YTM moves every day, because the market price moves every day. When you hear that a bond "yields" a certain rate, that is the YTM, the live return at the current price, not the fixed coupon stamped on the bond.</p>
+    <div class="eg"><span class="lbl">Example</span>A 5% coupon, 1,000 face bond bought for <code>920</code>. You still collect 50 a year, and on top of that you gain 80 when the 1,000 is repaid at maturity. Coupon income plus that gain means your true yield, the YTM, is above 5%.</div>
+    <div class="fx"><span class="lbl">Bond price</span>
+      Price = &#931; [ Coupon / (1 + y)^t ]  +  Face / (1 + y)^n<br>
+      <span class="c" style="color:#7A8494">y = yield to maturity, n = periods to maturity</span>
+    </div>
+    <div class="eg"><span class="lbl">Example</span>Face 1,000, coupon 5% (pays 50 a year). If the market YTM is also 5%, the price equals par, exactly <code>1,000</code>. Coupon and yield match, so there is no premium or discount.</div>
+
+    <h3>Price, yield, and the coupon</h3>
+    <p>Bond prices and market interest rates move in opposite directions. When rates rise, the fixed coupons look less attractive, so the price falls, and the reverse when rates fall. The relationship between the coupon rate and the YTM tells you where the price sits:</p>
+    <table class="cmp">
+      <tr><th>Condition</th><th>Bond trades at</th><th>Meaning</th></tr>
+      <tr><td>Coupon rate &gt; YTM</td><td>Premium</td><td>Price above face value</td></tr>
+      <tr><td>Coupon rate = YTM</td><td>Par</td><td>Price equals face value</td></tr>
+      <tr><td>Coupon rate &lt; YTM</td><td>Discount</td><td>Price below face value</td></tr>
+    </table>
+    <div class="eg"><span class="lbl">Example</span>Take that 5% coupon bond. If market yields rise to 6%, the fixed 50 coupons now look low, so the price slips below 1,000. Rates up, price down.</div>
+
+    <p>A <span class="term">premium</span> is the amount a bond's price sits above its face value, and a <span class="term">discount</span> is the amount it sits below. The size is just price minus face: a 1,000 bond trading at 1,080 carries an 80 premium, one at 920 carries an 80 discount. The reason is always the same comparison. When the coupon beats the market yield, investors pay extra for the rich coupon, so the bond is priced at a premium; when the coupon lags the yield, they will only buy at a discount that makes up the difference.</p>
+    <p>One more idea the exam likes: the <span class="term">pull to par</span>. Whatever premium or discount a bond carries, it shrinks as maturity approaches, because at maturity the bond pays exactly its face value. A premium bond drifts down toward face, a discount bond drifts up toward face, and both arrive at par on the maturity date, assuming the yield holds steady. So part of a premium bond's coupon is really getting your premium back, and a discount bond earns part of its return as that climb up to face.</p>
+    <div class="eg"><span class="lbl">Example</span>A bond bought at a 920 discount on 1,000 face gives back 1,000 at maturity. The 80 climb to par is part of the return, which is why its YTM is above the coupon rate, the point from the YTM section.</div>
+
+    <h3>Types of bonds</h3>
+    <p>Zero-coupon bonds pay no coupons and are sold below face value, with the return coming entirely from the gain to maturity. Fixed-rate bonds pay level coupons. Floating-rate bonds reset their coupon to a market rate. Callable bonds let the issuer repay early. Convertible bonds can be exchanged for the issuer's shares, which links straight to the Spotify financing discussion. Bonds also split by issuer, mainly government versus corporate, with corporate bonds carrying more credit risk and so a higher yield.</p>
+    <div class="eg"><span class="lbl">Example</span>A 1-year zero-coupon bond with face 1,000 priced to yield 5% sells today for <code>1,000 / 1.05 = 952.4</code>. The whole 47.6 return is the gain to maturity, since there are no coupons.</div>
+
+    <p>Why hold a zero if it pays nothing along the way? The benefit is certainty. A coupon bond's quoted YTM quietly assumes you reinvest every coupon at that same rate, so if rates fall after you buy, you reinvest those coupons for less and your actual return slips below the quoted yield. That is reinvestment risk. A zero has no coupons to reinvest, so the yield you buy at is exactly the yield you earn if you hold to maturity. You know today precisely how much you will have on the maturity date.</p>
+    <p>That makes zeros the natural tool whenever you need a known amount on a known date. A pension fund or an insurer that owes a fixed sum in, say, 2040 buys a zero maturing then for exactly that amount, which is the idea of matching assets to liabilities. Traders also use long-dated zeros as a clean play on interest rates, since with all the value sitting at the end they are the most price-sensitive bond for their maturity, rising the most when rates fall. The most common zeros you will actually meet are short-term government instruments sold at a discount with no coupon: in Mexico that is CETES, and US Treasury bills work the same way.</p>
+    <div class="tip"><span class="h">Watch the trade-offs</span>A zero pays no income along the way, its price swings the most if you have to sell early, and in many tax systems it generates taxable interest each year even though no cash arrives, which is why people often hold them in tax-sheltered accounts. How Mexico treats that is worth checking for your own situation.</div>
+  </section>
+
+  <!-- ============ PART 4 ============ -->
+  <section class="part" id="p4">
+    <div class="part-head"><span class="part-num">Part 4</span><h2>Valuation: projects and companies</h2></div>
+
+    <h3>The three families of valuation methods</h3>
+    <ul>
+      <li><span class="term">DCF (discounted cash flow):</span> forecast future cash flows and discount them to today. The most fundamental method, because it values the business from its own economics.</li>
+      <li><span class="term">Multiples (relative valuation):</span> value the company by comparison to similar companies, using ratios such as EV/EBITDA or P/E. Fast, market-based, but only as good as the comparables.</li>
+      <li><span class="term">DDM (dividend discount model) and Gordon growth:</span> value equity as the present value of expected dividends. The Gordon version assumes dividends grow at a constant rate g forever.</li>
+    </ul>
+    <div class="fx"><span class="lbl">Gordon growth (constant-growth) value</span>
+      Value = CF&#8321; / (r - g)   =   CF&#8320; &times; (1 + g) / (r - g)<br>
+      <span class="c" style="color:#7A8494">requires r &gt; g; works for dividends, FCFE, or FCFF</span>
+    </div>
+    <div class="eg"><span class="lbl">Example</span>Next year's dividend is 4, the cost of equity is 10%, and dividends grow at 3% forever. The share value is <code>4 / (0.10 - 0.03) = 57.1</code>.</div>
+
+    <h3>Which cash flows count: relevant, future, differential <span class="tag">ReFuDi</span></h3>
+    <p>For any decision, only three kinds of cash flow belong in the analysis.</p>
+    <ul>
+      <li><span class="term">Relevant:</span> only cash flows that the decision actually changes. Sunk costs, money already spent, are ignored.</li>
+      <li><span class="term">Future:</span> only forward-looking cash flows matter. The past is gone.</li>
+      <li><span class="term">Differential (incremental):</span> the difference between doing the project and not doing it. Include opportunity costs and knock-on effects such as lost sales on existing products, and exclude fixed overhead that does not change either way.</li>
+    </ul>
+    <div class="eg"><span class="lbl">Example</span>You already spent 5 last year on a market study. A new line needs 20 of equipment and will take 3 of sales from an existing product. Count the 20 and the 3 lost sales; ignore the 5, it is sunk.</div>
+
+    <h3>FCF to firm and FCF to equity</h3>
+    <p>These are the two parallel paths through a DCF. They differ in whose cash flow they measure and which rate discounts them.</p>
+    <table class="cmp">
+      <tr><th></th><th>FCF to firm (FCFF)</th><th>FCF to equity (FCFE)</th></tr>
+      <tr><td>Whose cash</td><td>All investors (debt + equity)</td><td>Shareholders only</td></tr>
+      <tr><td>Starts from</td><td>NOPAT = EBIT &times; (1 - tax)</td><td>Net income</td></tr>
+      <tr><td>Then</td><td>+ Dep &minus; Capex &minus; &Delta;NWC</td><td>+ Dep &minus; Capex &minus; &Delta;NWC + net new borrowing</td></tr>
+      <tr><td>Discount at</td><td>WACC</td><td>Cost of equity, Ke</td></tr>
+      <tr><td>Gives</td><td>Enterprise value, then subtract net debt for equity</td><td>Equity value directly</td></tr>
+    </table>
+    <p>Built out line by line, the two sit side by side like this. The columns share depreciation, capex, and the change in working capital, and differ only in where they start and in the financing items. A dash marks a line that does not belong to that column.</p>
+    <table class="cmp">
+      <tr><th>Build-up</th><th>FCFF</th><th>FCFE</th></tr>
+      <tr><td>Operating profit after tax (NOPAT)</td><td class="num">49.0</td><td class="na">&minus;</td></tr>
+      <tr><td>Net income</td><td class="na">&minus;</td><td class="num">42.0</td></tr>
+      <tr><td>Add depreciation</td><td class="num">+20.0</td><td class="num">+20.0</td></tr>
+      <tr><td>Subtract capex</td><td class="num">(25.0)</td><td class="num">(25.0)</td></tr>
+      <tr><td>Subtract change in NWC</td><td class="num">(5.0)</td><td class="num">(5.0)</td></tr>
+      <tr><td>Add net new borrowing</td><td class="na">&minus;</td><td class="num">+6.0</td></tr>
+      <tr class="tot"><td>Free cash flow</td><td class="num">39.0</td><td class="num">38.0</td></tr>
+    </table>
+    <div class="eg"><span class="lbl">Example inputs</span>EBIT 70, interest 10, tax 30%, depreciation 20, capex 25, change in NWC 5, net new borrowing 6. So NOPAT is <code>70 &times; 0.7 = 49</code> and net income is <code>(70 - 10) &times; 0.7 = 42</code>. FCFF leaves out interest and borrowing; FCFE starts from net income, which already has interest taken out, and adds the borrowing.</div>
+    <div class="fx"><span class="lbl">The reconciliation that ties the two paths</span>
+      FCFE = FCFF - after-tax interest + net new borrowing
+    </div>
+    <div class="eg"><span class="lbl">Example</span>From the table, FCFF is 39. Interest is 10 and tax is 30%, so after-tax interest is 7. With 6 of net new borrowing, <code>FCFE = 39 - 7 + 6 = 38</code>, which matches the FCFE column.</div>
+    <div class="tip"><span class="h">Why this matters</span>The two methods should give the same equity value. They only agree when the interest charged in the income statement and the debt subtracted in the bridge describe the same debt. If the interest line implies a large debt balance but the bridge subtracts only a small net debt, the equity path carries a heavier interest load and comes out lower. That mismatch is exactly the kind of inconsistency to flag in a model.</div>
+
+    <h3>Capital budgeting decision</h3>
+    <p>To decide on a project, build its differential free cash flow, discount it at the hurdle rate, and compute NPV. Accept any project with a positive NPV. When projects are mutually exclusive, choose the one with the highest NPV. The decision rests on incremental cash flow, never on accounting profit or allocated costs.</p>
+    <div class="eg"><span class="lbl">Example</span>Invest 30 for differential cash flow of 12 a year for 4 years at a 10% hurdle. PV of the inflows is <code>12 &times; 3.170 = 38.0</code>, so <code>NPV = -30 + 38.0 = +8.0</code>. Accept.</div>
+
+    <h3>Valuing a company: historical, relative, and terminal value</h3>
+    <ul>
+      <li><span class="term">Historical (book) approach:</span> value equity at book value, total assets minus total liabilities. It is a floor and a sanity check, not market value.</li>
+      <li><span class="term">Relative approach:</span> apply peer multiples. EV/EBITDA is the workhorse (the American Greetings method). Asset-efficiency ratios feed the forecast: fixed-asset turnover = sales / fixed assets, and net working capital turnover = sales / net working capital. These tell you how much investment in plant and in working capital a given level of sales requires, which drives capex and &Delta;NWC in the cash flow.</li>
+      <li><span class="term">Perpetuity (terminal value):</span> the value of all cash flows beyond the explicit forecast, usually a Gordon-growth perpetuity discounted back to today. It often makes up most of the total value, so the growth rate and the discount rate dominate the answer.</li>
+    </ul>
+    <div class="eg"><span class="lbl">Example</span>Relative check: a peer trades at 8x EBITDA and the company earns 25 of EBITDA, implying an enterprise value near <code>8 &times; 25 = 200</code>. Forecasting tie-in: if fixed-asset turnover is 2, then 100 of sales needs <code>100 / 2 = 50</code> of fixed assets, which sets the capex you must fund.</div>
+
+    <h3>Enterprise value versus equity value</h3>
+    <p>Enterprise value (EV) is the value of the whole operating business, independent of how it is financed. Equity value is the slice that belongs to shareholders. The bridge connects them:</p>
+    <div class="fx"><span class="lbl">The bridge</span>
+      EV = Equity value + Net debt<br>
+      Equity value = EV - Net debt<br>
+      <span class="c" style="color:#7A8494">Net debt = total debt - cash. Market cap = price &times; shares = the market's equity value.</span>
+    </div>
+    <div class="eg"><span class="lbl">Example</span>Enterprise value 500, net debt 120. Equity value is <code>500 - 120 = 380</code>. Across 40 million shares that is <code>380 / 40 = 9.5</code> per share.</div>
+  </section>
+
+  <!-- ============ PART 5 ============ -->
+  <section class="part" id="p5">
+    <div class="part-head"><span class="part-num">Part 5</span><h2>Applied cases</h2></div>
+
+    <h3>Harley Davidson: how growth and the hurdle rate move value</h3>
+    <p>A DCF, and especially its terminal value, is extremely sensitive to two inputs: the long-run growth rate g and the discount rate, the MARR or WACC. Both sit in the denominator (r &minus; g) of the perpetuity. A small rise in g or a small fall in the discount rate makes that denominator shrink and the value jump.</p>
+    <ul>
+      <li>If your assumptions produce a value <span class="term">above</span> the market price, the stock looks <span class="term">undervalued</span>. That is the optimistic, <span class="term">bullish</span> view.</li>
+      <li>If your value lands <span class="term">below</span> the price, the stock looks <span class="term">overvalued</span>. That is the cautious, <span class="term">bearish</span> view.</li>
+    </ul>
+    <div class="eg"><span class="lbl">Example</span>A share worth <code>4 / (0.10 - 0.03) = 57.1</code> at 3% growth jumps to <code>4 / (0.10 - 0.04) = 66.7</code> at 4% growth, a 17% rise from one point of g. If the market price is 60, the first view is bearish and the second is bullish.</div>
+    <div class="tip"><span class="h">The lesson</span>The same model can say "buy" or "sell" depending on small changes to g and r. So a valuation is only as honest as its assumptions. Always state them, and test how the answer moves when you flex them. The conclusion is a range, not a single number.</div>
+
+    <h3>Spotify: ways to raise equity capital</h3>
+    <p>The Spotify case contrasts how a company can go public and finance itself.</p>
+    <ul>
+      <li><span class="term">Traditional IPO:</span> the company issues new shares to the public through underwriters, who set the offer price and usually impose a lock-up period. It raises new cash but dilutes existing owners, the underwriting is expensive, and a large first-day price jump means the company sold too cheaply.</li>
+      <li><span class="term">Direct listing:</span> existing shares list directly on the exchange, with no underwriter setting a price and, in the classic form, no new shares issued. The market sets the price, existing holders can sell, fees are lower, and there is no dilution from new primary shares. The trade-off is that the company raises no new capital and gets no price support, so the opening can be volatile. This was Spotify's route.</li>
+      <li><span class="term">Convertible debt:</span> a bond that the holder can later convert into shares. The conversion option lets the issuer pay a lower interest rate than on straight debt, in exchange for potential future dilution if it converts. It is a flexible way to raise money around a listing.</li>
+      <li><span class="term">Dilution:</span> when new shares are issued, each existing share represents a smaller slice of ownership and earnings. Ownership percentage and earnings per share fall, unless the new capital is invested well enough to create value that offsets the larger share count.</li>
+    </ul>
+    <div class="eg"><span class="lbl">Example</span>A company with 100 shares issues 20 new ones in an IPO. Existing holders now own <code>100 / 120 = 83%</code> of the company, so they are diluted by about 17%. A pure direct listing issues no new shares, so there is no such dilution.</div>
+  </section>
+
+  <!-- ============ MCQ ============ -->
+  <section class="part" id="mcq">
+    <div class="part-head"><span class="part-num">Self-test</span><h2>Multiple choice questions</h2></div>
+    <p class="lead-in">Cover the answers, choose, then reveal. Each answer includes the reasoning, not just the letter.</p>
+    <div class="controls">
+      <button id="showAll" type="button">Reveal all answers</button>
+      <button id="hideAll" type="button">Hide all answers</button>
+    </div>
+
+    <!-- Q1 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q1</span>The present value of a fixed future cash flow falls when:</p>
+      <ol><li>the discount rate falls</li><li>the discount rate rises</li><li>the time to receipt shortens</li><li>the cash flow increases</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">PV = CF / (1 + r)^n. A higher r enlarges the denominator, so PV shrinks.</div></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q2</span>Over several periods at the same positive rate, compound interest produces:</p>
+      <ol><li>the same amount as simple interest</li><li>less than simple interest</li><li>more than simple interest</li><li>more only if the rate is below 10%</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: C.</span><div class="why">Compounding earns interest on previously earned interest, so it outruns simple interest over multiple periods.</div></div>
+    </div>
+
+    <!-- QCAP -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q3</span>Holding the nominal annual rate fixed, increasing the capitalization (compounding) frequency will:</p>
+      <ol><li>lower the future value</li><li>raise both the future value and the EAR</li><li>leave the future value unchanged</li><li>matter only for simple interest</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">More frequent capitalization means interest starts earning interest sooner, so FV rises and the effective annual rate climbs above the nominal rate. They coincide only with annual capitalization.</div></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q4</span>A loan quotes 12% APR compounded monthly. Its effective annual rate is:</p>
+      <ol><li>exactly 12%</li><li>less than 12%</li><li>greater than 12%</li><li>impossible to determine</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: C.</span><div class="why">EAR = (1 + 0.12/12)^12 &minus; 1 = 12.68%. Within-year compounding always pushes EAR above APR.</div></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q5</span>The APR (nominal rate) and the EAR (effective rate) are equal only when:</p>
+      <ol><li>the rate is below 5%</li><li>compounding is annual</li><li>the loan is short term</li><li>never</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">With m = 1, (1 + APR)^1 &minus; 1 = APR, so the two coincide.</div></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q6</span>Under the NPV rule, you accept a project when:</p>
+      <ol><li>NPV &gt; 0</li><li>NPV &lt; 0</li><li>NPV equals the initial investment</li><li>IRR equals zero</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: A.</span><div class="why">A positive NPV means the project adds value in today's money.</div></div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q7</span>A frequent mistake in building the NPV formula is:</p>
+      <ol><li>discounting the cash flows</li><li>forgetting to subtract the initial investment I&#8320;</li><li>using the hurdle rate as the discount rate</li><li>summing the cash flows</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">NPV is the discounted inflows net of the upfront outlay. Leave out &minus;I&#8320; and you overstate value by the full investment.</div></div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q8</span>The IRR is best defined as:</p>
+      <ol><li>the project's accounting return</li><li>the discount rate that makes NPV equal to zero</li><li>the payback period</li><li>the cost of equity</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">IRR is the rate at which the project breaks even in present-value terms.</div></div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q9</span>On the IRR rule, accept the project when:</p>
+      <ol><li>IRR is below the MARR</li><li>IRR equals zero</li><li>IRR exceeds the MARR (the hurdle)</li><li>IRR exceeds 100%</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: C.</span><div class="why">If the project's own return clears the hurdle, it is worth doing.</div></div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q10</span>The MARR is:</p>
+      <ol><li>the maximum return allowed</li><li>the minimum acceptable rate of return, the hurdle</li><li>the market average return</li><li>the risk-free rate only</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">It is the bar a project must clear, usually set at or above the cost of capital.</div></div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q11</span>The main weakness of the simple payback period is that it:</p>
+      <ol><li>is hard to compute</li><li>ignores the time value of money and cash flows after payback</li><li>always rejects good projects</li><li>requires the IRR first</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">It treats near and far cash flows as equal and stops counting at the cutoff.</div></div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q12</span>Discounted (adjusted) payback differs from simple payback because it:</p>
+      <ol><li>ignores cash flows entirely</li><li>uses discounted cash flows</li><li>adds the terminal value</li><li>uses book values</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">It discounts each cash flow before accumulating, so the payback comes out longer.</div></div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q13</span>When a bond's coupon rate is below its YTM, the bond trades at:</p>
+      <ol><li>par</li><li>a premium</li><li>a discount</li><li>face value</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: C.</span><div class="why">A coupon that lags the market yield is worth less, so the price falls below face value.</div></div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q14</span>Bond prices and market interest rates:</p>
+      <ol><li>move together</li><li>move inversely</li><li>are unrelated</li><li>move inversely only for zero-coupon bonds</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">When rates rise, the fixed coupons are discounted harder and the price drops.</div></div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q15</span>Yield to maturity is essentially the bond's:</p>
+      <ol><li>coupon rate</li><li>internal rate of return if held to maturity</li><li>face value</li><li>current yield</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">YTM is the single rate that equates the price to the present value of all the bond's cash flows.</div></div>
+    </div>
+
+    <div class="mcq">
+      <p class="q"><span class="qn">Q16</span>As a bond approaches maturity, any premium or discount in its price tends to:</p>
+      <ol><li>grow larger</li><li>shrink toward the face value</li><li>stay exactly the same</li><li>flip from premium to discount</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">At maturity the bond repays exactly its face value, so the price is pulled to par. This is the pull to par.</div></div>
+    </div>
+
+    <div class="mcq">
+      <p class="q"><span class="qn">Q17</span>A zero-coupon bond held to maturity has no reinvestment risk because:</p>
+      <ol><li>it pays a higher coupon than other bonds</li><li>it pays no coupons to reinvest, so the yield you buy at is the yield you earn</li><li>its price never changes before maturity</li><li>it is always issued by governments</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">A coupon bond's quoted yield assumes you reinvest the coupons at that same rate. With no coupons, a zero locks in its yield to maturity from the start.</div></div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q18</span>To value the whole firm and reach enterprise value, you discount FCFF at:</p>
+      <ol><li>the cost of equity</li><li>WACC</li><li>the risk-free rate</li><li>the coupon rate</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">FCFF belongs to all investors, so it is discounted at the blended cost of capital.</div></div>
+    </div>
+
+    <!-- Q16 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q19</span>To reach equity value directly, you discount FCFE at:</p>
+      <ol><li>WACC</li><li>the cost of equity (Ke)</li><li>the pre-tax cost of debt</li><li>the project hurdle rate</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">FCFE is the shareholders' cash flow, so the cost of equity is the right rate.</div></div>
+    </div>
+
+    <div class="mcq">
+      <p class="q"><span class="qn">Q20</span>Starting from FCFF, you arrive at FCFE by:</p>
+      <ol><li>adding after-tax interest and subtracting net borrowing</li><li>subtracting after-tax interest and adding net new borrowing</li><li>discounting at WACC</li><li>subtracting net debt</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">FCFE = FCFF &minus; after-tax interest + net new borrowing. FCFF is pre-financing, so you strip out the after-tax interest and add back the new borrowing to land on the shareholders' cash flow.</div></div>
+    </div>
+
+    <!-- Q17 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q21</span>The bridge from enterprise value to equity value is:</p>
+      <ol><li>Equity = EV + net debt</li><li>Equity = EV &minus; net debt</li><li>EV = Equity &minus; cash</li><li>Equity = EV &times; (1 &minus; tax)</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">Subtract net debt (debt minus cash) from enterprise value to get what is left for shareholders.</div></div>
+    </div>
+
+    <!-- Q18 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q22</span>"Differential" cash flow in a project analysis means:</p>
+      <ol><li>all company cash flows</li><li>only past cash flows</li><li>the incremental change caused by the decision</li><li>accounting profit</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: C.</span><div class="why">Only the cash flows that differ between doing and not doing the project belong in the analysis.</div></div>
+    </div>
+
+    <!-- Q19 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q23</span>A sunk cost in capital budgeting should be:</p>
+      <ol><li>included as a cost</li><li>excluded, because it is neither future nor differential</li><li>added to the terminal value</li><li>discounted at WACC</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">It is already spent and does not change with the decision, so it fails the relevant, future, differential test.</div></div>
+    </div>
+
+    <!-- Q20 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q24</span>In a Gordon-growth terminal value, the value rises most when:</p>
+      <ol><li>the growth rate g falls</li><li>the discount rate r rises</li><li>the gap (r &minus; g) narrows</li><li>the cash flow falls</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: C.</span><div class="why">Value = CF&#8321; / (r &minus; g). A smaller denominator produces a larger value, which is why g and r dominate.</div></div>
+    </div>
+
+    <!-- Q21 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q25</span>If your DCF value per share sits above the market price, the stock looks:</p>
+      <ol><li>overvalued, a bearish signal</li><li>undervalued, a bullish signal</li><li>fairly valued</li><li>illiquid</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">Value above price means the market is paying less than the business is worth on your assumptions.</div></div>
+    </div>
+
+    <!-- Q22 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q26</span>Compared with a traditional IPO, a direct listing (Spotify) typically:</p>
+      <ol><li>raises more new capital</li><li>issues no new primary shares and uses no underwriter to set the price</li><li>guarantees a higher price</li><li>prevents existing holders from selling</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">In its classic form the existing shares simply list, the market sets the price, and there is no new-share dilution and no capital raised.</div></div>
+    </div>
+
+    <!-- Q23 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q27</span>Convertible debt is attractive to an issuer because it:</p>
+      <ol><li>never affects the share count</li><li>carries a lower interest rate thanks to the conversion option, with possible future dilution</li><li>must be repaid only in cash</li><li>raises the cost of debt</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">The embedded option to convert lets the issuer pay a lower coupon, at the cost of dilution if conversion happens.</div></div>
+    </div>
+
+    <!-- Q24 -->
+    <div class="mcq">
+      <p class="q"><span class="qn">Q28</span>Dilution refers to:</p>
+      <ol><li>lowering the share price through a stock split</li><li>each existing share owning a smaller slice after new shares are issued</li><li>buying back shares</li><li>paying a dividend</li></ol>
+      <div class="reveal"><button type="button">Show answer</button></div>
+      <div class="ans"><span class="key">Answer: B.</span><div class="why">More shares outstanding spreads ownership and earnings across a larger base.</div></div>
+    </div>
+  </section>
+
+  <!-- ============ WORKED ============ -->
+  <section class="part" id="worked">
+    <div class="part-head"><span class="part-num">Practice</span><h2>Worked examples</h2></div>
+    <p class="lead-in">Each one is solved step by step. Try it with the answer covered first, then check both the number and the method.</p>
+
+    <div class="we">
+      <h4>1. Present and future value, with compounding</h4>
+      <p class="setup">Invest 10,000 at 8% per year for 5 years. Find the future value, then confirm the present value works back.</p>
+      <div class="step">
+FV = 10,000 &times; (1.08)^5<br>
+   = 10,000 &times; 1.46933<br>
+   = <span class="result">14,693.3</span><br><br>
+Check:  PV = 14,693.3 / (1.08)^5 = 10,000  <span class="c">(back to the start)</span>
+      </div>
+    </div>
+
+    <div class="we">
+      <h4>2. Simple versus compound interest</h4>
+      <p class="setup">Same 10,000 at 8% for 5 years. Compare the two methods.</p>
+      <div class="step">
+Simple:   10,000 + (10,000 &times; 0.08 &times; 5) = <span class="result">14,000.0</span><br>
+Compound: 10,000 &times; (1.08)^5            = <span class="result">14,693.3</span><br><br>
+Difference = 693.3  <span class="c">this is the interest earned on interest</span>
+      </div>
+    </div>
+
+    <div class="we">
+      <h4>3. APR to EAR</h4>
+      <p class="setup">A card charges 18% APR, compounded monthly. What is the true annual rate?</p>
+      <div class="step">
+EAR = (1 + 0.18 / 12)^12 - 1<br>
+    = (1.015)^12 - 1<br>
+    = 1.1956 - 1<br>
+    = <span class="result">19.56%</span>
+      </div>
+      <p>The effective cost is almost 1.6 points above the quoted 18%, entirely from monthly compounding.</p>
+    </div>
+
+    <div class="we">
+      <h4>4. NPV of a project</h4>
+      <p class="setup">Invest 100 today. Receive 40, 50, 60 at the end of years 1 to 3. Hurdle rate 10%.</p>
+      <div class="step">
+PV year 1 = 40 / 1.10   = 36.36<br>
+PV year 2 = 50 / 1.21   = 41.32<br>
+PV year 3 = 60 / 1.331  = 45.08<br>
+Sum of discounted inflows = 122.76<br><br>
+NPV = -100 + 122.76 = <span class="result">+22.76</span>   <span class="c">positive, so accept</span>
+      </div>
+      <p>Note the &minus;100 at the front. Without it you would report 122.76 and wrongly conclude the project is far better than it is.</p>
+    </div>
+
+    <div class="we">
+      <h4>5. IRR by interpolation</h4>
+      <p class="setup">Same project. Find the rate that drives NPV to zero.</p>
+      <div class="step">
+At 10%:  NPV = +22.76<br>
+At 25%:  40/1.25 + 50/1.5625 + 60/1.9531 - 100<br>
+         = 32.00 + 32.00 + 30.72 - 100 = -5.28<br><br>
+The root sits between 10% and 25%. Interpolate:<br>
+IRR &asymp; 10% + 22.76 / (22.76 + 5.28) &times; (25% - 10%)<br>
+    &asymp; 10% + 0.812 &times; 15% = <span class="result">about 22.2%</span>
+      </div>
+      <p>Interpolation over a wide bracket only approximates, and it overstates here because the NPV curve bends. The exact IRR, the figure Excel's IRR function returns, is about 21.6%. Either way it clears the 10% hurdle comfortably, so accept. NPV and IRR agree.</p>
+    </div>
+
+    <div class="we">
+      <h4>6. Payback and discounted payback</h4>
+      <p class="setup">Same project: invest 100, inflows 40, 50, 60. Discount at 10%.</p>
+      <div class="step">
+Simple payback<br>
+  After yr 1: recovered 40  (need 60 more)<br>
+  After yr 2: recovered 90  (need 10 more)<br>
+  In yr 3: 10 of 60 -&gt; 0.17 of the year<br>
+  Payback = <span class="result">2.17 years</span><br><br>
+Discounted payback (using 36.36, 41.32, 45.08)<br>
+  After yr 1: 36.36  (need 63.64 more)<br>
+  After yr 2: 77.68  (need 22.32 more)<br>
+  In yr 3: 22.32 of 45.08 -&gt; 0.50 of the year<br>
+  Discounted payback = <span class="result">2.50 years</span>
+      </div>
+      <p>The discounted version is longer, because discounting shrinks the early inflows. That is the more conservative, time-value-respecting measure.</p>
+    </div>
+
+    <div class="we">
+      <h4>7. Bond price and the par relationship</h4>
+      <p class="setup">A 5-year bond, face value 1,000, annual coupon 6% (so 60 a year), market YTM 8%.</p>
+      <div class="step">
+Annuity factor = [1 - (1.08)^-5] / 0.08 = 3.9927<br>
+PV of coupons  = 60 &times; 3.9927        = 239.56<br>
+PV of face     = 1,000 / (1.08)^5      = 680.58<br><br>
+Price = <span class="result">920.15</span>
+      </div>
+      <p>The price is below face value because the 6% coupon is lower than the 8% yield. Coupon under yield means the bond trades at a discount, as expected.</p>
+    </div>
+
+    <div class="we">
+      <h4>8. FCFF valuation and the enterprise-to-equity bridge</h4>
+      <p class="setup">Firm cash flow: NOPAT 50, plus depreciation 20, minus capex 25, minus change in NWC 5. Grows at g = 2%, WACC = 10%, net debt = 120.</p>
+      <div class="step">
+FCFF = 50 + 20 - 25 - 5 = 40<br><br>
+Enterprise value (Gordon)<br>
+  EV = FCFF &times; (1 + g) / (WACC - g)<br>
+     = 40 &times; 1.02 / (0.10 - 0.02)<br>
+     = 40.8 / 0.08 = <span class="result">510</span><br><br>
+Equity value = EV - net debt = 510 - 120 = <span class="result">390</span>
+      </div>
+    </div>
+
+    <div class="we">
+      <h4>9. FCFE and the reconciliation to FCFF</h4>
+      <p class="setup">Same firm. Interest expense 16, tax rate 30%, net new borrowing 6. Confirm the two cash-flow paths tie out.</p>
+      <div class="step">
+From the firm side:<br>
+  After-tax interest = 16 &times; (1 - 0.30) = 11.2<br>
+  FCFE = FCFF - after-tax interest + net borrowing<br>
+       = 40 - 11.2 + 6 = <span class="result">34.8</span><br><br>
+From the equity side (bottom up):<br>
+  Net income = NOPAT - after-tax interest = 50 - 11.2 = 38.8<br>
+  FCFE = 38.8 + 20 - 25 - 5 + 6 = <span class="result">34.8</span>
+      </div>
+      <p>The two routes agree because the interest and the borrowing are consistent. When a model's interest line implies a different debt level than the bridge subtracts, the equity values diverge. That is the inconsistency to hunt for.</p>
+    </div>
+
+    <div class="we">
+      <h4>10. Relative valuation with EV/EBITDA</h4>
+      <p class="setup">Company EBITDA 80. Peer multiple EV/EBITDA = 7x. Net debt 120, shares 40.</p>
+      <div class="step">
+Enterprise value = 7 &times; 80 = 560<br>
+Equity value     = 560 - 120 = 440<br>
+Value per share  = 440 / 40  = <span class="result">11.0</span>
+      </div>
+      <p>If the stock trades at 9, the multiple approach says it is undervalued, a bullish read. Always sanity-check the multiple against the DCF, since they should land in a similar range.</p>
+    </div>
+
+    <div class="we">
+      <h4>11. Sensitivity: the Harley Davidson lesson</h4>
+      <p class="setup">Take the FCFF = 40 firm from example 8 and flex one assumption at a time.</p>
+      <div class="step">
+Base   WACC 10%, g 2%:  EV = 40 &times; 1.02 / 0.08 = 510<br>
+g up to 3% (WACC 10%):  EV = 40 &times; 1.03 / 0.07 = 588.6   <span class="c">(+15%)</span><br>
+WACC down to 9% (g 2%): EV = 40 &times; 1.02 / 0.07 = 582.9   <span class="c">(+14%)</span>
+      </div>
+      <p>A single point of growth or a single point off the discount rate swings value by roughly 15%, because both inputs hit the (r &minus; g) denominator. This is why the same model reads bullish or bearish depending on small assumption changes, and why you quote a range and name the assumption that moves it most.</p>
+    </div>
+  </section>
+
+  <footer>
+    Corporate finance theory review. Concepts, self-test questions, and worked examples for exam preparation. Cover the answers, work the examples by hand, and pay attention to the assumptions behind every valuation.
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    // per-question reveal
+    document.querySelectorAll('.mcq .reveal button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var ans = btn.parentElement.nextElementSibling;
+        var open = ans.classList.toggle('show');
+        btn.textContent = open ? 'Hide answer' : 'Show answer';
+      });
+    });
+    // reveal all / hide all
+    function setAll(open){
+      document.querySelectorAll('.mcq').forEach(function(card){
+        var ans = card.querySelector('.ans');
+        var btn = card.querySelector('.reveal button');
+        if(open){ ans.classList.add('show'); btn.textContent='Hide answer'; }
+        else { ans.classList.remove('show'); btn.textContent='Show answer'; }
+      });
+    }
+    var sa=document.getElementById('showAll'), ha=document.getElementById('hideAll');
+    if(sa) sa.addEventListener('click', function(){ setAll(true); });
+    if(ha) ha.addEventListener('click', function(){ setAll(false); });
+  })();
+</script>
+</body>
+</html>
