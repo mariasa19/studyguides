@@ -138,6 +138,16 @@
   table.cmp tr.tot td{font-weight:700; background:var(--green-tint)}
   table.cmp tr.tot td.num{color:var(--green)}
 
+  /* case study cards */
+  .case{background:var(--card); border:1px solid var(--rule); border-radius:12px; margin:20px 0; overflow:hidden}
+  .case-head{background:var(--blue-deep); color:#fff; padding:13px 20px}
+  .case-head .nm{font-family:var(--serif); font-size:18px; font-weight:600; display:block}
+  .case-head .tl{font-size:12.5px; color:#C7D5EA}
+  .case-body{padding:14px 20px 18px}
+  .case-body h4{font-family:var(--serif); font-size:15.5px; margin:15px 0 4px; color:var(--blue-deep)}
+  .case-body h4:first-child{margin-top:2px}
+  .case-body p{margin:7px 0}
+
   footer{border-top:1px solid var(--rule); margin-top:60px; padding:28px 0 60px; color:var(--muted); font-size:13.5px}
 
   @media (max-width:640px){
@@ -160,6 +170,7 @@
       <a href="#p5">Cases</a>
       <a href="#mcq">Questions</a>
       <a href="#worked">Worked examples</a>
+      <a href="#cases-worked">Case studies</a>
     </nav>
   </div>
 </header>
@@ -882,6 +893,210 @@ g up to 3% (WACC 10%):  EV = 40 &times; 1.03 / 0.07 = 588.6   <span class="c">(+
 WACC down to 9% (g 2%): EV = 40 &times; 1.02 / 0.07 = 582.9   <span class="c">(+14%)</span>
       </div>
       <p>A single point of growth or a single point off the discount rate swings value by roughly 15%, because both inputs hit the (r &minus; g) denominator. This is why the same model reads bullish or bearish depending on small assumption changes, and why you quote a range and name the assumption that moves it most.</p>
+    </div>
+  </section>
+
+  <!-- ============ CASE STUDIES ============ -->
+  <section class="part" id="cases-worked">
+    <div class="part-head"><span class="part-num">Cases</span><h2>Worked case studies</h2></div>
+    <p class="lead-in">Cases worked through with the numbers, grouped by how the course used them: as final exams, as projects, and as theory illustrations from the board. The exam cases below use the figures from the professor's own worked files. The project and board cases use representative numbers chosen to show the method, so map those to the real data when you revise.</p>
+
+    <h3>Used as final exams</h3>
+    <p>These three lean on capital budgeting: build the incremental cash flows, discount them at the hurdle, and decide on the NPV. The numbers come from the professor's worked Excels.</p>
+
+    <div class="case">
+      <div class="case-head"><span class="nm">New Heritage Doll Company</span><span class="tl">Capital budgeting, choosing between two projects</span></div>
+      <div class="case-body">
+        <h4>The question</h4>
+        <p>A doll maker can fund only one of two expansion projects, the Match My Doll Clothing Line expansion (MMDC) and Design Your Own Doll (DYOD). Build each project's free cash flow to the firm, add a terminal value, discount at the hurdle, and pick the one that creates more value.</p>
+        <h4>The method</h4>
+        <div class="step">
+FCF to firm = NOPAT + Depreciation - Change in NWC - Capex<br>
+Terminal value (2020) = FCF&#8322;&#8320;&#8322;&#8320; &times; (1 + g) / (DR - g)<br>
+<span class="c">tax 40%, g = 3.0%, discount rate DR = 8.4%</span>
+        </div>
+        <h4>Working it out</h4>
+        <table class="cmp">
+          <tr><th>Project</th><th>Outlay at 2010</th><th>Terminal value</th><th>NPV @ 8.4%</th><th>IRR</th></tr>
+          <tr><td>Match My Doll (MMDC)</td><td class="num">(3,020)</td><td class="num">16,401</td><td class="num">7,207</td><td class="num">24.1%</td></tr>
+          <tr><td>Design Your Own (DYOD)</td><td class="num">(5,331)</td><td class="num">27,595</td><td class="num">9,450</td><td class="num">19.8%</td></tr>
+        </table>
+        <p style="font-size:13.5px;color:var(--muted)">Figures in thousands, from the professor's model. MMDC is his completed solve; DYOD is finished here with the same method, since his file left it at the projection stage.</p>
+        <h4>The read</h4>
+        <p>DYOD has the higher NPV, 9,450 against 7,207, so on pure value creation it wins. But it needs far more upfront, 5,331 against 3,020, earns a lower IRR, 19.8% against 24.1%, and is the newer, less proven concept. So NPV points to DYOD while IRR, capital efficiency, and risk point to MMDC. That tension, NPV versus IRR for competing projects under capital rationing, is the heart of the case. Most of each value sits in the terminal value, so g and the discount rate dominate the answer.</p>
+        <div class="tip"><span class="h">Concept link</span>Capital budgeting, FCF to firm, NPV versus IRR for mutually exclusive projects, terminal value, and capital rationing.</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="nm">Stryker Corporation</span><span class="tl">Capital budgeting, in-source versus buy</span></div>
+      <div class="case-body">
+        <h4>The question</h4>
+        <p>Should Stryker stop buying printed circuit boards from contract manufacturers and make them in-house? Build the incremental cash flows of in-sourcing: the purchases you avoid against the cost of making them yourself, plus the upfront facility, its depreciation tax shield, and the change in working capital.</p>
+        <h4>Working it out, from the case exhibits</h4>
+        <table class="cmp">
+          <tr><th>Year</th><th>Avoided purchases</th><th>In-house cost</th><th>Operating difference</th></tr>
+          <tr><td>2004</td><td class="num">0.00</td><td class="num">1.71</td><td class="num">(1.71)</td></tr>
+          <tr><td>2005</td><td class="num">6.44</td><td class="num">7.85</td><td class="num">(1.41)</td></tr>
+          <tr><td>2006</td><td class="num">11.77</td><td class="num">9.55</td><td class="num">2.22</td></tr>
+          <tr><td>2007</td><td class="num">14.36</td><td class="num">10.50</td><td class="num">3.86</td></tr>
+          <tr><td>2008</td><td class="num">16.52</td><td class="num">11.71</td><td class="num">4.81</td></tr>
+          <tr><td>2009</td><td class="num">20.15</td><td class="num">13.65</td><td class="num">6.50</td></tr>
+        </table>
+        <p style="font-size:13.5px;color:var(--muted)">Figures in US$ millions, from Exhibit 2 of the case.</p>
+        <h4>The read</h4>
+        <p>Only incremental cash flows count, the relevant, future, differential test. In-sourcing costs more in the first two years while the facility ramps, then saves steadily as volumes grow. To finish the NPV, add the upfront facility investment and its depreciation tax shield, the change in accounts payable from Exhibit 3, taxes, and discount at the chosen rate. Exhibit 4 lays out the rate options, Treasuries from 1.18% to 4.52% and corporate yields of 5.22% (Aaa) and 6.38% (Baa); picking the discount rate is itself part of the case.</p>
+        <div class="tip"><span class="h">To complete</span>This card uses the real exhibit figures. Send the professor's solved Stryker file and I will slot in the upfront investment and the final NPV.</div>
+        <div class="tip"><span class="h">Concept link</span>Differential (incremental) cash flows, the relevant-future-differential test, the depreciation tax shield, and the discount-rate choice.</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="nm">Navios Mercantes do Brasil</span><span class="tl">A replacement decision: retrofit the old ship or buy a new one</span></div>
+      <div class="case-body">
+        <h4>The question</h4>
+        <p>A Brazilian shipper must meet new emissions rules. It can keep its ship, the Constituicao, and install scrubbers, or replace it with a new LNG-powered ship, the Cynthia. The revenue is the same either way, so the two are compared as cost streams: discount each at the hurdle and choose the lower-cost present value.</p>
+        <h4>After-tax salvage in the replacement option</h4>
+        <div class="step">
+Selling the old ship and scrubber at a loss creates a tax shield:<br>
+  Old ship:     MV 10.1, BV 16.0 -> loss 5.9 -> shield 2.07 -> after-tax 12.17<br>
+  Old scrubber: MV 3.0,  BV 6.4  -> loss 3.4 -> shield 1.19 -> after-tax 4.19<br>
+  Cynthia outlay at t0 = -23.0 (ship) - 6.3 (inventory) + 12.17 + 4.19 = <span class="result">-12.9</span>
+        </div>
+        <h4>Comparing the two</h4>
+        <table class="cmp">
+          <tr><th>Alternative</th><th>Outlay at t0</th><th>OPEX per year</th><th>NPV of costs @ 10%</th></tr>
+          <tr><td>Keep ship, install scrubbers</td><td class="num">(4.1)</td><td class="num">9.5</td><td class="num">(27.7)</td></tr>
+          <tr><td>Replace with Cynthia (LNG)</td><td class="num">(12.9)</td><td class="num">7.0</td><td class="num">(28.5)</td></tr>
+        </table>
+        <p style="font-size:13.5px;color:var(--muted)">Figures in millions, from the professor's model. Tax 35%, MARR 10%, seven-year horizon.</p>
+        <h4>The read</h4>
+        <p>The LNG ship runs cheaper, OPEX of 7 against 9.5, but it carries a much larger net investment, a mid-life motor overhaul, and salvage at the end. Once everything is discounted at 10%, retrofitting costs 27.7 against 28.5 for the new ship, so keeping the Constituicao and installing the scrubbers is cheaper, by about 0.8. Choose the retrofit.</p>
+        <div class="tip"><span class="h">Concept link</span>Replacement decisions, incremental cash flows, depreciation tax shields, after-tax salvage (tax on the gain or loss), comparing mutually exclusive options on NPV, and the MARR.</div>
+      </div>
+    </div>
+
+    <h3>Used for projects</h3>
+    <p>These are company valuations rather than single projects. Motocicletas and American Greetings use the professor's worked figures; Tottenham is the model we built together.</p>
+
+    <div class="case">
+      <div class="case-head"><span class="nm">Motocicletas del Norte</span><span class="tl">Valuing a company and pricing a partner's stake</span></div>
+      <div class="case-body">
+        <h4>The question</h4>
+        <p>A motorcycle dealer in Torreon plans to open a Monterrey branch with a new partner, Joaquin, who would take a 33.33% stake. Value the combined business to see what the equity, and Joaquin's share, is really worth.</p>
+        <h4>Working it out</h4>
+        <div class="step">
+Project the combined operation, then build FCF to equity and discount at Ke = 11%.<br><br>
+FCFE (000 MXN):  2006  471.6   2007  690.9   2008  951.4   2009 1,197.1   2010 1,312.4<br>
+Equity value = NPV @ 11% = <span class="result">3,248.7</span><br>
+Joaquin's 33.33% share = <span class="result">1,082.9</span>
+        </div>
+        <table class="cmp">
+          <tr><th>Measure of equity</th><th>Value (000 MXN)</th></tr>
+          <tr><td>Book equity, combined business</td><td class="num">2,446</td></tr>
+          <tr><td>DCF equity (FCFE @ 11%)</td><td class="num">3,249</td></tr>
+        </table>
+        <h4>The read</h4>
+        <p>The DCF equity value of 3,249 sits well above the book equity of 2,446, so the Monterrey expansion creates value. Joaquin puts in about 815 of book capital for a third of a business worth roughly 3,249 on a cash-flow basis, so his stake, near 1,083, is worth more than he contributes. Book understates the value; the DCF is what should price the deal. This is the historical versus market-value distinction made concrete.</p>
+        <div class="tip"><span class="h">Concept link</span>Valuing a company, FCF to equity discounted at the cost of equity, book versus market value, and the working-capital and fixed-asset drivers behind the forecast.</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="nm">Tottenham Hotspur</span><span class="tl">FCFF, FCFE, and a reconciliation that does not tie</span></div>
+      <div class="case-body">
+        <h4>The question</h4>
+        <p>Value the football club two ways, the firm path and the equity path, and reconcile them against the market. When they do not line up, find out why.</p>
+        <h4>Working it out</h4>
+        <div class="step">
+FCFF DCF:  enterprise value &asymp; 135,  less net debt 16.8  ->  equity &asymp; <span class="result">118</span><br>
+FCFE DCF (at Ke):                                          equity &asymp; <span class="result">85</span><br>
+Market capitalization:                                                <span class="result">128</span>
+        </div>
+        <h4>The read</h4>
+        <p>The three do not agree, and the reason is a consistency gap. The interest charged in the income statement implies gross debt of roughly 40 rising toward 110, but the bridge subtracts only 16.8 of net debt. So the equity path pays interest on a much larger balance every year while the firm path nets out only a small debt, which is exactly why the FCFE value comes in low. The two paths reconcile only once the interest line and the debt figure describe the same debt.</p>
+        <div class="tip"><span class="h">Concept link</span>The FCFF to FCFE reconciliation, the EV to equity bridge, and the consistency check between the interest line and the debt assumed.</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="nm">American Greetings</span><span class="tl">A bullish/bearish DCF and a buyback decision</span></div>
+      <div class="case-body">
+        <h4>The question</h4>
+        <p>The board is weighing a share buyback. Is the stock cheap? Value the equity with a DCF under a bullish and a bearish scenario, then compare the per-share value to where the shares trade.</p>
+        <h4>The method</h4>
+        <div class="step">
+Revenue grown by scenario; EBIT = revenue &times; operating margin; NOPAT = EBIT &times; (1 - 39%)<br>
+The forecast is sized by fixed-asset turnover (1.95) and NWC turnover<br>
+FCFF = NOPAT + change in NWC - net capex<br>
+Terminal value at DR = 9.1%; Enterprise value - debt (234.6) = equity; / 38.32 shares
+        </div>
+        <h4>Working it out</h4>
+        <table class="cmp">
+          <tr><th>Scenario</th><th>Terminal growth</th><th>Enterprise value</th><th>Equity value</th><th>Per share</th></tr>
+          <tr><td>Bearish (margins fall to 5%, flat sales)</td><td class="num">0%</td><td class="num">836.7</td><td class="num">602.1</td><td class="num">15.71</td></tr>
+          <tr><td>Bullish (margins ~9%, growth to 2.5%)</td><td class="num">3%</td><td class="num">1,389.2</td><td class="num">1,154.5</td><td class="num">30.13</td></tr>
+        </table>
+        <h4>The read</h4>
+        <p>The DCF puts the share between about 15.7 and 30.1, depending on whether margins hold and the top line grows. As long as the shares trade below this range, a buyback creates value, since the company retires claims for less than they are worth. The spread, more than double from bearish to bullish, is the lesson itself: the value hinges on the margin and growth assumptions, so you present a range, not a single number, and you state what moves it.</p>
+        <div class="tip"><span class="h">Concept link</span>DCF on FCFF, fixed-asset and NWC turnover driving the forecast, terminal value, the EV to equity bridge and per-share value, and the bullish versus bearish framing.</div>
+      </div>
+    </div>
+
+    <h3>On the theory board</h3>
+    <p>These two illustrate the concepts directly, the way they appeared in the class index.</p>
+
+    <div class="case">
+      <div class="case-head"><span class="nm">Harley Davidson</span><span class="tl">DCF, and how growth and the hurdle rate move value</span></div>
+      <div class="case-body">
+        <h4>The question</h4>
+        <p>Value the business with a discounted cash flow, then test how the answer moves under bullish and bearish assumptions. Is the stock under or overvalued? The lesson is sensitivity: the terminal value runs through the (r &minus; g) denominator, so small changes swing the result.</p>
+        <h4>Working it out</h4>
+        <p>Start from a next-year firm cash flow of 600, net debt of 1,000, and 250 shares. Value the firm with the Gordon perpetuity, bridge to equity, divide by shares, then flex g and the WACC.</p>
+        <div class="step">
+Base   WACC 9.0%, g 3.0%:  EV = 600 / (0.090 - 0.030) = 10,000<br>
+       Equity = 10,000 - 1,000 = 9,000   ->  per share 36.0<br>
+Bear   WACC 10.0%, g 2.0%: EV = 600 / 0.080 =  7,500<br>
+       Equity =  6,500                   ->  per share 26.0<br>
+Bull   WACC 8.5%, g 4.0%:  EV = 600 / 0.045 = 13,333<br>
+       Equity = 12,333                   ->  per share 49.3
+        </div>
+        <table class="cmp">
+          <tr><th>Scenario</th><th>Value per share</th><th>Versus a 35 price</th></tr>
+          <tr><td>Bearish</td><td class="num">26.0</td><td>Overvalued, a sell view</td></tr>
+          <tr><td>Base</td><td class="num">36.0</td><td>About fair</td></tr>
+          <tr><td>Bullish</td><td class="num">49.3</td><td>Undervalued, a buy view</td></tr>
+        </table>
+        <h4>The read</h4>
+        <p>The same model says sell, hold, or buy depending on one point of growth and half a point of discount rate. That is the whole point of the case: a valuation is a range, not a single number, so you state your assumptions and show the sensitivity rather than defend one figure.</p>
+        <div class="tip"><span class="h">Concept link</span>This is the Gordon terminal value and the bullish versus bearish, under versus overvalued idea from Part 5, made concrete.</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="nm">Spotify</span><span class="tl">Direct listing versus a traditional IPO</span></div>
+      <div class="case-body">
+        <h4>The question</h4>
+        <p>How should the company go public? Compare a traditional IPO, which issues new shares through underwriters, against a direct listing, which lists existing shares with no new issuance and lets the market set the price.</p>
+        <h4>Working it out</h4>
+        <p>Take a company with 180 existing shares. The traditional IPO raises cash by issuing 20 new shares; the direct listing issues none.</p>
+        <div class="step">
+Traditional IPO<br>
+  New shares issued            = 20<br>
+  Total shares after           = 180 + 20 = 200<br>
+  Existing holders now own     = 180 / 200 = <span class="result">90%</span><br>
+  Dilution                     = 20 / 200 = 10%<br>
+  Plus underwriting fee on proceeds and any first-day price pop<br><br>
+Direct listing<br>
+  New shares issued            = 0<br>
+  Total shares after           = 180<br>
+  Existing holders now own     = <span class="result">100%</span><br>
+  Dilution                     = none; no capital raised; market sets the price
+        </div>
+        <h4>The read</h4>
+        <p>Spotify chose the direct listing. It did not need new cash, so it avoided the 10% dilution and the underwriting fee, and it let the market set the price instead of an underwriter. The trade-off is that it raised no new capital and got no price support, so the opening can be more volatile.</p>
+        <div class="tip"><span class="h">Concept link</span>This is the equity financing material from Part 5: traditional IPO, direct listing, and dilution, with the ownership math worked out.</div>
+      </div>
     </div>
   </section>
 
