@@ -418,6 +418,16 @@
     <div class="eg"><span class="lbl">Example</span>From the table, FCFF is 39. Interest is 10 and tax is 30%, so after-tax interest is 7. With 6 of net new borrowing, <code>FCFE = 39 - 7 + 6 = 38</code>, which matches the FCFE column.</div>
     <div class="tip"><span class="h">Why this matters</span>The two methods should give the same equity value. They only agree when the interest charged in the income statement and the debt subtracted in the bridge describe the same debt. If the interest line implies a large debt balance but the bridge subtracts only a small net debt, the equity path carries a heavier interest load and comes out lower. That mismatch is exactly the kind of inconsistency to flag in a model.</div>
 
+    <p>So when do you use each one? They give the same answer in theory, but one is usually easier and cleaner for a given situation.</p>
+    <table class="cmp">
+      <tr><th>Use FCFF (discount at WACC)</th><th>Use FCFE (discount at Ke)</th></tr>
+      <tr><td>Most company valuations, the default choice</td><td>Banks and insurers, where debt is part of operations rather than a financing choice</td></tr>
+      <tr><td>The capital structure is changing, such as an LBO paying debt down or a firm moving to a target debt ratio</td><td>Leverage is stable and predictable, so the borrowing line is easy to forecast</td></tr>
+      <tr><td>Comparing companies that are financed differently, since you value the operations not the mix</td><td>You want the equity value in one step, without the net-debt bridge</td></tr>
+      <tr><td>FCFE is negative or erratic because of heavy borrowing in some years</td><td>You only want the cash that actually reaches shareholders, the dividend discount model</td></tr>
+    </table>
+    <div class="tip"><span class="h">Rules of thumb</span>Match the cash flow to the rate: FCFF goes with WACC and gives enterprise value, FCFE goes with Ke and gives equity value directly. Discounting FCFE at WACC is a classic error. Changing or uncertain leverage points to FCFF; stable, known leverage makes FCFE quicker.</div>
+
     <h3>Capital budgeting decision</h3>
     <p>To decide on a project, build its differential free cash flow, discount it at the hurdle rate, and compute NPV. Accept any project with a positive NPV. When projects are mutually exclusive, choose the one with the highest NPV. The decision rests on incremental cash flow, never on accounting profit or allocated costs.</p>
     <div class="eg"><span class="lbl">Example</span>Invest 30 for differential cash flow of 12 a year for 4 years at a 10% hurdle. PV of the inflows is <code>12 &times; 3.170 = 38.0</code>, so <code>NPV = -30 + 38.0 = +8.0</code>. Accept.</div>
@@ -430,14 +440,45 @@
     </ul>
     <div class="eg"><span class="lbl">Example</span>Relative check: a peer trades at 8x EBITDA and the company earns 25 of EBITDA, implying an enterprise value near <code>8 &times; 25 = 200</code>. Forecasting tie-in: if fixed-asset turnover is 2, then 100 of sales needs <code>100 / 2 = 50</code> of fixed assets, which sets the capex you must fund.</div>
 
-    <h3>Enterprise value versus equity value</h3>
-    <p>Enterprise value (EV) is the value of the whole operating business, independent of how it is financed. Equity value is the slice that belongs to shareholders. The bridge connects them:</p>
-    <div class="fx"><span class="lbl">The bridge</span>
-      EV = Equity value + Net debt<br>
-      Equity value = EV - Net debt<br>
-      <span class="c" style="color:#7A8494">Net debt = total debt - cash. Market cap = price &times; shares = the market's equity value.</span>
+    <h3>Market value, equity value, and firm value</h3>
+    <p>These terms get mixed up constantly, so here is the precise picture with the formulas. They all answer the question "what is this worth," but they measure different claims and come from different places.</p>
+
+    <p><span class="term">Market value of equity, the market capitalization.</span> This is what the market currently says the shares are worth, updated every second the stock trades.</p>
+    <div class="fx"><span class="lbl">Market capitalization</span>
+      Market cap = Share price &times; Number of shares outstanding
     </div>
-    <div class="eg"><span class="lbl">Example</span>Enterprise value 500, net debt 120. Equity value is <code>500 - 120 = 380</code>. Across 40 million shares that is <code>380 / 40 = 9.5</code> per share.</div>
+
+    <p><span class="term">Book value versus market value.</span> The two are rarely equal. Book value comes from the balance sheet at historical cost; market value is what investors will actually pay, looking forward.</p>
+    <div class="fx"><span class="lbl">Book vs market equity</span>
+      Book value of equity  = Total assets - Total liabilities<br>
+      Market value of equity = Market cap (set by investors)<br>
+      <span class="c" style="color:#7A8494">their ratio is the price-to-book multiple</span>
+    </div>
+
+    <p><span class="term">Equity value</span> is the value of the shareholders' claim. It can be a market figure (the market cap) or an intrinsic estimate you compute (a DCF on FCFE, or enterprise value minus net debt). Same claim, different ways to measure it.</p>
+
+    <p><span class="term">Enterprise value, also called firm value,</span> is the value of the whole operating business, to every provider of capital, debt and equity together. It does not depend on how the business is financed. The full bridge from equity to enterprise value is:</p>
+    <div class="fx"><span class="lbl">Enterprise value, full bridge</span>
+      EV = Market cap + Total debt + Preferred + Minority interest - Cash<br>
+      Simplified:  EV = Equity value + Net debt<br>
+      Rearranged:  Equity value = EV - Net debt<br>
+      <span class="c" style="color:#7A8494">Net debt = Total debt - Cash</span>
+    </div>
+
+    <div class="tip"><span class="h">Why cash is subtracted</span>Cash is a non-operating asset. If you buy the whole company you also get its cash, which lowers the real cost of owning the operations. So enterprise value strips cash out to isolate the operating business, which is why the bridge uses net debt, not gross debt. Some courses, and quick exam questions, ignore cash and write firm value = equity + debt. That is the same idea with cash set to zero. Know both forms.</div>
+
+    <div class="eg"><span class="lbl">Example</span>Share price 9.5 across 40 shares gives a market cap of <code>380</code>. With total debt 150 and cash 30, net debt is <code>120</code>, so enterprise value is <code>380 + 120 = 500</code>. Working backward, equity value is <code>500 - 120 = 380</code>, and per share <code>380 / 40 = 9.5</code>.</div>
+
+    <p>Finally, here is where each value comes from, which ties the whole valuation section together:</p>
+    <table class="cmp">
+      <tr><th>Method</th><th>What it produces</th><th>To get the other side</th></tr>
+      <tr><td>Historical (book)</td><td>Book value of equity</td><td>a floor, not a market figure</td></tr>
+      <tr><td>Market price</td><td>Market cap (equity value)</td><td>add net debt for EV</td></tr>
+      <tr><td>DCF on FCFE, at Ke</td><td>Equity value directly</td><td>add net debt for EV</td></tr>
+      <tr><td>DCF on FCFF, at WACC</td><td>Enterprise value</td><td>subtract net debt for equity</td></tr>
+      <tr><td>Multiple, EV / EBITDA</td><td>Enterprise value</td><td>subtract net debt for equity</td></tr>
+      <tr><td>Multiple, P / E</td><td>Equity value</td><td>add net debt for EV</td></tr>
+    </table>
   </section>
 
   <!-- ============ PART 5 ============ -->
