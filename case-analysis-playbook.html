@@ -1,0 +1,539 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Case-Analysis Playbook — Entrepreneurship IPADE</title><style>
+:root{--ink:#1a1a2e;--accent:#e85d04;--accent2:#dc2f02;--blue:#0353a4;--blue2:#023e7d;--paper:#f7f6f2;--card:#ffffff;--line:#e3e0d8;--green:#2d6a4f;--soft:#6c757d;--shadow:rgba(20,20,40,.07);}
+html[data-theme="dark"]{--ink:#e8e8f0;--accent:#ff8c42;--accent2:#ff6b35;--blue:#4d9de0;--blue2:#7cb8e8;--paper:#15151f;--card:#1f1f2e;--line:#33334a;--green:#5fd99a;--soft:#9a9ab0;--shadow:rgba(0,0,0,.4);}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Georgia','Times New Roman',serif;line-height:1.55;transition:background .3s,color .3s;}
+.layout{display:flex;gap:0;align-items:flex-start;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 28px 100px;flex:1;min-width:0;}
+.fw{font-family:Helvetica,Arial,sans-serif;}
+a{color:var(--blue);}
+/* SIDEBAR NAV */
+.sidenav{position:sticky;top:0;height:100vh;width:250px;background:var(--card);border-right:1px solid var(--line);overflow-y:auto;flex-shrink:0;padding:22px 0 40px;font-family:Helvetica,Arial,sans-serif;transition:background .3s;}
+.sidenav .brand{font-weight:800;color:var(--blue2);font-size:15px;padding:0 20px 14px;border-bottom:1px solid var(--line);margin-bottom:10px;line-height:1.3;}
+.sidenav a{display:block;padding:7px 20px;color:var(--ink);text-decoration:none;font-size:13.5px;border-left:3px solid transparent;transition:.15s;}
+.sidenav a:hover{background:rgba(3,83,164,.08);border-left-color:var(--accent);}
+.sidenav a.navhead{text-transform:uppercase;letter-spacing:1px;font-size:11px;color:var(--accent);font-weight:700;margin-top:14px;padding-bottom:2px;pointer-events:none;}
+.sidenav a.active{border-left-color:var(--accent);background:rgba(232,93,4,.08);font-weight:700;}
+.menutoggle{display:none;}
+@media(max-width:880px){.sidenav{position:fixed;left:-260px;z-index:50;box-shadow:4px 0 24px rgba(0,0,0,.2);transition:left .25s;}.sidenav.open{left:0;}.menutoggle{display:flex;}}
+
+/* TOP BAR */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:12px;background:var(--card);border-bottom:1px solid var(--line);padding:10px 20px;font-family:Helvetica,Arial,sans-serif;}
+.topbar .ttl{font-weight:700;color:var(--blue2);font-size:14px;flex:1;}
+.btn{font-family:Helvetica,Arial,sans-serif;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:7px 13px;font-size:13px;font-weight:600;transition:.15s;}
+.btn:hover{border-color:var(--accent);color:var(--accent2);}
+.menutoggle{align-items:center;justify-content:center;width:38px;height:34px;}
+/* COVER */
+.cover{max-width:1100px;margin:0 auto 44px;background:linear-gradient(135deg,#023e7d 0%,#0353a4 55%,#e85d04 140%);color:#fff;padding:70px 50px 56px;border-radius:0 0 28px 28px;box-shadow:0 12px 40px rgba(2,62,125,.22);}
+.cover .kicker{font-family:Helvetica,Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;font-size:12px;opacity:.85;margin-bottom:16px;}
+.cover h1{font-size:48px;line-height:1.05;margin:0 0 16px;font-weight:700;}
+.cover p{font-size:17px;max-width:680px;opacity:.95;margin:0;}
+.cover .meta{margin-top:28px;font-family:Helvetica,Arial,sans-serif;font-size:13px;opacity:.8;border-top:1px solid rgba(255,255,255,.25);padding-top:16px;}
+/* HEADINGS */
+h2.part{font-family:Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin:54px 0 6px;}
+h3.title{font-size:29px;margin:0 0 8px;color:var(--blue2);}
+.lead{font-size:16.5px;color:var(--soft);margin:0 0 24px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:20px 0;box-shadow:0 4px 18px var(--shadow);}
+.card h4{font-family:Helvetica,Arial,sans-serif;margin:0 0 14px;font-size:18px;color:var(--blue2);}
+/* COLLAPSIBLE */
+.collap{border:1px solid var(--line);border-radius:14px;margin:16px 0;overflow:hidden;background:var(--card);box-shadow:0 3px 14px var(--shadow);}
+.collap>summary{cursor:pointer;list-style:none;padding:16px 22px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:16px;display:flex;align-items:center;gap:10px;user-select:none;}
+.collap>summary::-webkit-details-marker{display:none;}
+.collap>summary .chev{margin-left:auto;color:var(--accent);transition:transform .2s;font-size:14px;}
+.collap[open]>summary .chev{transform:rotate(90deg);}
+.collap>summary .sess{background:var(--blue2);color:#fff;font-size:12px;padding:3px 10px;border-radius:20px;}
+.collap .cbody{padding:4px 22px 20px;}
+
+/* FLOW / BOXES / DIAGRAMS */
+.flow{display:flex;flex-direction:column;margin:16px 0;}
+.step{display:flex;align-items:stretch;}
+.stepnum{background:var(--blue2);color:#fff;font-family:Helvetica,Arial,sans-serif;font-weight:700;min-width:50px;display:flex;align-items:center;justify-content:center;font-size:17px;border-radius:10px 0 0 10px;}
+.stepbody{background:rgba(3,83,164,.07);border:1px solid var(--line);border-left:none;border-radius:0 10px 10px 0;padding:11px 16px;flex:1;font-family:Helvetica,Arial,sans-serif;font-size:14.5px;}
+.stepbody b{color:var(--blue2);}
+.arrow{text-align:center;color:var(--accent);font-size:18px;line-height:1;margin:3px 0;}
+.boxrow{display:flex;gap:13px;flex-wrap:wrap;margin:16px 0;}
+.box{flex:1;min-width:150px;background:var(--card);border:2px solid var(--blue);border-radius:12px;padding:15px;font-family:Helvetica,Arial,sans-serif;}
+.box .bt{font-weight:700;color:var(--blue2);text-transform:uppercase;letter-spacing:.5px;font-size:12.5px;margin-bottom:6px;}
+.box .bd{font-size:13.5px;color:var(--ink);}
+.box.orange{border-color:var(--accent);}.box.orange .bt{color:var(--accent2);}
+.box.green{border-color:var(--green);}.box.green .bt{color:var(--green);}
+.eq{font-family:Helvetica,Arial,sans-serif;background:rgba(232,93,4,.08);border:1px dashed var(--accent);border-radius:12px;padding:16px 18px;text-align:center;font-size:18px;font-weight:700;color:var(--accent2);margin:16px 0;}
+.eq small{display:block;font-weight:400;color:var(--soft);font-size:12.5px;margin-top:8px;line-height:1.5;}
+.matrix{display:grid;grid-template-columns:120px 1fr 1fr;gap:8px;margin:16px 0;font-family:Helvetica,Arial,sans-serif;font-size:13.5px;}
+.matrix .mh{background:var(--blue2);color:#fff;padding:10px;text-align:center;font-weight:700;border-radius:8px;}
+.matrix .ml{background:rgba(3,83,164,.1);color:var(--blue2);padding:10px;display:flex;align-items:center;font-weight:700;border-radius:8px;}
+.matrix .mc{padding:13px;border-radius:8px;font-size:13px;}
+.danger{background:rgba(220,47,2,.12);border:1px solid rgba(220,47,2,.35);}.danger b{color:var(--accent2);}
+.good{background:rgba(45,106,79,.14);border:1px solid rgba(45,106,79,.35);}.good b{color:var(--green);}
+.neutral{background:rgba(120,120,120,.1);border:1px solid var(--line);}
+.warn{background:rgba(240,180,0,.14);border:1px solid rgba(240,180,0,.4);}
+.qbox{background:rgba(3,83,164,.06);border-left:5px solid var(--blue);border-radius:0 10px 10px 0;padding:13px 17px;margin:14px 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;}
+.qbox .qh{font-weight:700;color:var(--blue2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;font-size:11.5px;}
+.qbox ol,.qbox ul{margin:6px 0 0 18px;padding:0;}.qbox li{margin:4px 0;}
+.worked{background:rgba(232,93,4,.07);border-left:5px solid var(--accent);border-radius:0 10px 10px 0;padding:13px 17px;margin:14px 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;}
+.worked .wh{font-weight:700;color:var(--accent2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;font-size:11.5px;}
+.worked ul{margin:6px 0 0 18px;}.worked li{margin:4px 0;}
+.note{font-size:12.5px;color:var(--soft);font-style:italic;margin-top:10px;}
+.divider{height:3px;background:linear-gradient(90deg,var(--accent),transparent);border:none;margin:46px 0 0;border-radius:3px;}
+
+/* THINK / PROMPT BOX (quiz / thought process) */
+.think{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:0 12px 12px 0;padding:15px 18px;margin:16px 0;font-family:Helvetica,Arial,sans-serif;}
+.think .th{font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.5px;font-size:11.5px;margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+.think .q{font-size:14.5px;margin:9px 0;font-weight:600;color:var(--ink);}
+.think .q::before{content:"Q";display:inline-block;background:var(--green);color:#fff;font-size:11px;width:18px;height:18px;line-height:18px;text-align:center;border-radius:50%;margin-right:8px;}
+.reveal{cursor:pointer;color:var(--accent2);font-size:12.5px;font-weight:700;border:none;background:none;padding:4px 0;margin-top:2px;}
+.reveal:hover{text-decoration:underline;}
+.answer{display:none;background:rgba(45,106,79,.08);border-radius:8px;padding:11px 14px;margin:6px 0 10px;font-size:13.5px;color:var(--ink);line-height:1.55;}
+.answer.show{display:block;}
+.answer b{color:var(--green);}
+/* FLASHCARDS */
+.fcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:18px 0;}
+.fcard{perspective:1000px;height:150px;cursor:pointer;font-family:Helvetica,Arial,sans-serif;}
+.fcinner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d;}
+.fcard.flipped .fcinner{transform:rotateY(180deg);}
+.fcfront,.fcback{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 4px 14px var(--shadow);}
+.fcfront{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;}
+.fcfront .term{font-size:18px;font-weight:700;}
+.fcfront .hint{font-size:11px;opacity:.7;margin-top:8px;text-transform:uppercase;letter-spacing:1px;}
+.fcback{background:var(--card);border:2px solid var(--accent);color:var(--ink);transform:rotateY(180deg);font-size:13px;overflow-y:auto;}
+/* CALCULATORS */
+.calc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:18px 0;font-family:Helvetica,Arial,sans-serif;box-shadow:0 4px 14px var(--shadow);}
+.calc h4{margin:0 0 14px;color:var(--blue2);font-size:17px;}
+.calc .field{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:9px 0;}
+.calc label{font-size:13.5px;color:var(--ink);flex:1;}
+.calc input{width:130px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;font-family:Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);text-align:right;}
+.calc input:focus{outline:none;border-color:var(--accent);}
+.calcout{margin-top:14px;background:rgba(3,83,164,.08);border-radius:10px;padding:14px 16px;font-size:14px;}
+.calcout .big{font-size:26px;font-weight:800;color:var(--accent2);}
+.calcout .row{display:flex;justify-content:space-between;margin:5px 0;font-size:13.5px;}
+.calcout .row b{color:var(--blue2);}
+/* SEARCH + TABLE */
+.searchbar{width:100%;padding:11px 16px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-family:Helvetica,Arial,sans-serif;margin:8px 0 4px;background:var(--card);color:var(--ink);}
+.searchbar:focus{outline:none;border-color:var(--accent);}
+table.ref{width:100%;border-collapse:collapse;margin:14px 0;font-family:Helvetica,Arial,sans-serif;font-size:13.5px;}
+table.ref th{background:var(--blue2);color:#fff;padding:11px 12px;text-align:left;position:sticky;top:0;}
+table.ref td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+table.ref tr:nth-child(even){background:rgba(120,120,120,.05);}
+table.ref td:first-child{font-weight:700;color:var(--blue2);white-space:nowrap;}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:16px 0;}
+.gitem{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-family:Helvetica,Arial,sans-serif;}
+.gitem .gt{font-weight:700;color:var(--accent2);font-size:14px;margin-bottom:4px;}
+.gitem .gd{font-size:13px;color:var(--ink);line-height:1.5;}
+.fill{width:100%;min-height:70px;padding:10px;border:1px dashed var(--line);border-radius:8px;font-family:Helvetica,Arial,sans-serif;font-size:13.5px;background:var(--paper);color:var(--ink);resize:vertical;margin:6px 0;}
+.progress-wrap{background:rgba(120,120,120,.15);border-radius:20px;height:10px;overflow:hidden;margin:10px 0;}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));width:0;transition:width .3s;}
+@media print{.sidenav,.topbar,.btn,.reveal,.menutoggle{display:none!important;}.answer{display:block!important;}.collap>.cbody{display:block!important;}.card,.collap{box-shadow:none;break-inside:avoid;}.cover{border-radius:0;}body{background:#fff;}}
+</style></head><body><div class="topbar"><button class="btn menutoggle" onclick="toggleMenu()">&#9776;</button><span class="ttl">Case-Analysis Playbook · Entrepreneurship IPADE</span><button class="btn" id="themebtn" onclick="toggleTheme()">&#9790; Dark</button><button class="btn" onclick="window.print()">&#128424; Print / PDF</button></div><div class="layout">
+<nav class="sidenav" id="sidenav">
+  <div class="brand">Case-Analysis Playbook<br><span style="font-weight:400;font-size:12px;color:var(--soft);">Entrepreneurship · IPADE</span></div>
+  <a class="navhead">Core</a>
+  <a href="#master">Master Procedure</a>
+  <a href="#frame">1 · Frame</a>
+  <a href="#opportunity">2 · Opportunity</a>
+  <a href="#strategy">3 · Strategy</a>
+  <a href="#model">4 · Model & Economics</a>
+  <a href="#evidence">5 · Experimentation</a>
+  <a href="#people">6 · Team & Equity</a>
+  <a href="#money">7 · Financing</a>
+  <a href="#scale">8 · Scaling</a>
+  <a href="#decision">9 · The Decision</a>
+  <a class="navhead">Sessions 1–15</a>
+  <a href="#sessions">Session Breakouts</a>
+  <a class="navhead">Tools</a>
+  <a href="#calc">Calculators</a>
+  <a href="#flash">Flashcards</a>
+  <a href="#glossary">Glossary</a>
+  <a href="#ref">Quick Reference</a>
+  <a href="#template">Case Template</a>
+</nav><div class="wrap">
+<div class="cover">
+  <div class="kicker">Entrepreneurship &middot; IPADE MBA &middot; Prof. J. K. Meguro Yamaguchi</div>
+  <h1>The Case-Analysis Playbook</h1>
+  <p>An interactive study companion &mdash; frameworks, diagrams, worked examples, calculators, flashcards &amp; practice prompts for turning ideas into scalable organizations under uncertainty.</p>
+  <div class="meta">15 sessions &middot; opportunity &rarr; model &rarr; team &rarr; financing &rarr; scaling &nbsp;|&nbsp; integrates technical notes, cases &amp; lecture concepts &nbsp;|&nbsp; your progress saves locally in this browser</div>
+</div>
+
+<div id="master" class="part-section">
+<h2 class="part">Part 0</h2>
+<h3 class="title">The Master Procedure</h3>
+<p class="lead">Run this nine-step sequence on any case. Everything else expands one step. Tip: open the interactive Case Template at the bottom to work a live case through these steps.</p>
+<div class="card">
+<div class="flow">
+  <div class="step"><div class="stepnum">1</div><div class="stepbody"><b>FRAME</b> &mdash; Entrepreneurial vs. Traditional mode? Which of the 4 GM roles is at stake?</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">2</div><div class="stepbody"><b>OPPORTUNITY</b> &mdash; Decompose: market + problem + solution + business model. Desirable / Feasible / Viable?</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">3</div><div class="stepbody"><b>STRATEGY</b> &mdash; How do they win &amp; sustain it? Mover position? Posture under uncertainty?</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">4</div><div class="stepbody"><b>MODEL + ECON</b> &mdash; Find the 2&ndash;3 driving variables. Run unit economics. Where is break-even?</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">5</div><div class="stepbody"><b>EVIDENCE</b> &mdash; Riskiest assumption? How would you test it (hypothesis + metric + failure criterion)?</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">6</div><div class="stepbody"><b>PEOPLE</b> &mdash; Team / governance / equity fit for the stage?</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">7</div><div class="stepbody"><b>MONEY</b> &mdash; Funding need, round logic, dilution, terms &amp; control.</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">8</div><div class="stepbody"><b>SCALE</b> &mdash; Should-grow &times; Can-grow. Pacing risk?</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">9</div><div class="stepbody"><b>DECISION</b> &mdash; State the recommendation + the trade-off you accept + what you'd watch next.</div></div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="frame" class="part-section">
+<h2 class="part">Part 1 &middot; Frame the Situation</h2>
+<h3 class="title">The Two Modes &amp; the GM's Job</h3>
+<p class="lead">The first sentence of any analysis: is the protagonist acting in the right mode for the situation?</p>
+<div class="card">
+<div class="boxrow">
+  <div class="box"><div class="bt">Entrepreneurial</div><div class="bd"><b>Driven by OPPORTUNITY.</b> "What's possible?" Resources pursued regardless of what you control. Commitment is gradual, staged, revocable. Keep options open.</div></div>
+  <div class="box orange"><div class="bt">Traditional / Administrative</div><div class="bd"><b>Driven by RESOURCES / BUDGET.</b> "What can I do with what I have?" Resources allocated from what's controlled. Full commitment, planned up front. Execute the plan.</div></div>
+</div>
+<div class="boxrow">
+  <div class="box"><div class="bt">Four GM roles</div><div class="bd">1. Define business / strategy<br>2. Create structure<br>3. Execute processes<br>4. Align interests</div></div>
+  <div class="box green"><div class="bt">Three goals</div><div class="bd">&bull; Contribute to the common good<br>&bull; Create sustainable economic value<br>&bull; Build a company that survives &amp; thrives</div></div>
+</div>
+<p class="note">Most case misery comes from using the wrong mode. This is Stevenson's definition &mdash; it underlies experimentation and staged financing throughout the course.</p>
+<div class="think">
+  <div class="th">&#9998; Work it through</div>
+  <div class="q">A founder with a great opportunity insists on a full 5-year budget and headcount plan before launching. What mode are they in, and what's the risk?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">They've slipped into <b>traditional/administrative mode</b> &mdash; committing fully and up front against a fixed plan. Under genuine uncertainty this is dangerous: it locks resources before the riskiest assumptions are tested. The entrepreneurial move is to commit <b>gradually</b>, keep options open, and let staged experiments (and staged financing) reveal whether the plan holds before scaling spend.</div>
+  <div class="q">Which of the four GM roles tends to break first in an <i>early-stage</i> venture vs. a <i>scaling</i> venture?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Early stage: roles <b>1 (define business/strategy)</b> and <b>4 (align interests</b> &mdash; cofounders, early hires, investors). Scaling: roles <b>2 (create structure)</b> and <b>3 (execute processes)</b> &mdash; the company outgrows informal coordination. Diagnosing <i>which</i> role is failing tells you where to focus the recommendation.</div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="opportunity" class="part-section">
+<h2 class="part">Part 2 &middot; Opportunity</h2>
+<h3 class="title">The Opportunity Equation &amp; Three-Lens Test</h3>
+<p class="lead">Dissolves the beginner's error of equating "idea" with "opportunity."</p>
+<div class="eq">OPPORTUNITY = TARGET MARKET + PROBLEM + SOLUTION + BUSINESS MODEL
+<small>"market + problem" = Is it real &amp; large? (TAM/SAM/SOM) &nbsp;|&nbsp; "solution" = uniqueness &nbsp;|&nbsp; "business model" = how value is captured</small></div>
+<div class="card">
+<div class="boxrow">
+  <div class="box"><div class="bt">Desirable</div><div class="bd">Will they pay? Real value created? How acute is the pain &mdash; painkiller vs. vitamin?</div></div>
+  <div class="box green"><div class="bt">Feasible</div><div class="bd">Fits our capabilities <i>and</i> our desires. Can we actually build &amp; deliver it?</div></div>
+  <div class="box orange"><div class="bt">Viable</div><div class="bd">Makes business &amp; economic sense. Do the unit economics work?</div></div>
+</div>
+<div class="qbox"><div class="qh">Questions, in order</div>
+<ol><li>Who exactly is the customer, and how acute is the pain?</li>
+<li>How big is the obtainable market (SOM), built bottom-up = units &times; price &times; realistic adoption?</li>
+<li>"Why now?" &mdash; what transition (tech / regulation / behavior) opened this?</li>
+<li>Which of the three lenses is the weak one? &mdash; concentrate the analysis there.</li></ol></div>
+<div class="worked"><div class="wh">Worked &mdash; Rent the Runway</div>
+<ul><li><b>Desirable?</b> Yes &mdash; designer wear without ownership cost; clear willingness to pay.</li>
+<li><b>Feasible?</b> Mostly &mdash; depends on reverse logistics &amp; cleaning capability.</li>
+<li><b>Viable?</b> &larr; the weak lens. Hinges on rentals-per-dress (utilization), churn, fulfillment cost.</li>
+<li><b>Why now?</b> E-commerce trust + social-media outfit pressure + logistics maturity.</li></ul></div>
+<div class="think">
+  <div class="th">&#9998; Work it through</div>
+  <div class="q">A startup claims a $50B TAM by taking "just 2% of the global coffee market." Why should this raise a red flag, and how would you re-size it?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">This is top-down "% of a huge market" hand-waving &mdash; it ignores <b>how</b> you'd actually acquire customers. Re-size <b>bottom-up</b>: SOM = realistic units &times; price &times; achievable adoption given your channel, geography, and competition. A credible obtainable market is built from the customer up, not sliced from the top down.</div>
+  <div class="q">For a new B2B AI tool, the team is sure it's desirable and feasible. Where should they spend their analysis time?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">On the <b>weak lens &mdash; viability</b>. If desirability and feasibility are strong, the open question is whether the unit economics and business model actually capture enough value (CAC vs. LTV, gross margin after inference/compute costs, pricing power). Always direct effort to the lens most likely to break.</div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="strategy" class="part-section">
+<h2 class="part">Part 3 &middot; Strategy &amp; Competitive Advantage</h2>
+<h3 class="title">Winning &amp; Sustaining It</h3>
+<div class="card">
+<div class="boxrow">
+  <div class="box"><div class="bt">Change the game</div><div class="bd">Reset the rules.</div></div>
+  <div class="box"><div class="bt">Solve uniquely</div><div class="bd">A way rivals can't copy.</div></div>
+  <div class="box"><div class="bt">Be unique</div><div class="bd">Hard to imitate.</div></div>
+  <div class="box"><div class="bt">Sustain it</div><div class="bd">Moats that endure.</div></div>
+</div>
+<div class="boxrow">
+  <div class="box green"><div class="bt">Go first when you lock in</div><div class="bd">Economies of scale &middot; switching costs &middot; network effects &middot; best locations/channels</div></div>
+  <div class="box orange"><div class="bt">Wait / fast-follow when</div><div class="bd">Tech changing fast &middot; suppliers not ready &middot; high customer-education cost (pioneer pays, you harvest)</div></div>
+</div>
+<div class="eq" style="font-size:15px;">KEEP OPTIONS OPEN &rarr; RUN MULTIPLE MODELS &rarr; COMMIT RESOURCES GRADUALLY
+<small>Strategy under uncertainty = the entrepreneurial mode expressed as strategy</small></div>
+<div class="worked"><div class="wh">Worked &mdash; Gamma (AI)</div>Tech changes fast and the underlying model is commoditized &rarr; being first isn't the moat. Durable advantage must come from <b>switching costs + network effects + proprietary data / workflow lock-in</b>.</div>
+<div class="think">
+  <div class="th">&#9998; Work it through</div>
+  <div class="q">Two startups enter a brand-new market created by a tech breakthrough. One races to be first; one waits 18 months. Under what conditions is waiting the smarter call?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Waiting wins when <b>technology is still changing rapidly</b> (the pioneer bets on a moving target), <b>suppliers/ecosystem aren't ready</b>, or <b>customer-education costs are high</b> &mdash; the first mover spends to teach the market and the fast follower harvests educated demand at lower cost. First-mover advantage only pays if you can <i>lock in</i> scale, switching costs, network effects, or scarce channels.</div>
+  <div class="q">An AI product has a slick UI but uses the same foundation model as everyone else. Where can a real moat come from?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Not from the model (commoditized). Moats come from <b>proprietary data</b> that compounds with usage, <b>workflow lock-in / switching costs</b>, <b>network effects</b>, and <b>distribution</b>. Ask: "what makes a user stay after the novelty fades?"</div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="model" class="part-section">
+<h2 class="part">Part 4 &middot; Business Model &amp; Unit Economics</h2>
+<h3 class="title">Find the 2&ndash;3 Drivers, Then Run the Math</h3>
+<div class="card">
+<div class="eq" style="font-size:15px;text-align:left;">
+CONTRIBUTION = Price &minus; Variable cost &nbsp;(per unit)<br>
+BREAK-EVEN = Fixed costs &divide; Contribution<br>
+LTV / CAC &ge; ~3:1 healthy &nbsp;|&nbsp; CAC PAYBACK = months of margin to recoup
+<small>&#9888; Negative contribution can NEVER be fixed by scaling &mdash; it loses money faster. (Try the live calculator below.)</small></div>
+<div class="worked"><div class="wh">Worked &mdash; Zipcar</div>Unit = one car in one neighborhood. Drivers = utilization, density, fixed cost/car. Fixed cost/car high, variable/rental low &rarr; strong contribution once busy. Break-even = utilization where member-hours cover the car's fixed cost. Growth = reach density city-by-city.</div>
+<div class="think">
+  <div class="th">&#9998; Work it through</div>
+  <div class="q">A subscription box has a contribution margin of &minus;$3 per order but the founder says "we'll fix it with volume." What do you tell them?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Volume makes it <b>worse</b>. Negative contribution means every incremental unit loses money, so scaling accelerates losses. The fix must come <i>before</i> scale: raise price, cut variable cost, or change the model so each unit is profitable. Only <i>then</i> does volume help cover fixed costs.</div>
+  <div class="q">For Zipcar, why is "total members" a misleading success metric?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Because profitability is driven by <b>local density &amp; utilization</b>, not aggregate membership. 100k members spread thinly leaves cars idle (fixed cost bleeds); a dense cluster pushes one car past break-even. Each neighborhood is its own break-even bet &mdash; density is the real driver.</div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="evidence" class="part-section">
+<h2 class="part">Part 5 &middot; Evidence &amp; Experimentation</h2>
+<h3 class="title">The Hypothesis-Driven Loop</h3>
+<div class="card">
+<div class="flow">
+  <div class="step"><div class="stepnum">1</div><div class="stepbody">Identify the <b>RISKIEST assumption</b></div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">2</div><div class="stepbody">Write a <b>FALSIFIABLE hypothesis</b>: "If we do X, then &ge;Y% of [sample] will Z"</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">3</div><div class="stepbody">Define the <b>METRIC + FAILURE CRITERION</b> &mdash; before running it</div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">4</div><div class="stepbody">Build smallest <b>MVP</b>; measure on a <b>representative sample</b></div></div>
+  <div class="arrow">&darr;</div>
+  <div class="step"><div class="stepnum">5</div><div class="stepbody"><b>PERSEVERE</b> &nbsp;&larr; learn &rarr;&nbsp; <b>PIVOT</b></div></div>
+</div>
+<p class="note">Bias guards: confirmation bias, false positives, false negatives. Testing hierarchy: (1) biggest risk first, (2) problem before solution, (3) respect dependencies.</p>
+<div class="worked"><div class="wh">Worked &mdash; Dropbox</div>Riskiest assumption wasn't "can we build sync" &mdash; it was "do enough people want it &amp; can we acquire them cheaply." Demo video tested the value hypothesis (no finished product). Referral program tested the growth hypothesis. Sign-up surge = validated learning &rarr; scale.</div>
+<div class="think">
+  <div class="th">&#9998; Work it through</div>
+  <div class="q">You're about to spend 9 months building a full product. Describe a cheaper experiment to test demand first, and define its pass/fail criterion.</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Build an <b>MVP that tests the riskiest assumption (demand)</b> &mdash; e.g., a landing page or explainer video with a sign-up/pre-order button (Dropbox's move), or a manual "concierge" version. Decide the metric and <b>failure criterion up front</b>: e.g., "&ge;15% of 1,000 targeted visitors leave an email" = persevere; below that = pivot. Defining failure first prevents confirmation bias and vanity metrics.</div>
+  <div class="q">Why test the <i>problem</i> before the <i>solution</i>?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">If the problem isn't real or acute, no solution matters &mdash; you'd be optimizing something nobody needs. Validating the problem first is cheaper and prevents building a beautiful answer to a non-question. It also respects dependencies: solution tests assume a confirmed problem.</div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="people" class="part-section">
+<h2 class="part">Part 6 &middot; Team, Governance &amp; Equity</h2>
+<h3 class="title">Solo vs. Co-Founder &amp; the Day-One Agreement</h3>
+<div class="card">
+<div class="flow">
+  <div class="step"><div class="stepnum" style="background:var(--green);">Q1</div><div class="stepbody">Do you need complementary skills/capacity you <b>can't buy or hire</b> fast enough?</div></div>
+  <div class="arrow">&darr; if yes</div>
+  <div class="step"><div class="stepnum" style="background:var(--green);">Q2</div><div class="stepbody">Will a co-founder add <b>more value</b> than the control/equity you give up?</div></div>
+  <div class="arrow">&darr; if yes</div>
+  <div class="step"><div class="stepnum" style="background:var(--green);">&#10003;</div><div class="stepbody"><b>CO-FOUND</b> &mdash; and sign the agreement on day one.</div></div>
+</div>
+<div class="qbox"><div class="qh">Founder-agreement checklist (DAY ONE)</div>
+Vision alignment &middot; clear roles &amp; decision rights &middot; equity structure &middot; <b>vesting</b> (earn over time) &middot; conflict-resolution mechanism.<br>
+<b>Equity:</b> equal split vs. <b>slice-and-pie</b> (dynamic, by weekly contribution). &nbsp;<b>Protection:</b> colleagues &rarr; less; family/friends &rarr; <b>MORE</b>.</div>
+<div class="worked"><div class="wh">Worked &mdash; To Found or to Cofound?</div>Run the tree (skills gap? control preference? net value of a partner?). The real lesson: the <b>governance / vesting / equity agreement on day one</b> &mdash; and that friends &amp; family need <i>more</i> formal structure, not less.</div>
+<div class="think">
+  <div class="th">&#9998; Work it through</div>
+  <div class="q">Two friends split equity 50/50 with no vesting. One leaves after 4 months. What goes wrong, and what should they have done?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">The departed founder keeps <b>50% of the company</b> for 4 months of work &mdash; a "dead-equity" cap-table problem that can sink future fundraising and demotivate the remaining founder. The fix: a <b>vesting schedule</b> (e.g., 4-year vest, 1-year cliff) so equity is earned over time, plus a clear founder agreement. Counter-intuitively, <i>friends</i> need <b>more</b> structure because the relationship tempts them to skip the paperwork.</div>
+  <div class="q">When is staying solo the right call even if a co-founder would add capacity?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">When you can <b>buy or hire</b> the missing capability instead, and when <b>control matters more</b> to you than the extra value a partner brings (the "rich vs. king" trade-off). If the co-founder doesn't add more value than the equity/control you give up, don't co-found.</div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="money" class="part-section">
+<h2 class="part">Part 7 &middot; Financing</h2>
+<h3 class="title">The Staircase, the Math &amp; the Terms</h3>
+<div class="card">
+<div class="eq" style="font-size:14px;">Bootstrap &rarr; F&amp;F &rarr; Angel &rarr; Seed &rarr; Series A &rarr; B &rarr; C &rarr; Exit
+<small>Debt rarely fits early &mdash; too risky to service; equity dominates</small></div>
+<div class="boxrow">
+  <div class="box orange"><div class="bt">Rule of thumb / round</div><div class="bd">Dilution 15&ndash;20% &middot; interval 12&ndash;18 mo &middot; value step-up 2&ndash;3&times; &middot; raise the <b>minimum</b> that maximizes the next milestone's value</div></div>
+  <div class="box"><div class="bt">The math</div><div class="bd">POST = PRE + INVESTMENT<br>INVESTOR % = INVESTMENT &divide; POST<br>Every new share dilutes existing holders</div></div>
+</div>
+<div class="qbox"><div class="qh">SAFE notes</div>Converts at next priced round. <b>Cap</b> = max conversion price (protects early $). <b>Discount</b> = % off the round price. Investor takes whichever is better. &#9888; Stacked SAFEs convert later, often at the cap &rarr; hidden dilution. Model conversion forward.</div>
+<div class="qbox"><div class="qh">Terms beyond valuation = control &amp; downside</div>Liquidation preference (1&times; non-participating vs. participating) &middot; option pool (carved from pre-money = quiet founder dilution) &middot; board seats / protective provisions &middot; anti-dilution &middot; pro-rata &middot; vesting. <b>A lower valuation with clean terms can beat a high valuation with bad ones.</b></div>
+<div class="worked"><div class="wh">Worked &mdash; ELCA's Series A</div>Build the post-money cap table, check dilution vs. 15&ndash;20%, convert any SAFE at its cap/discount, then weigh liquidation preference &amp; board terms. Negotiate with a clear <b>BATNA / reservation price / ZOPA</b>, trading low-value terms for control-critical ones.</div>
+<div class="think">
+  <div class="th">&#9998; Work it through</div>
+  <div class="q">An investor offers a $20M valuation with a 2&times; participating liquidation preference, vs. another at $14M with 1&times; non-participating. In a modest $30M exit, which founder does better &mdash; and what's the lesson?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">The <b>2&times; participating</b> preference means the investor takes 2&times; their money <i>off the top</i> and then <b>also</b> shares in the rest &mdash; in a modest exit that can leave founders with far less despite the higher headline valuation. The $14M / 1&times; non-participating deal often pays founders more in small/medium exits. <b>Lesson: headline valuation &ne; outcome; terms that govern the downside and control frequently matter more.</b> (Use the dilution calculator to feel the ownership side.)</div>
+  <div class="q">Why "raise the minimum that maximizes the next milestone"?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Each round should buy you to the next <b>value-inflection point</b> and no further. Raising more than needed dilutes you at today's (lower) valuation; raising too little risks missing the milestone that justifies the next up-round. Match the raise to the milestone to minimize dilution across the whole staircase.</div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="scale" class="part-section">
+<h2 class="part">Part 8 &middot; Scaling</h2>
+<h3 class="title">Should-Grow &times; Can-Grow</h3>
+<div class="card">
+<div class="matrix">
+  <div></div><div class="mh">CAN GROW &mdash; low</div><div class="mh">CAN GROW &mdash; high</div>
+  <div class="ml">SHOULD GROW &mdash; high</div>
+  <div class="mc danger"><b>&#9888; RUNNING HOT</b><br>Build capability fast or pace deliberately.</div>
+  <div class="mc good"><b>&#10003; SCALE NOW</b><br>Press the advantage.</div>
+  <div class="ml">SHOULD GROW &mdash; low</div>
+  <div class="mc neutral"><b>&#9995; DON'T</b><br>No reason to grow.</div>
+  <div class="mc warn"><b>Build, but&hellip;</b><br>find the strategic reason first.</div>
+</div>
+<div class="eq" style="font-size:14px;">EXPLORATION (flexible, opportunity-led) &nbsp;&rarr;&nbsp; EXECUTION (structured systems, process, control)
+<small>= back to GM roles #2 (structure) and #3 (process)</small></div>
+<div class="worked"><div class="wh">Worked &mdash; CloudFlare "Running Hot?"</div>Demand (should-grow) high; question is whether capability/controls (can-grow) keep up &mdash; the top-left danger quadrant. Pace deliberately or invest ahead. Warning signs: rising defects/churn, firefighting, service degradation.</div>
+<div class="worked"><div class="wh">Worked &mdash; Duolingo</div>Should-grow is real, but the discipline is <b>focus</b> &mdash; choose the next growth vector (new subjects / monetization) while protecting the core engagement loop (the streak).</div>
+<div class="think">
+  <div class="th">&#9998; Work it through</div>
+  <div class="q">A company has huge demand but support tickets are exploding, churn is rising, and the team is firefighting. Which quadrant are they in and what are the two real options?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Top-left: <b>"Running Hot"</b> &mdash; high should-grow, low can-grow. The rising churn/defects/firefighting are the classic warning signs. Two options: (1) <b>invest ahead</b> in capabilities, processes &amp; control systems to lift can-grow, or (2) <b>deliberately pace</b> growth to what the org can absorb. Ignoring it erodes the quality the business depends on.</div>
+  <div class="q">Why might a high-growth company deliberately say "no" to an attractive new market?</div>
+  <button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button>
+  <div class="answer">Because <b>focus compounds</b>. Strategic scaling means protecting the core engagement/economic engine (Duolingo's streak) rather than diluting attention and resources across many vectors. The cost of lost focus &mdash; weaker core retention, scattered execution &mdash; can exceed the upside of the new market.</div>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="decision" class="part-section">
+<h2 class="part">Part 9 &middot; The Decision</h2>
+<h3 class="title">How to Close Any Case</h3>
+<div class="card">
+<div class="boxrow">
+  <div class="box"><div class="bt">1. Recommendation</div><div class="bd">The specific action.</div></div>
+  <div class="box orange"><div class="bt">2. Trade-off accepted</div><div class="bd">Every good choice sacrifices something (rich vs. king, speed vs. control, focus vs. optionality). Name it.</div></div>
+  <div class="box green"><div class="bt">3. Leading indicators</div><div class="bd">What tells you you're right &mdash; or need to pivot.</div></div>
+</div>
+<div class="eq" style="font-size:14px;text-align:left;">"Given [mode + opportunity diagnosis], I recommend [action], because the unit economics / strategy show [insight]. This accepts [trade-off]. I'd monitor [metric] and pivot if [failure criterion]."</div>
+</div>
+</div>
+
+<hr class="divider">
+<div id="sessions" class="part-section">
+<h2 class="part">Sessions 1&ndash;15</h2>
+<h3 class="title">Per-Session Breakouts</h3>
+<p class="lead">Each session: the case, the technical note/framework, the relevant lecture concept, and practice prompts with thought processes. Click to expand.</p>
+<details class="collap"><summary><span class="sess">S1</span> R&R — Opportunity recognition & bootstrapping <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Apr 6 · How an idea becomes a million-dollar business</p><div class="qbox"><div class="qh">Case</div>HBS 9-386-019 R&R + Study Questions R&R.</div><div class="qbox"><div class="qh">Technical note / framework</div>Opportunity recognition: distinguishing a fleeting money-making scheme from a durable, scalable, financeable business.</div><div class="worked"><div class="wh">Lecture concept applied</div>Opportunity = market + problem + solution + business model (not just an idea). The magic is execution and the discipline of turning a one-off hustle into something repeatable. Watch bootstrapping, cash management, and the decision to professionalize.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">What separates an &ldquo;idea&rdquo; from an &ldquo;opportunity&rdquo; in this case?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">An idea is a notion; an <b>opportunity</b> = a defined target market + a real problem + a deliverable solution + a business model that captures value. R&R shows the founder turning a seasonal arbitrage into a repeatable, financeable operation &mdash; that conversion is the opportunity.</div><div class="q">Where is the cash-flow risk in a bootstrapped, fast-growing trading business?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Growth consumes cash before it returns it (inventory/receivables upfront, payment timing). A profitable deal can still create a cash crunch &mdash; watch working capital and the gap between profit and cash.</div></div></div></details><details class="collap"><summary><span class="sess">S2</span> Rent the Runway — access over ownership <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Apr 10 · Theory of value creation & capture</p><div class="qbox"><div class="qh">Case</div>HBS 9-812-077 Rent the Runway. Notes: <i>Is It Real and Large Enough?</i> · <i>Creating New Market Space</i> · <i>The Start of the Start</i>.</div><div class="qbox"><div class="qh">Technical note / framework</div><b>Is It Real &amp; Large Enough?</b> tests market reality (real need + real product) and size (TAM/SAM/SOM, bottom-up). <b>Creating New Market Space</b> = value innovation: raise/eliminate/reduce/create attributes to open uncontested space.</div><div class="worked"><div class="wh">Lecture concept applied</div>RtR creates value via access-over-ownership; it must capture value through reverse logistics, inventory turns, and rental frequency. The weak lens is viability &mdash; do the unit economics hold?</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">What is RtR&rsquo;s riskiest part of the &ldquo;theory of value,&rdquo; and how would you test it cheaply?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">The risk is <b>value capture / viability</b>: enough rentals-per-dress at acceptable fulfillment + cleaning cost. Test cheaply with a limited inventory pilot in one city, measuring utilization per garment, churn, and contribution before scaling inventory.</div><div class="q">How does &ldquo;Creating New Market Space&rdquo; explain RtR&rsquo;s strategy vs. department stores?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">RtR does not out-compete on price/selection; it <b>changes the game</b> &mdash; eliminating ownership, creating rotating access &amp; breadth, raising variety. It looks across the substitute (buying) to open new space rather than fighting incumbents head-on.</div></div></div></details><details class="collap"><summary><span class="sess">S3</span> Capptu — choosing a wedge <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Apr 14 · Alternative paths to value</p><div class="qbox"><div class="qh">Case</div>Capptu (eC 01). Note: <i>Business Model Analysis for Entrepreneurs</i>. Article: <i>Do Entrepreneurs Need a Strategy?</i></div><div class="qbox"><div class="qh">Technical note / framework</div><b>Business Model Analysis</b> decomposes value prop / resources&amp;activities / revenue model / cost structure and checks internal consistency. <b>Do Entrepreneurs Need a Strategy?</b> &mdash; yes: a guiding hypothesis of how you will win beats pure opportunism.</div><div class="worked"><div class="wh">Lecture concept applied</div>With scarce resources you must choose a wedge and sequence the rest. Lay 2&ndash;3 candidate models side by side; pick the internally coherent, viable one.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">Capptu can sell to brands, agencies, and individuals. Why not pursue all three at once?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Each path needs different activities, customers, and resources; pursuing all dilutes focus and burns scarce capital. Choose the most <b>desirable + feasible + viable</b> wedge first, prove it, then sequence the others &mdash; a guiding strategy, not opportunism.</div><div class="q">What does &ldquo;internal consistency&rdquo; of a business model mean here?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">The pieces (value prop, required activities, revenue model, costs) must <b>reinforce</b> each other rather than fight. E.g., a high-touch curation promise paired with a low take-rate, high-volume model is inconsistent &mdash; the economics will not support the promise.</div></div></div></details><details class="collap"><summary><span class="sess">S4</span> Zipcar — utilization & density <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Apr 22 · Business model design & unit economics</p><div class="qbox"><div class="qh">Case</div>Zipcar + Study Questions Zipcar. Note: <i>Note on Business Model Analysis for the Entrepreneur</i>.</div><div class="qbox"><div class="qh">Technical note / framework</div>Unit economics: isolate the repeatable unit, then contribution = price &minus; variable cost; break-even = fixed &divide; contribution; check CAC/LTV and payback. Negative contribution cannot be scaled away.</div><div class="worked"><div class="wh">Lecture concept applied</div>Unit = one car in one neighborhood. Drivers: utilization, density, fixed cost/car. Each market is its own break-even bet; growth = reach density city-by-city.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">Define the &ldquo;unit&rdquo; and the 2&ndash;3 driving variables for Zipcar.</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Unit = <b>one car in one neighborhood</b>. Drivers = <b>utilization</b> (member-hours/car), <b>local density</b> (members per area), and <b>fixed cost per car</b>. Profit flips positive once utilization passes the break-even threshold.</div><div class="q">At what point does adding a car in a new neighborhood make sense?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">When projected local <b>density</b> will drive utilization past the point where contribution (price &minus; variable cost) &times; rental-hours covers that car&rsquo;s <b>fixed cost</b>. Below that, the car bleeds fixed cost &mdash; so density must come first.</div></div></div></details><details class="collap"><summary><span class="sess">S5</span> Dropbox — testing the riskiest assumption <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Apr 22 · Experimentation</p><div class="qbox"><div class="qh">Case</div>HBS 9-811-065 Dropbox: &ldquo;It Just Works&rdquo;. Notes: <i>Customer Discovery &amp; Validation</i> · <i>Hypothesis-Driven Entrepreneurship: The Lean Startup</i>.</div><div class="qbox"><div class="qh">Technical note / framework</div>Lean Startup: hold the model as falsifiable hypotheses, build the smallest MVP for the riskiest one, measure, then persevere or pivot. Customer Discovery/Validation = test problem then solution before scaling.</div><div class="worked"><div class="wh">Lecture concept applied</div>Dropbox de-risked demand before building: the demo video tested the value hypothesis; the referral program tested the growth hypothesis. Sign-up surge = validated learning.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">What was Dropbox&rsquo;s riskiest assumption, and which experiment tested it?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Not &ldquo;can we build sync&rdquo; but <b>&ldquo;do enough people want frictionless sync and can we acquire them cheaply.&rdquo;</b> The <b>demo video</b> (an MVP needing no finished product) tested the value hypothesis; the <b>referral program</b> tested the growth hypothesis.</div><div class="q">Why define the failure criterion before running an experiment?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">To beat <b>confirmation bias</b> and vanity metrics. Pre-committing to &ldquo;below X% = pivot&rdquo; forces honest learning rather than rationalizing weak results after the fact.</div></div></div></details><details class="collap"><summary><span class="sess">S6</span> To Found or to Cofound? — team & equity <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Apr 24 · The founding team</p><div class="qbox"><div class="qh">Case</div>To Found or to Cofound? + Study Questions.</div><div class="qbox"><div class="qh">Technical note / framework</div>Founder&rsquo;s dilemmas: solo vs. co-founder; complementary skills &amp; shared risk vs. dilution, control loss, relationship risk. Governance/vesting/equity set early.</div><div class="worked"><div class="wh">Lecture concept applied</div>Golden rule: define governance day one. Slice-and-pie allocates equity dynamically by contribution; vesting earns equity over time; friends/family need MORE structure, not less.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">What predictable conflicts should a founder agreement pre-empt?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Equity disputes, unclear <b>roles/decision rights</b>, a co-founder leaving early with unearned equity, and vision drift. Pre-empt with vesting + cliffs, written roles, an equity method (equal vs. slice-and-pie), and a conflict-resolution mechanism &mdash; all on day one.</div><div class="q">Why do friends/family co-founders need more formal structure, not less?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Because the personal relationship tempts them to skip paperwork &mdash; exactly when an unwritten deal causes the worst fallout. Formal vesting and governance protect both the company and the relationship.</div></div></div></details><details class="collap"><summary><span class="sess">S7</span> Grupo Sports World — leadership under growth <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">May 12 · The entrepreneurial leader</p><div class="qbox"><div class="qh">Case</div>DG 19 eC 02 Grupo Sports World (GSW) + Study Questions.</div><div class="qbox"><div class="qh">Technical note / framework</div>Entrepreneurial leadership: judgment under uncertainty with limited resources; the four GM roles in a capital-intensive service business.</div><div class="worked"><div class="wh">Lecture concept applied</div>The leader&rsquo;s perspective, risk appetite, and judgment shape which moves the company makes &mdash; leadership, not just analysis, drives outcomes.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">In a capital-intensive service business like GSW, which GM roles dominate as it grows?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer"><b>Create structure (#2)</b> and <b>execute processes (#3)</b> &mdash; consistent service quality across locations requires repeatable processes and control systems, while still <b>aligning interests (#4)</b> of staff and investors.</div><div class="q">How does the leader&rsquo;s risk appetite change which opportunities look attractive?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">It reframes the desirability/feasibility/viability weighting &mdash; a more risk-tolerant leader will pursue capital-heavy expansion others would decline. Leadership perspective, not just the numbers, sets the strategy.</div></div></div></details><details class="collap"><summary><span class="sess">S8</span> GenapSys — model choice & cash <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">May 15 · Business models, cash flow & financing</p><div class="qbox"><div class="qh">Case</div>HBS 9-814-050 GenapSys + Study Questions + financial model (XLS).</div><div class="qbox"><div class="qh">Technical note / framework</div>Profit vs. cash; burn rate &amp; runway; matching financing to stage/risk. Model choice (razor/razor-blade vs. alternatives) drives cash needs.</div><div class="worked"><div class="wh">Lecture concept applied</div>In deep-tech, model choice and financing are inseparable. Translate the model into a cash-flow forecast; profit on paper means nothing if cash timing kills you.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">Why can a profitable company still run out of cash?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Profit is accounting (revenue recognized minus matched expenses); <b>cash</b> is the bank balance. Upfront equipment/inventory, late-paying customers, and growth all consume cash before profit converts. Watch <b>burn rate</b> and <b>runway</b> (cash &divide; burn).</div><div class="q">How does a hardware + consumables (razor/razor-blade) model change financing needs vs. selling instruments outright?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Placing instruments cheaply to earn recurring consumables defers revenue and <b>increases upfront cash needs</b> (you fund the hardware now, earn later) &mdash; demanding more/earlier financing than an outright-sale model. Model choice sets the size and timing of the raise.</div></div></div></details><details class="collap"><summary><span class="sess">S9</span> ELCA&rsquo;s Series A — the priced round <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">May 15 · Financing the venture</p><div class="qbox"><div class="qh">Case</div>HBS 9-823-079 ELCA&rsquo;s Series A. Reading: <i>Financing Entrepreneurial Ventures</i>.</div><div class="qbox"><div class="qh">Technical note / framework</div>The financing staircase; pre/post-money valuation; cap table; dilution; what investors underwrite at Series A.</div><div class="worked"><div class="wh">Lecture concept applied</div>A Series A is a negotiation over price (valuation/dilution) AND future direction (control). Plan the whole staircase, not just the next step.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">Pre-money is $12M and the investor puts in $3M. What is post-money and the investor&rsquo;s ownership?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Post-money = 12 + 3 = <b>$15M</b>; investor % = 3 &divide; 15 = <b>20%</b>; founders/existing holders are diluted to 80%. (Use the dilution calculator to vary these.)</div><div class="q">Beyond price, what does a founder underwrite when accepting a Series A?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Board composition, protective provisions, option-pool sizing, and liquidation preference &mdash; the terms that determine <b>control</b> and the <b>downside payout</b>, often more consequential than the headline valuation.</div></div></div></details><details class="collap"><summary><span class="sess">S10</span> ELCA + SAFE conversion <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">May 25 · Financing (cont.) — SAFEs</p><div class="qbox"><div class="qh">Case</div>HBS 9-823-079 ELCA (cont.). Note: <i>SAFE Notes: An Introduction</i> + model (XLS).</div><div class="qbox"><div class="qh">Technical note / framework</div>SAFE = convert-later instrument (not debt). Cap = max conversion valuation; discount = % off the round price; investor takes the better. Stacked SAFEs create hidden future dilution.</div><div class="worked"><div class="wh">Lecture concept applied</div>SAFEs are fast and founder-friendly but bite later &mdash; model the conversion forward into the post-Series-A cap table.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">A SAFE has a $5M cap and the priced round is at $10M post-money. Roughly how does the SAFE holder benefit?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">They convert as if the company were worth the <b>$5M cap</b>, not $10M &mdash; effectively buying shares at half the round price, so they get ~2&times; the equity their dollars would otherwise buy. That upside is <b>founder dilution</b> realized later.</div><div class="q">Why is &ldquo;a SAFE is free money now&rdquo; a dangerous way to think?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Because the dilution is <b>deferred and stacked</b> &mdash; several SAFEs all convert at the next round (often at their caps) on top of the new investor&rsquo;s stake, diluting founders far more than they intuit. Always model conversion before signing.</div></div></div></details><details class="collap"><summary><span class="sess">S11</span> Medical-Industry AI (A–E) + VC workshop <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">May 26 · Negotiating with founders & investors</p><div class="qbox"><div class="qh">Case</div>Reading: <i>Partnering with Venture Capitalists</i>. Case: CiiE 23 eC 04 (A&ndash;E) Entrepreneurship in the Medical Industry. Note: <i>Terms Relevant to Risky Financing Ecosystems</i>. Workshop: VC Negotiation (PPTX).</div><div class="qbox"><div class="qh">Technical note / framework</div>VC incentives (power-law/portfolio, need for exits) shape terms. Term-sheet vocabulary: liquidation preference, option pool, board seats, protective provisions, anti-dilution. Prepare with BATNA / reservation price / ZOPA.</div><div class="worked"><div class="wh">Lecture concept applied</div>Founder&ndash;investor negotiation is about more than valuation. Trade low-value terms to win control-critical ones; valuation vs. control is the central tension.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">You enter a raise with no alternative offer. How does that weaken you, and what should you build first?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">With no <b>BATNA</b> (best alternative), your walk-away power is near zero, so you must accept worse terms. Before negotiating, create alternatives (other investors, a path to bootstrap longer) to widen the <b>ZOPA</b> in your favor and set a real <b>reservation price</b>.</div><div class="q">Why might a founder concede on valuation to win on board control?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Because <b>control</b> (board seats, protective provisions) governs the company&rsquo;s direction and the founder&rsquo;s ability to execute. A slightly lower valuation with a founder-friendly board can be worth more than a high valuation that hands investors decision rights.</div></div></div></details><details class="collap"><summary><span class="sess">S12</span> Gamma — AI moats <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Jun 1 · AI and its implications</p><div class="qbox"><div class="qh">Case</div>HBS 9-826-001 Gamma: Slides in the Blink of AI + Study Questions.</div><div class="qbox"><div class="qh">Technical note / framework</div>AI defensibility: where AI creates durable advantage vs. commoditizes. Moats from proprietary data, workflow lock-in, network effects, distribution &mdash; not the model alone.</div><div class="worked"><div class="wh">Lecture concept applied</div>In AI-native products, competitors access similar models; the edge is data, switching costs, and distribution. Assess both moat and dependence/risk (reliance on model providers).</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">Gamma uses the same foundation models as competitors. Where can durable advantage come from?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">From <b>proprietary data</b> that compounds with use, <b>workflow lock-in / switching costs</b>, <b>network effects</b>, and <b>distribution</b> &mdash; not the model itself, which is commoditized. Ask what makes users stay after the novelty fades.</div><div class="q">What new risks does heavy reliance on a third-party model provider introduce?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Pricing/API changes, capability shifts, rate limits, policy/regulatory exposure, and the provider competing downstream. Dependence can erode margins and defensibility &mdash; weigh it in the viability lens.</div></div></div></details><details class="collap"><summary><span class="sess">S13</span> CloudFlare — &ldquo;Running Hot?&rdquo; <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Jun 1 · Operational scaling</p><div class="qbox"><div class="qh">Case</div>HBS 9-813-145 CloudFlare, Inc.: Running Hot? Note: <i>Scaling a Startup: Pacing Issues</i>. Reading: <i>Leading High-Growth Ventures</i>.</div><div class="qbox"><div class="qh">Technical note / framework</div>Pace growth to what the organization can absorb. Too fast breaks quality, culture, control; too slow loses the market. Watch early warning signs of &ldquo;running hot.&rdquo;</div><div class="worked"><div class="wh">Lecture concept applied</div>Build repeatable processes and control systems ahead of the curve; the leader transitions from doing the work to building the organization that does it.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">What are the early warning signs that a company is &ldquo;running hot&rdquo;?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Rising <b>defect/churn rates</b>, constant <b>firefighting</b>, deteriorating service/quality, and unit economics that held at small scale starting to slip (worse customers, rushed hiring). They signal can-grow is lagging should-grow.</div><div class="q">How must the founder&rsquo;s role change to scale successfully?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">From <b>doing the work</b> to <b>building the organization</b> &mdash; delegation, hiring ahead of need, installing control/information systems, and shaping culture intentionally. What works at 20 people sinks the company at 200 without this transition.</div></div></div></details><details class="collap"><summary><span class="sess">S14</span> Duolingo — focus & growth vectors <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Jun 2 · Strategic scaling</p><div class="qbox"><div class="qh">Case</div>HBS 9-825-097 Duolingo: On a &ldquo;Streak&rdquo; + Study Questions.</div><div class="qbox"><div class="qh">Technical note / framework</div>Strategic scaling: choose the next growth vector (geography, segment, product, monetization) while protecting the core engagement loop. Focus vs. expansion trade-off.</div><div class="worked"><div class="wh">Lecture concept applied</div>Strategic scaling means saying no to attractive distractions and doubling down on what compounds &mdash; protect the streak (retention engine) while extending it.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">How should Duolingo decide its next growth vector?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Evaluate each option (new subjects, monetization, gamification) on whether it <b>protects or strengthens the core engagement loop</b> (the streak) that drives retention, versus diluting it. Prioritize vectors that compound the core, not just add surface area.</div><div class="q">What is the cost of losing focus during scaling?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Weaker core retention, scattered execution, and resources spread too thin to win anywhere. The upside of a new market can be outweighed by erosion of the engine that made the company work.</div></div></div></details><details class="collap"><summary><span class="sess">S15</span> Synthesis — founder to CEO <span class="chev">&#9656;</span></summary><div class="cbody"><p class="note">Jun 3 · The entrepreneurial leader (capstone)</p><div class="qbox"><div class="qh">Case</div>No new pre-reading. Capstone synthesis.</div><div class="qbox"><div class="qh">Technical note / framework</div>Integrates the whole course: the leader&rsquo;s evolving role from founder to CEO &mdash; succession, culture, sustaining the venture &mdash; across opportunity, model, team, financing, negotiation, scaling.</div><div class="worked"><div class="wh">Lecture concept applied</div>Run the full master procedure end-to-end; the leader&rsquo;s job changes across the venture&rsquo;s life while the core discipline (opportunity &rarr; evidence &rarr; staged commitment) carries through.</div><div class="think"><div class="th">&#9998; Practice &amp; thought prompts</div><div class="q">How does the leader&rsquo;s job change from idea to scale?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer">Early: define the opportunity and align the first team (roles 1 &amp; 4). Later: build structure and process and lead a growing organization (roles 2 &amp; 3), eventually transitioning from founder-doer to CEO-builder, with succession and culture as the venture matures.</div><div class="q">What single discipline carries through every stage of the course?</div><button class="reveal" onclick="tog(this)">Reveal thought process &rarr;</button><div class="answer"><b>Reducing uncertainty through staged commitment</b> &mdash; opportunity-led, hypothesis-driven, gradual resource commitment (the entrepreneurial mode), whether you are testing demand, raising a round, or scaling.</div></div></div></details></div>
+<hr class="divider">
+<div id="calc" class="part-section">
+<h2 class="part">Tools</h2>
+<h3 class="title">Interactive Calculators</h3>
+<p class="lead">Plug in numbers to feel the economics. Nothing leaves your browser.</p>
+
+<div class="calc">
+  <h4>1 · Unit Economics &amp; Break-Even</h4>
+  <div class="field"><label>Price per unit ($)</label><input type="number" id="ue_price" value="50" oninput="calcUE()"></div>
+  <div class="field"><label>Variable cost per unit ($)</label><input type="number" id="ue_var" value="20" oninput="calcUE()"></div>
+  <div class="field"><label>Total fixed costs ($)</label><input type="number" id="ue_fixed" value="12000" oninput="calcUE()"></div>
+  <div class="field"><label>CAC — cost to acquire a customer ($)</label><input type="number" id="ue_cac" value="40" oninput="calcUE()"></div>
+  <div class="field"><label>Avg purchases per customer (lifetime)</label><input type="number" id="ue_life" value="6" oninput="calcUE()"></div>
+  <div class="calcout" id="ue_out"></div>
+</div>
+
+<div class="calc">
+  <h4>2 · Pre/Post-Money &amp; Dilution</h4>
+  <div class="field"><label>Pre-money valuation ($)</label><input type="number" id="dl_pre" value="12000000" oninput="calcDL()"></div>
+  <div class="field"><label>New investment ($)</label><input type="number" id="dl_inv" value="3000000" oninput="calcDL()"></div>
+  <div class="field"><label>Founders&rsquo; ownership before round (%)</label><input type="number" id="dl_own" value="100" oninput="calcDL()"></div>
+  <div class="calcout" id="dl_out"></div>
+</div>
+
+<div class="calc">
+  <h4>3 · SAFE Conversion (cap vs. discount)</h4>
+  <div class="field"><label>SAFE investment ($)</label><input type="number" id="sf_inv" value="500000" oninput="calcSF()"></div>
+  <div class="field"><label>Valuation cap ($)</label><input type="number" id="sf_cap" value="5000000" oninput="calcSF()"></div>
+  <div class="field"><label>Discount (%)</label><input type="number" id="sf_disc" value="20" oninput="calcSF()"></div>
+  <div class="field"><label>Priced-round pre-money ($)</label><input type="number" id="sf_round" value="10000000" oninput="calcSF()"></div>
+  <div class="calcout" id="sf_out"></div>
+</div>
+</div>
+<hr class="divider"><div id="flash" class="part-section"><h2 class="part">Tools</h2><h3 class="title">Flashcards</h3><p class="lead">Tap a card to flip. Self-test on the key terms before class or an exam.</p><div class="fcgrid"><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">TAM / SAM / SOM</div><div class="hint">tap to flip</div></div><div class="fcback">Total / Serviceable / Serviceable-Obtainable market. Size bottom-up (units × price × realistic adoption), not top-down %.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Contribution margin</div><div class="hint">tap to flip</div></div><div class="fcback">Price minus variable cost per unit — the cash each sale throws off toward fixed costs.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Break-even</div><div class="hint">tap to flip</div></div><div class="fcback">Volume or utilization where contribution exactly covers fixed costs (Fixed ÷ Contribution).</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">CAC</div><div class="hint">tap to flip</div></div><div class="fcback">Customer Acquisition Cost — total spend to win one customer.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">LTV</div><div class="hint">tap to flip</div></div><div class="fcback">Lifetime Value — total contribution a customer generates over the relationship; healthy LTV/CAC ≈ 3:1+.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">CAC payback</div><div class="hint">tap to flip</div></div><div class="fcback">Months of contribution margin needed to recoup a customer&rsquo;s acquisition cost.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Burn rate</div><div class="hint">tap to flip</div></div><div class="fcback">Net cash consumed per month.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Runway</div><div class="hint">tap to flip</div></div><div class="fcback">Months until cash hits zero = cash on hand ÷ burn rate.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Pre-money</div><div class="hint">tap to flip</div></div><div class="fcback">Company&rsquo;s agreed value before new investment.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Post-money</div><div class="hint">tap to flip</div></div><div class="fcback">Pre-money + new investment. Investor % = investment ÷ post-money.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Dilution</div><div class="hint">tap to flip</div></div><div class="fcback">Reduction in existing owners&rsquo; percentage when new shares are issued.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Cap table</div><div class="hint">tap to flip</div></div><div class="fcback">Record of who owns what and how each round changes ownership.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">SAFE</div><div class="hint">tap to flip</div></div><div class="fcback">Simple Agreement for Future Equity — converts at the next priced round; not debt.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Valuation cap</div><div class="hint">tap to flip</div></div><div class="fcback">Max valuation at which a SAFE converts — protects early investor upside.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Discount (SAFE)</div><div class="hint">tap to flip</div></div><div class="fcback">% break off the priced-round share price for the SAFE holder.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Liquidation preference</div><div class="hint">tap to flip</div></div><div class="fcback">Who gets paid first in an exit and how much (1× non-participating vs. participating changes founder payouts a lot).</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Option pool</div><div class="hint">tap to flip</div></div><div class="fcback">Reserved employee equity; if carved from pre-money it quietly dilutes founders.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Protective provisions</div><div class="hint">tap to flip</div></div><div class="fcback">Investor veto/approval rights over key decisions — part of control, not price.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">BATNA</div><div class="hint">tap to flip</div></div><div class="fcback">Best Alternative To a Negotiated Agreement — your walk-away option and source of power.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">ZOPA</div><div class="hint">tap to flip</div></div><div class="fcback">Zone Of Possible Agreement — the overlap where a deal can be struck.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">MVP</div><div class="hint">tap to flip</div></div><div class="fcback">Minimum Viable Product — smallest build that tests the riskiest assumption.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Pivot vs. persevere</div><div class="hint">tap to flip</div></div><div class="fcback">Decision after an experiment: change a core element, or keep going, based on validated learning.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Value creation vs. capture</div><div class="hint">tap to flip</div></div><div class="fcback">Benefit delivered to customers vs. the share the firm keeps as margin/profit.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Entrepreneurial mode</div><div class="hint">tap to flip</div></div><div class="fcback">Opportunity-driven; pursue regardless of resources controlled; commit gradually (Stevenson).</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">First-mover advantage</div><div class="hint">tap to flip</div></div><div class="fcback">Edge from scale, switching costs, network effects, or best locations/channels — only if lockable.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Network effects</div><div class="hint">tap to flip</div></div><div class="fcback">Product gets more valuable as more people use it — a key moat.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Slice-and-pie</div><div class="hint">tap to flip</div></div><div class="fcback">Dynamic equity split based on each founder&rsquo;s ongoing contribution vs. a fixed equal split.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Vesting</div><div class="hint">tap to flip</div></div><div class="fcback">Earning equity over time (e.g., 4-year vest, 1-year cliff) to protect against early departures.</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Should-grow × Can-grow</div><div class="hint">tap to flip</div></div><div class="fcback">Matrix: strategic necessity vs. operational capability; top-left = &ldquo;running hot.&rdquo;</div></div></div><div class="fcard" onclick="flipCard(this)"><div class="fcinner"><div class="fcfront"><div class="term">Running hot</div><div class="hint">tap to flip</div></div><div class="fcback">High should-grow, low can-grow — demand outrunning capability; pace or build ahead.</div></div></div></div></div><hr class="divider"><div id="glossary" class="part-section"><h2 class="part">Tools</h2><h3 class="title">Glossary</h3><p class="lead">Every key term, one-line definition. Type to filter.</p><input class="searchbar" id="glsearch" placeholder="Search terms… (e.g. dilution, liquidation, BATNA)" oninput="filterGloss()"><div class="gloss" id="glossgrid"><div class="gitem gentry" data-t="batna best alternative to a negotiated agreement — your walk-away option and source of power."><div class="gt">BATNA</div><div class="gd">Best Alternative To a Negotiated Agreement — your walk-away option and source of power.</div></div><div class="gitem gentry" data-t="break-even volume or utilization where contribution exactly covers fixed costs (fixed ÷ contribution)."><div class="gt">Break-even</div><div class="gd">Volume or utilization where contribution exactly covers fixed costs (Fixed ÷ Contribution).</div></div><div class="gitem gentry" data-t="burn rate net cash consumed per month."><div class="gt">Burn rate</div><div class="gd">Net cash consumed per month.</div></div><div class="gitem gentry" data-t="cac customer acquisition cost — total spend to win one customer."><div class="gt">CAC</div><div class="gd">Customer Acquisition Cost — total spend to win one customer.</div></div><div class="gitem gentry" data-t="cac payback months of contribution margin needed to recoup a customers acquisition cost."><div class="gt">CAC payback</div><div class="gd">Months of contribution margin needed to recoup a customer&rsquo;s acquisition cost.</div></div><div class="gitem gentry" data-t="cap table record of who owns what and how each round changes ownership."><div class="gt">Cap table</div><div class="gd">Record of who owns what and how each round changes ownership.</div></div><div class="gitem gentry" data-t="contribution margin price minus variable cost per unit — the cash each sale throws off toward fixed costs."><div class="gt">Contribution margin</div><div class="gd">Price minus variable cost per unit — the cash each sale throws off toward fixed costs.</div></div><div class="gitem gentry" data-t="dilution reduction in existing owners percentage when new shares are issued."><div class="gt">Dilution</div><div class="gd">Reduction in existing owners&rsquo; percentage when new shares are issued.</div></div><div class="gitem gentry" data-t="discount (safe) % break off the priced-round share price for the safe holder."><div class="gt">Discount (SAFE)</div><div class="gd">% break off the priced-round share price for the SAFE holder.</div></div><div class="gitem gentry" data-t="entrepreneurial mode opportunity-driven; pursue regardless of resources controlled; commit gradually (stevenson)."><div class="gt">Entrepreneurial mode</div><div class="gd">Opportunity-driven; pursue regardless of resources controlled; commit gradually (Stevenson).</div></div><div class="gitem gentry" data-t="first-mover advantage edge from scale, switching costs, network effects, or best locations/channels — only if lockable."><div class="gt">First-mover advantage</div><div class="gd">Edge from scale, switching costs, network effects, or best locations/channels — only if lockable.</div></div><div class="gitem gentry" data-t="liquidation preference who gets paid first in an exit and how much (1× non-participating vs. participating changes founder payouts a lot)."><div class="gt">Liquidation preference</div><div class="gd">Who gets paid first in an exit and how much (1× non-participating vs. participating changes founder payouts a lot).</div></div><div class="gitem gentry" data-t="ltv lifetime value — total contribution a customer generates over the relationship; healthy ltv/cac ≈ 3:1+."><div class="gt">LTV</div><div class="gd">Lifetime Value — total contribution a customer generates over the relationship; healthy LTV/CAC ≈ 3:1+.</div></div><div class="gitem gentry" data-t="mvp minimum viable product — smallest build that tests the riskiest assumption."><div class="gt">MVP</div><div class="gd">Minimum Viable Product — smallest build that tests the riskiest assumption.</div></div><div class="gitem gentry" data-t="network effects product gets more valuable as more people use it — a key moat."><div class="gt">Network effects</div><div class="gd">Product gets more valuable as more people use it — a key moat.</div></div><div class="gitem gentry" data-t="option pool reserved employee equity; if carved from pre-money it quietly dilutes founders."><div class="gt">Option pool</div><div class="gd">Reserved employee equity; if carved from pre-money it quietly dilutes founders.</div></div><div class="gitem gentry" data-t="pivot vs. persevere decision after an experiment: change a core element, or keep going, based on validated learning."><div class="gt">Pivot vs. persevere</div><div class="gd">Decision after an experiment: change a core element, or keep going, based on validated learning.</div></div><div class="gitem gentry" data-t="post-money pre-money + new investment. investor % = investment ÷ post-money."><div class="gt">Post-money</div><div class="gd">Pre-money + new investment. Investor % = investment ÷ post-money.</div></div><div class="gitem gentry" data-t="pre-money companys agreed value before new investment."><div class="gt">Pre-money</div><div class="gd">Company&rsquo;s agreed value before new investment.</div></div><div class="gitem gentry" data-t="protective provisions investor veto/approval rights over key decisions — part of control, not price."><div class="gt">Protective provisions</div><div class="gd">Investor veto/approval rights over key decisions — part of control, not price.</div></div><div class="gitem gentry" data-t="running hot high should-grow, low can-grow — demand outrunning capability; pace or build ahead."><div class="gt">Running hot</div><div class="gd">High should-grow, low can-grow — demand outrunning capability; pace or build ahead.</div></div><div class="gitem gentry" data-t="runway months until cash hits zero = cash on hand ÷ burn rate."><div class="gt">Runway</div><div class="gd">Months until cash hits zero = cash on hand ÷ burn rate.</div></div><div class="gitem gentry" data-t="safe simple agreement for future equity — converts at the next priced round; not debt."><div class="gt">SAFE</div><div class="gd">Simple Agreement for Future Equity — converts at the next priced round; not debt.</div></div><div class="gitem gentry" data-t="should-grow × can-grow matrix: strategic necessity vs. operational capability; top-left = running hot."><div class="gt">Should-grow × Can-grow</div><div class="gd">Matrix: strategic necessity vs. operational capability; top-left = &ldquo;running hot.&rdquo;</div></div><div class="gitem gentry" data-t="slice-and-pie dynamic equity split based on each founders ongoing contribution vs. a fixed equal split."><div class="gt">Slice-and-pie</div><div class="gd">Dynamic equity split based on each founder&rsquo;s ongoing contribution vs. a fixed equal split.</div></div><div class="gitem gentry" data-t="tam / sam / som total / serviceable / serviceable-obtainable market. size bottom-up (units × price × realistic adoption), not top-down %."><div class="gt">TAM / SAM / SOM</div><div class="gd">Total / Serviceable / Serviceable-Obtainable market. Size bottom-up (units × price × realistic adoption), not top-down %.</div></div><div class="gitem gentry" data-t="valuation cap max valuation at which a safe converts — protects early investor upside."><div class="gt">Valuation cap</div><div class="gd">Max valuation at which a SAFE converts — protects early investor upside.</div></div><div class="gitem gentry" data-t="value creation vs. capture benefit delivered to customers vs. the share the firm keeps as margin/profit."><div class="gt">Value creation vs. capture</div><div class="gd">Benefit delivered to customers vs. the share the firm keeps as margin/profit.</div></div><div class="gitem gentry" data-t="vesting earning equity over time (e.g., 4-year vest, 1-year cliff) to protect against early departures."><div class="gt">Vesting</div><div class="gd">Earning equity over time (e.g., 4-year vest, 1-year cliff) to protect against early departures.</div></div><div class="gitem gentry" data-t="zopa zone of possible agreement — the overlap where a deal can be struck."><div class="gt">ZOPA</div><div class="gd">Zone Of Possible Agreement — the overlap where a deal can be struck.</div></div></div></div><hr class="divider"><div id="ref" class="part-section"><h2 class="part">Tools</h2><h3 class="title">Quick Reference — Which Framework for Which Case</h3><input class="searchbar" id="refsearch" placeholder="Filter by session, case, or framework…" oninput="filterRef()"><table class="ref"><thead><tr><th>Session</th><th>Case</th><th>Lead framework</th></tr></thead><tbody id="reftbody"><tr class="refrow" data-t="1 r&r opportunity equation; entrepreneurial mode"><td>1</td><td>R&R</td><td>Opportunity equation; entrepreneurial mode</td></tr><tr class="refrow" data-t="2 rent the runway desirability/feasibility/viability; is it real & large; new market space"><td>2</td><td>Rent the Runway</td><td>Desirability/Feasibility/Viability; Is It Real & Large; New Market Space</td></tr><tr class="refrow" data-t="3 capptu business-model analysis; do entrepreneurs need a strategy?"><td>3</td><td>Capptu</td><td>Business-model analysis; Do entrepreneurs need a strategy?</td></tr><tr class="refrow" data-t="4 zipcar unit economics / break-even; 2–3 driving variables"><td>4</td><td>Zipcar</td><td>Unit economics / break-even; 2–3 driving variables</td></tr><tr class="refrow" data-t="5 dropbox hypothesis loop; testing hierarchy; mvp"><td>5</td><td>Dropbox</td><td>Hypothesis loop; testing hierarchy; MVP</td></tr><tr class="refrow" data-t="6 to found or cofound solo/co-founder tree; founder agreement; vesting; slice-and-pie"><td>6</td><td>To Found or Cofound</td><td>Solo/co-founder tree; founder agreement; vesting; slice-and-pie</td></tr><tr class="refrow" data-t="7 grupo sports world 4 gm roles; entrepreneurial leadership"><td>7</td><td>Grupo Sports World</td><td>4 GM roles; entrepreneurial leadership</td></tr><tr class="refrow" data-t="8 genapsys model choice; profit vs. cash; burn / runway"><td>8</td><td>GenapSys</td><td>Model choice; profit vs. cash; burn / runway</td></tr><tr class="refrow" data-t="9–10 elcas series a financing staircase; pre/post-money; safe; terms"><td>9–10</td><td>ELCA&rsquo;s Series A</td><td>Financing staircase; pre/post-money; SAFE; terms</td></tr><tr class="refrow" data-t="11 medical-industry ai (a–e) partnering w/ vcs; term sheet; batna/zopa"><td>11</td><td>Medical-Industry AI (A–E)</td><td>Partnering w/ VCs; term sheet; BATNA/ZOPA</td></tr><tr class="refrow" data-t="12 gamma mover analysis; ai moats (data / lock-in / network)"><td>12</td><td>Gamma</td><td>Mover analysis; AI moats (data / lock-in / network)</td></tr><tr class="refrow" data-t="13 cloudflare should × can grow; pacing; exploration → execution"><td>13</td><td>CloudFlare</td><td>Should × Can grow; pacing; exploration → execution</td></tr><tr class="refrow" data-t="14 duolingo strategic scaling; focus; growth-vector choice"><td>14</td><td>Duolingo</td><td>Strategic scaling; focus; growth-vector choice</td></tr><tr class="refrow" data-t="15 capstone whole master procedure end-to-end"><td>15</td><td>Capstone</td><td>Whole master procedure end-to-end</td></tr></tbody></table></div>
+<hr class="divider">
+<div id="template" class="part-section">
+<h2 class="part">Tools</h2>
+<h3 class="title">Live Case Template</h3>
+<p class="lead">Work a real case through the 9 steps. Your notes save automatically in this browser. Check off steps as you go.</p>
+<div class="progress-wrap"><div class="progress-bar" id="tpl_prog"></div></div>
+<div class="card" id="tpl_card">
+  <div class="field" style="margin-bottom:10px;"><input class="searchbar" id="tpl_case" placeholder="Case / company name…" oninput="saveTpl()"></div>
+<div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk0" onchange="saveTpl()"> 1 · FRAME</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">Which mode (entrepreneurial vs. traditional)? Which GM role is at stake?</div><textarea class="fill tpl_txt" id="tpl_txt0" oninput="saveTpl()" placeholder="Your analysis…"></textarea><div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk1" onchange="saveTpl()"> 2 · OPPORTUNITY</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">Market + problem + solution + business model. Which lens (D/F/V) is weak?</div><textarea class="fill tpl_txt" id="tpl_txt1" oninput="saveTpl()" placeholder="Your analysis…"></textarea><div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk2" onchange="saveTpl()"> 3 · STRATEGY</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">How do they win & sustain it? Mover position? Posture under uncertainty?</div><textarea class="fill tpl_txt" id="tpl_txt2" oninput="saveTpl()" placeholder="Your analysis…"></textarea><div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk3" onchange="saveTpl()"> 4 · MODEL + ECON</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">The unit + 2–3 drivers. Contribution? Break-even? LTV/CAC?</div><textarea class="fill tpl_txt" id="tpl_txt3" oninput="saveTpl()" placeholder="Your analysis…"></textarea><div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk4" onchange="saveTpl()"> 5 · EVIDENCE</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">Riskiest assumption + the experiment (hypothesis, metric, failure criterion)</div><textarea class="fill tpl_txt" id="tpl_txt4" oninput="saveTpl()" placeholder="Your analysis…"></textarea><div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk5" onchange="saveTpl()"> 6 · PEOPLE</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">Team / governance / equity fit for the stage?</div><textarea class="fill tpl_txt" id="tpl_txt5" oninput="saveTpl()" placeholder="Your analysis…"></textarea><div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk6" onchange="saveTpl()"> 7 · MONEY</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">Funding need, round logic, dilution, terms & control</div><textarea class="fill tpl_txt" id="tpl_txt6" oninput="saveTpl()" placeholder="Your analysis…"></textarea><div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk7" onchange="saveTpl()"> 8 · SCALE</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">Should-grow × Can-grow. Pacing risk?</div><textarea class="fill tpl_txt" id="tpl_txt7" oninput="saveTpl()" placeholder="Your analysis…"></textarea><div style="margin:14px 0 4px;font-family:Helvetica,Arial,sans-serif;font-weight:700;color:var(--blue2);font-size:14px;display:flex;align-items:center;gap:8px;"><input type="checkbox" class="tpl_chk" id="tpl_chk8" onchange="saveTpl()"> 9 · DECISION</div><div style="font-size:12.5px;color:var(--soft);font-family:Helvetica,Arial,sans-serif;margin-bottom:4px;">Recommendation + trade-off accepted + leading indicators to watch</div><textarea class="fill tpl_txt" id="tpl_txt8" oninput="saveTpl()" placeholder="Your analysis…"></textarea>
+  <button class="btn" style="margin-top:8px;" onclick="resetTpl()">Clear template</button>
+</div>
+</div>
+<div style="text-align:center;padding:40px 0 10px;font-family:Helvetica,Arial,sans-serif;color:var(--soft);font-size:12.5px;">Built from course technical notes, cases &amp; lecture concepts · Entrepreneurship, IPADE MBA · interactive study companion · progress stored locally in your browser</div>
+</div></div></div><script>
+function tog(b){var a=b.nextElementSibling;a.classList.toggle('show');b.textContent=a.classList.contains('show')?'Hide \u2191':'Reveal thought process \u2192';}
+function flipCard(c){c.classList.toggle('flipped');}
+function toggleTheme(){var h=document.documentElement;var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);try{localStorage.setItem('pb_theme',t);}catch(e){}document.getElementById('themebtn').textContent=t==='dark'?'\u2600 Light':'\u263E Dark';}
+function toggleMenu(){document.getElementById('sidenav').classList.toggle('open');}
+function fmt(n){return isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:2}):'—';}
+function money(n){return isFinite(n)?'$'+n.toLocaleString(undefined,{maximumFractionDigits:0}):'—';}
+function calcUE(){
+ var p=+ue_price.value,v=+ue_var.value,f=+ue_fixed.value,cac=+ue_cac.value,life=+ue_life.value;
+ var c=p-v,be=c>0?f/c:Infinity,ltv=c*life,ratio=cac>0?ltv/cac:Infinity,pay=c>0?cac/c:Infinity;
+ var health=ratio>=3?'<span style="color:var(--green);font-weight:700;">healthy (&ge;3:1)</span>':(ratio>=1?'<span style="color:#c77;font-weight:700;">thin</span>':'<span style="color:var(--accent2);font-weight:700;">unsustainable</span>');
+ var warn=c<=0?'<div class="row" style="color:var(--accent2);font-weight:700;">&#9888; Negative/zero contribution — scaling loses money faster.</div>':'';
+ ue_out.innerHTML='<div class="big">'+(c>0?fmt(be):'\u221E')+' units</div><div class="row"><span>to break even</span></div><div class="row"><b>Contribution / unit</b><span>'+money(c)+'</span></div><div class="row"><b>LTV</b><span>'+money(ltv)+'</span></div><div class="row"><b>LTV / CAC</b><span>'+fmt(ratio)+' — '+health+'</span></div><div class="row"><b>CAC payback</b><span>'+fmt(pay)+' purchases</span></div>'+warn;
+}
+function calcDL(){
+ var pre=+dl_pre.value,inv=+dl_inv.value,own=+dl_own.value;
+ var post=pre+inv,invpct=post>0?inv/post*100:0,newown=own*(1-inv/post);
+ dl_out.innerHTML='<div class="big">'+fmt(invpct)+'%</div><div class="row"><span>investor ownership</span></div><div class="row"><b>Post-money</b><span>'+money(post)+'</span></div><div class="row"><b>Founders after round</b><span>'+fmt(newown)+'%</span></div><div class="row"><b>Dilution taken</b><span>'+fmt(own-newown)+' pts</span></div>'+(invpct>25?'<div class="row" style="color:#c77;">Note: &gt;25% in one round is heavy — typical is 15–20%.</div>':'');
+}
+function calcSF(){
+ var inv=+sf_inv.value,cap=+sf_cap.value,disc=+sf_disc.value,round=+sf_round.value;
+ var capPct=cap>0?inv/cap*100:0;
+ var discVal=round/(1-disc/100); var discPct=discVal>0?inv/discVal*100:0;
+ var capPrice=cap, discPrice=round*(1-disc/100);
+ var better=capPct>=discPct?'CAP':'DISCOUNT';
+ var got=Math.max(capPct,discPct);
+ sf_out.innerHTML='<div class="big">'+fmt(got)+'%</div><div class="row"><span>SAFE holder&rsquo;s share (better path)</span></div><div class="row"><b>Via cap ('+money(cap)+')</b><span>'+fmt(capPct)+'%</span></div><div class="row"><b>Via '+disc+'% discount</b><span>'+fmt(discPct)+'%</span></div><div class="row"><b>Investor takes</b><span style="color:var(--accent2);font-weight:700;">'+better+'</span></div><div class="row" style="color:var(--soft);font-size:12px;">This % is founder dilution realized at the priced round — on top of the new investor.</div>';
+}
+
+function filterGloss(){var q=glsearch.value.toLowerCase();document.querySelectorAll('.gentry').forEach(function(e){e.style.display=e.getAttribute('data-t').indexOf(q)>-1?'':'none';});}
+function filterRef(){var q=refsearch.value.toLowerCase();document.querySelectorAll('.refrow').forEach(function(e){e.style.display=e.getAttribute('data-t').indexOf(q)>-1?'':'none';});}
+function saveTpl(){
+ var d={case:tpl_case.value,chk:[],txt:[]};
+ for(var i=0;i<9;i++){d.chk.push(document.getElementById('tpl_chk'+i).checked);d.txt.push(document.getElementById('tpl_txt'+i).value);}
+ try{localStorage.setItem('pb_tpl',JSON.stringify(d));}catch(e){}
+ var done=d.chk.filter(Boolean).length;document.getElementById('tpl_prog').style.width=(done/9*100)+'%';
+}
+function loadTpl(){
+ try{var d=JSON.parse(localStorage.getItem('pb_tpl'));if(!d)return;tpl_case.value=d.case||'';for(var i=0;i<9;i++){if(d.chk)document.getElementById('tpl_chk'+i).checked=d.chk[i];if(d.txt)document.getElementById('tpl_txt'+i).value=d.txt[i]||'';}var done=(d.chk||[]).filter(Boolean).length;document.getElementById('tpl_prog').style.width=(done/9*100)+'%';}catch(e){}
+}
+function resetTpl(){if(confirm('Clear your case template notes?')){try{localStorage.removeItem('pb_tpl');}catch(e){}tpl_case.value='';for(var i=0;i<9;i++){document.getElementById('tpl_chk'+i).checked=false;document.getElementById('tpl_txt'+i).value='';}document.getElementById('tpl_prog').style.width='0%';}}
+// scroll spy
+function initSpy(){
+ var links=Array.prototype.slice.call(document.querySelectorAll('.sidenav a[href^="#"]'));
+ var map={};links.forEach(function(l){var id=l.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)map[id]=l;});
+ window.addEventListener('scroll',function(){
+   var y=window.scrollY+120,cur=null;
+   Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=y)cur=id;});
+   links.forEach(function(l){l.classList.remove('active');});
+   if(cur&&map[cur])map[cur].classList.add('active');
+ },{passive:true});
+}
+// init
+(function(){
+ try{var t=localStorage.getItem('pb_theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}
+ var tb=document.getElementById('themebtn');if(tb)tb.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'\u2600 Light':'\u263E Dark';
+ calcUE();calcDL();calcSF();loadTpl();initSpy();
+ // smooth scroll + close mobile menu
+ document.querySelectorAll('.sidenav a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){document.getElementById('sidenav').classList.remove('open');});});
+})();
+<\/script></body></html>
