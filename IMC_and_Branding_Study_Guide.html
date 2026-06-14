@@ -1,312 +1,1158 @@
 
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>IMC &amp; Branding Study Guide</title><style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#0f1419;color:#e6e9ec;line-height:1.6}
-:root{--accent:#ff6b35;--accent2:#f7931e;--card:#1a2129;--card2:#222c37;--border:#2d3a47;--muted:#8a98a6;--green:#2ecc71}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-header.hero{background:linear-gradient(135deg,#1a2129 0%,#2d1b14 100%);border-bottom:3px solid var(--accent);padding:38px 0 30px}
-.hero h1{font-size:30px;font-weight:800;letter-spacing:-.5px}
-.hero p{color:var(--muted);margin-top:8px;max-width:760px}
-.hero .meta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-.pill{background:rgba(255,107,53,.15);color:var(--accent2);border:1px solid rgba(255,107,53,.35);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
-nav.tabs{position:sticky;top:0;z-index:50;background:rgba(15,20,25,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:10px 0}
-nav.tabs .wrap{display:flex;gap:6px;flex-wrap:wrap}
-.tabbtn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;transition:.15s}
-.tabbtn:hover{color:#fff;border-color:var(--accent)}
-.tabbtn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.view{display:none;padding:28px 0 80px}
-.view.active{display:block}
-.progressbar{height:6px;background:var(--card);border-radius:6px;overflow:hidden;margin:18px 0}
-.progressbar > div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:width .4s}
-.search{width:100%;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:#fff;font-size:15px;margin-bottom:8px}
-.search:focus{outline:none;border-color:var(--accent)}
-.acc{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden}
-.acc-head{padding:16px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;user-select:none}
-.acc-head:hover{background:var(--card2)}
-.acc-num{flex:none;width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff}
-.acc-title{font-weight:700;font-size:16px;flex:1}
-.acc-sub{color:var(--muted);font-size:12.5px;font-weight:500;margin-top:2px}
-.acc-chev{color:var(--muted);transition:.2s;font-size:13px}
-.acc.open .acc-chev{transform:rotate(180deg)}
-.acc-body{display:none;padding:4px 20px 20px 20px;border-top:1px solid var(--border)}
-.acc.open .acc-body{display:block}
-.acc-body h4{color:var(--accent2);font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin:18px 0 8px}
-.acc-body p{margin-bottom:10px;color:#d6dbe0}
-.acc-body ul{margin:0 0 12px 20px}
-.acc-body li{margin-bottom:7px;color:#d6dbe0}
-.tag{display:inline-block;background:var(--card2);border:1px solid var(--border);color:var(--accent2);padding:2px 9px;border-radius:6px;font-size:11.5px;font-weight:600;margin:2px 4px 2px 0}
-.callout{background:rgba(46,204,113,.08);border-left:3px solid var(--green);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0}
-.callout b{color:var(--green)}
-.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:18px}
-.flip{perspective:1200px;height:180px;cursor:pointer}
-.flip-in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
-.flip.flipped .flip-in{transform:rotateY(180deg)}
-.flip-f,.flip-b{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--border)}
-.flip-f{background:var(--card);}
-.flip-b{background:linear-gradient(135deg,#2d1b14,#1a2129);transform:rotateY(180deg);border-color:var(--accent)}
-.flip-f .q{font-weight:700;font-size:15px}
-.flip-f .hint{color:var(--muted);font-size:12px;margin-top:auto}
-.flip-b .a{font-size:13.5px;color:#e6e9ec;overflow:auto}
-.fc-cat{font-size:11px;color:var(--accent2);font-weight:700;text-transform:uppercase;margin-bottom:8px}
-.quiz-q{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
-.quiz-q .qt{font-weight:700;margin-bottom:14px}
-.opt{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--border);color:#e6e9ec;padding:11px 14px;border-radius:8px;margin-bottom:8px;cursor:pointer;font-size:14px;transition:.12s}
-.opt:hover{border-color:var(--accent)}
-.opt.correct{background:rgba(46,204,113,.18);border-color:var(--green);color:#fff}
-.opt.wrong{background:rgba(231,76,60,.18);border-color:#e74c3c}
-.opt:disabled{cursor:default}
-.expl{font-size:13px;color:var(--muted);margin-top:10px;display:none;border-top:1px solid var(--border);padding-top:10px}
-.expl.show{display:block}
-.scorebox{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:18px 22px;border-radius:12px;font-weight:700;font-size:18px;margin:20px 0;text-align:center}
-.btn{background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px}
-.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
-.intro-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:18px 20px;margin-bottom:14px}
-.intro-card h3{color:#fff;font-size:17px;margin-bottom:8px}
-footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted);font-size:12.5px;text-align:center}
-.hide{display:none!important}
-::-webkit-scrollbar{width:9px}::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px}
-</style><style>
-.diagram{background:#141b22;border:1px solid var(--border);border-radius:12px;padding:20px;margin:16px 0}
-.diagram .dtitle{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--accent2);font-weight:700;margin-bottom:14px;text-align:center}
-/* Pyramid */
-.pyramid{display:flex;flex-direction:column;align-items:center;gap:5px}
-.pyramid .lvl{color:#fff;text-align:center;padding:10px 8px;border-radius:6px;font-weight:600;font-size:13px}
-.pyramid .lvl small{display:block;font-weight:400;font-size:11px;opacity:.85;margin-top:2px}
-.pyramid .l4{width:42%;background:linear-gradient(135deg,#ff6b35,#f7931e)}
-.pyramid .l3{width:60%;background:#c75a2a}
-.pyramid .l2{width:78%;background:#9c4a25}
-.pyramid .l1{width:96%;background:#6e3a20}
-/* flow / arrows */
-.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;justify-content:center}
-.flow .node{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:12.5px;font-weight:600;flex:1;min-width:90px;text-align:center;display:flex;align-items:center;justify-content:center}
-.flow .arr{display:flex;align-items:center;color:var(--accent);font-weight:800;font-size:18px}
-/* filter columns */
-.filters3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.filters3 .col{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:12px}
-.filters3 .col h5{color:var(--accent2);font-size:12px;text-transform:uppercase;margin-bottom:8px;text-align:center}
-.filters3 .col .f{background:#10161c;border-radius:6px;padding:7px 9px;font-size:12px;margin-bottom:6px;border-left:2px solid var(--accent)}
-/* grid generic */
-.dgrid{display:grid;gap:8px}
-.dgrid .cell{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:11px 13px;font-size:12.5px}
-.dgrid .cell b{color:var(--accent2)}
-/* venn / fit */
-.fit3{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.fit3 .circle{width:130px;height:130px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11.5px;font-weight:700;color:#fff;padding:12px;border:2px solid}
-.fit3 .c1{background:rgba(255,107,53,.18);border-color:var(--accent)}
-.fit3 .c2{background:rgba(247,147,30,.18);border-color:var(--accent2)}
-.fit3 .c3{background:rgba(46,204,113,.15);border-color:var(--green)}
-/* facts */
-.factgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:18px 0}
-.factbox{background:linear-gradient(135deg,#1a2129,#2d1b14);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
-.factbox .num{font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
-.factbox .lbl{font-size:12px;color:var(--muted);margin-top:6px}
-table.ctable{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
-table.ctable th,table.ctable td{border:1px solid var(--border);padding:8px 10px;text-align:left}
-table.ctable th{background:var(--card2);color:var(--accent2)}
-table.ctable .mx{color:var(--green);font-weight:700}
-</style></head><body><div id="app"><header class="hero"><div class="wrap"><h1>Integrated Marketing Communications &amp; Branding</h1><p>Interactive study guide · Marketing Management III · Dr. Silvia Cacho-Elizondo (IPADE). Covers all 16 sessions, key frameworks, flashcards and a self-test quiz.</p><div class="meta"><span class="pill">16 Sessions</span><span class="pill">22 Flashcards</span><span class="pill">12 Quiz Questions</span><span class="pill">Exam: 15 Jun 2026</span></div></div></header><nav class="tabs"><div class="wrap"><button class="tabbtn active" data-v="overview">Overview</button><button class="tabbtn" data-v="sessions">Sessions</button><button class="tabbtn" data-v="flashcards">Flashcards</button><button class="tabbtn" data-v="quiz">Quiz</button><button class="tabbtn" data-v="facts">Course Facts</button><button class="tabbtn" data-v="cheat">Cheat Sheet</button><button class="tabbtn" data-v="method">Case Playbook</button></div></nav><main class="wrap"><section class="view active" id="v-overview" style="display: block;"><div class="intro-card"><h3>What is this course?</h3><p>A graduate (MBA-level) marketing course at IPADE. <b>Marketing Management III: Integrated Marketing Communications &amp; Branding</b>, by Dr. Silvia Cacho-Elizondo. It teaches, through real company cases, how firms <i>communicate</i> with the market and how they <i>build brands</i> that people know, trust, and even love. This guide reconstructs the whole course so you can follow it even if you never attended.</p></div><div class="intro-card"><h3>The thread that ties it together: the Value Creation Cycle</h3><p>Everything maps onto one cycle: <b>identify</b> value → <b>create</b> a value proposition → <b>communicate</b> value → <b>deliver</b> value → <b>extract</b> value → <b>measure</b> value → <b>sustain</b> value. Module I focuses on <i>communicating</i> value; Module II on <i>creating and sustaining</i> brand value.</p></div><div class="intro-card"><h3>Module I, Integrated Marketing Communications (Sessions 1 to 3)</h3><p>How brands <i>say</i> things in a world where consumers talk back. Covers the shift from one-way persuasion (AIDA) to embedding cultural meaning, the 6 M’s planning framework, how to <b>select creative and influencers systematically</b> (Franzia), and how to build a <b>cult brand and community online</b> (Glossier).</p></div><div class="intro-card"><h3>Module II, Branding Strategies (Sessions 4 to 9)</h3><p>How brands are <i>built, defended, and grown</i>: engineering <b>coolness</b>; building with <b>social responsibility</b> (Green Gum); surviving a <b>crisis</b> (United Airlines); taking a stand through <b>activism</b> (Nike &amp; Kaepernick); structuring and growing a portfolio (<b>Grupo Britt</b>); and defending <b>authenticity</b> in global markets (Tequila Patrón).</p></div><div class="intro-card"><h3>Brand Love Workshop (10 to 13) &amp; Entrepreneurship (14)</h3><p>Dr. Aaron Ahuvia explains the <b>psychology of why people love brands</b> (personification) and the ethics of it, then the course closes with how an entrepreneur scales a viral idea into a real brand (<b>GümmyLife</b>).</p></div><div class="callout"><b>If you only memorize two things:</b> Keller’s Brand Resonance Pyramid (how a brand is built in the mind, from Salience up to Resonance) and the 6 M’s of IMC (Mission, Market, Medium, Message, Money, Measurement). Both appear across nearly every session.</div></section><section class="view" id="v-sessions" style="display: none;"><input class="search" id="sessSearch" placeholder="🔍 Search sessions, cases, frameworks…"><div class="progressbar"><div id="readProg" style="width: 16.6667%;"></div></div><div style="margin-bottom:14px"><button class="btn ghost" id="expandAll">Expand all</button> <button class="btn ghost" id="collapseAll">Collapse all</button></div><div id="sessList"><div class="acc opened-once" data-i="0" data-search="introduction: foundations strategic &amp; critical marketing thinking aida resonance pyramid 6 ms imc module i · imc"><div class="acc-head"><div class="acc-num">1</div><div style="flex:1"><div class="acc-title">Introduction: Foundations</div><div class="acc-sub">Module I · IMC · Strategic &amp; critical marketing thinking</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>What this course is really about</h4>
-  <p>This is a graduate marketing course (Marketing Management III at IPADE) about two intertwined ideas: <b>Integrated Marketing Communications (IMC)</b> how a company coordinates everything it "says" to the market, and <b>Branding</b> how a company builds an identity and emotional meaning around its products. The premise is that in the modern world a brand is not just a logo; it is, in the professor's words, a kind of <i>story that circulates in society</i>, co-written by the company, popular culture, customers, and influencers.</p>
-  <h4>The old way vs. the new way of communicating</h4>
-  <p>Traditionally, marketers thought of advertising as <b>psychological persuasion</b>, captured by the classic <b>AIDA model</b>: you grab a consumer's <b>A</b>ttention, spark <b>I</b>nterest, create <b>D</b>esire, and drive <b>A</b>ction (purchase). It assumes a one-way "company talks, consumer listens" funnel. The course argues this is no longer enough. In the new communication paradigm, consumers talk back and talk to each other, through social media, reviews, blogs, and video platforms, so brands no longer fully control their own message. Advertising's deeper job today is to <b>embed cultural value</b> into the brand so it becomes meaningful in people's lives.</p>
-  <h4>Keller's Brand Resonance Pyramid (the master framework)</h4>
-  <p>This is the model you'll see again and again. It describes how a brand is built in the consumer's mind, level by level, like climbing a pyramid. You cannot reach the top without securing each level below it:</p>
-  <ul>
-    <li><b>1. Salience</b>"Who are you?" Does the customer even know the brand exists and what category it's in? This is basic awareness and recognition.</li>
-    <li><b>2. Performance &amp; Imagery</b>"What are you?" Performance = how well the product actually works (functional quality). Imagery = the intangible associations, personality, and social meaning of the brand.</li>
-    <li><b>3. Judgments &amp; Feelings</b>"What about you?" Judgments are the rational opinions customers form (quality, credibility, relevance). Feelings are the emotional reactions the brand triggers.</li>
-    <li><b>4. Resonance</b>"What about you and me?" The peak: an intense, active loyalty and personal attachment, where customers feel a real relationship with the brand and become advocates.</li>
-  </ul>
-  <div class="callout"><b>Why it matters:</b> most brands are stuck near the bottom (people know them but feel nothing). The whole point of branding strategy is to climb toward Resonance.</div>
-  <h4>The 6 M's, a checklist for planning any campaign</h4>
-  <p>When you design an integrated communication campaign, you answer six questions, each starting with M:</p>
-  <ul>
-    <li><b>Mission</b> what is the objective? (build awareness, change perception, drive sales?)</li>
-    <li><b>Market</b> who exactly are we targeting?</li>
-    <li><b>Medium</b> which channels reach them best?</li>
-    <li><b>Message</b> what is the single idea we want to land?</li>
-    <li><b>Money</b> what's the budget?</li>
-    <li><b>Measurement</b> how will we know if it worked?</li>
-  </ul>
-  <div class="callout"><b>Running team exercise:</b> throughout the term, teams develop a marketing-mix and communication campaign for an organic Mexican chewing gum, each team assigned a different country, forcing you to adapt branding and messaging to a specific culture.</div><div class="diagram"><div class="dtitle">Keller Brand Resonance Pyramid</div><div class="pyramid"><div class="lvl l4">4 · RESONANCE<small>"What about you &amp; me?", intense, active loyalty</small></div><div class="lvl l3">3 · JUDGMENTS + FEELINGS<small>"What about you?", opinions &amp; emotions</small></div><div class="lvl l2">2 · PERFORMANCE + IMAGERY<small>"What are you?", function &amp; associations</small></div><div class="lvl l1">1 · SALIENCE<small>"Who are you?", deep, broad awareness</small></div></div></div><div class="diagram"><div class="dtitle">The 6 M’s of IMC</div><div class="flow"><div class="node">Mission<br><small>objective</small></div><div class="arr">→</div><div class="node">Market<br><small>target</small></div><div class="arr">→</div><div class="node">Medium<br><small>channels</small></div><div class="arr">→</div><div class="node">Message<br><small>what to say</small></div><div class="arr">→</div><div class="node">Money<br><small>budget</small></div><div class="arr">→</div><div class="node">Measurement<br><small>impact</small></div></div></div><h4>From the Wrap-Up: the Value Creation Cycle in one line</h4><p>The professor frames the whole course as creating value for two parties at once: <b>for the customer</b> (satisfaction → loyalty) and <b>for the company</b> (price, image, and ultimately <b>brand equity</b>). Branding must be <i>engineered into the marketing mix</i>, not bolted on afterward.</p><div style="margin-top:12px"><span class="tag">AIDA</span><span class="tag">Resonance Pyramid</span><span class="tag">6 Ms</span><span class="tag">IMC</span></div></div></div><div class="acc opened-once" data-i="1" data-search="creative selection &amp; communication agencies case: franzia wine / mekanism agency, franz for life creative decision filters campaign lifecycle influencers module i · imc"><div class="acc-head"><div class="acc-num">2</div><div style="flex:1"><div class="acc-title">Creative Selection &amp; Communication Agencies</div><div class="acc-sub">Module I · IMC · Case: Franzia wine / Mekanism agency, "Franz for Life"</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The situation</h4>
-  <p>Franzia is an inexpensive American boxed wine, historically uncool, low advertising budget, and a brand that rarely works with big agencies. To modernize its image it partnered with a creative agency (Mekanism) on a tongue-in-cheek campaign called <b>"Franz for Life,"</b> which leaned into the box-wine identity with humor and popular culture. The managerial problem the case puts you in: you are handed several proposed ads (storyboards) and several proposed influencers, and you must decide <b>which creative and which influencers to choose</b> for the next wave of the campaign (version 2.0).</p>
-  <h4>The key lesson: choosing creative is NOT a gut decision</h4>
-  <p>Most managers believe picking an ad is intuitive, a "you know it when you see it" judgment based on experience. The case argues the opposite: the best brand-building companies treat creative selection as a <b>systematic, multi-dimensional, teachable process</b>. They train managers to evaluate creative against explicit filters rather than personal taste.</p>
-  <h4>The Creative Decision Filters (6 filters, 3 groups)</h4>
-  <p>You assess any proposed ad by running it through three layers of filters:</p>
-  <ul>
-    <li><b>Brand Filters</b> does it serve the brand? <i>Benefits:</i> is the framing of the brand's benefits compelling? <i>Symbolism:</i> is the brand's symbolism expressed aptly?</li>
-    <li><b>Communication Filters</b> does it communicate well? <i>Resonance:</i> will it resonate with the target's culture? <i>Story:</i> does it weave the product naturally into a story (rather than bolting the product on)?</li>
-    <li><b>Campaign Filters</b> does it work as a campaign? <i>Product:</i> is the execution engaging, simple, original, creative? <i>Campaign Extension:</i> does it effectively extend the equity already built by the existing campaign?</li>
-  </ul>
-  <h4>Related ideas</h4>
-  <p>The case also teaches the <b>advertising campaign lifecycle</b> (a campaign matures and eventually needs refreshing, hence "Franz for Life 2.0"), the <b>challenges of extending a campaign</b> without losing what made the original work, and the <b>role of popular culture</b> as raw material for advertising. Franzia's promotional toolkit is notable for a brand with little money: influencer marketing, media partnerships, merchandising, and social media rather than expensive TV.</p><div class="diagram"><div class="dtitle">Creative Decision Filters</div><div class="filters3"><div class="col"><h5>Brand Filters</h5><div class="f"><b>Benefits</b> framing compelling?</div><div class="f"><b>Symbolism</b> expression apt?</div></div><div class="col"><h5>Communication Filters</h5><div class="f"><b>Resonance</b> fits target culture?</div><div class="f"><b>Story</b> product woven in?</div></div><div class="col"><h5>Campaign Filters</h5><div class="f"><b>Product</b> simple/original/creative?</div><div class="f"><b>Campaign Extension</b> extends equity?</div></div></div></div><h4>From the Wrap-Up: matching the vehicle to the goal</h4><p>Different <b>communication vehicles</b> serve different jobs: <b>Advertising</b> is strongest for <i>cognitive</i> goals (awareness/knowledge), <b>Sales Promotions</b> for <i>behavioral</i> goals (trigger action), and <b>Personal Selling</b> for <i>affective</i> goals (build relationship). Their effectiveness also shifts across the <b>product life cycle</b> advertising dominates at Introduction/Growth, sales promotions and personal selling matter more at Maturity/Decline.</p><div style="margin-top:12px"><span class="tag">Creative Decision Filters</span><span class="tag">Campaign Lifecycle</span><span class="tag">Influencers</span></div></div></div><div class="acc" data-i="2" data-search="nano-influencers (istmo article) the influencer pyramid &amp; why small can be powerful influencer pyramid authenticity cpm module i · reading"><div class="acc-head"><div class="acc-num">2b</div><div style="flex:1"><div class="acc-title">Nano-influencers (ISTMO article)</div><div class="acc-sub">Module I · Reading · The influencer pyramid &amp; why small can be powerful</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>What influencer marketing is</h4>
-  <p>Influencer marketing means promoting a brand <i>through people the target audience already admires</i> for the content they post on Instagram, TikTok, YouTube, or Facebook. As ad budgets shift toward social media, where the audience chooses what to watch and trusts the person delivering the message, these creators become increasingly valuable, partly because, unlike traditional ads, they essentially can't be "skipped" or blocked.</p>
-  <h4>The influencer pyramid (by audience size)</h4>
-  <ul>
-    <li><b>Nano-influencers</b> smallest following, but extremely high trust; seen as ordinary people / "super-users."</li>
-    <li><b>Micro-influencers</b> niche experts with engaged communities.</li>
-    <li><b>Macro-influencers</b> large reach; the historical foundation of the industry; typically need a minimum engagement (~2 to 5%) and sell by number of posts or CPM (cost per thousand impressions).</li>
-    <li><b>Mega-influencers / celebrities</b> e.g., a Kim Kardashian; over a million followers; used mainly to boost brand <i>awareness</i>.</li>
-  </ul>
-  <div class="callout"><b>The central trade-off:</b> the more followers an influencer has, the bigger the reach, but the harder it is to target a specific group, control how people respond, and actually drive purchases. Nano/micro influencers convert better because their recommendation feels <b>authentic</b> a genuine tip from a peer, not a sales pitch.</div>
-  <p>Influencers are also categorized by <b>content vertical</b>: fashion, makeup, foodies, gamers, entertainment, travel, fitness. Matching the influencer's vertical and audience to the brand is what makes the partnership credible and aspirational.</p><div class="diagram"><div class="dtitle">The Influencer Pyramid (followers)</div><div class="pyramid"><div class="lvl l4">MEGA / CELEBRITY<small>1,000,000+ · massive reach, awareness plays</small></div><div class="lvl l3">MACRO<small>100K to 1M · wide reach, less closeness</small></div><div class="lvl l2">MICRO<small>10K to 100K · credible, trusted, segmented</small></div><div class="lvl l1">NANO<small>1K to 10K · highest authenticity &amp; engagement</small></div></div><p style="font-size:11.5px;color:var(--muted);margin-top:10px;text-align:center">↑ more reach · ↓ targeting, control &amp; conversion</p></div><p style="font-size:12px;color:var(--muted)">Thresholds per the Wrap-Up deck (Conde &amp; Casais 2023; Korzynski et al. 2025): nano 1K to 10K, micro 10K to 100K, macro 100K to 1M, mega 1M+.</p><div style="margin-top:12px"><span class="tag">Influencer Pyramid</span><span class="tag">Authenticity</span><span class="tag">CPM</span></div></div></div><div class="acc" data-i="3" data-search="storytelling &amp; digital brand communities case: glossier, building a cult beauty brand online brand vs customer equity clv fournier cbr social commerce module i · imc"><div class="acc-head"><div class="acc-num">3</div><div style="flex:1"><div class="acc-title">Storytelling &amp; Digital Brand Communities</div><div class="acc-sub">Module I · IMC · Case: Glossier, building a cult beauty brand online</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The situation</h4>
-  <p>Glossier is a beauty company that grew out of a blog and became the <b>first "socially driven" beauty brand</b>: instead of dictating products from a corporate lab, it <b>crowdsources feedback from its community</b> and co-creates products with them. It sells <b>direct-to-consumer (DTC)</b> and built a passionate, almost cult-like digital community. The case explores how a brand turns a community into both an emotional asset and a business model, and where that model gets fragile.</p>
-  <h4>Three value concepts you must distinguish</h4>
-  <ul>
-    <li><b>Brand Equity</b> the value of the <i>brand</i> to the firm; at the micro level it comes from the different (better) responses consumers give to a product <i>because</i> it carries that brand.</li>
-    <li><b>Customer Equity</b> the combined <b>Customer Lifetime Value (CLV)</b> of all the firm's customers. Roughly: <i>CLV = (gross profit per year × years as a customer) − cost to acquire the customer.</i></li>
-    <li><b>Customer Social Value (CSV)</b> an addition to CLV that captures a customer's <i>peer impact</i>: how much their recommendations drive other people's purchases. In a community-driven brand, a customer who evangelizes is worth far more than their own spending suggests.</li>
-  </ul>
-  <h4>Why people bond with brands, Susan Fournier's research</h4>
-  <p>Fournier showed that consumer-brand relationships behave like human relationships. They are <b>functional</b> (serve a purpose), <b>multiplex</b> (multi-layered, resembling real human bonds), and <b>dynamic &amp; complex</b> (they evolve over time). Different relationship types, close "friends" vs. casual "acquaintances", generate different expectations and very different profitability.</p>
-  <h4>Brand communities &amp; social commerce</h4>
-  <p>A <b>brand community</b> is a group of consumers who bond around a brand; managers can leverage that bond to create value for the firm. <b>Social commerce</b> is the next step: restructuring the buying process so that <b>peer-to-peer (consumer-to-consumer) influence</b> is inserted at <i>every</i> stage of the customer journey, discovery, evaluation, purchase, and post-purchase, through crowdsourcing and shared opinions.</p>
-  <div class="callout"><b>Glossier's vulnerabilities (a likely exam list):</b> profitability concerns, scaling concerns, competitive concerns, a direct-to-consumer "ceiling," and a limited target market. A beloved community doesn't automatically make a sustainable, scalable business.</div><div style="margin-top:12px"><span class="tag">Brand vs Customer Equity</span><span class="tag">CLV</span><span class="tag">Fournier CBR</span><span class="tag">Social Commerce</span></div></div></div><div class="acc" data-i="4" data-search="brand coolness, rebranding &amp; relifting engineering a cool brand in the age of ai coolness positioning gap harley vs bmw rebranding module ii · branding"><div class="acc-head"><div class="acc-num">4</div><div style="flex:1"><div class="acc-title">Brand Coolness, Rebranding &amp; Relifting</div><div class="acc-sub">Module II · Branding · Engineering a "cool" brand in the age of AI</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The big question</h4>
-  <p>Almost every brand wants to be "cool," but very few achieve it. This session asks whether coolness can be deliberately <b>engineered and managed</b> rather than left to chance, and looks at it from both the brand's and a creative agency's point of view (including how AI is reshaping agencies).</p>
-  <h4>Two views of any brand</h4>
-  <p>A brand always exists in two places at once: <b>Strategic Positioning</b> = the desired image the company <i>intends</i> to project; <b>Perceived Positioning</b> = the image consumers <i>actually</i> hold. The gap between these two is the central thing a brand manager works to close.</p>
-  <h4>How brands become cool</h4>
-  <p>Coolness usually starts in a <b>small niche</b>, where a brand is seen as subcultural, rebellious, authentic, and original. Over time some of those niche brands get adopted by the masses and become perceived as popular and iconic instead. There's no single recipe, not every cool trait is needed, but <b>increasing any of these qualities tends to make a brand feel cooler.</b></p>
-  <div class="callout"><b>The two classic examples:</b> Harley-Davidson became cool because an outlaw-biker subculture adopted it, lending it a rebellious, iconic image. BMW is cool for the opposite reason, it became a widely admired <b>status symbol</b>. Same outcome ("cool"), two completely different routes.</div>
-  <p><b>Rebranding/relifting</b> is the practice of refreshing a brand's identity to regain relevance or coolness without throwing away its hard-won equity, the same balancing act as extending a campaign.</p><div style="margin-top:12px"><span class="tag">Coolness</span><span class="tag">Positioning Gap</span><span class="tag">Harley vs BMW</span><span class="tag">Rebranding</span></div></div></div><div class="acc" data-i="5" data-search="building brands with social responsibility case: green gum, a sustainable brand born in the mayan rainforest 6-step branding ohmae 3c brand ethics module ii · branding"><div class="acc-head"><div class="acc-num">5</div><div style="flex:1"><div class="acc-title">Building Brands with Social Responsibility</div><div class="acc-sub">Module II · Branding · Case: "Green Gum", a sustainable brand born in the Mayan rainforest</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The situation</h4>
-  <p>This case follows the genesis of a <b>green, socially responsible brand</b> an organic Mexican chewing gum (chicle) sourced from the Mayan rainforest, and uses it to teach how brands are built from scratch for the 21st-century consumer who cares about sustainability and ethics.</p>
-  <h4>Branding is a point of view, not a to-do list</h4>
-  <p>The course frames branding as a <b>strategic point of view</b> and a tool for lasting competitive advantage. Brands are described as <i>conventional stories that circulate in society</i>, written by four creators: <b>companies, popular culture, customers, and influencers.</b></p>
-  <h4>The 6-step branding process</h4>
-  <ul>
-    <li><b>1.</b> Understand the sources of a brand's meaning.</li>
-    <li><b>2.</b> Identify the cultural and customer sources that feed it (online reviews, mavens/connoisseurs, salespeople).</li>
-    <li><b>3.</b> Analyze competition and environment using <b>Ohmae's 3C model, Company, Competition, Customer</b> to spot branding opportunities.</li>
-    <li><b>4.</b> Design the brand strategy.</li>
-    <li><b>5.</b> Implement it.</li>
-    <li><b>6.</b> Evaluate it.</li>
-  </ul>
-  <h4>When is branding ethical?</h4>
-  <p>The case argues branding is only a "benevolent" activity when four conditions hold: (1) companies and consumers have <b>equal information</b> about the product; (2) they have <b>equivalent sophistication</b> in understanding how branding works; (3) consumers aren't <b>over-reliant on mental shortcuts (heuristics)</b>; and (4) the <b>authors of the branding effort are revealed</b> (no hidden manipulation). For a "green" brand this matters doubly, because false sustainability claims (greenwashing) violate these conditions.</p><div class="diagram"><div class="dtitle">6-Step Branding Strategy Process</div><div class="flow"><div class="node">1 · Identify goals branding can address</div><div class="arr">→</div><div class="node">2 · Map existing brand culture</div><div class="arr">→</div><div class="node">3 · Analyze competition &amp; environment (Ohmae 3C)</div><div class="arr">→</div><div class="node">4 · Design brand strategy</div><div class="arr">→</div><div class="node">5 · Implement</div><div class="arr">→</div><div class="node">6 · Evaluate (Behaviours, Attitudes, Relationships, Equity)</div></div></div><div style="margin-top:12px"><span class="tag">6-Step Branding</span><span class="tag">Ohmae 3C</span><span class="tag">Brand Ethics</span></div></div></div><div class="acc" data-i="6" data-search="brand crisis &amp; reputation management case: united airlines, dr. dao dragged off flight 3411 crisis timeline crisis plan online complaining module ii · branding"><div class="acc-head"><div class="acc-num">6</div><div style="flex:1"><div class="acc-title">Brand Crisis &amp; Reputation Management</div><div class="acc-sub">Module II · Branding · Case: United Airlines, Dr. Dao dragged off Flight 3411</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The situation</h4>
-  <p>In 2017 United Airlines overbooked a flight and, when no one volunteered to leave, had aviation security forcibly drag a paying passenger, Dr. David Dao, off the plane. A bystander's video went viral within hours. The case is a textbook study of how a brand crisis explodes on social media and how (not) to respond.</p>
-  <h4>How the crisis unfolded (the timeline)</h4>
-  <ul>
-    <li><b>April 9</b> Chicago aviation security forcibly remove Dr. Dao from the plane; the video spreads globally.</li>
-    <li><b>April 10</b> CEO Oscar Munoz issues a weak statement apologizing only for having to "re-accommodate" customers, widely seen as tone-deaf.</li>
-    <li><b>April 11</b> United changes its policies.</li>
-    <li><b>April 12 to 13</b> Public anger peaks; people demand Munoz resign; it emerges the airline never even contacted Dao's family.</li>
-  </ul>
-  <p>The diagnosis: a <b>bad initial response, poor and late communication, and overall mishandling</b>. The case shows the impact through United's share-price drop and consumer-perception data.</p>
-  <h4>What reputation is and why it's fragile</h4>
-  <p><b>Reputation</b> is how others view a person or company; it rests on <b>trust</b> and on consumers feeling good about buying from you. Social media can <i>strengthen or destroy</i> that reputation overnight, which is why communication strategy must be treated as a core part of overall marketing strategy.</p>
-  <h4>The crisis-management playbook</h4>
-  <ul>
-    <li><b>Monitor</b> constantly to catch early warning signs before they become crises.</li>
-    <li><b>Don't deny or dismiss</b> saying "I don't know" or "we don't have that information yet" is better than inventing something that backfires.</li>
-    <li><b>Don't argue publicly</b>; speak to those affected directly and personally.</li>
-    <li><b>Take community management seriously</b> as an ongoing reputation-protection function.</li>
-    <li><b>Focus on substance over form</b> address the real problem, not just the optics.</li>
-  </ul>
-  <p>The case also references Tripp &amp; Grégoire's research on <b>online public complaining</b> why customers complain online, how long they hold a grudge, how to respond after a complaint, and how to prevent complaints in the first place.</p><div class="diagram"><div class="dtitle">United Crisis Timeline (2017)</div><div class="dgrid"><div class="cell"><b>Apr 9</b> Chicago aviation security forcibly drag Dr. Dao off the plane; video goes viral.</div><div class="cell"><b>Apr 10</b> CEO Munoz apologizes only for having to "re-accommodate" customers (tone-deaf).</div><div class="cell"><b>Apr 11</b> United changes its policies.</div><div class="cell"><b>Apr 12 to 13</b> Public demands Munoz resign; airline still hadn’t contacted Dao’s family.</div></div></div><div style="margin-top:12px"><span class="tag">Crisis Timeline</span><span class="tag">Crisis Plan</span><span class="tag">Online Complaining</span></div></div></div><div class="acc" data-i="7" data-search="brand activism case: nike &amp; colin kaepernick, believe in something 3 fit dimensions 5 activism types marketing roi module ii · branding"><div class="acc-head"><div class="acc-num">7</div><div style="flex:1"><div class="acc-title">Brand Activism</div><div class="acc-sub">Module II · Branding · Case: Nike &amp; Colin Kaepernick, "Believe in something"</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The situation</h4>
-  <p>In 2018 Nike made NFL quarterback <b>Colin Kaepernick</b> a polarizing figure for kneeling during the national anthem to protest racial injustice, the face of its "Just Do It" anniversary campaign ("Believe in something. Even if it means sacrificing everything"). It was a deliberate act of <b>brand activism</b>: taking a public stand on a divisive social issue. The case asks you to judge, using the data and exhibits, whether the gamble paid off, and <b>which metrics</b> actually answer that question (stock price, sales, purchase intent by demographic, emotional ad response, and ultimately Marketing ROI).</p>
-  <h4>The three FIT dimensions</h4>
-  <p>Activism works only when there is genuine <b>fit</b>. Evaluate three: <b>Brand-Cause fit</b> (does the cause align with what the brand stands for?), <b>Cause-Company fit</b> (does the company have credibility on this issue?), and <b>Spokesperson-Cause fit</b> (is the chosen person an authentic voice for the cause?). Kaepernick scored high on all three for Nike's athlete-empowerment identity.</p>
-  <h4>Five types of activism</h4>
-  <p>A brand can be socially active through: <b>activism at work</b> (internal/employee), <b>political</b>, <b>environmental</b>, <b>economic</b>, and <b>legal</b> activism.</p>
-  <h4>Why brands do it, and the risk</h4>
-  <p>Done well, activism makes <b>consumers feel heard</b>, integrates them into the brand's social purpose, <b>motivates employees</b>, and builds <b>loyalty and social impact</b>. The risk is alienating part of the audience, so the CMO and CFO want different evidence: the CMO looks at brand sentiment and engagement, the CFO at hard ROI and sales. Tools in the case include word-cloud sentiment analysis of social posts and analysis of effects on brand asset value.</p><div class="diagram"><div class="dtitle">The 3 FIT Dimensions of Brand Activism</div><div class="fit3"><div class="circle c1">Brand-Cause fit</div><div class="circle c2">Cause-Company fit</div><div class="circle c3">Spokesperson-Cause fit</div></div></div><div style="margin-top:12px"><span class="tag">3 FIT dimensions</span><span class="tag">5 Activism Types</span><span class="tag">Marketing ROI</span></div></div></div><div class="acc" data-i="8" data-search="brand architecture &amp; growth strategies case: grupo britt, costa rican coffee goes global brand architecture multilocal 4 growth paths intrapreneurship module ii · branding"><div class="acc-head"><div class="acc-num">8</div><div style="flex:1"><div class="acc-title">Brand Architecture &amp; Growth Strategies</div><div class="acc-sub">Module II · Branding · Case: Grupo Britt, Costa Rican coffee goes global</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The situation</h4>
-  <p>Grupo Britt is a Costa Rican company that started as a <b>garage coffee roaster (1990)</b> and grew into a travel-retail empire of "Britt Shops" in airports across Latin America. Its leader, <b>Pablo Vargas, rose from intern to CEO</b>. The company's culture prizes <b>intrapreneurship</b> ("anyone with an idea could bring it forward"), flat hierarchy, first-name basis, and environmental concern, and it built its own e-commerce technology early. The case decision: how should Britt grow from ~$133M (2015) toward ~$200M (2021)?</p>
-  <h4>Brand architecture &amp; the "multilocal" concept</h4>
-  <p><b>Brand architecture</b> is how a company organizes and relates its portfolio of brands and sub-brands. Britt's distinctive idea is being <b>"multilocal"</b> not a generic global brand, but one that feels authentically local in each country it operates (selling local coffee, crafts, and flavors as a sense-of-place souvenir), while running on shared systems behind the scenes.</p>
-  <h4>The four growth alternatives</h4>
-  <p>The heart of the case is choosing among four growth paths (an Ansoff-style menu), each demanding different capabilities:</p>
-  <ul>
-    <li><b>A, Expansive:</b> open Britt shops in <i>new</i> countries and airports. Needs relationships with airport authorities.</li>
-    <li><b>B, Intensive:</b> add <i>more</i> shops within airports it's already in. Deeper penetration.</li>
-    <li><b>C, In-Depth:</b> increase <b>cross-selling</b>, e.g., pushing products into supermarkets. Brand-stretch.</li>
-    <li><b>D, Disruptive:</b> invent <i>new</i> travel-retail formats.</li>
-  </ul>
-  <p>Britt's challenges are grouped as <b>administrative</b> (SKU control, diversification), <b>operational</b> (stiffer competition, limited airport space), and <b>logistics/technology</b> (complex logistics, tech maintenance). The lesson: growth isn't just opportunity, each path forces you to build new organizational capabilities.</p><div class="diagram"><div class="dtitle">Britt’s 4 Growth Alternatives</div><div class="dgrid" style="grid-template-columns:1fr 1fr"><div class="cell"><b>A · Expansive</b><br>New countries &amp; airports</div><div class="cell"><b>B · Intensive</b><br>More shops in existing airports</div><div class="cell"><b>C · In-Depth</b><br>Cross-selling (e.g. supermarkets)</div><div class="cell"><b>D · Disruptive</b><br>New travel-retail formats</div></div></div><h4>From the Wrap-Up: 7 general brand-expansion avenues</h4><p>Beyond Britt’s four options, the course lists seven generic ways any brand can grow: (1) sell more to <b>existing customers</b>, (2) <b>line extensions</b>, (3) <b>innovation</b>, (4) <b>cross-selling</b> between brands, (5) <b>licensing</b>, (6) <b>internationalization</b>, and (7) <b>co-branding</b>.</p><div style="margin-top:12px"><span class="tag">Brand Architecture</span><span class="tag">Multilocal</span><span class="tag">4 Growth Paths</span><span class="tag">Intrapreneurship</span></div></div></div><div class="acc" data-i="9" data-search="brand authenticity &amp; global markets case: tequila patrón, selling mexican-ness back to mexico authenticity ultra-premium guerrilla marketing module ii · branding"><div class="acc-head"><div class="acc-num">9</div><div style="flex:1"><div class="acc-title">Brand Authenticity &amp; Global Markets</div><div class="acc-sub">Module II · Branding · Case: Tequila Patrón, selling Mexican-ness back to Mexico</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The situation</h4>
-  <p>Patrón launched in Los Angeles in 1989, when tequila was seen as a cheap shot-drink. Patrón's strategy was to <b>create an entirely new "ultra-premium" category</b>: teaching consumers to sip and taste tequila like a fine spirit, emphasizing raw-material quality and an artisanal production process. The dilemma in the case: how to position Patrón <b>in Mexico itself</b>, where it was viewed as an "American tequila" and its authenticity was therefore questioned.</p>
-  <h4>How the product builds authenticity</h4>
-  <p>Authenticity is grounded in craft. Patrón ages tequila in different barrels (new French oak, used American bourbon oak, Hungarian oak) and offers a line spanning unaged <b>Silver</b>, <b>Reposado</b> ("rested," ~3 to 5 months), and <b>Añejo</b> ("aged," ~12 to 14 months), plus the tahona-process <b>Roca</b> and triple-distilled <b>Gran Patrón</b>. Tequila aging categories follow Mexico's CRT norms (rested 2 to 12 months; aged 1 to 3 years; ultra-aged 3+ years). Blending ensures consistency and smoothness, the artisanal story is real, not just marketing.</p>
-  <h4>The threats and the response</h4>
-  <p>Two pressures: the explosive rise of <b>mezcal</b> (production up ~140% in 2012 to 13), which out-authenticities tequila in Mexican eyes, and the need to win the large 25 to 40, middle/upper-class segment without cheapening the brand. The response leans on communication through <b>digital, trade, and influence marketing</b>, plus education at points of contact (bars, restaurants, celebrities).</p>
-  <div class="callout"><b>Guerrilla / grassroots marketing:</b> Patrón notably says it has "never paid a penny" for celebrity endorsements, the brand spreads organically through word-of-mouth and unconventional, low-cost tactics. Grassroots marketing builds awareness from the ground up: it's slower and cheaper than mass advertising, but the loyalty it generates is genuine and long-lasting.</div><h4>From the Wrap-Up: the authenticity equation</h4><p>Authenticity is about closing the gap between <b>expectation and reality</b>"if your brand promises authenticity, you better deliver" (HBR 2014). People judge from experience, so the message must match the organization’s reality. The main tools to build it: consumer experience, public relations, points of sale, communication, and distribution channels.</p><div style="margin-top:12px"><span class="tag">Authenticity</span><span class="tag">Ultra-Premium</span><span class="tag">Guerrilla Marketing</span></div></div></div><div class="acc" data-i="10" data-search="brand love (dr. aaron ahuvia) how and why people fall in love with products, and the ethics of it personification anthropomorphism self-integration temptation brand love workshop"><div class="acc-head"><div class="acc-num">10-13</div><div style="flex:1"><div class="acc-title">Brand Love (Dr. Aaron Ahuvia)</div><div class="acc-sub">Brand Love Workshop · How and why people fall in love with products, and the ethics of it</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>Who &amp; what</h4>
-  <p>A four-session workshop by <b>Dr. Aaron Ahuvia</b> (University of Michigan-Dearborn), one of the world's leading researchers on the psychology of brand love. The framing is a three-act story: <b>Act I, Boy finds love</b> (people really do love products), <b>Act II, Boy loses love</b> (why almost all brands fail to be loved), <b>Act III, Boy gets love back</b> (the mechanism that makes brand love possible).</p>
-  <h4>The core thesis: brand love is a "happy accident"</h4>
-  <p>Love is a psychological system that <b>evolved to make families</b> to bond humans to other humans. It was never designed for products. So when we "love" a brand, we are accidentally firing human-bonding machinery at a commercial object. The practical implication: <b>to build brand love, you must understand human love first.</b></p>
-  <h4>Why so few brands are loved (Act II)</h4>
-  <p>In Ahuvia's survey of 720 consumers, for every brand loved by more than 100 people there were over 250 brands that only a single person loved. Most companies wrongly picture a single spectrum from "hate" to "love" and assume that maximizing quality moves you up it. But <b>quality and trust only get you a reliable product, "the difference between a keeper and a fling."</b> They are necessary, not sufficient. You also need <b>intrinsic rewards</b>: the brand has to make you feel good in itself ("I love how I feel when I use this"), not merely be useful.</p>
-  <h4>The mechanism: Personification (Act III)</h4>
-  <p>The key insight is that products can only be truly loved once the mind treats them as <b>people, not objects</b>. Brand love becomes possible through three routes to personification:</p>
-  <ul>
-    <li><b>1. Anthropomorphism</b> the brand itself seems human. We talk to Siri, see a "face" on a watch, feel reluctant to "switch off" a talking toy even though we know it's plastic. Brands that take on a human-like personality become lovable.</li>
-    <li><b>2. Connecting</b> the brand becomes <b>part of another person you love</b> (e.g., a perfume your mother wore), so your love for the person transfers to the object.</li>
-    <li><b>3. Self-integration</b> the brand becomes <b>part of your own identity</b> ("if this brand were a person, who would it be?", "my Mac would be a Victorian gentleman… and so would I"). Once something is part of the self, your brain processes it with the same self-serving bias you give yourself: you make excuses for its flaws instead of blaming it.</li>
-  </ul>
-  <h4>Segmentation for messaging</h4>
-  <p>Ahuvia maps consumers on <b>cultural capital × economic capital</b> (e.g., "High Society," "BoBo / bourgeois-bohemian," "Middle Class," "Blue Collar"), each with distinct media, retailers, and lifestyle signals, so you can craft norms-based messaging that fits the group's identity.</p>
-  <div class="callout"><b>The ethics (Session 13): "Don't be the devil incarnate."</b> Capitalism, done right, is a positive-sum game you win by making others <i>better off</i>. The danger is <b>temptation</b>: older economic theory assumes people rationally weigh costs, benefits, risk, and timing (a personal "discount rate" for sooner-vs-later rewards), but real consumers can be tempted into self-destructive bargains. Ethical marketers move from an <b>attention economy</b> to an <b>attachment economy</b> building genuine, healthy love rather than exploiting impulses.</div><div class="diagram"><div class="dtitle">3 Mechanisms of Personification (Brand Love)</div><div class="dgrid" style="grid-template-columns:1fr 1fr 1fr"><div class="cell"><b>1 · Anthropomorphism</b><br>Brand seems human (Siri, a watch "face")</div><div class="cell"><b>2 · Connecting</b><br>Brand is part of a person you love</div><div class="cell"><b>3 · Self-integration</b><br>Brand becomes part of your identity</div></div></div><div style="margin-top:12px"><span class="tag">Personification</span><span class="tag">Anthropomorphism</span><span class="tag">Self-integration</span><span class="tag">Temptation</span></div></div></div><div class="acc" data-i="11" data-search="entrepreneurial branding case: gümmylife, from tiktok fame to a scalable brand scaling framework social commerce attention ≠ loyalty entrepreneurship"><div class="acc-head"><div class="acc-num">14</div><div style="flex:1"><div class="acc-title">Entrepreneurial Branding</div><div class="acc-sub">Entrepreneurship · Case: GümmyLife, from TikTok fame to a scalable brand</div></div><div class="acc-chev">▼</div></div><div class="acc-body">
-  <h4>The situation</h4>
-  <p>GümmyLife is a young Mexican vitamin-gummy (nutraceutical) startup founded by three entrepreneurs. It exploded thanks to <b>TikTok-native branding</b> and a creator/affiliate sales model. In January 2026 the founders face a strategic decision: define a five-year plan amid a 2026 Mexican tax reform, intensifying social-commerce competition, and an increasingly sophisticated supplement market. The case is a <b>playbook for turning a viral idea into a durable, scalable brand.</b></p>
-  <h4>The business model</h4>
-  <p>Conceptually GümmyLife is a blend of: TikTok-native branding + the creator economy (sales commissions) + performance marketing + AI-enabled personalization + AI-enabled social commerce + a direct-to-consumer (DTC) affiliate system, i.e., a <b>platform/ecosystem strategy</b> rather than a simple product company.</p>
-  <h4>The strategic choice</h4>
-  <p>To keep growing sustainably, which direction? (a) <b>stay digital-first</b>, (b) <b>expand into physical retail</b>, (c) <b>diversify the product line</b>, or (d) <b>expand internationally</b>. The case provides an <i>Entrepreneurial Brand Scaling Framework</i> and a <i>Strategic Assessment Framework</i> to evaluate each.</p>
-  <div class="callout"><b>Three lessons that travel beyond gummies:</b> (1) <b>Attention ≠ loyalty</b> going viral is not the same as building a base of repeat, committed customers. (2) Algorithmic visibility can <b>accelerate</b> growth but does <b>not guarantee sustainability</b> you don't own the algorithm. (3) <b>Growth changes the capabilities a company must build</b> the skills that got you viral are not the skills that run a retail supply chain or an international operation.</div>
-  <p>Market context, five nutraceutical trends: personalization; demand for scientifically-backed functional ingredients; transparency as a competitive must; convenient product formats; and sustainability/ethical sourcing.</p><div style="margin-top:12px"><span class="tag">Scaling Framework</span><span class="tag">Social Commerce</span><span class="tag">Attention ≠ Loyalty</span></div></div></div></div></section><section class="view" id="v-flashcards" style="display: none;"><p style="color:var(--muted);margin-bottom:6px">Click a card to flip. 22 cards across all cases &amp; frameworks.</p><div class="fc-grid" id="fcGrid"><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">IMC Planning</div><div class="q">What are the 6 M’s of Integrated Marketing Communication?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Mission (objective), Market (target), Medium (channels), Message (what to say), Money (budget), Measurement (impact assessment).</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Branding</div><div class="q">Name the 4 levels of Keller’s Brand Resonance Pyramid (bottom-up).</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Salience → Performance + Imagery → Judgments + Feelings → Resonance (intense, active loyalty).</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Franzia</div><div class="q">List the 6 Creative Decision Filters and their 3 groups.</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Brand: Benefits, Symbolism · Communication: Resonance, Story · Campaign: Product, Campaign Extension.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Persuasion</div><div class="q">What does the AIDA model stand for?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Awareness → Interest → Desire → Action.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Influencers</div><div class="q">What happens as influencer follower count rises?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Reach grows, but targeting precision, control over responses, and purchase incentivization all decrease.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Glossier</div><div class="q">What are Susan Fournier’s 3 traits of consumer-brand relationships?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">They are Functional; Multiplex (resemble human relationships); Dynamic &amp; Complex.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Glossier</div><div class="q">Distinguish Brand Equity, Customer Equity, and CSV.</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Brand Equity = value of the brand; Customer Equity = lifetime value of customers; Customer Social Value (CSV) = value built via the 8 C’s framework from social/community influence.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Glossier</div><div class="q">List Glossier’s 5 vulnerabilities.</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Profitability, scaling, competitive, DTC ceiling, and limited target market concerns.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Coolness</div><div class="q">Contrast why Harley-Davidson vs BMW are "cool."</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Harley: cool via an outlaw-biker subculture → rebellious/iconic. BMW: cool as a popular status symbol.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Branding</div><div class="q">What is Ohmae’s 3C model used for in Step 3 of the branding process?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Analyzing Company, Competition, and Customer to identify branding opportunities.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Ethics</div><div class="q">What 4 conditions make branding benevolent?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Equal information; equivalent sophistication about branding; consumers not over-reliant on heuristics; the authors of the branding effort are revealed.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Crisis</div><div class="q">Key principles of United’s crisis management plan?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Monitor early signals; don’t deny/dismiss ("I don’t know" beats inventing facts); manage community seriously; don’t argue publicly; address people directly; focus on substance over form.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Nike</div><div class="q">Name the 3 FIT dimensions in brand activism.</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Brand-Cause fit, Cause-Company fit, and Spokesperson-Cause fit.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Nike</div><div class="q">List the 5 types of brand activism.</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Activism at work, Political, Environmental, Economic, and Legal.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Britt</div><div class="q">Name Britt’s 4 growth alternatives.</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">A. Expansive (new countries/airports) · B. Intensive (more shops in existing airports) · C. In-Depth (cross-selling into supermarkets) · D. Disruptive (new travel-retail formats).</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Patrón</div><div class="q">How did Patrón create an ultra-premium category?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Consumer education (sip &amp; taste), raw-material quality, and artisanal aging (rested/aged/ultra-aged per CRT norms) with varied barrels.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Patrón</div><div class="q">What is grassroots marketing?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Organic, word-of-mouth, unconventional, low-cost promotion that grows awareness from the ground up, slower but builds genuine, long-term loyalty.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Brand Love</div><div class="q">What are the 3 mechanisms of personification?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Anthropomorphism (brand seems human); Connecting (brand is part of another person you love); Self-integration (brand becomes part of your own identity).</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Brand Love</div><div class="q">Why is "brand love a happy accident"?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Love is a psychological system that evolved for people/family; it is only accidentally applied to brands.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Brand Love</div><div class="q">Beyond quality &amp; trust, what do brands need to be loved?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Intrinsic rewards, the brand must make you feel good in itself, not just be useful.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">GummyLife</div><div class="q">What 3 insights does GümmyLife teach about scaling?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Attention ≠ loyalty; algorithmic visibility accelerates growth but doesn’t guarantee sustainability; growth changes the capabilities a firm must build.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Course</div><div class="q">What are the stages of the Value Creation Cycle?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Identify → Create value proposition → Communicate → Deliver → Extract → Measure → Sustain value.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Course Facts</div><div class="q">How many teaching cases did the course cover, and how many were Mexican companies?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">9 cases total. 2 are fully Mexican (Green Gum / Mayan chicle and GümmyLife); Tequila Patrón is Mexican-made but US-founded, so "Mexican-linked" = 3 depending on how you count.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Course Facts</div><div class="q">List the non-Mexican company cases by country.</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">USA: Franzia, Glossier, United Airlines, Nike. Costa Rica: Grupo Britt. (Plus the conceptual Brand Coolness/agency session.)</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Course Facts</div><div class="q">How is the course graded?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Final Exam 40%, Class Participation 20%, Final Project 20%, Team Assignments 10%, Individual Quizzes &amp; Team Exercise 10%.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">Branding</div><div class="q">What are the 7 brand-expansion avenues?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Existing customers, line extensions, innovation, cross-selling between brands, licensing, internationalization, and co-branding.</div></div></div></div><div class="flip"><div class="flip-in"><div class="flip-f"><div class="fc-cat">IMC</div><div class="q">Which communication vehicle suits cognitive vs affective vs behavioral goals?</div><div class="hint">click to reveal ↻</div></div><div class="flip-b"><div class="a">Advertising → cognitive (awareness/knowledge); Personal Selling → affective (relationship); Sales Promotions → behavioral (trigger action).</div></div></div></div></div></section><section class="view" id="v-quiz" style="display: none;"><p style="color:var(--muted)">Test yourself, pick an answer to see if you’re right and read the explanation.</p><div id="quizList"><div class="quiz-q" data-qi="0"><div class="qt">1. Which set correctly lists the 6 M’s of IMC?</div><button class="opt" data-qi="0" data-oi="0">Mission, Market, Medium, Message, Money, Measurement</button><button class="opt" data-qi="0" data-oi="1">Market, Media, Money, Method, Message, Metrics</button><button class="opt" data-qi="0" data-oi="2">Mission, Margin, Medium, Message, Money, Market</button><button class="opt" data-qi="0" data-oi="3">Message, Mission, Mood, Money, Medium, Metrics</button><div class="expl">The 6 M’s are Mission, Market, Medium, Message, Money, and Measurement.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="1"><div class="qt">2. In the Franzia framework, "Resonance" and "Story" belong to which filter group?</div><button class="opt" data-qi="1" data-oi="0">Brand Filters</button><button class="opt" data-qi="1" data-oi="1">Communication Filters</button><button class="opt" data-qi="1" data-oi="2">Campaign Filters</button><button class="opt" data-qi="1" data-oi="3">Cultural Filters</button><div class="expl">Communication Filters = Resonance (resonates with target culture?) and Story (integrates product into story?).</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="2"><div class="qt">3. According to the nano-influencer reading, as follower count increases…</div><button class="opt" data-qi="2" data-oi="0">Both reach and targeting precision increase</button><button class="opt" data-qi="2" data-oi="1">Reach increases but targeting precision and control decrease</button><button class="opt" data-qi="2" data-oi="2">Reach decreases but engagement always rises</button><button class="opt" data-qi="2" data-oi="3">Authenticity and reach both increase</button><div class="expl">Bigger audiences mean more reach but less targeting precision, control over responses, and purchase incentivization.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="3"><div class="qt">4. Susan Fournier describes consumer-brand relationships as:</div><button class="opt" data-qi="3" data-oi="0">Static, simple, and transactional</button><button class="opt" data-qi="3" data-oi="1">Functional, multiplex, and dynamic/complex</button><button class="opt" data-qi="3" data-oi="2">Purely emotional and irrational</button><button class="opt" data-qi="3" data-oi="3">Identical to peer friendships</button><div class="expl">Fournier: relationships are functional, multiplex (resemble human relationships), and dynamic &amp; complex.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="4"><div class="qt">5. Why is BMW considered "cool" (vs Harley-Davidson)?</div><button class="opt" data-qi="4" data-oi="0">It started in an outlaw subculture</button><button class="opt" data-qi="4" data-oi="1">It is a popular status symbol</button><button class="opt" data-qi="4" data-oi="2">It is rebellious and anti-establishment</button><button class="opt" data-qi="4" data-oi="3">It is a niche artisanal brand</button><div class="expl">BMW is cool as a popular status symbol; Harley became cool via an outlaw-biker subculture.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="5"><div class="qt">6. Ohmae’s 3C model analyzes:</div><button class="opt" data-qi="5" data-oi="0">Cost, Customer, Channel</button><button class="opt" data-qi="5" data-oi="1">Company, Competition, Customer</button><button class="opt" data-qi="5" data-oi="2">Culture, Community, Commerce</button><button class="opt" data-qi="5" data-oi="3">Content, Context, Conversion</button><div class="expl">The 3C model: Company, Competition, Customer, used to identify branding opportunities.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="6"><div class="qt">7. A core principle of United’s crisis management plan is to:</div><button class="opt" data-qi="6" data-oi="0">Always deny the facts publicly</button><button class="opt" data-qi="6" data-oi="1">Argue directly with critics on social media</button><button class="opt" data-qi="6" data-oi="2">Say "I don’t know" rather than invent facts, and monitor early signals</button><button class="opt" data-qi="6" data-oi="3">Stay silent until the crisis passes</button><div class="expl">Never deny/dismiss, "I don’t know" beats inventing facts; monitor early and address people directly.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="7"><div class="qt">8. Which is NOT one of the 3 FIT dimensions of brand activism?</div><button class="opt" data-qi="7" data-oi="0">Brand-Cause fit</button><button class="opt" data-qi="7" data-oi="1">Cause-Company fit</button><button class="opt" data-qi="7" data-oi="2">Spokesperson-Cause fit</button><button class="opt" data-qi="7" data-oi="3">Price-Cause fit</button><div class="expl">The three FIT dimensions are Brand-Cause, Cause-Company, and Spokesperson-Cause.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="8"><div class="qt">9. Britt’s "In-Depth" growth alternative refers to:</div><button class="opt" data-qi="8" data-oi="0">Opening shops in new countries</button><button class="opt" data-qi="8" data-oi="1">More coffee shops in existing airports</button><button class="opt" data-qi="8" data-oi="2">Cross-selling into supermarkets</button><button class="opt" data-qi="8" data-oi="3">Launching new travel-retail formats</button><div class="expl">In-Depth = increasing cross-selling (e.g., into supermarkets).</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="9"><div class="qt">10. The 3 mechanisms of personification in Brand Love are:</div><button class="opt" data-qi="9" data-oi="0">Awareness, Interest, Desire</button><button class="opt" data-qi="9" data-oi="1">Anthropomorphism, Connecting, Self-integration</button><button class="opt" data-qi="9" data-oi="2">Salience, Imagery, Resonance</button><button class="opt" data-qi="9" data-oi="3">Quality, Trust, Reward</button><div class="expl">Personification works via Anthropomorphism, Connecting, and Self-integration.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="10"><div class="qt">11. GümmyLife teaches that "attention" and "loyalty" are:</div><button class="opt" data-qi="10" data-oi="0">The same thing</button><button class="opt" data-qi="10" data-oi="1">Not the same thing</button><button class="opt" data-qi="10" data-oi="2">Both guaranteed by algorithms</button><button class="opt" data-qi="10" data-oi="3">Irrelevant to scaling</button><div class="expl">Attention ≠ loyalty; algorithmic visibility accelerates growth but does not guarantee sustainability.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="11"><div class="qt">12. What is the central thesis of Ahuvia’s Brand Love workshop?</div><button class="opt" data-qi="11" data-oi="0">Brands are loved through advertising spend</button><button class="opt" data-qi="11" data-oi="1">Brand love is a "happy accident", love evolved for people, not brands</button><button class="opt" data-qi="11" data-oi="2">Only luxury brands can be loved</button><button class="opt" data-qi="11" data-oi="3">Loyalty programs create love</button><div class="expl">Love is a psychological system evolved for people/family and only accidentally applied to brands.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="12"><div class="qt">13. How many of the course’s 9 cases are fully Mexican companies?</div><button class="opt" data-qi="12" data-oi="0">1</button><button class="opt" data-qi="12" data-oi="1">2 (Green Gum and GümmyLife)</button><button class="opt" data-qi="12" data-oi="2">4</button><button class="opt" data-qi="12" data-oi="3">6</button><div class="expl">Two are fully Mexican: the Mayan-rainforest organic gum and GümmyLife. Tequila Patrón is Mexican-made but US-founded.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="13"><div class="qt">14. Which communication vehicle is strongest for purely behavioral (action-triggering) goals?</div><button class="opt" data-qi="13" data-oi="0">Advertising</button><button class="opt" data-qi="13" data-oi="1">Personal Selling</button><button class="opt" data-qi="13" data-oi="2">Sales Promotions</button><button class="opt" data-qi="13" data-oi="3">Public Relations</button><div class="expl">Advertising→cognitive, Personal Selling→affective, Sales Promotions→behavioral.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div><div class="quiz-q" data-qi="14"><div class="qt">15. What percentage of the final grade is the final exam?</div><button class="opt" data-qi="14" data-oi="0">20%</button><button class="opt" data-qi="14" data-oi="1">30%</button><button class="opt" data-qi="14" data-oi="2">40%</button><button class="opt" data-qi="14" data-oi="3">50%</button><div class="expl">Final Exam = 40%; then Participation 20%, Project 20%, Team Assignments 10%, Quizzes/Exercise 10%.</div><div class="qfb" style="margin-top: 8px; font-size: 13px;"></div></div></div><div class="scorebox hide" id="scoreBox"></div><button class="btn" id="resetQuiz">Reset quiz</button></section><section class="view" id="v-facts" style="display: none;"><div class="intro-card"><h3>Quick facts the professor likes to ask</h3><p>Dr. Cacho-Elizondo is known for asking recall questions like <i>"how many cases did we see?"</i> and <i>"how many were Mexican companies?"</i> Here are the numbers and the definitive list.</p></div><div class="factgrid"><div class="factbox"><div class="num">9</div><div class="lbl">Teaching cases in total</div></div><div class="factbox"><div class="num">2</div><div class="lbl">Fully Mexican companies<br>(Green Gum · GümmyLife)</div></div><div class="factbox"><div class="num">3</div><div class="lbl">Mexican-linked if you count Patrón<br>(Mexican-made, US-founded)</div></div><div class="factbox"><div class="num">4</div><div class="lbl">US companies<br>(Franzia · Glossier · United · Nike)</div></div><div class="factbox"><div class="num">1</div><div class="lbl">Costa Rican<br>(Grupo Britt)</div></div><div class="factbox"><div class="num">16</div><div class="lbl">Sessions total<br>(incl. final exam)</div></div></div><p style="font-size:12.5px;color:var(--muted);margin:-2px 0 10px">Green rows = Mexican company. (S4 Brand Coolness is a conceptual/agency session, not a single company case, so it’s not counted among the 9.)</p><table class="ctable"><thead><tr><th>Session</th><th>Case</th><th>Topic</th><th>Origin</th></tr></thead><tbody><tr><td>S2</td><td>Franzia / Mekanism ("Franz for Life")</td><td>Creative &amp; influencer selection</td><td class="">🇺🇸 USA</td></tr><tr><td>S3</td><td>Glossier</td><td>Digital brand communities &amp; social commerce</td><td class="">🇺🇸 USA</td></tr><tr><td>S4</td><td>Brand Coolness / agency reinvention</td><td>Coolness, rebranding, relifting</td><td class=""></td></tr><tr><td>S5</td><td>Genesis of a Green Brand in the Mayan Rainforest</td><td>Brands &amp; social responsibility</td><td class="mx">🇲🇽 Mexico</td></tr><tr><td>S6</td><td>United Airlines (Dr. Dao / Flight 3411)</td><td>Brand crisis &amp; reputation management</td><td class="">🇺🇸 USA</td></tr><tr><td>S7</td><td>Nike &amp; Colin Kaepernick</td><td>Brand activism</td><td class="">🇺🇸 USA</td></tr><tr><td>S8</td><td>Grupo Britt</td><td>Brand architecture &amp; growth</td><td class="">🇨🇷 Costa Rica</td></tr><tr><td>S9</td><td>Tequila Patrón</td><td>Brand authenticity &amp; global markets</td><td class="">🇲🇽 Mexico / 🇺🇸 US-founded</td></tr><tr><td>S14</td><td>GümmyLife</td><td>Entrepreneurial branding &amp; scaling</td><td class="mx">🇲🇽 Mexico</td></tr></tbody></table><div class="intro-card"><h3>Structure &amp; other recall facts</h3><ul><li><b>2 content modules</b>: Module I, Integrated Marketing Communications (S1 to 3); Module II, Branding Strategies (S4 to 9).</li><li><b>Brand Love Workshop</b> = 4 sessions (S10 to 13), taught by guest <b>Dr. Aaron Ahuvia</b> (University of Michigan-Dearborn).</li><li><b>2 team assignments</b>, a <b>final project</b>, and a <b>final exam</b> (Session 16, 15 June 2026).</li><li><b>Course professor / case author</b>: Dr. Silvia Cacho-Elizondo.</li></ul></div><div class="intro-card"><h3>Grading breakdown (from the Wrap-Up deck)</h3><ul><li>Final Exam: <b>40%</b></li><li>Class Participation: <b>20%</b></li><li>Final Project: <b>20%</b></li><li>Team Assignments: <b>10%</b></li><li>Individual Quizzes &amp; Team Exercise: <b>10%</b></li></ul></div></section><section class="view" id="v-cheat" style="display: none;"><div class="intro-card"><h3>Frameworks most likely on the exam</h3><ul><li><b>Keller Brand Resonance Pyramid</b> Salience → Performance/Imagery → Judgments/Feelings → Resonance</li><li><b>6 M’s of IMC</b> Mission, Market, Medium, Message, Money, Measurement</li><li><b>Franzia 6 Creative Decision Filters</b> Benefits, Symbolism, Resonance, Story, Product, Campaign Extension</li><li><b>Influencer pyramid</b> nano → micro → macro → mega</li><li><b>Glossier</b>8 C’s + Fournier CBR (functional, multiplex, dynamic)</li><li><b>Ohmae 3C</b> + 6-step branding process</li><li><b>Coolness</b> strategic vs perceived positioning; niche → mass</li><li><b>United</b> crisis management principles</li><li><b>Nike</b>3 FIT dimensions + 5 activism types</li><li><b>Britt</b>4 growth alternatives (Expansive/Intensive/In-Depth/Disruptive)</li><li><b>Patrón</b> authenticity + grassroots marketing</li><li><b>Ahuvia</b>3 personification mechanisms</li></ul></div></section><section id="v-method" class="view" style="display: none;"><h3 style="margin-top:0">The Case Method Playbook</h3><p style="color:var(--muted)">A step by step methodology to apply every framework in this course, in order, to any case you are handed, whether in the exam or in real life. Work top to bottom. Each step names the tool to use and the question it answers.</p><div style="background:rgba(46,204,113,0.12);border:1px solid var(--green);border-radius:10px;padding:14px 16px;margin:16px 0"><b>Exam time budget (rough guide for a 1 case question)</b><ul style="margin:8px 0 0 0"><li>5 min: read the case twice and underline the decision being asked.</li><li>10 min: diagnose (Steps 1 to 4 below) using the frameworks.</li><li>10 min: generate and evaluate options (Steps 5 to 7).</li><li>5 min: recommend, justify, and note risks and metrics (Steps 8 to 9).</li></ul></div><h4 style="margin-top:22px">The 9 steps, in order</h4><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">1. Frame the decision</div><div style="margin-bottom:6px">Before any framework, write one sentence: what decision must be made and by whom? Identify whether it is a communications problem (what to say) or a branding problem (what to be). Note the constraints: budget, timeline, who the decision maker is.</div><div style="font-size:12px;color:var(--muted)">Tool: none yet. Output: a crisp problem statement.</div></div><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">2. Situation scan with 3C</div><div style="margin-bottom:6px">Run Ohmae 3C to map the landscape fast. Customer: who is the target, what do they want and value? Company: what are our strengths, assets, current brand equity? Competition: who else competes for this need and how are they positioned? Add Context if relevant (culture, regulation, technology, channels).</div><div style="font-size:12px;color:var(--muted)">Tool: Ohmae 3C. Output: a one paragraph situation read.</div></div><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">3. Diagnose the brand with Keller</div><div style="margin-bottom:6px">Place the brand on Keller Brand Resonance Pyramid. Salience: do people know it and the category? Performance and Imagery: what does it do well and what does it symbolize? Judgments and Feelings: what do people think and feel? Resonance: is there loyalty, attachment, community? The level where the brand is weak is usually the real problem to fix.</div><div style="font-size:12px;color:var(--muted)">Tool: Keller Brand Resonance Pyramid. Output: which pyramid level is broken.</div></div><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">4. Read the relationship and the culture</div><div style="margin-bottom:6px">Use Fournier consumer brand relationship lens: is the bond functional, emotional, identity based? Is it one way or a two way community? Then ask the AIDA vs cultural meaning question: is this brand still pushing one way persuasion, or is it embedding cultural meaning and letting consumers co create the story? Note any community (Glossier style) or cultural moment to ride or avoid.</div><div style="font-size:12px;color:var(--muted)">Tool: Fournier CBR + the AIDA to cultural meaning shift. Output: relationship type and cultural fit.</div></div><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">5. Set the objective and the message</div><div style="margin-bottom:6px">Now open the 6 M’s of IMC and fill them in for the campaign or decision. Mission: the objective. Market: the exact target. Message: the single idea. Medium: the channels. Money: the budget. Measurement: how success is judged. The Message and Mission must trace back to the pyramid level you are fixing in Step 3.</div><div style="font-size:12px;color:var(--muted)">Tool: 6 M’s of IMC. Output: a filled in campaign brief.</div></div><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">6. Generate creative and partner options</div><div style="margin-bottom:6px">If the case is about creative or influencers, run the Franzia 6 creative decision filters (Benefits, Symbolism, Resonance, Story, Product, Campaign Extension) on each idea, and use the influencer pyramid (nano, micro, macro, mega) to choose partners by reach versus authenticity. Treat creative selection as a structured, multi dimensional process, not a gut call.</div><div style="font-size:12px;color:var(--muted)">Tool: Franzia 6 filters + influencer pyramid. Output: 2 to 3 evaluated options.</div></div><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">7. Stress test fit and authenticity</div><div style="margin-bottom:6px">For activism or cause work apply Nike 3 FIT dimensions: Brand to Cause fit, Cause to Company fit, Spokesperson to Cause fit. For premium or origin based brands apply the Patron authenticity test: is the claim true to origin, craft, and grassroots story? Reject options that fail fit or feel inauthentic, because consumers punish mismatch.</div><div style="font-size:12px;color:var(--muted)">Tool: Nike 3 FIT + Patron authenticity. Output: options that survive the fit test.</div></div><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">8. Choose the growth or positioning move</div><div style="margin-bottom:6px">If the question is strategic direction, use Britt 4 growth alternatives (Expansive, Intensive, In Depth, Disruptive) to name the move, and the Coolness lens (strategic vs perceived positioning, niche to mass) to decide how broad to go. Make one clear recommendation, not a menu.</div><div style="font-size:12px;color:var(--muted)">Tool: Britt growth grid + Coolness positioning. Output: one recommended move.</div></div><div style="border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,0.02)"><div style="font-weight:700;color:var(--accent,#f0883e);margin-bottom:4px">9. Plan execution, risk, and metrics</div><div style="margin-bottom:6px">Sequence the rollout, then pre plan for trouble using United crisis principles: respond fast, take responsibility, lead with empathy for the customer, fix the system not just the message. Close by stating the metrics from your 6 M’s Measurement so the recommendation is testable.</div><div style="font-size:12px;color:var(--muted)">Tool: United crisis principles + Measurement. Output: rollout plan, risk plan, success metrics.</div></div><h4 style="margin-top:24px">Same steps, two contexts</h4><div style="display:flex;gap:14px;flex-wrap:wrap"><div style="flex:1;min-width:240px;border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;background:rgba(240,136,62,0.06)"><b>In the exam</b><ul style="margin:8px 0 0 0"><li>Name the framework out loud as you use it; graders reward explicit tool use.</li><li>Diagnose before you prescribe: show the pyramid level or 3C gap first.</li><li>Pick one recommendation and defend it; do not hedge with three equal options.</li><li>End every answer with measurement, so it is testable.</li></ul></div><div style="flex:1;min-width:240px;border:1px solid var(--border,#2a2f3a);border-radius:10px;padding:12px 14px;background:rgba(46,204,113,0.06)"><b>In real life</b><ul style="margin:8px 0 0 0"><li>Spend far longer on Step 2 (data, interviews, real customer research).</li><li>Run Steps 5 to 7 as small tests before full spend; iterate on real metrics.</li><li>Pre write the crisis playbook from Step 9 before launch, not after.</li><li>Revisit Step 3 quarterly; the broken pyramid level moves as the brand grows.</li></ul></div></div><div style="margin-top:20px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px dashed var(--border,#2a2f3a)"><b>The whole playbook in one line:</b> Frame the decision, scan with 3C, diagnose with Keller, read the relationship and culture, set the 6 M’s, generate options with the Franzia filters and influencer pyramid, stress test with FIT and authenticity, choose a growth and positioning move, then plan execution, crisis response, and metrics.</div></section></main><footer>Built from your IPADE course materials for personal study. Frameworks summarized in original wording. · Good luck on June 15! 🎯</footer></div><div id="claude-static-indicator-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); align-items: center; justify-content: center; padding: 6px 6px 6px 16px; background: rgb(250, 249, 245); border: 0.5px solid rgba(31, 30, 29, 0.3); border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.15) 0px 40px 80px 0px; z-index: 2147483647; pointer-events: none; white-space: nowrap; user-select: none; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; flex-shrink: 0; margin-right: 8px;">
-        <path d="M3.13946 10.6399L6.28757 8.87462L6.37405 8.73821L6.28757 8.6339H6.13189L5.60432 8.6018L3.80541 8.55366L2.24865 8.48947L0.735135 8.40923H0.492973L0.354595 8.32899L0.181622 8.1685L0.0345946 8.01605L0 7.85557L0.0345946 7.62287L0.138378 7.44634L0.224865 7.40622H0.354595L0.812973 7.44634L1.82486 7.51856L3.34703 7.62287L4.44541 7.68706L6.08 7.85557H6.33946L6.37405 7.75125L6.28757 7.68706L6.21838 7.62287L4.64432 6.55567L2.94054 5.4323L2.04973 4.78235L1.57405 4.45336L1.33189 4.14845L1.22811 3.92377L1.17622 3.69107L1.22811 3.47442L1.33189 3.28185L1.46162 3.13741L1.66054 2.99298H1.87676L2.24865 3.0331L2.39568 3.07322L2.99243 3.53059L4.26378 4.51755L5.92432 5.73721L6.16649 5.93781H6.27892V5.82548L6.16649 5.64092L5.26703 4.01204L4.30703 2.35105L3.87459 1.66098L3.76216 1.25176C3.7391 1.16082 3.69297 0.977332 3.69297 0.970913V0.762287L3.77946 0.505517L3.93513 0.240722L4.18595 0.0882648L4.4627 0H4.67892L4.83459 0.0240722L5.12865 0.0882648L5.4054 0.328987L5.82054 1.27583L6.48649 2.76028L7.52432 4.78235L7.82703 5.38415L7.99135 5.93781L8.05189 6.10632H8.15567V6.01003L8.24216 4.87061L8.39784 3.47442L8.55351 1.67703L8.6054 1.17151L8.85622 0.561685L8.9773 0.417252L9.21946 0.232698H9.35784L9.74703 0.417252L9.97189 0.665998L10.067 0.874624L10.0238 1.17151L9.83351 2.40722L9.46162 4.34102L9.21946 5.64092H9.35784L9.52216 5.47242L10.1795 4.60582L11.2778 3.22568L11.7622 2.68004L12.333 2.07823L12.6962 1.78937L13.0162 1.67703L13.3881 1.78937L13.7168 2.06219L13.8897 2.54363V2.76028L13.6649 3.32197L12.9557 4.22066L12.3676 4.98295L12.0043 5.56871L11.0011 7.02106V7.08526H11.1741L13.0768 6.67603L14.1059 6.49147L15.3341 6.28285L15.5762 6.34704L15.8876 6.53962L15.9481 6.80441L15.8876 7.12538L15.7319 7.34203L14.4173 7.66299L12.8778 7.97593L10.5854 8.51559C10.5705 8.51909 10.56 8.53236 10.56 8.54764C10.56 8.56468 10.573 8.57891 10.59 8.58044L11.6238 8.67402L12.0649 8.69809H13.1459L15.1611 8.85055L15.6886 9.19559L15.9481 9.39619L16 9.62086L15.9481 9.94985L15.8443 10.1023L15.4119 10.3029L15.1351 10.3591L14.0454 10.1023L11.4941 9.49248L10.6205 9.27583H10.4995V9.34804L11.2259 10.0622L12.5665 11.2658L14.2357 12.8225L14.3222 13.0953V13.2076L14.1059 13.5125L13.9243 13.5206L13.8811 13.4804L12.4108 12.3731L12.2984 12.325L11.84 11.8756L10.56 10.7924H10.4735V10.9047L10.7676 11.338L12.333 13.6891L12.4108 14.4112L12.2984 14.6439L11.8919 14.7884L11.667 14.7563L11.4508 14.7081L11.2605 14.5396L10.5254 13.4162L9.5827 11.9719L8.82162 10.672H8.79342C8.76039 10.672 8.73278 10.6972 8.7297 10.73L8.27676 15.5667L8.06919 15.8154L7.6454 16H7.58486L7.17838 15.6951L6.96216 15.1976L7.17838 14.2106L7.43784 12.9268L7.6454 11.9077L7.83567 10.6399L7.95187 10.2164C7.9548 10.2057 7.95069 10.1944 7.94161 10.1881C7.91157 10.1672 7.87034 10.1741 7.84878 10.2037L6.89297 11.5145L5.44 13.4804L4.28973 14.7081L4.01297 14.8205H3.80541L3.5373 14.5717V14.4514L3.58054 14.1304L3.84865 13.7372L5.44 11.7151L6.4 10.4554L7.01872 9.73222C7.04511 9.70139 7.04245 9.65523 7.0127 9.62763C7.00333 9.61894 6.98925 9.61773 6.97854 9.62471L2.75027 12.3811L1.99784 12.4774L1.66919 12.1725L1.71243 11.675L1.86811 11.5145L3.13946 10.6399Z" fill="#D97757"></path>
-      </svg>
-      <span style="vertical-align: middle; color: #141413; font-size: 14px; display: inline-block;">Claude is active in this tab group</span>
-      <div style="display: inline-block; width: 0.5px; height: 32px; background: rgba(31, 30, 29, 0.15); margin: 0 8px; vertical-align: middle;"></div>
-      <button id="claude-static-chat-button" style="position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 6px; background: transparent; border: none; cursor: pointer; pointer-events: auto; vertical-align: middle; width: 32px; height: 32px; border-radius: 8px; transition: background 0.2s;">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="#141413" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; display: block;">
-          <path d="M10 2.5C14.1421 2.5 17.5 5.85786 17.5 10C17.5 14.1421 14.1421 17.5 10 17.5H3C2.79779 17.5 2.61549 17.3782 2.53809 17.1914C2.4607 17.0046 2.50349 16.7895 2.64648 16.6465L4.35547 14.9365C3.20124 13.6175 2.5 11.8906 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5ZM10 3.5C6.41015 3.5 3.5 6.41015 3.5 10C3.5 11.7952 4.22659 13.4199 5.40332 14.5967L5.46582 14.6729C5.52017 14.7544 5.5498 14.8508 5.5498 14.9502C5.5498 15.0828 5.49709 15.2099 5.40332 15.3037L4.20703 16.5H10C13.5899 16.5 16.5 13.5899 16.5 10C16.5 6.41015 13.5899 3.5 10 3.5ZM13.29 9.30371C13.3986 9.05001 13.6925 8.93174 13.9463 9.04004C14.2 9.14863 14.3183 9.44253 14.21 9.69629C13.8506 10.536 13.1645 11.25 12.25 11.25C11.6372 11.25 11.128 10.9289 10.75 10.4648C10.372 10.9289 9.86276 11.25 9.25 11.25C8.63724 11.25 8.12801 10.9289 7.75 10.4648C7.37198 10.9289 6.86276 11.25 6.25 11.25C5.97386 11.25 5.75 11.0261 5.75 10.75C5.75 10.4739 5.97386 10.25 6.25 10.25C6.58764 10.25 7.00448 9.97056 7.29004 9.30371L7.32422 9.2373C7.41431 9.09121 7.5749 9 7.75 9C7.9501 9 8.13123 9.11975 8.20996 9.30371L8.32227 9.53516C8.59804 10.0359 8.95442 10.25 9.25 10.25C9.58764 10.25 10.0045 9.97056 10.29 9.30371L10.3242 9.2373C10.4143 9.09121 10.5749 9 10.75 9C10.9501 9 11.1312 9.11975 11.21 9.30371L11.3223 9.53516C11.598 10.0359 11.9544 10.25 12.25 10.25C12.5876 10.25 13.0045 9.97056 13.29 9.30371Z"></path>
-        </svg>
-        <span id="claude-static-chat-tooltip" style="position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); padding: 6px 12px; background: #30302E; color: #FAF9F5; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">Open chat</span>
-      </button>
-      <button id="claude-static-close-button" style="position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 6px; background: transparent; border: none; cursor: pointer; pointer-events: auto; vertical-align: middle; width: 32px; height: 32px; margin-left: 4px; border-radius: 8px; transition: background 0.2s;">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; display: block;">
-          <path d="M15.1464 4.14642C15.3417 3.95121 15.6582 3.95118 15.8534 4.14642C16.0486 4.34168 16.0486 4.65822 15.8534 4.85346L10.7069 9.99997L15.8534 15.1465C16.0486 15.3417 16.0486 15.6583 15.8534 15.8535C15.6826 16.0244 15.4186 16.0461 15.2245 15.918L15.1464 15.8535L9.99989 10.707L4.85338 15.8535C4.65813 16.0486 4.34155 16.0486 4.14634 15.8535C3.95115 15.6583 3.95129 15.3418 4.14634 15.1465L9.29286 9.99997L4.14634 4.85346C3.95129 4.65818 3.95115 4.34162 4.14634 4.14642C4.34154 3.95128 4.65812 3.95138 4.85338 4.14642L9.99989 9.29294L15.1464 4.14642Z" fill="#141413"></path>
-        </svg>
-        <span id="claude-static-close-tooltip" style="position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); padding: 6px 12px; background: #30302E; color: #FAF9F5; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">Dismiss</span>
-      </button>
-    </div><script id="sg-boot">(function(){
-  // ---- Tabs ----
-  function showView(v){
-    document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('active', b.dataset.v===v);});
-    document.querySelectorAll('.view').forEach(function(p){p.classList.toggle('active', p.id==='v-'+v); p.style.display=(p.id==='v-'+v)?'block':'none';});
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMC &amp; Branding: Final Exam Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1714;
+    --paper:#FBFAF7;
+    --paper-2:#F4F1EA;
+    --crimson:#A11D2E;
+    --crimson-soft:#f7e9ea;
+    --navy:#1B3A5C;
+    --navy-soft:#eaeef3;
+    --rule:#E3DED3;
+    --muted:#6b6358;
+    --gold:#9a7b32;
+    --green:#1d6b3a;
+    --shadow:0 1px 2px rgba(26,23,20,.04),0 6px 24px rgba(26,23,20,.06);
   }
-  document.querySelectorAll('.tabbtn').forEach(function(b){b.addEventListener('click',function(){showView(b.dataset.v);});});
-  // ---- Accordions ----
-  document.querySelectorAll('.acc-head').forEach(function(h){h.addEventListener('click',function(){h.parentElement.classList.toggle('open');});});
-  // ---- Flashcards ----
-  document.querySelectorAll('.flip').forEach(function(f){f.addEventListener('click',function(){f.classList.toggle('flipped');});});
-  // ---- Search ----
-  var si=document.getElementById('sessSearch');
-  if(si){si.addEventListener('input',function(){var q=si.value.toLowerCase().trim();document.querySelectorAll('[data-search]').forEach(function(c){var hit=!q||c.getAttribute('data-search').indexOf(q)>-1;c.style.display=hit?'':'none';});});}
-  // ---- Quiz ----
-  var KEY=[{"c":0,"e":"The 6 M’s are Mission, Market, Medium, Message, Money, and Measurement."},{"c":1,"e":"Communication Filters = Resonance (resonates with target culture?) and Story (integrates product into story?)."},{"c":1,"e":"Bigger audiences mean more reach but less targeting precision, control over responses, and purchase incentivization."},{"c":1,"e":"Fournier: relationships are functional, multiplex (resemble human relationships), and dynamic & complex."},{"c":1,"e":"BMW is cool as a popular status symbol; Harley became cool via an outlaw-biker subculture."},{"c":1,"e":"The 3C model: Company, Competition, Customer, used to identify branding opportunities."},{"c":2,"e":"Never deny/dismiss, \"I don’t know\" beats inventing facts; monitor early and address people directly."},{"c":3,"e":"The three FIT dimensions are Brand-Cause, Cause-Company, and Spokesperson-Cause."},{"c":2,"e":"In-Depth = increasing cross-selling (e.g., into supermarkets)."},{"c":1,"e":"Personification works via Anthropomorphism, Connecting, and Self-integration."},{"c":1,"e":"Attention ≠ loyalty; algorithmic visibility accelerates growth but does not guarantee sustainability."},{"c":1,"e":"Love is a psychological system evolved for people/family and only accidentally applied to brands."},{"c":1,"e":"Two are fully Mexican: the Mayan-rainforest organic gum and GümmyLife. Tequila Patrón is Mexican-made but US-founded."},{"c":2,"e":"Advertising→cognitive, Personal Selling→affective, Sales Promotions→behavioral."},{"c":2,"e":"Final Exam = 40%; then Participation 20%, Project 20%, Team Assignments 10%, Quizzes/Exercise 10%."}];
-  document.querySelectorAll('.quiz-q').forEach(function(q){
-    var qi=+q.dataset.qi; var answered=false;
-    var fb=q.querySelector('.qfb'); if(!fb){fb=document.createElement('div');fb.className='qfb';fb.style.cssText='margin-top:8px;font-size:13px;';q.appendChild(fb);}
-    q.querySelectorAll('.opt').forEach(function(o){
-      o.addEventListener('click',function(){
-        if(answered)return; answered=true; var oi=+o.dataset.oi; var c=KEY[qi].c;
-        q.querySelectorAll('.opt').forEach(function(x){var xi=+x.dataset.oi;if(xi===c){x.classList.add('correct');}else if(xi===oi){x.classList.add('wrong');}x.style.pointerEvents='none';});
-        fb.innerHTML=(oi===c?'<b style="color:#3fb950">Correct. </b>':'<b style="color:#f85149">Not quite. </b>')+KEY[qi].e;
-      });
-    });
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Inter",-apple-system,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{display:grid;grid-template-columns:262px 1fr;max-width:1340px;margin:0 auto;}
+  .rail{
+    position:sticky;top:0;height:100vh;overflow-y:auto;
+    border-right:1px solid var(--rule);background:var(--paper-2);
+    padding:28px 18px 60px;
+  }
+  .rail::-webkit-scrollbar{width:7px;}
+  .rail::-webkit-scrollbar-thumb{background:#cfc8ba;border-radius:4px;}
+  .main{padding:48px 56px 120px;min-width:0;}
+  .rail .brandmark{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--crimson);font-weight:600;}
+  .rail h1{font-family:"Fraunces",serif;font-weight:800;font-size:20px;line-height:1.15;
+    margin:6px 0 4px;color:var(--ink);}
+  .rail .sub{font-size:12.5px;color:var(--muted);margin-bottom:22px;}
+  .rail .exam{display:flex;align-items:center;gap:8px;background:var(--crimson);color:#fff;
+    border-radius:8px;padding:9px 12px;font-size:12.5px;font-weight:600;margin-bottom:18px;}
+  .navgroup{margin-bottom:16px;}
+  .navgroup > .gl{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 7px 2px;display:block;}
+  .rail a{display:flex;gap:9px;align-items:baseline;text-decoration:none;color:var(--ink);
+    font-size:13.5px;padding:5px 8px;border-radius:6px;line-height:1.3;}
+  .rail a:hover{background:#fff;}
+  .rail a .code{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    color:var(--crimson);min-width:30px;}
+  .rail a.fw .code{color:var(--navy);}
+  .testbtn{width:100%;border:1px solid var(--ink);background:transparent;
+    color:var(--ink);font-family:"Inter";font-size:12.5px;font-weight:600;padding:9px;
+    border-radius:8px;cursor:pointer;transition:all .15s;}
+  .testbtn:hover{background:var(--ink);color:var(--paper);}
+  .testbtn.on{background:var(--crimson);border-color:var(--crimson);color:#fff;}
+  .hero{border-bottom:2px solid var(--ink);padding-bottom:26px;margin-bottom:8px;}
+  .hero .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--crimson);font-weight:600;}
+  .hero h1{font-family:"Fraunces",serif;font-weight:800;font-size:clamp(34px,5vw,52px);
+    line-height:1.02;margin:14px 0 10px;letter-spacing:-.01em;}
+  .hero h1 em{font-style:italic;color:var(--crimson);}
+  .hero p{font-size:16px;color:var(--muted);max-width:62ch;margin:0;}
+  .herometa{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:11.5px;border:1px solid var(--rule);
+    background:#fff;border-radius:20px;padding:5px 13px;color:var(--ink);}
+  .chip b{color:var(--crimson);}
+  section{padding:46px 0;border-bottom:1px solid var(--rule);scroll-margin-top:20px;position:relative;}
+  .sec-toggle{cursor:pointer;padding-right:34px;}
+  .sec-toggle:hover .chev{color:var(--crimson);}
+  .chev{position:absolute;top:46px;right:2px;font-size:15px;line-height:1;color:var(--muted);
+    transition:transform .2s;user-select:none;}
+  section.collapsed .chev{transform:rotate(-90deg);}
+  section.collapsed .sec-body{display:none;}
+  section.collapsed{padding-bottom:22px;}
+  section.collapsed .tagline,section.collapsed .flag{margin-bottom:0;}
+  .modlabel{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:4px;}
+  .casehead{display:flex;align-items:baseline;gap:16px;margin-bottom:6px;flex-wrap:wrap;}
+  .casehead .scode{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:20px;
+    color:var(--crimson);}
+  h2.case{font-family:"Fraunces",serif;font-weight:800;font-size:30px;line-height:1.05;margin:0;
+    letter-spacing:-.01em;}
+  .tagline{font-style:italic;font-family:"Fraunces",serif;color:var(--muted);font-size:17px;
+    margin:2px 0 22px;}
+  h3{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:34px 0 12px;}
+  h2.fwhead{font-family:"Fraunces",serif;font-weight:800;font-size:30px;margin:0 0 4px;
+    letter-spacing:-.01em;}
+  .fwlabel{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--navy);font-weight:600;margin-bottom:4px;}
+  p{margin:0 0 14px;}
+  .lead{font-size:16.5px;}
+  ul,ol{margin:0 0 16px;padding-left:22px;}
+  li{margin-bottom:7px;}
+  strong{font-weight:600;}
+  .muted{color:var(--muted);}
+  .decision{border-left:3px solid var(--crimson);background:var(--crimson-soft);
+    padding:14px 18px;border-radius:0 8px 8px 0;margin:18px 0;}
+  .decision .q{font-weight:600;font-family:"Fraunces",serif;font-size:17px;margin-bottom:6px;}
+  .grid{display:grid;gap:14px;margin:18px 0;}
+  .g2{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .card{border:1px solid var(--rule);border-radius:10px;padding:16px 18px;background:#fff;
+    box-shadow:var(--shadow);}
+  .card h4{margin:0 0 6px;font-family:"Inter";font-size:14px;font-weight:700;}
+  .card p{font-size:13.5px;color:var(--muted);margin:0;}
+  .card .num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--crimson);
+    font-weight:600;display:block;margin-bottom:3px;}
+  .pyr{margin:18px auto;max-width:560px;}
+  .pyr .row{display:grid;grid-template-columns:1fr 2fr 1fr;gap:10px;align-items:center;
+    margin-bottom:8px;font-size:13px;}
+  .pyr .stage{text-align:right;color:var(--navy);font-weight:600;}
+  .pyr .block{color:#fff;border-radius:7px;padding:10px;text-align:center;
+    font-weight:600;font-family:"Fraunces",serif;}
+  .pyr .obj{color:var(--muted);font-size:12px;}
+  .pyr .block.b1{background:#2a567f;}
+  .pyr .block.b2{background:#214965;}
+  .pyr .block.b3{background:#1B3A5C;}
+  .pyr .block.b4{background:#13293f;}
+  /* influencer pyramid (inverted emphasis) */
+  .ipyr{margin:18px 0;}
+  .ipyr .lvl{display:flex;align-items:center;gap:14px;margin:0 auto 7px;
+    background:#fff;border:1px solid var(--rule);border-radius:8px;padding:11px 16px;
+    box-shadow:var(--shadow);}
+  .ipyr .lvl .t{font-family:"Fraunces",serif;font-weight:700;font-size:15px;min-width:150px;}
+  .ipyr .lvl .d{font-size:13px;color:var(--muted);}
+  .ipyr .l1{width:55%;}.ipyr .l2{width:70%;}.ipyr .l3{width:85%;}.ipyr .l4{width:100%;}
+  .ipyr .note{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--crimson);
+    text-align:center;margin-top:8px;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top;}
+  th{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--muted);font-weight:600;}
+  td.acc{color:var(--green);font-weight:500;}
+  td.dil{color:var(--crimson);font-weight:500;}
+  tr.mx td:first-child{box-shadow:inset 3px 0 0 var(--green);}
+  .cmp{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:10px;
+    overflow:hidden;margin:16px 0;}
+  .cmp > div{padding:16px 18px;}
+  .cmp .pro{background:#f1f7f2;}
+  .cmp .con{background:var(--crimson-soft);border-left:1px solid var(--rule);}
+  .cmp h4{margin:0 0 10px;font-size:13px;font-family:"IBM Plex Mono",monospace;
+    letter-spacing:.08em;text-transform:uppercase;}
+  .cmp .pro h4{color:var(--green);}
+  .cmp .con h4{color:var(--crimson);}
+  .cmp ul{margin:0;padding-left:18px;font-size:13px;}
+  .tl{border-left:2px solid var(--rule);margin:18px 0;padding-left:0;}
+  .tl li{list-style:none;position:relative;padding-left:22px;margin-bottom:14px;}
+  .tl li::before{content:"";position:absolute;left:-7px;top:7px;width:10px;height:10px;
+    border-radius:50%;background:var(--crimson);}
+  .tl .d{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--crimson);}
+  .flag{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;
+    font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);
+    border:1px solid #e3d4a8;background:#fbf6e8;border-radius:5px;padding:3px 8px;font-weight:600;
+    margin-bottom:14px;}
+  .answer{transition:all .2s;}
+  body.testing .answer{filter:blur(5px);opacity:.5;cursor:pointer;user-select:none;}
+  body.testing .answer:hover{filter:blur(2px);}
+  body.testing .answer.revealed{filter:none;opacity:1;}
+  .testnote{display:none;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--crimson);
+    margin-bottom:18px;}
+  body.testing .testnote{display:block;}
+  .kf{font-weight:600;color:var(--navy);}
+  .formula{font-family:"IBM Plex Mono",monospace;font-size:14px;background:var(--navy-soft);
+    border-radius:7px;padding:11px 14px;margin:12px 0;color:var(--navy);font-weight:500;}
+  /* value-creation cycle flow */
+  .cycle{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0;}
+  .cycle .step{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;background:#fff;
+    border:1px solid var(--rule);border-radius:20px;padding:7px 13px;color:var(--ink);}
+  .cycle .arr{color:var(--crimson);font-weight:700;}
+  /* facts stats */
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0;}
+  .stat{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:16px;
+    box-shadow:var(--shadow);}
+  .stat .n{font-family:"Fraunces",serif;font-weight:800;font-size:32px;color:var(--crimson);
+    line-height:1;}
+  .stat .l{font-size:12.5px;color:var(--muted);margin-top:6px;}
+  /* playbook steps */
+  .steps{counter-reset:pb;margin:18px 0;}
+  .pbstep{display:grid;grid-template-columns:40px 1fr;gap:14px;margin-bottom:16px;
+    border-bottom:1px solid var(--rule);padding-bottom:16px;}
+  .pbstep:last-child{border-bottom:none;}
+  .pbstep .n{counter-increment:pb;font-family:"Fraunces",serif;font-weight:800;font-size:22px;
+    color:var(--crimson);}
+  .pbstep .n::before{content:counter(pb);}
+  .pbstep h4{margin:2px 0 4px;font-size:16px;font-family:"Fraunces",serif;font-weight:600;}
+  .pbstep .tool{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--navy);
+    font-weight:600;margin-top:6px;display:block;}
+  .pbstep p{font-size:14px;margin:0;color:var(--ink);}
+  /* quiz */
+  .quiz .q{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:18px 20px;
+    margin-bottom:14px;box-shadow:var(--shadow);}
+  .quiz .qtext{font-weight:600;font-family:"Fraunces",serif;font-size:16.5px;margin-bottom:12px;}
+  .quiz .qtext span{font-family:"IBM Plex Mono",monospace;color:var(--crimson);font-size:13px;
+    margin-right:8px;}
+  .quiz .opt{display:block;width:100%;text-align:left;border:1px solid var(--rule);background:var(--paper);
+    border-radius:7px;padding:10px 14px;margin-bottom:8px;font-family:"Inter";font-size:14px;
+    color:var(--ink);cursor:pointer;transition:all .12s;}
+  .quiz .opt:hover{border-color:var(--ink);}
+  .quiz .opt.correct{background:#eaf6ee;border-color:var(--green);color:var(--green);font-weight:600;}
+  .quiz .opt.wrong{background:var(--crimson-soft);border-color:var(--crimson);color:var(--crimson);}
+  .quiz .exp{display:none;font-size:13.5px;color:var(--muted);margin-top:10px;
+    border-left:3px solid var(--green);padding-left:12px;}
+  .quiz .q.answered .exp{display:block;}
+  .glossary dt{font-family:"Fraunces",serif;font-weight:600;font-size:16px;margin-top:16px;
+    color:var(--ink);}
+  .glossary dd{margin:3px 0 0;color:var(--muted);font-size:14.5px;}
+  .glossary dt .from{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--crimson);
+    font-weight:600;margin-left:8px;letter-spacing:.05em;}
+  .backtop{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);
+    text-decoration:none;margin-top:8px;display:inline-block;}
+  .backtop:hover{color:var(--crimson);}
+  @media(max-width:920px){
+    .wrap{grid-template-columns:1fr;}
+    .rail{position:static;height:auto;border-right:none;border-bottom:1px solid var(--rule);}
+    .main{padding:32px 22px 80px;}
+    .g2,.g3,.g4,.facts{grid-template-columns:1fr;}
+    .cmp{grid-template-columns:1fr;}
+    .cmp .con{border-left:none;border-top:1px solid var(--rule);}
+    .ipyr .lvl{width:100%!important;}
+    .ipyr .lvl{flex-wrap:wrap;}
+  }
+  @media print{
+    .rail,.testbtn{display:none;}.wrap{display:block;}.main{padding:0;}
+    body.testing .answer{filter:none;opacity:1;}section{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= RAIL ================= -->
+  <nav class="rail">
+    <div class="brandmark">IPADE &middot; MEDE</div>
+    <h1>IMC &amp; Branding</h1>
+    <div class="sub">Marketing Management III &middot; Dr. Silvia Cacho-Elizondo</div>
+    <div class="exam">📍 Final Exam &middot; Mon June 15, 2026</div>
+
+    <button id="testToggle" class="testbtn">Self-test mode: off</button>
+    <div style="display:flex;gap:6px;margin-top:8px;">
+      <button id="expandAll" class="testbtn" style="flex:1;font-size:11.5px;padding:7px;">Expand all</button>
+      <button id="collapseAll" class="testbtn" style="flex:1;font-size:11.5px;padding:7px;">Collapse all</button>
+    </div>
+
+    <div class="navgroup" style="margin-top:20px;">
+      <span class="gl">Start here</span>
+      <a href="#overview"><span class="code">▸</span> Overview &amp; the thread</a>
+    </div>
+    <div class="navgroup">
+      <span class="gl">Module I &middot; IMC</span>
+      <a href="#s2"><span class="code">S2</span> Franzia / Mekanism</a>
+      <a href="#s2b"><span class="code">S2b</span> Influencers</a>
+      <a href="#s3"><span class="code">S3</span> Glossier</a>
+      <a href="#s4"><span class="code">S4</span> Brand Coolness</a>
+    </div>
+    <div class="navgroup">
+      <span class="gl">Module II &middot; Branding</span>
+      <a href="#s5"><span class="code">S5</span> Green Gum</a>
+      <a href="#s6"><span class="code">S6</span> United Airlines</a>
+      <a href="#s7"><span class="code">S7</span> Nike / Kaepernick</a>
+      <a href="#s8"><span class="code">S8</span> Grupo Britt</a>
+      <a href="#s9"><span class="code">S9</span> Tequila Patrón</a>
+    </div>
+    <div class="navgroup">
+      <span class="gl">Module III &middot; Brand Love</span>
+      <a href="#s10"><span class="code">S10</span> Ahuvia workshop</a>
+    </div>
+    <div class="navgroup">
+      <span class="gl">Module IV &middot; Era of AI</span>
+      <a href="#s14"><span class="code">S14</span> GümmyLife</a>
+    </div>
+    <div class="navgroup">
+      <span class="gl">Core Frameworks</span>
+      <a class="fw" href="#fw-resonance"><span class="code">▸</span> Resonance Pyramid</a>
+      <a class="fw" href="#fw-6m"><span class="code">▸</span> 6M Framework</a>
+      <a class="fw" href="#fw-value"><span class="code">▸</span> Brand Value (4)</a>
+      <a class="fw" href="#fw-culture"><span class="code">▸</span> Brand Culture creators</a>
+      <a class="fw" href="#fw-journey"><span class="code">▸</span> Advertising journey</a>
+      <a class="fw" href="#fw-growth"><span class="code">▸</span> Expansion avenues</a>
+      <a class="fw" href="#fw-vehicle"><span class="code">▸</span> Vehicle by goal</a>
+    </div>
+    <div class="navgroup">
+      <span class="gl">Study tools</span>
+      <a class="fw" href="#facts"><span class="code">▸</span> Course facts &amp; recall</a>
+      <a class="fw" href="#playbook"><span class="code">▸</span> Case method playbook</a>
+      <a class="fw" href="#cheat"><span class="code">▸</span> Cheat sheet</a>
+      <a class="fw" href="#quiz"><span class="code">▸</span> Quiz</a>
+      <a class="fw" href="#glossary"><span class="code">▸</span> Glossary</a>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main">
+
+    <div class="hero">
+      <div class="eyebrow">Consolidated study guide</div>
+      <h1>The whole course, the night <em>before.</em></h1>
+      <p>Nine cases across four modules, the frameworks that tie them together, the recall facts the professor likes to ask, and a case-method playbook for the exam itself. Every case follows the same shape: the decision, current positioning, the data that matters, the recommended move, and the concept it tests. Self-test mode blurs the answers so you can quiz yourself.</p>
+      <div class="herometa">
+        <span class="chip">Exam weight: <b>40%</b></span>
+        <span class="chip"><b>9</b> cases &middot; <b>16</b> sessions</span>
+        <span class="chip">Course summary: <b>1 page both sides, extra points</b></span>
+        <span class="chip">Final project: <b>Círculos de Sabor</b></span>
+      </div>
+    </div>
+
+    <p class="testnote">Self-test mode is on. Click any blurred block to reveal it.</p>
+
+    <!-- ============ OVERVIEW ============ -->
+    <section id="overview">
+      <div class="fwlabel">Start here</div>
+      <h2 class="fwhead">The thread that ties it together</h2>
+      <p class="lead">Everything in the course maps onto one cycle of value. <strong>Module I</strong> is about <em>communicating</em> value; <strong>Module II</strong> is about <em>creating and sustaining</em> brand value. The governing rule: branding must be <span class="kf">engineered into the marketing mix</span>, not bolted on afterward.</p>
+      <div class="cycle">
+        <span class="step">Identify value</span><span class="arr">&rarr;</span>
+        <span class="step">Create value proposition</span><span class="arr">&rarr;</span>
+        <span class="step">Communicate value</span><span class="arr">&rarr;</span>
+        <span class="step">Deliver value</span><span class="arr">&rarr;</span>
+        <span class="step">Extract value</span><span class="arr">&rarr;</span>
+        <span class="step">Measure value</span><span class="arr">&rarr;</span>
+        <span class="step">Sustain value</span>
+      </div>
+      <p>Value is created for two parties at once: for the <strong>customer</strong> (satisfaction leading to loyalty) and for the <strong>company</strong> (price, image, and ultimately brand equity).</p>
+
+      <h3>The four modules</h3>
+      <div class="grid g2">
+        <div class="card"><span class="num">Module I</span><h4>Integrated Marketing Communications (S1-S4)</h4><p>How brands say things when consumers talk back: the shift from one-way persuasion (AIDA) to embedding cultural meaning, the 6M's, systematic creative and influencer selection, and digital communities.</p></div>
+        <div class="card"><span class="num">Module II</span><h4>Branding Strategies (S5-S9)</h4><p>How brands are built, defended, and grown: social responsibility, crisis, activism, architecture and growth, authenticity in global markets.</p></div>
+        <div class="card"><span class="num">Module III</span><h4>Brand Love Workshop (S10-S13)</h4><p>Dr. Aaron Ahuvia on the psychology of why people love brands (personification) and the ethics of it.</p></div>
+        <div class="card"><span class="num">Module IV</span><h4>Innovation &amp; Branding in the Era of AI (S14-S15)</h4><p>Scaling a viral idea into a real brand (GümmyLife), then the wrap-up.</p></div>
+      </div>
+      <p class="muted"><strong>If you memorize two things:</strong> Keller's Brand Resonance Pyramid and the 6M's. Both appear across nearly every session.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S2 FRANZIA ============ -->
+    <section id="s2">
+      <div class="modlabel">Module I &middot; Integrated Marketing Communications</div>
+      <div class="casehead"><span class="scode">S2</span><h2 class="case">Thinking Outside the Wine Box</h2></div>
+      <div class="tagline">Franzia &amp; the Mekanism "Franz for Life" campaign: how to pick a creative and an influencer</div>
+      <span class="flag">★ tests: creative selection, advertising vs branding</span>
+
+      <p class="lead">Franzia is an inexpensive, historically uncool boxed wine that rarely worked with big agencies. To modernize, it partnered with Mekanism on the tongue-in-cheek <strong>"Franz for Life"</strong> campaign, leaning into the box-wine identity with humor and pop culture. Your job: pick which storyboard and which influencer should run next (version 2.0).</p>
+
+      <h3>The central lesson: choosing creative is NOT a gut decision</h3>
+      <p>Most managers treat picking an ad as "you know it when you see it." The case argues the opposite: the best brand-building companies make creative selection a <strong>systematic, multi-dimensional, teachable process</strong>. The literal translation of strategy into an ad is always a disaster; picking the right one is an act of <strong>interpretation</strong> of the implicit meaning the audience will build.</p>
+
+      <h3>Creative Decision Filters (the core tool)</h3>
+      <div class="grid g3">
+        <div class="card"><span class="num">Brand filters</span><h4>Benefits</h4><p>Is the framing of brand benefits compelling?</p></div>
+        <div class="card"><span class="num">Brand filters</span><h4>Symbolism</h4><p>Is the expression of brand symbolism apt?</p></div>
+        <div class="card"><span class="num">Brand filters</span><h4>Resonance</h4><p>Will the ad resonate with the target culture?</p></div>
+        <div class="card"><span class="num">Comms filters</span><h4>Story</h4><p>Engaging, simple, original, creative? Product woven in naturally?</p></div>
+        <div class="card"><span class="num">Comms filters</span><h4>Product</h4><p>Does it integrate the product into the story?</p></div>
+        <div class="card"><span class="num">Campaign filters</span><h4>Campaign extension</h4><p>Does it effectively extend equity already built?</p></div>
+      </div>
+
+      <h3>Persuasion models (and why branding breaks them)</h3>
+      <p><strong>AIDA</strong>: Awareness &rarr; Interest &rarr; Desire &rarr; Action. <strong>Hierarchy of Effects</strong>: learning &rarr; feeling &rarr; doing (cognitive &rarr; affective &rarr; behavioral). These assume a one-way funnel that intervenes at one decision point. <span class="kf">Branding rarely works that way</span>; it aims at the value proposition, embedding cultural meaning while consumers co-create the story.</p>
+
+      <h3>Branding = 4 types of value creation</h3>
+      <ol>
+        <li>Build a <strong>quality reputation</strong> / benefits</li>
+        <li>Build perceptions that the company is a <strong>good relationship partner</strong></li>
+        <li><strong>Frame</strong> how consumers perceive the product experience</li>
+        <li>Imbue the brand as a <strong>symbol</strong>, with values and identities</li>
+      </ol>
+
+      <p class="muted"><strong>Context:</strong> Mekanism is an offbeat creative agency (founded 2003, Jason Harris CEO from 2012). Franz for Life (2019) was a strategic shift for The Wine Group, which usually spends little on advertising. The toolkit is notable for a low-budget brand: influencer marketing, media partnerships, merchandising, and social media rather than expensive TV.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S2b INFLUENCERS ============ -->
+    <section id="s2b">
+      <div class="modlabel">Module I &middot; Reading</div>
+      <div class="casehead"><span class="scode">S2b</span><h2 class="case">Influencer Marketing</h2></div>
+      <div class="tagline">The influencer pyramid and why small can be powerful (ISTMO reading)</div>
+      <span class="flag">★ tests: the pyramid, the reach vs conversion trade-off</span>
+
+      <p class="lead">Influencer marketing means promoting a brand through people the audience already admires. As budgets shift to social media, where the audience chooses what to watch and trusts the messenger, creators get more valuable, partly because, unlike ads, they essentially can't be skipped or blocked.</p>
+
+      <h3>The influencer pyramid (by audience size)</h3>
+      <div class="ipyr">
+        <div class="lvl l1"><span class="t">Nano</span><span class="d">1K to 10K &middot; highest authenticity and engagement; seen as ordinary "super-users."</span></div>
+        <div class="lvl l2"><span class="t">Micro</span><span class="d">10K to 100K &middot; niche experts with engaged communities.</span></div>
+        <div class="lvl l3"><span class="t">Macro</span><span class="d">100K to 1M &middot; wide reach; need ~2 to 5% engagement; sold by post or CPM.</span></div>
+        <div class="lvl l4"><span class="t">Mega / Celebrity</span><span class="d">1M+ &middot; massive reach; used mainly for brand awareness.</span></div>
+        <div class="note">↑ more reach &nbsp;&middot;&nbsp; ↓ targeting, control, and conversion</div>
+      </div>
+      <p><strong>The central trade-off:</strong> the more followers, the bigger the reach, but the harder to target a group, control responses, and drive purchases. <span class="kf">Nano and micro convert better</span> because the recommendation feels authentic, a genuine tip from a peer.</p>
+      <p class="muted">Influencers are also sorted by content vertical: fashion, makeup, foodies, gamers, entertainment, travel, fitness. Matching vertical and audience to the brand is what makes the partnership credible. Thresholds per Conde &amp; Casais (2023) and Korzynski et al. (2025).</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S3 GLOSSIER ============ -->
+    <section id="s3">
+      <div class="modlabel">Module I &middot; Integrated Marketing Communications</div>
+      <div class="casehead"><span class="scode">S3</span><h2 class="case">Glossier</h2></div>
+      <div class="tagline">Co-creating a cult brand with a digital community: social commerce</div>
+      <span class="flag">★ tests: CLV/CSV math, 8 Cs, CBR, the $52M decision</span>
+
+      <p class="lead">Glossier grew out of a blog into the <strong>first socially driven beauty brand</strong>: products developed through crowdsourced community feedback, a friendly brand-as-peer personality, and a direct-to-consumer model that lets it own customer data and curate its community.</p>
+
+      <h3>The three equity concepts (know the difference)</h3>
+      <div class="grid g3">
+        <div class="card"><h4>Brand Equity</h4><p>The value of the brand to the firm; the differential (better) response consumers give a product because it carries the brand.</p></div>
+        <div class="card"><h4>Customer Equity</h4><p>The combined Customer Lifetime Value (CLV) of all customers in the portfolio.</p></div>
+        <div class="card"><h4>Customer Social Value (CSV)</h4><p>A customer's peer impact on others' purchasing via social-commerce sharing.</p></div>
+      </div>
+      <div class="formula">CLV = (Gross Profit per Year &times; Years in Lifetime) &minus; Customer Acquisition Cost</div>
+      <div class="formula">CLSV (Customer Lifetime Social Value) = CLV + CSV</div>
+
+      <h3>The 8 Cs framework (building Customer Social Value)</h3>
+      <p class="answer">Content &rarr; Conversations &rarr; Connections &rarr; Community &rarr; Crowdsourcing &rarr; Co-Creation &rarr; Consumer-to-Consumer Social Commerce &rarr; Club / Cult.</p>
+
+      <h3>Fournier's Consumer-Brand Relationships (CBR)</h3>
+      <p>Brand relationships behave like human relationships: <strong>functional</strong> (serve a purpose), <strong>multiplex</strong> (multi-layered, resemble real human bonds), and <strong>dynamic and complex</strong> (they evolve). Close "friends" vs casual "acquaintances" generate very different expectations and profitability. Glossier's type is <span class="kf">friendship</span>.</p>
+
+      <h3>The decisions on the table</h3>
+      <div class="decision">
+        <div class="q">Where should Glossier invest its $52 million?</div>
+        <p class="answer">Assess each option against control over the Consumer-Brand Relationship. The DTC model gives the most control to curate and manage the community; wholesale (Sephora, 40-50% margins) hands frontline relationship management to a partner.</p>
+      </div>
+      <div class="decision">
+        <div class="q">Maximize CLV and CSV: P2P customer sales reps or paid professional influencers?</div>
+        <p class="answer">Most existing customers are high-CLV but low-CSV. To lift CSV you either recruit a core of existing customers as peer-to-peer sellers (authentic, on-brand, but may lack skill or desire) or use professional influencers (skilled, scalable, but less authentic to a peer-trust brand).</p>
+      </div>
+      <div class="decision">
+        <div class="q">Should Glossier launch a customer loyalty program?</div>
+        <p class="answer">Weigh it against the friendship relationship: a transactional points program can clash with brand-as-peer. The stronger move rewards advocacy and CSV-generating behavior, not just repeat spend.</p>
+      </div>
+
+      <p class="muted"><strong>Vulnerabilities (a likely exam list):</strong> profitability, scaling, competition, the DTC ceiling, and a limited target market. A beloved community does not automatically make a scalable business. Tech is core: about one third of staff work in technology, building social commerce as an anti-Amazon model.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S4 COOLNESS ============ -->
+    <section id="s4">
+      <div class="modlabel">Module I &middot; Integrated Marketing Communications</div>
+      <div class="casehead"><span class="scode">S4</span><h2 class="case">Brands &amp; People: Brand Coolness</h2></div>
+      <div class="tagline">Rebranding &amp; relifting: can coolness be engineered? (Warren, Batra, Loureiro &amp; Bagozzi, JM 2019)</div>
+      <span class="flag">★ tests: the 10 characteristics, positioning gap, Harley vs BMW</span>
+
+      <p class="lead">Almost every brand wants to be cool; few are. The question: can coolness be deliberately <strong>engineered and managed</strong>, from both the brand's and the agency's point of view (including how AI is reshaping agencies)? It applies in Team Assignment 2: propose a brand name, logo, slogan, and storytelling through a coolness lens.</p>
+
+      <h3>Two views of any brand</h3>
+      <div class="cmp">
+        <div class="pro"><h4>Strategic positioning</h4><ul><li>The image the company intends to project.</li></ul></div>
+        <div class="con"><h4>Perceived positioning</h4><ul><li>The image consumers actually hold.</li></ul></div>
+      </div>
+      <p>The gap between the two is the central thing a brand manager works to close.</p>
+
+      <h3>The 10 characteristics of brand coolness</h3>
+      <div class="grid g2">
+        <div class="card"><span class="num">01</span><h4>Rebellious</h4><p>Opposes, subverts, or combats conventions and norms.</p></div>
+        <div class="card"><span class="num">02</span><h4>Extraordinary / Useful</h4><p>Sets the brand apart through superior functional value.</p></div>
+        <div class="card"><span class="num">03</span><h4>Aesthetically appealing</h4><p>Attractive, visually pleasing.</p></div>
+        <div class="card"><span class="num">04</span><h4>Original</h4><p>Different, creative, does things not done before.</p></div>
+        <div class="card"><span class="num">05</span><h4>Subcultural</h4><p>Tied to a group seen as outside the mainstream.</p></div>
+        <div class="card"><span class="num">06</span><h4>Popular</h4><p>Fashionable, trendy, liked by most.</p></div>
+        <div class="card"><span class="num">07</span><h4>Authentic</h4><p>True to its perceived essence or roots.</p></div>
+        <div class="card"><span class="num">08</span><h4>Energetic</h4><p>Enthusiasm, energy, vigor.</p></div>
+        <div class="card"><span class="num">09</span><h4>High Status</h4><p>Prestige, sophistication, esteem.</p></div>
+        <div class="card"><span class="num">10</span><h4>Iconic</h4><p>Widely recognized as a cultural symbol.</p></div>
+      </div>
+
+      <h3>Two routes to cool (the classic examples)</h3>
+      <p class="answer"><strong>Harley-Davidson</strong> became cool because an outlaw-biker subculture adopted it, lending it a rebellious, iconic image. <strong>BMW</strong> is cool for the opposite reason: it became a widely admired <strong>status symbol</strong>. Same outcome, two completely different routes. Coolness usually starts in a small niche (subcultural, rebellious, authentic) and some brands then get adopted by the mass and become popular and iconic.</p>
+      <p class="muted">Note the built-in tension: subcultural pulls against popular, rebellious against high status. Cool lives in the balance, which is why it erodes as a brand scales. <strong>Rebranding / relifting</strong> refreshes a brand's identity to regain relevance without throwing away hard-won equity, the same balancing act as extending a campaign.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S5 GREEN GUM ============ -->
+    <section id="s5">
+      <div class="modlabel">Module II &middot; Branding Strategies</div>
+      <div class="casehead"><span class="scode">S5</span><h2 class="case">Genesis of a Green Brand in the Mayan Rainforest</h2></div>
+      <div class="tagline">Building brands with social responsibility (Chicza, the only organic biodegradable gum)</div>
+      <span class="flag">★ tests: brand strategy steps, positioning weaknesses, team exercise (6M by country)</span>
+
+      <p class="lead">Omar Roquet must build the brand story, identity, and go-to-market strategy to connect rainforest gum (chicle) producers to the best target market. This is the conceptual spine of Module II: <strong>brands are cultures that circulate in society as conventional stories</strong>, authored by four creators.</p>
+
+      <h3>Designing a brand strategy (6 steps)</h3>
+      <ol>
+        <li>Identify the <strong>goals</strong> branding can address</li>
+        <li>Map the <strong>existing brand culture</strong> (customers/prospects, influencers, current strategy across reputation, relationship, experience, symbolism inferences)</li>
+        <li>Analyze <strong>competition and environment</strong> with the Ohmae 3C model (Company, Customer, Competition) to spot branding opportunities</li>
+        <li><strong>Design</strong> the branding strategy (existing culture &rarr; drivers &rarr; goal, executed through brand engineering)</li>
+        <li><strong>Implement</strong> it</li>
+        <li><strong>Evaluate</strong> on four measures: behaviors, attitudes, relationships, equity</li>
+      </ol>
+
+      <h3>Why classic positioning statements fail</h3>
+      <div class="cmp">
+        <div class="pro"><h4>What it captures</h4><ul><li>Target group and need</li><li>Frame of reference (perceptual + competitive)</li><li>One differentiating benefit + reason to believe</li><li>Brand character</li></ul></div>
+        <div class="con"><h4>Where it breaks</h4><ul><li>Ignores that the brand has a history and a culture</li><li>Doesn't isolate the 4 components of brand value</li><li>Assumes only one point of difference; ignores points of parity</li><li>No forward-looking growth platform; yields vague strategy</li></ul></div>
+      </div>
+
+      <h3>The team exercise</h3>
+      <div class="decision">
+        <div class="q">Promote the Mexican organic gum in an assigned country.</div>
+        <p class="answer">Deliver: cover page, project background (company, product, brand name, country justification), 4P decisions (Product / Pricing / Channels / Communication), and a communication campaign designed with the <strong>6M framework</strong>.</p>
+      </div>
+
+      <h3>Branding &amp; ethics (4 conditions for benevolent branding)</h3>
+      <ol>
+        <li>Companies and consumers have <strong>equal information</strong> about the product</li>
+        <li>They have <strong>equivalent sophistication</strong> in how branding works</li>
+        <li>Consumers are <strong>not over-reliant on heuristics</strong></li>
+        <li>The <strong>authors</strong> of the branding effort are revealed</li>
+      </ol>
+      <p class="muted">For a green brand this matters doubly: false sustainability claims (greenwashing) violate these conditions. <strong>Closing thesis:</strong> start with the WHY; purpose matters even more for a social or green brand. Build purposeful brands with social impact, but make them profitable and global.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S6 UNITED ============ -->
+    <section id="s6">
+      <div class="modlabel">Module II &middot; Branding Strategies</div>
+      <div class="casehead"><span class="scode">S6</span><h2 class="case">United Airlines</h2></div>
+      <div class="tagline">Brand crisis &amp; reputation management: Dr. Dao dragged off Flight 3411</div>
+      <span class="flag">★ tests: crisis plan, online complaining quadrants, reputation dimensions</span>
+
+      <p class="lead">In 2017 United overbooked a flight and had aviation security forcibly drag a paying passenger, Dr. David Dao, off the plane. A bystander's video went viral within hours. <strong>Brand crisis management</strong> is the process of dealing with a disruptive, unexpected event that threatens the organization and its stakeholders.</p>
+
+      <h3>The timeline (why each day made it worse)</h3>
+      <ul class="tl">
+        <li><span class="d">Apr 9</span> Chicago Aviation Security agents forcibly remove Dr. Dao; the video spreads globally.</li>
+        <li><span class="d">Apr 10</span> CEO Oscar Munoz apologizes only for having to "re-accommodate" customers, widely seen as tone-deaf.</li>
+        <li><span class="d">Apr 11</span> United changes policies; share price drops sharply (down 3.72% intraday).</li>
+        <li><span class="d">Apr 12</span> Public demands Munoz resign.</li>
+        <li><span class="d">Apr 13</span> Dao's daughter says no one had contacted her father.</li>
+      </ul>
+      <p>Diagnosis: a bad initial response, poor and late communication, and overall mishandling.</p>
+
+      <h3>Four questions to frame any crisis</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Impact on the brand</h4><p>How deep, how lasting?</p></div>
+        <div class="card"><h4>Scale of the incident</h4><p>How far does it spread?</p></div>
+        <div class="card"><h4>The company's reaction</h4><p>Anticipate the likely response and its risks.</p></div>
+        <div class="card"><h4>Who is responsible?</h4><p>Brand responsibility vs third party.</p></div>
+      </div>
+
+      <h3>Online public complaining (Tripp &amp; Grégoire, 2011)</h3>
+      <p>Two axes: <strong>understanding</strong> (customer actions) vs <strong>managing</strong> (company actions), and <strong>before</strong> vs <strong>after</strong> the complaint. Four quadrants: <span class="answer">(1) why customers complain online; (2) how long they hold a grudge; (3) how a company should respond after; (4) how to prevent it.</span></p>
+
+      <h3>Reputation: 6 dimensions, 20 attributes</h3>
+      <div class="grid g3">
+        <div class="card"><h4>Social Responsibility</h4><p>Good causes, environment, community.</p></div>
+        <div class="card"><h4>Emotional Appeal</h4><p>Feel good, admire/respect, trust.</p></div>
+        <div class="card"><h4>Vision &amp; Leadership</h4><p>Market opportunities, leadership, clear future.</p></div>
+        <div class="card"><h4>Products &amp; Services</h4><p>Quality, innovation, value, stands behind.</p></div>
+        <div class="card"><h4>Financial Performance</h4><p>Outperforms, profitable, low-risk, growth.</p></div>
+        <div class="card"><h4>Workplace Environment</h4><p>Fair rewards, good place to work, good employees.</p></div>
+      </div>
+
+      <h3>Crisis Management Plan (the checklist)</h3>
+      <p class="answer">Prepare a procedures manual; investigate thoroughly; do not lie ("I don't know" beats invention); take it seriously; monitor for early warning signs; do not argue publicly (address people directly); value the criticism; do not take it personally; choose your battles; ask for help. And prepare a <strong>war room</strong>.</p>
+
+      <p class="muted"><strong>Stat to remember:</strong> 70% of customer loss is from deficient service (vs 15% relocation, 10% competition, 5% the contact died). And 95% of dissatisfied customers never complain, they just leave.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S7 NIKE ============ -->
+    <section id="s7">
+      <div class="modlabel">Module II &middot; Branding Strategies</div>
+      <div class="casehead"><span class="scode">S7</span><h2 class="case">Nike &amp; Colin Kaepernick</h2></div>
+      <div class="tagline">Brand activism: "Believe in something. Even if it means sacrificing everything."</div>
+      <span class="flag">★ tests: brand activism, FIT, MROI metrics, accretive vs dilutive</span>
+
+      <p class="lead">Differentiation has evolved: <strong>Functional</strong> (1900s-1950s) &rarr; <strong>Emotional / ego-expressive</strong> (1960s-1990s) &rarr; <strong>Moral</strong> (1990s-present), where brands "take a stand." In 2018 Nike made Kaepernick, polarizing for kneeling during the anthem to protest racial injustice, the face of its "Just Do It" anniversary campaign.</p>
+
+      <h3>The decision</h3>
+      <div class="decision">
+        <div class="q">Has using Kaepernick been positive or negative for the Nike brand? Which metrics matter most or least?</div>
+        <p class="answer">Use the exhibits. Nike's core customers skew young, urban, diverse: 56% of Black consumers were more likely to buy, 37% of 18-34s, while older and conservative segments skewed negative but are a smaller share of Nike's base. The campaign drove massive earned media; sales and stock recovered and grew. Net: accretive for Nike's actual target despite polarized overall opinion.</p>
+      </div>
+
+      <h3>The three FIT dimensions</h3>
+      <div class="grid g3">
+        <div class="card"><h4>Brand &ndash; Cause FIT</h4><p>Does the cause align with what the brand stands for?</p></div>
+        <div class="card"><h4>Cause &ndash; Company FIT</h4><p>Does the company have credibility on this issue?</p></div>
+        <div class="card"><h4>Spokesperson &ndash; Cause FIT</h4><p>Is the messenger an authentic voice for it?</p></div>
+      </div>
+      <p class="muted">Kaepernick scored high on all three for Nike's athlete-empowerment identity.</p>
+
+      <h3>Marketing ROI (CFO vs CMO evidence)</h3>
+      <p>A CFO wants financial proof (sales, stock, market cap); a CMO wants brand-equity proof (awareness, engagement, liking, consideration, ad recall). The case maps metrics to MROI implications: earned media impressions, brand engagement, brand knowledge, brand liking, purchase intent, share of voice, brand value, cultural resonance. Tools include word-cloud sentiment analysis of social posts.</p>
+
+      <h3>Brand Asset Value: activism cuts both ways</h3>
+      <table>
+        <tr><th>Equity lever</th><th>Accretive</th><th>Dilutive</th></tr>
+        <tr><td>Awareness</td><td class="acc">Positive earned media buzz</td><td class="dil">Negative earned media buzz</td></tr>
+        <tr><td>Engagement</td><td class="acc">Shares positive news, "buycott"</td><td class="dil">Shares negative news, boycott</td></tr>
+        <tr><td>Knowledge</td><td class="acc">Adds positive associations</td><td class="dil">Adds negative associations</td></tr>
+        <tr><td>Liking</td><td class="acc">Positive affect from shared values</td><td class="dil">Negative affect from value clash</td></tr>
+        <tr><td>Consideration</td><td class="acc">Enters choice set (self-image)</td><td class="dil">Removed from choice set</td></tr>
+        <tr><td>Choice</td><td class="acc">Buys it / pays a premium</td><td class="dil">Boycotts / pays to switch away</td></tr>
+        <tr><td>Loyalty</td><td class="acc">Stronger self-brand connection</td><td class="dil">Connection threatened, switching</td></tr>
+      </table>
+
+      <h3>The 6 P's of Brand Activism</h3>
+      <p class="answer"><strong>Purpose</strong> (driven by brand values), <strong>Policy</strong> (advocates real change), <strong>People</strong> (employees believe in it), <strong>Power</strong> (use company power to improve the world, not just sell), <strong>Publishing</strong> (use brand stories and touchpoints as a call to action), <strong>Pop Culture</strong> (connect with social movements to stay relevant).</p>
+      <p class="muted"><strong>Definition:</strong> brand activism is brands developing actions to make the world a little better, a response to people's concern for social problems. Done well it makes consumers feel heard, motivates employees, and builds loyalty and social impact. Five types: at-work, political, environmental, economic, legal.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S8 BRITT ============ -->
+    <section id="s8">
+      <div class="modlabel">Module II &middot; Branding Strategies</div>
+      <div class="casehead"><span class="scode">S8</span><h2 class="case">Grupo Britt</h2></div>
+      <div class="tagline">Brand architecture &amp; growth strategies: Costa Rican coffee goes global, the multilocal brand</div>
+      <span class="flag">★ tests: brand architecture, the 4 growth alternatives, multilocal, capabilities</span>
+
+      <p class="lead">Britt started as a <strong>garage coffee roaster (1990)</strong> and grew into a travel-retail empire of "Britt Shops" in airports across Latin America. Its leader, <strong>Pablo Vargas, rose from intern to CEO</strong>. The culture prizes <strong>intrapreneurship</strong> (anyone with an idea can bring it forward), flat hierarchy, first-name basis, and environmental concern, and it built its own e-commerce tech early. The decision: how to grow from about $133M (2015) toward about $200M (2021)?</p>
+
+      <h3>Brand architecture &amp; the "multilocal" concept</h3>
+      <p><strong>Brand architecture</strong> is how a company organizes and relates its portfolio of brands and sub-brands. Britt's distinctive idea is being <span class="kf">multilocal</span>: not a generic global brand, but one that feels authentically local in each country (selling local coffee, crafts, and flavors as a sense-of-place souvenir) while running on shared systems behind the scenes.</p>
+
+      <h3>The four growth alternatives (Ansoff-style menu)</h3>
+      <div class="grid g4">
+        <div class="card"><span class="num">A</span><h4>Expansive</h4><p>Open Britt shops in new countries and airports. Needs airport-authority relationships.</p></div>
+        <div class="card"><span class="num">B</span><h4>Intensive</h4><p>Add more shops within airports it is already in. Deeper penetration.</p></div>
+        <div class="card"><span class="num">C</span><h4>In-Depth</h4><p>Increase cross-selling, e.g. push products into supermarkets. Brand stretch.</p></div>
+        <div class="card"><span class="num">D</span><h4>Disruptive</h4><p>Invent new travel-retail formats.</p></div>
+      </div>
+      <p>Challenges group into <strong>administrative</strong> (SKU control, diversification), <strong>operational</strong> (stiffer competition, limited airport space), and <strong>logistics / technology</strong> (complex logistics, tech maintenance).</p>
+      <p class="muted"><strong>The lesson:</strong> growth is not just opportunity. Each path forces you to build <span class="kf">new organizational capabilities</span>. Cross-reference the 7 expansion avenues in the frameworks section; Britt is where they get applied to a real decision. Brand strategy itself splits into targeting (allocate resources across segments) and positioning (product, pricing, communication).</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S9 PATRON ============ -->
+    <section id="s9">
+      <div class="modlabel">Module II &middot; Branding Strategies</div>
+      <div class="casehead"><span class="scode">S9</span><h2 class="case">Tequila Patrón</h2></div>
+      <div class="tagline">Brand authenticity &amp; global markets: selling Mexican-ness back to Mexico</div>
+      <span class="flag">★ tests: authenticity, ultra-premium, grassroots marketing; also the Final Project brief session</span>
+
+      <p class="lead">Patrón launched in Los Angeles in 1989, when tequila was a cheap shot-drink. Its strategy: <strong>create an entirely new "ultra-premium" category</strong> by teaching consumers to sip and taste tequila like a fine spirit, emphasizing raw-material quality and an artisanal process. The dilemma: how to position Patrón <strong>in Mexico itself</strong>, where it was viewed as an "American tequila" and its authenticity questioned.</p>
+
+      <h3>How the product builds authenticity</h3>
+      <p>Authenticity is grounded in craft. Patrón ages in different barrels (new French oak, used American bourbon oak, Hungarian oak) and offers a line from unaged <strong>Silver</strong> to <strong>Reposado</strong> (rested, about 3 to 5 months) to <strong>Añejo</strong> (aged, about 12 to 14 months), plus the tahona-process <strong>Roca</strong> and triple-distilled <strong>Gran Patrón</strong>. Aging follows Mexico's CRT norms (rested 2 to 12 months; aged 1 to 3 years; ultra-aged 3+ years). Blending ensures consistency, so the artisanal story is real, not just marketing.</p>
+
+      <h3>The threats and the response</h3>
+      <p>Two pressures: the rise of <strong>mezcal</strong> (production up about 140% in 2012 to 13), which out-authenticities tequila in Mexican eyes, and winning the large 25 to 40 middle and upper-class segment without cheapening the brand. The response leans on <strong>digital, trade, and influence marketing</strong> plus education at points of contact (bars, restaurants, celebrities).</p>
+
+      <div class="decision">
+        <div class="q">What is grassroots / guerrilla marketing, and why does Patrón rely on it?</div>
+        <p class="answer">Patrón says it has "never paid a penny" for celebrity endorsements; the brand spreads organically through word-of-mouth and unconventional, low-cost tactics. Grassroots marketing builds awareness from the ground up: slower and cheaper than mass advertising, but the loyalty it generates is genuine and long-lasting.</p>
+      </div>
+
+      <h3>The authenticity equation</h3>
+      <p>Authenticity is about closing the gap between <strong>expectation and reality</strong>: if your brand promises authenticity, you had better deliver (HBR 2014). People judge from experience, so the message must match the organization's reality. Main tools to build it: consumer experience, public relations, points of sale, communication, and distribution channels. This is also the <strong>Final Project brief session</strong> (Círculos de Sabor), built with the 6M framework.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S10-13 BRAND LOVE ============ -->
+    <section id="s10">
+      <div class="modlabel">Module III &middot; Brand Love Workshop</div>
+      <div class="casehead"><span class="scode">S10-13</span><h2 class="case">Brand Love (Dr. Aaron Ahuvia)</h2></div>
+      <div class="tagline">How and why people fall in love with products, and the ethics of it</div>
+      <span class="flag">★ tests: 3 personification mechanisms, the "happy accident," intrinsic rewards</span>
+
+      <p class="lead">A four-session workshop by <strong>Dr. Aaron Ahuvia</strong> (University of Michigan-Dearborn), a leading researcher on the psychology of brand love. The framing is a three-act story: <strong>Act I</strong>, boy finds love (people really do love products); <strong>Act II</strong>, boy loses love (why almost all brands fail to be loved); <strong>Act III</strong>, boy gets love back (the mechanism that makes brand love possible).</p>
+
+      <h3>The core thesis: brand love is a "happy accident"</h3>
+      <p>Love is a psychological system that <strong>evolved to make families</strong>, to bond humans to other humans. It was never designed for products. So when we "love" a brand, we are accidentally firing human-bonding machinery at a commercial object. The practical implication: <span class="kf">to build brand love, you must understand human love first.</span></p>
+
+      <h3>Why so few brands are loved (Act II)</h3>
+      <p>In Ahuvia's survey of 720 consumers, for every brand loved by more than 100 people there were over 250 brands loved by only a single person. Companies wrongly picture one spectrum from hate to love and assume maximizing quality moves you up it. But <strong>quality and trust only get you a reliable product, "the difference between a keeper and a fling."</strong> They are necessary, not sufficient. You also need <strong>intrinsic rewards</strong>: the brand has to make you feel good in itself ("I love how I feel when I use this"), not merely be useful.</p>
+
+      <h3>The mechanism: Personification (Act III)</h3>
+      <p>Products can only be truly loved once the mind treats them as <strong>people, not objects</strong>. Three routes:</p>
+      <div class="grid g3">
+        <div class="card"><span class="num">01</span><h4>Anthropomorphism</h4><p>The brand itself seems human (talking to Siri, a "face" on a watch, reluctance to switch off a talking toy).</p></div>
+        <div class="card"><span class="num">02</span><h4>Connecting</h4><p>The brand becomes part of another person you love (a perfume your mother wore), so love transfers to the object.</p></div>
+        <div class="card"><span class="num">03</span><h4>Self-integration</h4><p>The brand becomes part of your own identity. Once it is part of the self, you apply self-serving bias and excuse its flaws.</p></div>
+      </div>
+
+      <h3>Segmentation for messaging</h3>
+      <p>Ahuvia maps consumers on <strong>cultural capital &times; economic capital</strong> (High Society, BoBo / bourgeois-bohemian, Middle Class, Blue Collar), each with distinct media, retailers, and lifestyle signals, so you craft norms-based messaging that fits the group's identity.</p>
+
+      <h3>The ethics (Session 13): "Don't be the devil incarnate"</h3>
+      <p>Capitalism done right is a positive-sum game: you win by making others <strong>better off</strong>. The danger is <strong>temptation</strong>. Older economic theory assumes people rationally weigh costs, benefits, risk, and timing (a personal "discount rate" for sooner vs later rewards), but real consumers can be tempted into self-destructive bargains. Ethical marketers move from an <span class="kf">attention economy</span> to an <span class="kf">attachment economy</span>, building genuine, healthy love rather than exploiting impulses.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ S14 GUMMYLIFE ============ -->
+    <section id="s14">
+      <div class="modlabel">Module IV &middot; Innovation &amp; Branding in the Era of AI</div>
+      <div class="casehead"><span class="scode">S14</span><h2 class="case">GümmyLife</h2></div>
+      <div class="tagline">Entrepreneurial branding: from TikTok fame to a scalable brand</div>
+      <span class="flag">★ tests: scaling, attention vs loyalty, capabilities, the 4-way strategic choice</span>
+
+      <p class="lead">GümmyLife is a young Mexican vitamin-gummy (nutraceutical) startup founded by three entrepreneurs. It exploded through <strong>TikTok-native branding</strong> and a creator/affiliate sales model. In January 2026 the founders must define a five-year plan amid a 2026 Mexican tax reform, intensifying social-commerce competition, and an increasingly sophisticated supplement market.</p>
+
+      <h3>The business model</h3>
+      <p>A blend of TikTok-native branding, the creator economy (sales commissions), performance marketing, AI-enabled personalization, AI-enabled social commerce, and a DTC affiliate system: a <span class="kf">platform / ecosystem strategy</span> rather than a simple product company.</p>
+
+      <h3>The strategic choice</h3>
+      <div class="decision">
+        <div class="q">To keep growing sustainably, which direction?</div>
+        <p class="answer">(a) stay digital-first, (b) expand into physical retail, (c) diversify the product line, or (d) expand internationally. Evaluate each with the Entrepreneurial Brand Scaling Framework and a Strategic Assessment Framework.</p>
+      </div>
+
+      <h3>Three lessons that travel beyond gummies</h3>
+      <ol>
+        <li><strong>Attention is not loyalty.</strong> Going viral is not the same as building repeat, committed customers.</li>
+        <li><strong>Algorithmic visibility accelerates growth but does not guarantee sustainability.</strong> You do not own the algorithm.</li>
+        <li><strong>Growth changes the capabilities a company must build.</strong> The skills that made you viral are not the skills that run a retail supply chain or an international operation.</li>
+      </ol>
+      <p class="muted"><strong>Market context, five nutraceutical trends:</strong> personalization; demand for scientifically-backed functional ingredients; transparency as a competitive must; convenient product formats; sustainability and ethical sourcing.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ FW: RESONANCE ============ -->
+    <section id="fw-resonance">
+      <div class="fwlabel">Core framework</div>
+      <h2 class="fwhead">Keller's Brand Resonance Pyramid</h2>
+      <p class="lead">The master framework, recurring across nearly every session. Four stages of brand development, each with a building block and a branding objective. You cannot reach the top without securing each level below. <strong>Know WHY before WHAT.</strong></p>
+      <div class="pyr">
+        <div class="row"><div class="stage">4. Relationships<br><span class="obj">What about you and me?</span></div><div class="block b4">Resonance</div><div class="obj">Intense, active loyalty</div></div>
+        <div class="row"><div class="stage">3. Response<br><span class="obj">What about you?</span></div><div class="block b3">Judgement &middot; Feelings</div><div class="obj">Positive, accessible reactions</div></div>
+        <div class="row"><div class="stage">2. Meaning<br><span class="obj">What are you?</span></div><div class="block b2">Performance &middot; Imagery</div><div class="obj">Points of parity &amp; difference</div></div>
+        <div class="row"><div class="stage">1. Identity<br><span class="obj">Who are you?</span></div><div class="block b1">Salience</div><div class="obj">Deep, broad brand awareness</div></div>
+      </div>
+      <p class="muted"><strong>Definitions:</strong> salience = how easily and often customers think of the brand; performance = how well it meets functional needs; imagery = extrinsic properties meeting psychological or social needs; judgements = personal opinions and evaluations; feelings = emotional responses. Most brands are stuck near the bottom (known but not felt); the goal is resonance through relationships: active loyalty and brand advocates.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ FW: 6M ============ -->
+    <section id="fw-6m">
+      <div class="fwlabel">Core framework</div>
+      <h2 class="fwhead">The 6M Framework</h2>
+      <p class="lead">The communication-plan tool, used in the Green Gum team exercise, Patrón, and the final project. Easy exam points if you recite it cleanly. Mission and Message must trace back to the pyramid level you are fixing.</p>
+      <div class="grid g3">
+        <div class="card"><span class="num">M1</span><h4>Mission</h4><p>What is the objective?</p></div>
+        <div class="card"><span class="num">M2</span><h4>Market</h4><p>To whom? Target market?</p></div>
+        <div class="card"><span class="num">M3</span><h4>Medium</h4><p>Which media vehicles?</p></div>
+        <div class="card"><span class="num">M4</span><h4>Message</h4><p>What do you want to communicate?</p></div>
+        <div class="card"><span class="num">M5</span><h4>Money</h4><p>How much budget is assigned?</p></div>
+        <div class="card"><span class="num">M6</span><h4>Measurement</h4><p>How will impact be assessed? KPIs?</p></div>
+      </div>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ FW: VALUE ============ -->
+    <section id="fw-value">
+      <div class="fwlabel">Core framework</div>
+      <h2 class="fwhead">Brand Value: 4 components</h2>
+      <p class="lead">A brand = stories, images, associations built around the product. The four value types appear in Green Gum, United, and the positioning-statement critique. Brand cultures shape each one.</p>
+      <div class="grid g2">
+        <div class="card"><h4>Reputation Value</h4><p>Stories shape perceived quality of product features. Consumers trust you and feel good buying from you.</p></div>
+        <div class="card"><h4>Relationship Value</h4><p>Stories imply the firm is a long-term partner that attends to customer interests.</p></div>
+        <div class="card"><h4>Experiential Value</h4><p>Stories frame and shape the experience of the product.</p></div>
+        <div class="card"><h4>Symbolic Value</h4><p>Stories imbue the product with values and identities.</p></div>
+      </div>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ FW: CULTURE ============ -->
+    <section id="fw-culture">
+      <div class="fwlabel">Core framework</div>
+      <h2 class="fwhead">The 4 creators of Brand Culture</h2>
+      <p class="lead">Brands are cultures that circulate in society as conventional stories, authored by four parties, not just the company.</p>
+      <div class="grid g2">
+        <div class="card"><h4>Companies</h4><p>Shape the brand through all product-related activities that touch customers.</p></div>
+        <div class="card"><h4>Popular Culture</h4><p>Products and brands are a prominent part of the cultural world.</p></div>
+        <div class="card"><h4>Customers</h4><p>Co-author the brand as they consume and interact, creating stories around it.</p></div>
+        <div class="card"><h4>Influencers</h4><p>Non-customers whose opinions sway: reviewers, mavens, connoisseurs, retail staff.</p></div>
+      </div>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ FW: JOURNEY ============ -->
+    <section id="fw-journey">
+      <div class="fwlabel">Core framework</div>
+      <h2 class="fwhead">What advertising needs to do (the brand journey)</h2>
+      <p class="lead">From the intro lecture: advertising's job changes as the consumer moves along the relationship. Match the objective to the stage.</p>
+      <table>
+        <tr><th>Stage</th><th>What advertising must do</th></tr>
+        <tr><td><strong>Unknown</strong></td><td>Get noticed so consumers see your brand in a crowd</td></tr>
+        <tr><td><strong>Indifferent</strong></td><td>Establish brand positioning in the consumer's mind</td></tr>
+        <tr><td><strong>Like It</strong></td><td>Build a trusted following with each happy purchase</td></tr>
+        <tr><td><strong>Love It</strong></td><td>Tighten the bond with your most loyal brand lovers</td></tr>
+        <tr><td><strong>Beloved</strong></td><td>Create exceptional experiences so fans influence friends</td></tr>
+      </table>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ FW: GROWTH ============ -->
+    <section id="fw-growth">
+      <div class="fwlabel">Core framework</div>
+      <h2 class="fwhead">Brand Expansion Avenues</h2>
+      <p class="lead">Seven generic growth routes (the wrap-up list), applied in Britt. Pair with the go-to-market sequence: country selection &rarr; segmentation and target &rarr; positioning &rarr; decide whether to adapt the marketing mix.</p>
+      <div class="grid g3">
+        <div class="card"><span class="num">01</span><h4>Existing Customers</h4><p>Sell more to who you already serve.</p></div>
+        <div class="card"><span class="num">02</span><h4>Line Extensions</h4><p>New variants in the category.</p></div>
+        <div class="card"><span class="num">03</span><h4>Innovation</h4><p>New-to-world offerings.</p></div>
+        <div class="card"><span class="num">04</span><h4>Cross-selling</h4><p>Between brands in the portfolio.</p></div>
+        <div class="card"><span class="num">05</span><h4>Licensing</h4><p>Lend the brand to partners.</p></div>
+        <div class="card"><span class="num">06</span><h4>Internationalization</h4><p>Enter new countries / multilocal.</p></div>
+        <div class="card"><span class="num">07</span><h4>Co-branding</h4><p>Partner brands for combined equity.</p></div>
+      </div>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ FW: VEHICLE ============ -->
+    <section id="fw-vehicle">
+      <div class="fwlabel">Core framework</div>
+      <h2 class="fwhead">Communication vehicle by goal</h2>
+      <p class="lead">From the wrap-up: different vehicles serve different jobs, and their effectiveness shifts across the product life cycle.</p>
+      <table>
+        <tr><th>Goal</th><th>Best vehicle</th><th>Why</th></tr>
+        <tr><td>Cognitive (awareness, knowledge)</td><td><strong>Advertising</strong></td><td>Reaches many, builds recognition</td></tr>
+        <tr><td>Affective (relationship)</td><td><strong>Personal Selling</strong></td><td>One-to-one, builds the bond</td></tr>
+        <tr><td>Behavioral (trigger action)</td><td><strong>Sales Promotions</strong></td><td>Pushes immediate purchase</td></tr>
+      </table>
+      <p class="muted">Across the life cycle: advertising dominates at Introduction and Growth; sales promotions and personal selling matter more at Maturity and Decline.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ FACTS ============ -->
+    <section id="facts">
+      <div class="fwlabel">Study tool</div>
+      <h2 class="fwhead">Course facts &amp; recall</h2>
+      <p class="lead">Dr. Cacho-Elizondo likes recall questions like "how many cases did we see?" and "how many were Mexican companies?" Here are the numbers and the definitive list.</p>
+      <div class="facts">
+        <div class="stat"><div class="n">9</div><div class="l">Teaching cases in total</div></div>
+        <div class="stat"><div class="n">2</div><div class="l">Fully Mexican companies (Green Gum, GümmyLife)</div></div>
+        <div class="stat"><div class="n">3</div><div class="l">Mexican-linked if you count Patrón (Mexican-made, US-founded)</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">US companies (Franzia, Glossier, United, Nike)</div></div>
+        <div class="stat"><div class="n">1</div><div class="l">Costa Rican (Grupo Britt)</div></div>
+        <div class="stat"><div class="n">16</div><div class="l">Sessions total (incl. final exam)</div></div>
+      </div>
+      <table>
+        <tr><th>S</th><th>Case</th><th>Topic</th><th>Origin</th></tr>
+        <tr><td>S2</td><td>Franzia / Mekanism</td><td>Creative &amp; influencer selection</td><td>USA</td></tr>
+        <tr><td>S3</td><td>Glossier</td><td>Digital communities &amp; social commerce</td><td>USA</td></tr>
+        <tr><td>S4</td><td>Brand Coolness</td><td>Coolness, rebranding, relifting (conceptual)</td><td>—</td></tr>
+        <tr class="mx"><td>S5</td><td>Green Gum (Mayan rainforest)</td><td>Brands &amp; social responsibility</td><td>Mexico</td></tr>
+        <tr><td>S6</td><td>United Airlines</td><td>Brand crisis &amp; reputation</td><td>USA</td></tr>
+        <tr><td>S7</td><td>Nike &amp; Kaepernick</td><td>Brand activism</td><td>USA</td></tr>
+        <tr><td>S8</td><td>Grupo Britt</td><td>Brand architecture &amp; growth</td><td>Costa Rica</td></tr>
+        <tr class="mx"><td>S9</td><td>Tequila Patrón</td><td>Authenticity &amp; global markets</td><td>Mexico / US-founded</td></tr>
+        <tr class="mx"><td>S14</td><td>GümmyLife</td><td>Entrepreneurial branding &amp; scaling</td><td>Mexico</td></tr>
+      </table>
+      <p class="muted">S4 is a conceptual / agency session, not a single-company case, so it is not counted among the 9. Green rows = Mexican company.</p>
+
+      <h3>Structure &amp; grading</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Structure</h4><p>Module I IMC (S1-3), Module II Branding (S4-9), Brand Love Workshop (S10-13, Dr. Aaron Ahuvia), Entrepreneurship / AI (S14). Two team assignments, a final project, and the final exam (S16, June 15, 2026).</p></div>
+        <div class="card"><h4>Grading</h4><p>Final Exam 40% &middot; Class Participation 20% &middot; Final Project 20% &middot; Team Assignments 10% &middot; Individual Quizzes &amp; Team Exercise 10%.</p></div>
+      </div>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ PLAYBOOK ============ -->
+    <section id="playbook">
+      <div class="fwlabel">Study tool</div>
+      <h2 class="fwhead">The Case Method Playbook</h2>
+      <p class="lead">A step-by-step way to apply every framework, in order, to any case you are handed. Work top to bottom. Each step names the tool and the question it answers.</p>
+      <div class="steps">
+        <div class="pbstep"><div class="n"></div><div><h4>Frame the decision</h4><p>Write one sentence: what decision must be made, and by whom? Is it a communications problem (what to say) or a branding problem (what to be)? Note constraints.<span class="tool">Tool: none yet &middot; Output: a crisp problem statement</span></p></div></div>
+        <div class="pbstep"><div class="n"></div><div><h4>Situation scan with 3C</h4><p>Run Ohmae 3C. Customer: who and what do they value? Company: strengths, assets, current equity? Competition: who else competes and how positioned? Add context (culture, regulation, tech, channels).<span class="tool">Tool: Ohmae 3C &middot; Output: a one-paragraph situation read</span></p></div></div>
+        <div class="pbstep"><div class="n"></div><div><h4>Diagnose the brand with Keller</h4><p>Place the brand on the Resonance Pyramid. The level where it is weak is usually the real problem to fix.<span class="tool">Tool: Keller pyramid &middot; Output: which level is broken</span></p></div></div>
+        <div class="pbstep"><div class="n"></div><div><h4>Read the relationship and the culture</h4><p>Use Fournier: is the bond functional, emotional, identity-based? One-way or a two-way community? Is the brand still pushing one-way persuasion or embedding cultural meaning?<span class="tool">Tool: Fournier CBR + AIDA-to-meaning shift &middot; Output: relationship type and cultural fit</span></p></div></div>
+        <div class="pbstep"><div class="n"></div><div><h4>Set the objective and the message</h4><p>Fill in the 6M's. Message and Mission must trace back to the pyramid level from step 3.<span class="tool">Tool: 6M's &middot; Output: a filled-in campaign brief</span></p></div></div>
+        <div class="pbstep"><div class="n"></div><div><h4>Generate creative and partner options</h4><p>Run the Franzia 6 creative filters on each idea; use the influencer pyramid to pick partners by reach vs authenticity. Treat creative as structured, not a gut call.<span class="tool">Tool: Franzia filters + influencer pyramid &middot; Output: 2-3 evaluated options</span></p></div></div>
+        <div class="pbstep"><div class="n"></div><div><h4>Stress test fit and authenticity</h4><p>For activism, apply Nike's 3 FIT dimensions. For premium or origin brands, apply the Patrón authenticity test. Reject options that fail fit or feel inauthentic.<span class="tool">Tool: Nike 3 FIT + Patrón authenticity &middot; Output: options that survive</span></p></div></div>
+        <div class="pbstep"><div class="n"></div><div><h4>Choose the growth or positioning move</h4><p>Use Britt's 4 growth alternatives to name the move; use the coolness lens (strategic vs perceived positioning, niche to mass) to decide how broad. Make one clear recommendation.<span class="tool">Tool: Britt growth grid + coolness positioning &middot; Output: one recommended move</span></p></div></div>
+        <div class="pbstep"><div class="n"></div><div><h4>Plan execution, risk, and metrics</h4><p>Sequence the rollout, then pre-plan for trouble using United's crisis principles. Close by stating the metrics from your 6M Measurement so the recommendation is testable.<span class="tool">Tool: United crisis principles + Measurement &middot; Output: rollout, risk plan, success metrics</span></p></div></div>
+      </div>
+      <p class="muted"><strong>Exam tips:</strong> name the framework as you use it (graders reward explicit tool use); diagnose before you prescribe; pick one recommendation and defend it, do not hedge with three equal options; end every answer with measurement so it is testable.</p>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ CHEAT SHEET ============ -->
+    <section id="cheat">
+      <div class="fwlabel">Study tool</div>
+      <h2 class="fwhead">Cheat sheet: most likely on the exam</h2>
+      <p class="lead">The frameworks worth being able to draw from memory. Good raw material for the 1-page (both sides) course summary.</p>
+      <ul>
+        <li><strong>Keller Resonance Pyramid:</strong> Salience &rarr; Performance/Imagery &rarr; Judgements/Feelings &rarr; Resonance.</li>
+        <li><strong>6M's of IMC:</strong> Mission, Market, Medium, Message, Money, Measurement.</li>
+        <li><strong>Franzia creative filters:</strong> Benefits, Symbolism, Resonance, Story, Product, Campaign Extension.</li>
+        <li><strong>Influencer pyramid:</strong> nano &rarr; micro &rarr; macro &rarr; mega (reach up, conversion/control down).</li>
+        <li><strong>Glossier:</strong> 8 Cs + CLV/CSV/CLSV + Fournier CBR (functional, multiplex, dynamic) + 5 vulnerabilities.</li>
+        <li><strong>Coolness:</strong> 10 characteristics; strategic vs perceived positioning; Harley (subculture) vs BMW (status).</li>
+        <li><strong>Green Gum:</strong> Ohmae 3C + 6-step branding process + 4 ethics conditions + 4 creators of brand culture.</li>
+        <li><strong>United:</strong> crisis-management principles + online-complaining quadrants + reputation 6 dimensions.</li>
+        <li><strong>Nike:</strong> 3 FIT dimensions + 6 P's of activism + 5 activism types + accretive/dilutive effects.</li>
+        <li><strong>Britt:</strong> 4 growth alternatives (Expansive / Intensive / In-Depth / Disruptive) + multilocal.</li>
+        <li><strong>Patrón:</strong> ultra-premium category creation + authenticity equation + grassroots marketing.</li>
+        <li><strong>Ahuvia:</strong> 3 personification mechanisms (anthropomorphism, connecting, self-integration) + happy-accident thesis + intrinsic rewards.</li>
+        <li><strong>GümmyLife:</strong> attention is not loyalty; visibility does not equal sustainability; growth changes capabilities.</li>
+      </ul>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ QUIZ ============ -->
+    <section id="quiz">
+      <div class="fwlabel">Study tool</div>
+      <h2 class="fwhead">Quiz yourself</h2>
+      <p class="lead">Pick an answer to see if you are right and read the explanation. Works independently of self-test mode.</p>
+      <div class="quiz" id="quizBox">
+        <div class="q" data-correct="0">
+          <div class="qtext"><span>01</span>Which set correctly lists the 6 M's of IMC?</div>
+          <button class="opt">Mission, Market, Medium, Message, Money, Measurement</button>
+          <button class="opt">Market, Media, Money, Method, Message, Metrics</button>
+          <button class="opt">Mission, Margin, Medium, Message, Money, Market</button>
+          <div class="exp">Mission, Market, Medium, Message, Money, Measurement.</div>
+        </div>
+        <div class="q" data-correct="1">
+          <div class="qtext"><span>02</span>In the Franzia framework, "Resonance" sits in which filter group?</div>
+          <button class="opt">Campaign filters</button>
+          <button class="opt">Brand filters</button>
+          <button class="opt">Cultural filters</button>
+          <div class="exp">Resonance is a brand filter (will the ad resonate with the target culture?), alongside Benefits and Symbolism.</div>
+        </div>
+        <div class="q" data-correct="1">
+          <div class="qtext"><span>03</span>As an influencer's follower count rises, what happens?</div>
+          <button class="opt">Reach and targeting precision both increase</button>
+          <button class="opt">Reach increases but targeting, control, and conversion decrease</button>
+          <button class="opt">Reach decreases but engagement always rises</button>
+          <div class="exp">Bigger audiences mean more reach but less targeting precision, less control over responses, and weaker purchase conversion.</div>
+        </div>
+        <div class="q" data-correct="2">
+          <div class="qtext"><span>04</span>Fournier describes consumer-brand relationships as:</div>
+          <button class="opt">Static, simple, transactional</button>
+          <button class="opt">Purely emotional and irrational</button>
+          <button class="opt">Functional, multiplex, and dynamic/complex</button>
+          <div class="exp">Functional, multiplex (resemble human relationships), and dynamic and complex.</div>
+        </div>
+        <div class="q" data-correct="0">
+          <div class="qtext"><span>05</span>CLSV equals:</div>
+          <button class="opt">CLV + CSV</button>
+          <button class="opt">CLV minus acquisition cost</button>
+          <button class="opt">Brand equity + customer equity</button>
+          <div class="exp">Customer Lifetime Social Value = CLV + Customer Social Value (peer impact on others' purchases).</div>
+        </div>
+        <div class="q" data-correct="1">
+          <div class="qtext"><span>06</span>Why is BMW "cool" (vs Harley-Davidson)?</div>
+          <button class="opt">It started in an outlaw subculture</button>
+          <button class="opt">It is a popular status symbol</button>
+          <button class="opt">It is a niche artisanal brand</button>
+          <div class="exp">BMW is cool as a popular status symbol; Harley became cool via an outlaw-biker subculture. Two routes, same outcome.</div>
+        </div>
+        <div class="q" data-correct="2">
+          <div class="qtext"><span>07</span>Ohmae's 3C model analyzes:</div>
+          <button class="opt">Cost, Customer, Channel</button>
+          <button class="opt">Culture, Community, Commerce</button>
+          <button class="opt">Company, Competition, Customer</button>
+          <div class="exp">Company, Competition, Customer, used to identify branding opportunities (Step 3 of the branding process).</div>
+        </div>
+        <div class="q" data-correct="2">
+          <div class="qtext"><span>08</span>A core principle of United's crisis plan is:</div>
+          <button class="opt">Always deny the facts publicly</button>
+          <button class="opt">Stay silent until the crisis passes</button>
+          <button class="opt">Say "I don't know" rather than invent facts, and monitor early signals</button>
+          <div class="exp">Never deny or dismiss, "I don't know" beats inventing facts; monitor early and address people directly.</div>
+        </div>
+        <div class="q" data-correct="3">
+          <div class="qtext"><span>09</span>Which is NOT one of Nike's 3 FIT dimensions?</div>
+          <button class="opt">Brand-Cause fit</button>
+          <button class="opt">Cause-Company fit</button>
+          <button class="opt">Spokesperson-Cause fit</button>
+          <button class="opt">Price-Cause fit</button>
+          <div class="exp">The three are Brand-Cause, Cause-Company, and Spokesperson-Cause.</div>
+        </div>
+        <div class="q" data-correct="2">
+          <div class="qtext"><span>10</span>Britt's "In-Depth" growth alternative refers to:</div>
+          <button class="opt">Opening shops in new countries</button>
+          <button class="opt">More shops in existing airports</button>
+          <button class="opt">Cross-selling, e.g. into supermarkets</button>
+          <button class="opt">Launching new travel-retail formats</button>
+          <div class="exp">In-Depth = increasing cross-selling (brand stretch into channels like supermarkets).</div>
+        </div>
+        <div class="q" data-correct="1">
+          <div class="qtext"><span>11</span>The 3 mechanisms of personification (Brand Love) are:</div>
+          <button class="opt">Awareness, Interest, Desire</button>
+          <button class="opt">Anthropomorphism, Connecting, Self-integration</button>
+          <button class="opt">Quality, Trust, Reward</button>
+          <div class="exp">Anthropomorphism (brand seems human), Connecting (part of a person you love), Self-integration (part of your identity).</div>
+        </div>
+        <div class="q" data-correct="0">
+          <div class="qtext"><span>12</span>Ahuvia's central thesis is that brand love is:</div>
+          <button class="opt">A "happy accident", love evolved for people, not brands</button>
+          <button class="opt">Bought through advertising spend</button>
+          <button class="opt">Possible only for luxury brands</button>
+          <div class="exp">Love is a psychological system evolved for people and family, only accidentally applied to brands.</div>
+        </div>
+        <div class="q" data-correct="1">
+          <div class="qtext"><span>13</span>GümmyLife teaches that attention and loyalty are:</div>
+          <button class="opt">The same thing</button>
+          <button class="opt">Not the same; visibility accelerates but does not guarantee sustainability</button>
+          <button class="opt">Both guaranteed by the algorithm</button>
+          <div class="exp">Attention is not loyalty; algorithmic visibility accelerates growth but does not guarantee a sustainable business.</div>
+        </div>
+        <div class="q" data-correct="2">
+          <div class="qtext"><span>14</span>Which vehicle is strongest for behavioral (action-triggering) goals?</div>
+          <button class="opt">Advertising</button>
+          <button class="opt">Personal Selling</button>
+          <button class="opt">Sales Promotions</button>
+          <div class="exp">Advertising serves cognitive goals, Personal Selling affective, Sales Promotions behavioral.</div>
+        </div>
+        <div class="q" data-correct="2">
+          <div class="qtext"><span>15</span>What share of the final grade is the final exam?</div>
+          <button class="opt">20%</button>
+          <button class="opt">30%</button>
+          <button class="opt">40%</button>
+          <div class="exp">Final Exam 40%; then Participation 20%, Project 20%, Team Assignments 10%, Quizzes/Exercise 10%.</div>
+        </div>
+      </div>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <!-- ============ GLOSSARY ============ -->
+    <section id="glossary">
+      <div class="fwlabel">Reference</div>
+      <h2 class="fwhead">Glossary</h2>
+      <p class="lead">The terms most likely to show up as definitions or quiz items, with the session that introduced each.</p>
+      <dl class="glossary">
+        <dt>Integrated Marketing Communications <span class="from">S1</span></dt>
+        <dd>Fostering awareness, knowledge, interest, and purchase by bringing together multiple modes of communication in a consistent, complementary way.</dd>
+        <dt>Value Creation Cycle <span class="from">S1</span></dt>
+        <dd>Identify, create, communicate, deliver, extract, measure, sustain value, for both customer and company.</dd>
+        <dt>AIDA Model <span class="from">S2</span></dt>
+        <dd>Awareness, Interest, Desire, Action. A persuasion model that assumes intervention at one decision point.</dd>
+        <dt>Creative Decision Filters <span class="from">S2</span></dt>
+        <dd>Brand (benefits, symbolism, resonance), communication (story, product), campaign (extension). Replaces gut decisions.</dd>
+        <dt>Influencer pyramid <span class="from">S2b</span></dt>
+        <dd>Nano, micro, macro, mega by audience size; reach rises while targeting, control, and conversion fall.</dd>
+        <dt>Brand Equity <span class="from">S3</span></dt>
+        <dd>A measure of the brand's value to the firm; the differential consumer response to products.</dd>
+        <dt>Customer Equity / CLV <span class="from">S3</span></dt>
+        <dd>The combined Customer Lifetime Value of all customers. CLV = (gross profit/year &times; years) minus acquisition cost.</dd>
+        <dt>Customer Social Value (CSV) <span class="from">S3</span></dt>
+        <dd>A customer's peer impact on others' purchasing. CLSV = CLV + CSV.</dd>
+        <dt>Social Commerce <span class="from">S3</span></dt>
+        <dd>Restructuring commerce to insert peer-to-peer influence at every stage of the journey.</dd>
+        <dt>Consumer-Brand Relationship (CBR) <span class="from">S3</span></dt>
+        <dd>Fournier: brand relationships are functional, multiplex (human-like), dynamic, and complex.</dd>
+        <dt>Brand Coolness <span class="from">S4</span></dt>
+        <dd>A measurable quality across 10 characteristics; balances opposing traits (subcultural vs popular).</dd>
+        <dt>Strategic vs Perceived Positioning <span class="from">S4</span></dt>
+        <dd>The image the company intends vs the image consumers hold; managers work to close the gap.</dd>
+        <dt>Brand Culture <span class="from">S5</span></dt>
+        <dd>The brand as a conventional story authored by companies, popular culture, customers, and influencers.</dd>
+        <dt>Ohmae 3C Model <span class="from">S5</span></dt>
+        <dd>Company, Customer, Competition: the strategic triangle for spotting branding opportunities.</dd>
+        <dt>Brand Crisis Management <span class="from">S6</span></dt>
+        <dd>Dealing with a disruptive, unexpected event that threatens the organization and its stakeholders.</dd>
+        <dt>Reputation Management <span class="from">S6</span></dt>
+        <dd>Managing how the brand is viewed across 6 dimensions and 20 attributes.</dd>
+        <dt>Brand Activism <span class="from">S7</span></dt>
+        <dd>Brands developing actions to make the world better; moral differentiation, governed by the 6 P's.</dd>
+        <dt>FIT (activism) <span class="from">S7</span></dt>
+        <dd>Brand-cause, cause-company, and spokesperson-cause alignment determining credibility.</dd>
+        <dt>Marketing ROI (MROI) <span class="from">S7</span></dt>
+        <dd>Returns from marketing; the CFO weighs financial proof, the CMO weighs brand-equity proof.</dd>
+        <dt>Brand Architecture <span class="from">S8</span></dt>
+        <dd>How brands and sub-brands in a portfolio are organized and related.</dd>
+        <dt>Multilocal Brand <span class="from">S8</span></dt>
+        <dd>A brand that feels authentically local in each market while running on shared systems.</dd>
+        <dt>Brand Authenticity <span class="from">S9</span></dt>
+        <dd>Closing the gap between expectation and reality; a primary driver of brand support.</dd>
+        <dt>Grassroots / Guerrilla Marketing <span class="from">S9</span></dt>
+        <dd>Organic, low-cost, word-of-mouth promotion that builds genuine, long-term loyalty.</dd>
+        <dt>Personification <span class="from">S10-13</span></dt>
+        <dd>Treating a brand as a person via anthropomorphism, connecting, or self-integration; the route to brand love.</dd>
+        <dt>Intrinsic Rewards <span class="from">S10-13</span></dt>
+        <dd>Feeling good in the use itself, not just utility; necessary (beyond quality and trust) for brand love.</dd>
+        <dt>Attention vs Attachment economy <span class="from">S10-13</span></dt>
+        <dd>The ethical shift from exploiting impulses to building genuine, healthy love.</dd>
+        <dt>6M Framework <span class="from">S5 / S9</span></dt>
+        <dd>Mission, Market, Medium, Message, Money, Measurement: the communication-plan tool.</dd>
+      </dl>
+      <a class="backtop" href="#">↑ top</a>
+    </section>
+
+    <p class="muted" style="margin-top:30px;font-size:13px;">Consolidated from the six course decks plus the full session map. Frameworks summarized in original wording for personal study. Good luck on June 15.</p>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  // build collapsible sections: keep the label/title/tagline/flag visible, collapse the rest
+  const isHead = el => el.matches && el.matches('.modlabel,.fwlabel,.casehead,h2.fwhead,.tagline,.flag');
+  document.querySelectorAll('main section').forEach(sec => {
+    const kids = [...sec.children];
+    let i = 0;
+    while (i < kids.length && isHead(kids[i])) i++;
+    if (i === 0 || i === kids.length) return;
+    const head = document.createElement('div');
+    head.className = 'sec-toggle';
+    for (let j = 0; j < i; j++) head.appendChild(kids[j]);
+    const body = document.createElement('div');
+    body.className = 'sec-body';
+    for (let j = i; j < kids.length; j++) body.appendChild(kids[j]);
+    sec.appendChild(head);
+    sec.appendChild(body);
+    const chev = document.createElement('span');
+    chev.className = 'chev';
+    chev.textContent = '\u25BE';
+    head.appendChild(chev);
+    head.addEventListener('click', () => sec.classList.toggle('collapsed'));
   });
-  // default view
-  showView('overview');
-})();</script></body></html>
+
+  const allSecs = () => document.querySelectorAll('main section');
+  document.getElementById('expandAll').addEventListener('click', () =>
+    allSecs().forEach(s => s.classList.remove('collapsed')));
+  document.getElementById('collapseAll').addEventListener('click', () =>
+    allSecs().forEach(s => s.classList.add('collapsed')));
+
+  // self-test toggle
+  const btn = document.getElementById('testToggle');
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('testing');
+    const on = document.body.classList.contains('testing');
+    btn.classList.toggle('on', on);
+    btn.textContent = on ? 'Self-test mode: on' : 'Self-test mode: off';
+  });
+
+  // global clicks: expand-on-nav, reveal answers, quiz
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (link) {
+      const id = link.getAttribute('href').slice(1);
+      const tgt = id && document.getElementById(id);
+      if (tgt && tgt.tagName === 'SECTION') tgt.classList.remove('collapsed');
+    }
+    if (document.body.classList.contains('testing')) {
+      const a = e.target.closest('.answer');
+      if (a) { a.classList.toggle('revealed'); return; }
+    }
+    const opt = e.target.closest('.quiz .opt');
+    if (opt) {
+      const q = opt.closest('.q');
+      if (q.classList.contains('answered')) return;
+      const correct = parseInt(q.dataset.correct, 10);
+      const opts = [...q.querySelectorAll('.opt')];
+      const chosen = opts.indexOf(opt);
+      opts[correct].classList.add('correct');
+      if (chosen !== correct) opt.classList.add('wrong');
+      q.classList.add('answered');
+    }
+  });
+})();
+</script>
+</body>
+</html>
