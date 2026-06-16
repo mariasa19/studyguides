@@ -3,723 +3,615 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sustainability Study Guide</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Social Responsibility &amp; Sustainability — Study Guide (course-grounded)</title>
 <style>
-:root{
-  --ink:#0E1311; --ink-2:#0A0E0C; --surface:#161D19; --surface-2:#1C2620;
-  --line:rgba(180,205,190,.10); --line-2:rgba(180,205,190,.18);
-  --text:#E9EDE6; --muted:#92A299; --faint:#6C7A71;
-  --jade:#5FC79A; --jade-soft:#8FE3BD; --jade-dim:#3C9C76;
-  --ember:#E2A55E; --ember-soft:#F2CF9A; --ember-dim:#C2843D;
-  --blue:#6FA8D6; --rose:#CE82A0; --gold:#D8B458; --red:#CD6155;
-  --p-define:#6FBEA6; --p-strategize:#6699C9; --p-finance:#D8B458;
-  --p-operationalize:#D08A5C; --p-scale:#C781A2; --p-measure:#9091CD; --p-humanize:#CDBD96;
-  --serif:"Fraunces",Georgia,serif;
-  --sans:"IBM Plex Sans",-apple-system,Segoe UI,Roboto,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,monospace;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--ink);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px;}
-::selection{background:rgba(95,199,154,.28);}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px 90px;}
-a{color:inherit;}
+  :root{
+    --ink:#14202e; --ink2:#33424f; --paper:#f3efe6; --paper2:#ece6d8;
+    --navy:#16314f; --navy2:#1f4068; --gold:#b9892f; --gold2:#e3b65a;
+    --line:#cfc6b3; --good:#2f6b4f; --bad:#9a3b2e; --white:#fbf9f4;
+    --shadow:0 1px 0 #fff inset, 0 2px 14px rgba(20,32,46,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+  a{color:var(--navy2)}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 
-/* ---------- HERO ---------- */
-header.hero{position:relative;overflow:hidden;padding:80px 22px 78px;text-align:center;border-bottom:1px solid var(--line);}
-header.hero:before{content:"";position:absolute;inset:0;
-  background:radial-gradient(60% 90% at 8% 0%,rgba(95,199,154,.20),transparent 60%),
-             radial-gradient(60% 90% at 100% 100%,rgba(226,165,94,.18),transparent 60%);
-  pointer-events:none;}
-header.hero:after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:52px;
-  background:linear-gradient(var(--ember),var(--jade));transform:translateX(-50%);opacity:.55;}
-.hero-eyebrow{position:relative;font-family:var(--mono);font-size:.72rem;letter-spacing:.34em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:22px;}
-.hero h1{position:relative;font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,6vw,3.7rem);
-  line-height:1.04;letter-spacing:-.01em;font-optical-sizing:auto;}
-.hero h1 em{font-style:italic;font-weight:400;color:var(--jade-soft);}
-.hero .lede{position:relative;max-width:560px;margin:20px auto 0;color:var(--muted);font-size:1.04rem;}
-.hero .meta{position:relative;display:inline-flex;flex-wrap:wrap;gap:8px;margin-top:30px;}
-.hero .meta span{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--text);
-  background:rgba(255,255,255,.04);border:1px solid var(--line-2);padding:7px 15px;border-radius:999px;}
-.hero .meta span b{color:var(--ember-soft);font-weight:600;}
+  /* Header */
+  header{background:
+      radial-gradient(120% 140% at 85% -20%, rgba(227,182,90,.18), transparent 60%),
+      linear-gradient(180deg,var(--navy),#11263d);color:#eef2f6;padding:34px 0 26px;border-bottom:3px solid var(--gold)}
+  .eyebrow{font:600 12px/1.4 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2)}
+  header h1{font-size:clamp(28px,4.6vw,46px);line-height:1.05;margin:.25em 0 .15em;letter-spacing:-.01em}
+  header h1 em{font-style:italic;color:var(--gold2)}
+  .sub{color:#c9d4df;max-width:64ch;margin:.4em 0 0}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chip{font:600 12px/1 ui-monospace,monospace;letter-spacing:.04em;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);color:#dfe7ef;padding:8px 11px;border-radius:999px}
+  .chip strong{color:#fff}
 
-/* ---------- NAV ---------- */
-nav.tabs{position:sticky;top:0;z-index:60;background:rgba(14,19,17,.86);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:4px;padding:9px;flex-wrap:wrap;}
-nav.tabs button{background:transparent;color:var(--muted);border:1px solid transparent;
-  padding:9px 17px;border-radius:9px;font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;
-  font-weight:500;cursor:pointer;transition:.16s;}
-nav.tabs button:hover{color:var(--text);background:rgba(255,255,255,.05);}
-nav.tabs button.active{background:var(--text);color:var(--ink);font-weight:600;}
-nav.tabs button:focus-visible{outline:2px solid var(--jade);outline-offset:2px;}
+  /* Nav tabs */
+  nav.tabs{position:sticky;top:0;z-index:40;background:var(--paper2);border-bottom:1px solid var(--line);
+    box-shadow:0 6px 14px rgba(20,32,46,.05)}
+  .tabrow{display:flex;gap:2px;overflow-x:auto;max-width:1060px;margin:0 auto;padding:0 12px}
+  .tabrow button{appearance:none;border:0;background:transparent;cursor:pointer;white-space:nowrap;
+    font:600 14px/1 -apple-system,system-ui,sans-serif;color:var(--ink2);padding:14px 14px;border-bottom:3px solid transparent}
+  .tabrow button[aria-selected="true"]{color:var(--navy);border-color:var(--gold)}
+  .tabrow button:hover{color:var(--navy)}
 
-/* ---------- SECTIONS ---------- */
-section.view{display:none;}
-section.view.active{display:block;animation:fade .4s ease;}
-@keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
-.section-title{font-family:var(--serif);font-weight:600;font-size:1.85rem;letter-spacing:-.01em;margin:46px 0 6px;}
-.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--jade);margin:46px 0 8px;}
-.eyebrow + .section-title{margin-top:4px;}
-.sub{color:var(--muted);margin-bottom:26px;font-size:.97rem;max-width:760px;}
+  section.panel{display:none;padding:34px 0 60px;animation:fade .25s ease}
+  section.panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-/* ---------- THE ARC (spine) ---------- */
-.spine{position:relative;margin-top:30px;}
-.spine:before{content:"";position:absolute;left:21px;top:14px;bottom:14px;width:2px;
-  background:linear-gradient(var(--p-define),var(--p-strategize),var(--p-finance),var(--p-operationalize),var(--p-scale),var(--p-measure),var(--p-humanize));
-  opacity:.5;}
-.arc-step{position:relative;display:grid;grid-template-columns:44px 1fr;gap:18px;align-items:start;
-  padding:13px 0;}
-.arc-node{position:relative;z-index:2;width:44px;height:44px;border-radius:12px;display:flex;
-  align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:.82rem;
-  color:var(--ink);box-shadow:0 0 0 6px var(--ink);}
-.arc-body{padding-top:2px;}
-.arc-phase{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
-.arc-body h4{font-family:var(--serif);font-size:1.28rem;font-weight:600;margin:1px 0 3px;}
-.arc-body p{color:var(--muted);font-size:.92rem;max-width:560px;}
-.arc-range{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:4px;}
+  .lead{font-size:18px;color:var(--ink2);max-width:72ch}
+  h2.sec{font-size:26px;margin:.2em 0 .1em}
+  .kicker{font:600 12px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 
-/* ---------- CALLOUT NOTES ---------- */
-.note{border:1px solid var(--line-2);border-left:3px solid var(--ember);background:rgba(226,165,94,.06);
-  border-radius:12px;padding:15px 18px;font-size:.9rem;color:var(--ember-soft);margin:26px 0;}
-.note b{color:var(--ember);font-weight:600;}
+  /* Callout */
+  .note{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:8px;padding:16px 18px;box-shadow:var(--shadow);margin:20px 0}
+  .note h4{margin:0 0 .4em;font-size:16px}
+  .note p{margin:.3em 0;color:var(--ink2)}
 
-/* ---------- SESSION CARDS ---------- */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;margin-top:8px;}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;
-  border-left:3px solid var(--p-define);transition:border-color .2s,box-shadow .2s;}
-.card:hover{box-shadow:0 16px 38px rgba(0,0,0,.42);}
-.card .top{padding:17px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;}
-.card .top:focus-visible{outline:2px solid var(--jade);outline-offset:-3px;}
-.card .sn{flex-shrink:0;width:40px;height:40px;border-radius:11px;display:flex;align-items:center;
-  justify-content:center;font-family:var(--mono);font-weight:600;font-size:1rem;color:var(--ink);}
-.card .htxt{flex:1;}
-.card .phase-tag{font-family:var(--mono);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;}
-.card h3{font-family:var(--serif);font-size:1.08rem;font-weight:600;margin-top:3px;line-height:1.28;}
-.card .chev{transition:.28s;opacity:.5;font-size:1rem;}
-.card.open .chev{transform:rotate(180deg);opacity:.9;}
-.card .body{max-height:0;overflow:hidden;transition:max-height .45s ease;}
-.card.open .body{max-height:2200px;}
-.card .body-in{padding:2px 18px 20px;}
-.label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.2em;
-  color:var(--faint);font-weight:600;margin:18px 0 8px;}
-.fw{display:flex;flex-wrap:wrap;gap:6px;}
-.fw span{background:rgba(95,199,154,.10);border:1px solid rgba(95,199,154,.28);color:var(--jade-soft);
-  padding:5px 11px;border-radius:8px;font-size:.78rem;font-weight:500;}
-.concepts,.deep{font-size:.92rem;color:#D2D8CF;}
-.deep b{color:var(--jade-soft);font-weight:600;}
-.deep i{color:var(--ember-soft);font-style:italic;}
-.further{margin:6px 0 0;list-style:none;}
-.further li{position:relative;padding:7px 0 7px 22px;font-size:.87rem;color:#C4CCC1;
-  border-bottom:1px solid var(--line);}
-.further li:last-child{border-bottom:none;}
-.further li:before{content:"";position:absolute;left:2px;top:14px;width:9px;height:1px;background:var(--jade);}
-.tension{background:rgba(205,97,85,.10);border:1px solid rgba(205,97,85,.32);border-radius:11px;
-  padding:13px 15px;font-size:.9rem;color:#F2C7BF;margin-top:6px;display:flex;gap:10px;align-items:flex-start;}
-.tension:before{content:"TENSION";font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;
-  background:var(--red);color:#1a0f0d;padding:3px 7px;border-radius:5px;flex-shrink:0;font-weight:600;margin-top:1px;}
-.tension b{display:none;}
+  /* Black box diagram region */
+  .bb{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
+  figure{margin:0}
+  figure svg{width:100%;height:auto;background:var(--white);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+  figcaption{font-size:13px;color:var(--ink2);margin-top:8px}
 
-/* ---------- COMPARE TABLE ---------- */
-.tbl-wrap{overflow-x:auto;margin-top:16px;border-radius:14px;border:1px solid var(--line);}
-table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:560px;}
-th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
-tr:last-child td{border-bottom:none;}
-th{background:var(--surface);font-family:var(--mono);font-weight:600;color:var(--muted);
-  text-transform:uppercase;font-size:.68rem;letter-spacing:.14em;}
-td b{color:var(--jade-soft);font-weight:600;}
-tbody tr:hover{background:rgba(255,255,255,.02);}
+  /* Arc forces */
+  .forces{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0}
+  .force{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:12px 13px;box-shadow:var(--shadow)}
+  .force b{display:block;font-family:Georgia,serif;color:var(--navy)}
+  .force span{font-size:13px;color:var(--ink2)}
 
-/* ---------- DIAGRAMS ---------- */
-.diagram{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;margin:20px 0;}
-.diagram h3{font-family:var(--serif);font-size:1.28rem;font-weight:600;}
-.diagram h3 .dnum{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.1em;font-weight:500;}
-.diagram .cap{font-size:.88rem;color:var(--muted);margin:5px 0 16px;max-width:740px;}
-.diagram svg{width:100%;height:auto;display:block;background:var(--ink-2);
-  border:1px solid var(--line);border-radius:14px;}
-.simple{background:rgba(95,199,154,.07);border:1px solid rgba(95,199,154,.22);border-radius:12px;
-  padding:14px 16px;margin:0 0 16px;font-size:.9rem;color:#D2D8CF;}
-.simple b{display:block;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;
-  letter-spacing:.2em;color:var(--jade);font-weight:600;margin-bottom:6px;}
-.explain{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px;}
-.blk{background:var(--ink-2);border:1px solid var(--line);border-radius:13px;padding:16px 17px;}
-.blk .h{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.18em;
-  color:var(--ember);font-weight:600;margin-bottom:8px;}
-.blk .t{font-size:.86rem;color:#C8CFC5;}
-.blk b{color:var(--jade-soft);font-weight:600;}
-.blk ul{list-style:none;margin:0;}
-.blk li{position:relative;padding:6px 0 6px 16px;font-size:.85rem;color:#C8CFC5;
-  border-bottom:1px solid var(--line);}
-.blk li:last-child{border-bottom:none;}
-.blk li:before{content:"";position:absolute;left:0;top:13px;width:7px;height:1px;background:var(--ember);}
-.blk li b{color:var(--jade-soft);}
+  /* Session cards */
+  .grid{display:grid;grid-template-columns:1fr;gap:14px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+  .card>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:16px 18px}
+  .card>summary::-webkit-details-marker{display:none}
+  .num{font-family:Georgia,serif;font-size:22px;color:var(--gold);width:34px;text-align:center}
+  .ttl{display:flex;flex-direction:column;gap:3px}
+  .ttl .phase{font:600 11px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+  .ttl h3{margin:0;font-size:18px;line-height:1.2}
+  .ttl .src{font-size:12.5px;color:var(--navy2)}
+  .caret{color:var(--ink2);transition:transform .2s}
+  .card[open] .caret{transform:rotate(90deg)}
+  .body{padding:0 18px 18px;border-top:1px solid var(--line)}
+  .body h5{margin:16px 0 6px;font:600 12px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+  .tags{display:flex;flex-wrap:wrap;gap:7px}
+  .tag{font:600 12.5px/1 -apple-system,system-ui,sans-serif;background:var(--paper2);border:1px solid var(--line);color:var(--navy);padding:7px 10px;border-radius:7px}
+  .body p{margin:.4em 0;color:var(--ink2)}
+  .body ul{margin:.3em 0;padding-left:1.1em;color:var(--ink2)}
+  .body li{margin:.25em 0}
+  .tension{margin-top:14px;background:#fbf4e6;border:1px solid #e7d6ad;border-radius:8px;padding:12px 14px}
+  .tension b{color:var(--gold)}
+  .decision{font-size:13px;color:var(--ink2);margin-top:6px}
+  .decision b{color:var(--navy)}
 
-/* ---------- FLASHCARDS ---------- */
-.fc-stage{display:flex;flex-direction:column;align-items:center;gap:22px;margin-top:24px;}
-.flip{width:100%;max-width:580px;height:280px;perspective:1600px;cursor:pointer;}
-.flip:focus-visible{outline:2px solid var(--jade);outline-offset:6px;border-radius:20px;}
-.flip-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.1,.2,1);
-  transform-style:preserve-3d;}
-.flip.flipped .flip-in{transform:rotateY(180deg);}
-.face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;
-  border-radius:20px;padding:34px;display:flex;flex-direction:column;justify-content:center;
-  align-items:center;text-align:center;border:1px solid var(--line-2);}
-.face.front{background:linear-gradient(150deg,var(--surface-2),var(--surface));}
-.face.back{background:linear-gradient(150deg,rgba(95,199,154,.10),var(--surface));transform:rotateY(180deg);}
-.face .tag{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.26em;
-  color:var(--faint);margin-bottom:16px;}
-.face.front .tag{color:var(--ember);}
-.face.back .tag{color:var(--jade);}
-.face .qa{font-size:1rem;color:#D6DCD2;line-height:1.55;}
-.face.front .qa{font-family:var(--serif);font-size:1.45rem;font-weight:500;color:var(--text);}
-.fc-controls{display:flex;align-items:center;gap:16px;}
-.fc-controls button{background:var(--surface);border:1px solid var(--line-2);color:var(--text);
-  width:48px;height:48px;border-radius:50%;font-size:1.15rem;cursor:pointer;transition:.16s;}
-.fc-controls button:hover{background:var(--jade);color:var(--ink);border-color:var(--jade);}
-.fc-count{font-family:var(--mono);font-size:.85rem;color:var(--muted);min-width:64px;text-align:center;}
-.hint{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--faint);}
-.btn{background:transparent;color:var(--text);border:1px solid var(--line-2);padding:11px 22px;
-  border-radius:10px;font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;font-weight:500;cursor:pointer;transition:.16s;}
-.btn:hover{border-color:var(--jade);color:var(--jade-soft);}
+  /* Table */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);background:var(--white)}
+  table{border-collapse:collapse;width:100%;min-width:640px}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px}
+  thead th{background:var(--navy);color:#eef2f6;font:600 13px/1.2 -apple-system,system-ui,sans-serif;letter-spacing:.01em}
+  tbody tr:nth-child(even){background:#faf7f0}
+  td b{color:var(--navy)}
 
-/* ---------- QUIZ ---------- */
-.quiz-box{max-width:700px;margin:24px auto 0;}
-.q{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px;}
-.q .qn{font-weight:500;margin-bottom:15px;font-size:1rem;color:var(--text);}
-.q .qn .qi{font-family:var(--mono);color:var(--ember);margin-right:8px;font-size:.85rem;}
-.opt{display:block;width:100%;text-align:left;background:var(--ink-2);border:1px solid var(--line-2);
-  color:#D6DCD2;padding:13px 15px;border-radius:10px;margin-bottom:9px;cursor:pointer;font-size:.92rem;
-  font-family:var(--sans);transition:.14s;}
-.opt:hover:not(:disabled){border-color:var(--jade);}
-.opt:focus-visible{outline:2px solid var(--jade);outline-offset:2px;}
-.opt.correct{background:rgba(95,199,154,.16);border-color:var(--jade);color:var(--jade-soft);}
-.opt.wrong{background:rgba(205,97,85,.16);border-color:var(--red);color:#F2C7BF;}
-.score{position:sticky;bottom:0;background:rgba(14,19,17,.94);backdrop-filter:blur(12px);
-  border:1px solid var(--line-2);padding:15px;text-align:center;font-family:var(--mono);
-  font-weight:600;letter-spacing:.04em;border-radius:14px 14px 0 0;}
+  /* Flashcards */
+  .deck{max-width:560px;margin:18px auto 0}
+  .flip{perspective:1400px;height:240px;cursor:pointer}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+  .flip.flipped .flip-inner{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:12px;
+    box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center;padding:24px;background:var(--white)}
+  .face .lab{font:600 11px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .face.q{font-family:Georgia,serif;font-size:20px;color:var(--navy)}
+  .face.a{transform:rotateY(180deg);background:var(--navy);color:#eef2f6}
+  .face.a .lab{color:var(--gold2)}
+  .face.a div{font-size:15.5px}
+  .deckbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}
+  .deckbar button{appearance:none;border:1px solid var(--line);background:var(--white);border-radius:8px;padding:9px 14px;cursor:pointer;font:600 14px system-ui;color:var(--navy)}
+  .deckbar button:hover{background:var(--paper2)}
+  .count{font:600 13px ui-monospace,monospace;color:var(--ink2)}
 
-.foot{text-align:center;color:var(--faint);font-family:var(--mono);font-size:.74rem;
-  letter-spacing:.04em;margin-top:56px;}
+  /* Quiz */
+  .q{background:var(--white);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:16px 18px;margin:12px 0}
+  .q p.stem{margin:0 0 10px;font-weight:600;color:var(--ink)}
+  .opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:8px;
+    padding:11px 13px;margin:7px 0;cursor:pointer;font:15px system-ui;color:var(--ink)}
+  .opt:hover{border-color:var(--gold)}
+  .opt.correct{background:#e7f1ea;border-color:var(--good);color:#1d4d39}
+  .opt.wrong{background:#f6e7e3;border-color:var(--bad);color:#73291f}
+  .why{font-size:13.5px;color:var(--ink2);margin:8px 2px 0;display:none}
+  .q.answered .why{display:block}
+  .score{position:sticky;bottom:0;background:var(--navy);color:#fff;border-radius:10px;padding:12px 16px;margin-top:18px;
+    font:600 15px system-ui;display:flex;justify-content:space-between;box-shadow:var(--shadow)}
 
-@media (max-width:560px){
-  .hero{padding:58px 20px 56px;}
-  .arc-body h4{font-size:1.12rem;}
-}
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important;scroll-behavior:auto!important;}
-}
+  footer{border-top:1px solid var(--line);padding:24px 0 60px;color:var(--ink2);font-size:13.5px}
+  .pill{display:inline-block;font:600 11px ui-monospace,monospace;letter-spacing:.06em;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--navy);background:var(--white)}
+  @media (max-width:560px){
+    .card>summary{grid-template-columns:auto 1fr;gap:10px}
+    .caret{display:none}
+  }
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="hero-eyebrow">Social Responsibility &amp; Sustainability</div>
-  <h1>Frameworks for the <em>responsible</em> firm</h1>
-  <p class="lede">Twelve sessions, seven phases, one running question: where does profit serve society, and where do they pull apart?</p>
-  <div class="meta">
-    <span>R3 MEX A</span>
-    <span>12 sessions</span>
-    <span>Exam <b>June 16, 2026</b></span>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">IPADE · MEDE Admin MEX A · Social &amp; Political Environment</div>
+    <h1>Social Responsibility &amp; <em>Sustainability</em></h1>
+    <p class="sub">A study guide rebuilt from the actual course materials — the cases, technical notes, and session presentations. Every framework below is traceable to a document in the course pack; the generic ESG-textbook content from the earlier draft has been removed.</p>
+    <div class="meta">
+      <span class="chip"><strong>Exam:</strong>&nbsp;June 16, 2026</span>
+      <span class="chip"><strong>Spine:</strong>&nbsp;The “Black Box” &amp; Karnani’s Grand Illusion</span>
+      <span class="chip"><strong>Method:</strong>&nbsp;Case-based</span>
+      <span class="chip">Prof. Ana Cristina Dahik Loor</span>
+    </div>
   </div>
 </header>
 
 <nav class="tabs">
-  <button data-v="arc" class="active">The Arc</button>
-  <button data-v="sessions">Sessions</button>
-  <button data-v="compare">Compare</button>
-  <button data-v="diagrams">Diagrams</button>
-  <button data-v="flash">Flashcards</button>
-  <button data-v="quiz">Quiz</button>
+  <div class="tabrow" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="arc">The model</button>
+    <button role="tab" aria-selected="false" data-tab="sessions">Sessions &amp; cases</button>
+    <button role="tab" aria-selected="false" data-tab="compare">Distinctions</button>
+    <button role="tab" aria-selected="false" data-tab="diagrams">Diagrams</button>
+    <button role="tab" aria-selected="false" data-tab="cards">Flashcards</button>
+    <button role="tab" aria-selected="false" data-tab="quiz">Quiz</button>
+    <button role="tab" aria-selected="false" data-tab="changes">What changed</button>
+  </div>
 </nav>
 
-<div class="wrap">
+<!-- ============ THE MODEL ============ -->
+<section class="panel active" id="arc" role="tabpanel">
+  <div class="wrap">
+    <div class="kicker">How the course is wired</div>
+    <h2 class="sec">The “Black Box” &amp; the running question</h2>
+    <p class="lead">The course doesn’t move through tidy ESG modules. It uses one recurring model and one recurring tension, and runs a case through them each session.</p>
 
-<!-- ============ THE ARC ============ -->
-<section class="view active" id="v-arc">
-  <div class="eyebrow">Overview</div>
-  <h2 class="section-title">The course arc</h2>
-  <div class="sub">Seven phases, from defining what responsibility means to anchoring it in human flourishing. The order carries the argument: each phase assumes the one before it.</div>
+    <div class="bb">
+      <figure>
+        <svg viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Black Box model">
+          <defs>
+            <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1f4068"/></marker>
+            <marker id="arb" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#b9892f"/></marker>
+          </defs>
+          <!-- forces in -->
+          <g font-family="Georgia, serif" font-size="14" fill="#16314f">
+            <text x="20" y="60">Economic</text>
+            <text x="20" y="120">Environmental</text>
+            <text x="20" y="180">Geopolitical</text>
+            <text x="20" y="240">Societal</text>
+            <text x="20" y="300">Technological</text>
+          </g>
+          <g stroke="#1f4068" stroke-width="2" marker-end="url(#ar)" fill="none">
+            <path d="M150,55 C250,90 300,140 388,168"/>
+            <path d="M150,116 C250,130 320,150 388,176"/>
+            <path d="M150,176 L388,182"/>
+            <path d="M150,236 C250,210 320,200 388,194"/>
+            <path d="M150,296 C250,250 320,220 388,200"/>
+          </g>
+          <text x="60" y="332" font-size="12" fill="#33424f" font-style="italic">Global → Local (Mexico) VUCA context</text>
+          <!-- the box -->
+          <rect x="392" y="120" width="170" height="120" rx="10" fill="#16314f"/>
+          <text x="477" y="170" text-anchor="middle" fill="#e3b65a" font-family="Georgia,serif" font-size="16">THE FIRM</text>
+          <text x="477" y="192" text-anchor="middle" fill="#cdd8e3" font-size="12">value generation</text>
+          <text x="477" y="210" text-anchor="middle" fill="#cdd8e3" font-size="12">“vocation of the</text>
+          <text x="477" y="226" text-anchor="middle" fill="#cdd8e3" font-size="12">business leader”</text>
+          <!-- dimensions out -->
+          <g stroke="#b9892f" stroke-width="2" marker-end="url(#arb)" fill="none">
+            <path d="M566,150 L770,95"/>
+            <path d="M566,180 L770,180"/>
+            <path d="M566,210 L770,265"/>
+          </g>
+          <g font-family="Georgia, serif" font-size="15" fill="#16314f">
+            <text x="778" y="100">Social</text>
+            <text x="778" y="185">Environmental</text>
+            <text x="778" y="270">Economic</text>
+          </g>
+          <text x="694" y="40" text-anchor="middle" font-size="12" fill="#33424f" font-style="italic">…and the firm impacts the forces back (the “black box”)</text>
+        </svg>
+        <figcaption>Reconstructed from the Nestlé and Triodos session decks. Each session asks: which <em>force</em> (a global risk) are we looking at, and through which <em>framework</em> does the firm read it and act on it?</figcaption>
+      </figure>
+    </div>
 
-  <div class="spine">
-    <div class="arc-step">
-      <div class="arc-node" style="background:var(--p-define)">01</div>
-      <div class="arc-body"><div class="arc-phase">Define</div><h4>Define</h4><p>What responsibility means and where it applies.</p><div class="arc-range">Sessions 1, 2</div></div>
+    <div class="forces">
+      <div class="force"><b>A social issue</b><span>Framed as a global risk — societal, environmental, geopolitical, economic, or technological.</span></div>
+      <div class="force"><b>A case</b><span>A real firm facing a decision under that risk (Nestlé, Triodos, Danone, NEWSAN…).</span></div>
+      <div class="force"><b>A framework</b><span>The lens that explains how business is impacted by — and impacts — that force.</span></div>
+      <div class="force"><b>The test</b><span>Karnani’s “Grand Illusion”: is this really a win-win, or a trade-off dressed up as one?</span></div>
     </div>
-    <div class="arc-step">
-      <div class="arc-node" style="background:var(--p-strategize)">02</div>
-      <div class="arc-body"><div class="arc-phase">Strategize</div><h4>Strategize</h4><p>Embed it in strategy and capabilities.</p><div class="arc-range">Sessions 3, 4</div></div>
+
+    <div class="note">
+      <h4>Karnani is the spine, not a single session</h4>
+      <p>The “Doing Well by Doing Good: The Grand Illusion” trade-off diagram (Karnani) reappears in the Nestlé, Coca-Cola/Chiapas, and Triodos decks. Use it to interrogate <em>every</em> shared-value or “conscious business” claim in the exam: in efficient markets, private profit and public interest already align (no CSR needed); where markets fail, there is a genuine trade-off that goodwill alone won’t fix.</p>
     </div>
-    <div class="arc-step">
-      <div class="arc-node" style="background:var(--p-finance)">03</div>
-      <div class="arc-body"><div class="arc-phase">Finance</div><h4>Finance</h4><p>Fund mission and money together.</p><div class="arc-range">Session 5</div></div>
-    </div>
-    <div class="arc-step">
-      <div class="arc-node" style="background:var(--p-operationalize)">04</div>
-      <div class="arc-body"><div class="arc-phase">Operationalize</div><h4>Operationalize</h4><p>Circularity, materiality, supply chains.</p><div class="arc-range">Sessions 6, 7, 8</div></div>
-    </div>
-    <div class="arc-step">
-      <div class="arc-node" style="background:var(--p-scale)">05</div>
-      <div class="arc-body"><div class="arc-phase">Scale</div><h4>Scale</h4><p>Across business models and sectors.</p><div class="arc-range">Sessions 9, 10</div></div>
-    </div>
-    <div class="arc-step">
-      <div class="arc-node" style="background:var(--p-measure)">06</div>
-      <div class="arc-body"><div class="arc-phase">Measure</div><h4>Measure</h4><p>Report, verify, communicate.</p><div class="arc-range">Session 11</div></div>
-    </div>
-    <div class="arc-step">
-      <div class="arc-node" style="background:var(--p-humanize)">07</div>
-      <div class="arc-body"><div class="arc-phase">Humanize</div><h4>Humanize</h4><p>Anchor to human flourishing.</p><div class="arc-range">Session 12</div></div>
-    </div>
+
+    <div class="kicker" style="margin-top:26px">Exam strategy</div>
+    <h2 class="sec">How to revise</h2>
+    <p class="lead">For each case, fix four things in your mind: the <b>protagonist &amp; decision</b>, the <b>force/global risk</b> in play, the <b>framework</b> the session uses to read it, and the <b>tension</b> Karnani would point at. The “Sessions &amp; cases” tab is laid out exactly that way.</p>
   </div>
-
-  <div class="note"><b>Note on sources:</b> Built from session titles and standard academic frameworks. It does not reproduce the licensed case-study texts. Open those in Canvas and use this as scaffolding.</div>
-
-  <div class="eyebrow">Before the exam</div>
-  <h2 class="section-title">Exam strategy</h2>
-  <div class="sub">Memorize each session's signature framework plus one key tension. Distinguish the look-alike concepts in Compare. For each real case, note the protagonist, the decision, the stakeholders, and the resolving framework.</div>
 </section>
 
 <!-- ============ SESSIONS ============ -->
-<section class="view" id="v-sessions">
-  <div class="eyebrow">Deep dive</div>
-  <h2 class="section-title">Twelve sessions</h2>
-  <div class="sub">Click any card to expand frameworks, deep concepts, further considerations, and the core tension.</div>
-  <div class="cards">
-
-    <div class="card" style="border-left-color:var(--p-define)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-define)">1</div><div class="htxt"><div class="phase-tag" style="color:var(--p-define)">Define</div><h3>Re-envisioning Social Responsibility: Limits &amp; Scope</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Carroll's CSR Pyramid</span><span>Shareholder vs. Stakeholder view</span><span>Instrumental vs. Normative CSR</span><span>Karnani's Trade-off / Win-win Zone</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">What CSR means and where its boundaries lie. Friedman's profit-maximization view vs. Freeman's stakeholder theory. Carroll's pyramid: economic, legal, ethical, philanthropic. License to operate; greenwashing risk.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">The foundational debate is normative. Friedman (1970) argued the firm's only social responsibility is to increase profits within legal/ethical custom, because managers are agents of shareholders. Freeman's stakeholder theory (1984) counters that the firm is a nexus of relationships with employees, customers, suppliers, communities and financiers, all of whom have legitimate claims. Carroll's pyramid integrates both by ordering responsibilities: economic and legal are required, ethical is expected, philanthropic is desired. The 'limits and scope' framing pushes you to ask where corporate responsibility legitimately ends and where it becomes overreach or mere window-dressing.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Distinguish the four CSR motivations: legal compliance, risk management, reputation, and genuine ethical conviction.</li><li>'License to operate' = the implicit social permission a firm needs from communities and regulators.</li><li>The instrumental trap: if CSR is justified only when it pays, what happens when doing right costs money?</li><li>Visser's critique: classic CSR has failed to move the needle at scale, prompting 'CSR 2.0'.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Is CSR a genuine reorientation of corporate purpose, or a peripheral reputational add-on?</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-define)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-define)">2</div><div class="htxt"><div class="phase-tag" style="color:var(--p-define)">Define</div><h3>Responsibility &amp; Purpose in Fragile Contexts</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Base of the Pyramid (Prahalad)</span><span>Institutional Voids (Khanna &amp; Palepu)</span><span>Corporate Purpose</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">Applying responsibility in weak-institution, emerging-market settings. Firms substitute for missing institutions (courts, credit, infrastructure), raising costs but creating value opportunities. Purpose as a stabilizing anchor.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">Prahalad's Base of the Pyramid reframed ~4 billion low-income people not as charity recipients but as an underserved market whose needs drive frugal innovation. But operating there means confronting institutional voids (Khanna &amp; Palepu): missing or unreliable courts, credit bureaus, logistics and labor intermediaries. Firms either build these capabilities themselves (costly, but a moat) or partner. 'Fragility' adds conflict, corruption and weak enforcement, raising ethical hazards: a firm can extract value while externalizing harm precisely because no one is watching. Purpose becomes the internal compass when external rules cannot be trusted.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Frugal / 'jugaad' innovation: doing more with less for resource-constrained markets.</li><li>The 'fortune' critique (Karnani): BoP can exploit rather than empower the poor.</li><li>Do-no-harm principle and conflict-sensitive business practice in fragile states.</li><li>Purpose as governance: a clear mission reduces the discretion that corruption exploits.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>How do you define and act on 'purpose' when the surrounding system can't be relied on?</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-strategize)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-strategize)">3</div><div class="htxt"><div class="phase-tag" style="color:var(--p-strategize)">Strategize</div><h3>Business Model for Sustainability: Defining Strategy</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Creating Shared Value (Porter &amp; Kramer)</span><span>Sustainable Business Model Canvas</span><span>Triple Bottom Line</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">From philosophy to strategy. CSV's three levers: reconceive products/markets, redefine value-chain productivity, build clusters. Sustainability embedded in the model vs. bolted on.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">Creating Shared Value (Porter &amp; Kramer 2011) is the strategic pivot: competitiveness and community health are interdependent. Its three levers are (1) reconceiving products and markets to meet social needs profitably, (2) redefining productivity in the value chain by addressing resource use, supplier health and logistics, and (3) enabling local cluster development. The Sustainable Business Model Canvas extends Osterwalder's nine blocks with environmental and social value propositions and captures value destroyed and value missed. The test is integration: is sustainability a separate department, or the logic of the model itself?</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>CSV critiques (Crane et al.): it ignores tensions/trade-offs and assumes win-wins always exist.</li><li>Triple bottom line (Elkington), note its author later 'recalled' it for being reduced to accounting.</li><li>Differentiate compliance-driven, eco-efficiency, and transformative strategy postures.</li><li>Map sustainability to genuine competitive advantage: cost, differentiation, or risk reduction.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Defensive/compliance strategy vs. strategic/transformative, trade-offs vs. genuine win-wins.</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-strategize)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-strategize)">4</div><div class="htxt"><div class="phase-tag" style="color:var(--p-strategize)">Strategize</div><h3>Internal or External Capacities? The Non-Profit Sector as an Ally</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Resource-Based View</span><span>Transaction-Cost Economics</span><span>Austin's Collaboration Continuum</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">Build-vs-partner decision for social impact. When to internalize capabilities vs. partner with NGOs. Collaboration continuum: philanthropic to transactional to integrative. NGO legitimacy &amp; local trust.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">This is a make-vs-buy decision applied to social capability. The resource-based view says internalize capabilities that are valuable, rare, inimitable and organizationally embedded (your VRIO advantage); outsource the rest. Transaction-cost economics adds: partner unless transaction costs (search, contracting, monitoring, hold-up risk) exceed the cost of building in-house. NGOs offer legitimacy, local trust and specialized know-how a corporation cannot easily replicate. Austin's Collaboration Continuum charts how relationships deepen from philanthropic (arm's-length giving) through transactional (resource exchange) to integrative (shared mission, joint value creation).</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Principal-agent and mission-drift risks when partners have different metrics of success.</li><li>Reputational coupling: an NGO partner's scandal becomes your scandal.</li><li>The 'collaborative advantage vs. collaborative inertia' tension (Huxham).</li><li>Capacity-building vs. dependency: are you strengthening the partner or hollowing it out?</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Complementary capability gains vs. principal-agent risk and mismatched success metrics.</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-finance)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-finance)">5</div><div class="htxt"><div class="phase-tag" style="color:var(--p-finance)">Finance</div><h3>Financing &amp; Responsibility</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>ESG Investing</span><span>Impact Investing</span><span>Blended Finance</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">How sustainability gets funded. Instruments: green bonds, sustainability-linked loans, social impact bonds. Cost-of-capital effects, fiduciary duty debates, additionality.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">Capital markets increasingly price sustainability. ESG investing screens or tilts portfolios on environmental, social and governance indicators; impact investing goes further, requiring intentional, measurable social/environmental returns alongside financial ones. Blended finance uses concessional or philanthropic capital (grants, first-loss tranches, guarantees) to de-risk deals and 'crowd in' commercial investors. Instruments: green bonds (use-of-proceeds earmarked), sustainability-linked loans (rate steps with KPI performance), and social impact bonds / pay-for-success (investors funded upfront, repaid by an outcome payer only if targets are met).</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Additionality: would the impact have occurred anyway? Without it, the impact claim is weak.</li><li>The fiduciary-duty debate: is considering ESG consistent with duty to maximize returns?</li><li>Impact washing and taxonomies/standards (EU Taxonomy, SFDR) to police claims.</li><li>The return spectrum: from finance-first (market-rate) to impact-first (concessionary) capital.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Financial return vs. social return, do they trade off or compound? Risk of 'impact washing'.</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-operationalize)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-operationalize)">6</div><div class="htxt"><div class="phase-tag" style="color:var(--p-operationalize)">Operationalize</div><h3>Sustainable Resource Management: Circular Economy</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Circular Economy (Ellen MacArthur)</span><span>9R Framework</span><span>Cradle-to-Cradle</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">Linear 'take-make-dispose' vs. circular. Butterfly diagram: technical vs. biological cycles. 9R hierarchy. Industrial symbiosis, product-as-a-service, decoupling growth from resource use.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">The circular economy attacks the linear take-make-dispose model at the design stage. The Ellen MacArthur 'butterfly' separates two loops: technical cycles keep manufactured materials circulating through maintenance, reuse, refurbishment, remanufacture and recycling; biological cycles return safe nutrients to regenerate natural systems. The 9R framework ranks strategies by retained value, Refuse and Rethink (highest) down to Recycle (lowest, since it loses material quality and energy). Cradle-to-cradle designs products so every component is a nutrient for the next cycle. Industrial symbiosis turns one firm's waste into another's feedstock.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Decoupling: separating economic growth from resource consumption (relative vs. absolute).</li><li>The rebound effect: efficiency gains can increase total consumption, erasing savings.</li><li>Product-as-a-service / performance economy: sell outcomes (light, mobility) not products.</li><li>Design for disassembly and material passports as enabling practices.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Circularity is systemic, not cosmetic, it requires redesigning products, chains, and revenue models.</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-operationalize)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-operationalize)">7</div><div class="htxt"><div class="phase-tag" style="color:var(--p-operationalize)">Operationalize</div><h3>Materiality &amp; Stakeholder Management</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Single vs. Double Materiality</span><span>Materiality Matrix</span><span>Stakeholder Salience (Mitchell/Agle/Wood)</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">Identifying which issues matter enough to act/report on. Single (issue to firm value) vs. double (firm to society) materiality. Salience via power, legitimacy, urgency. Materiality matrix prioritization.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">Materiality decides where to focus. Single (financial) materiality asks which issues affect enterprise value, the investor's outside-in lens. Double materiality (EU CSRD) adds impact materiality: how the firm affects people and planet, the inside-out lens. The materiality matrix plots issues by importance to stakeholders (y) against importance to the business (x), prioritizing the top-right. To decide whose voice weights the assessment, Mitchell, Agle &amp; Wood's salience model classifies stakeholders by power, legitimacy and urgency; those holding all three are 'definitive' stakeholders demanding priority.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Dynamic materiality: issues migrate from immaterial to material over time (e.g., climate).</li><li>Salience classes: dormant/discretionary/demanding (1), dominant/dependent/dangerous (2), definitive (3).</li><li>Stakeholder engagement is a process, not a one-off survey; quality of dialogue matters.</li><li>Materiality feeds directly into reporting scope (Session 11).</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Investor-facing single materiality vs. outward double materiality, which lens governs strategy?</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-operationalize)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-operationalize)">8</div><div class="htxt"><div class="phase-tag" style="color:var(--p-operationalize)">Operationalize</div><h3>Sustainable Supply Chains</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Scope 1/2/3 Emissions</span><span>Tiered Risk Mapping</span><span>Supplier Codes &amp; Due Diligence</span><span>Kraljic Supply Portfolio</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">Responsibility beyond the firm's walls. Scope 3 (value chain) often dominates. Traceability, multi-tier monitoring, supplier audits, conflict minerals, living wage, mandated due diligence.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">Responsibility extends across the value chain, where most impact and risk actually sit. The GHG Protocol splits emissions into Scope 1 (direct, owned), Scope 2 (purchased energy) and Scope 3 (everything else up- and downstream), and Scope 3 typically dominates while being hardest to measure and control. A Kraljic-style portfolio lens classifies purchased items by supply risk and profit/strategic impact to decide where to invest scrutiny. The deeper the supplier tier, the weaker your visibility, creating an accountability gap that audits, codes of conduct, traceability tech and mandated due-diligence laws try to close.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Resilience vs. efficiency: just-in-time minimizes cost but concentrates risk; buffering adds slack.</li><li>Mandatory human-rights and environmental due diligence (German LkSG, EU CSDDD).</li><li>Multi-tier challenge: leverage over tier-1 fades fast at tier-2, tier-3 and raw-material origin.</li><li>Traceability tools (blockchain, certification, supplier scorecards) and their limits.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Resilience vs. efficiency, and the accountability gap across tiers you don't own.</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-scale)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-scale)">9</div><div class="htxt"><div class="phase-tag" style="color:var(--p-scale)">Scale</div><h3>Sustainability Across Business Models</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Typology of Sustainable Business Models (Bocken)</span><span>Business-Model Innovation</span><span>Leverage-Point Diagnosis</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">Comparative session: how sustainability differs across manufacturing, services, platforms, retail, agribusiness. Same principle looks different per model. Diagnose biggest leverage &amp; risk.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">This comparative session asks how the same principles manifest differently across business-model archetypes. Bocken et al.'s typology is the workhorse: maximize material/energy efficiency; close resource loops; substitute with renewables; deliver functionality rather than ownership; adopt a stewardship role; encourage sufficiency; repurpose for society/environment; and develop scale-up solutions. The skill is diagnosis, given a model (manufacturer, platform, retailer, agribusiness, service firm), locate the largest leverage point and the largest risk, because circularity in a product company looks nothing like it does in a service or platform business.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Business-model innovation vs. product/process innovation, the former is harder and more durable.</li><li>Sufficiency-driven models confront the growth imperative head-on (selling less, better).</li><li>Platform models externalize impact to users/suppliers, complicating accountability.</li><li>Look for archetype 'mismatches': a great strategy for one model can fail in another.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Incremental optimization vs. transformative business-model innovation.</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-scale)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-scale)">10</div><div class="htxt"><div class="phase-tag" style="color:var(--p-scale)">Scale</div><h3>Cross-Sector Partnerships: Challenges &amp; Roadmap</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Collective Impact (Kania &amp; Kramer)</span><span>SDG 17 Partnerships</span><span>Multi-Stakeholder Governance</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">Business + government + civil society at systemic scale. Collective impact: common agenda, shared measurement, mutually reinforcing activities, communication, backbone org. Power asymmetries.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">Cross-sector partnerships tackle problems too big for any single actor. Collective Impact (Kania &amp; Kramer 2011) specifies five preconditions: a common agenda, shared measurement systems, mutually reinforcing activities, continuous communication, and a backbone organization to coordinate. SDG 17 frames partnership as the enabling goal for all others. The hard part is governance across actors with different time horizons, success metrics and power: business moves on quarters, government on electoral cycles, NGOs on grant cycles. Partnerships drift toward transactional convenience; the 'roadmap' challenge is building the trust and shared infrastructure that make them transformational.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Power asymmetry: who sets the agenda, and whose metrics count, shapes outcomes.</li><li>Backbone organizations need neutrality and sustained, separate funding to survive.</li><li>Accountability diffusion: when everyone is responsible, no one is, design clear ownership.</li><li>Adaptive vs. technical problems: collective impact suits complex, emergent challenges.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Collaborative advantage vs. collaborative inertia; transactional vs. transformational partnership.</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-measure)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-measure)">11</div><div class="htxt"><div class="phase-tag" style="color:var(--p-measure)">Measure</div><h3>Measurement &amp; Communication</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>GRI / SASB / ISSB / CSRD</span><span>SROI &amp; Theory of Change</span><span>TCFD</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">How impact is measured &amp; reported. GRI (broad/impact), SASB (industry/financial), ISSB (investor-grade), CSRD (double materiality). SROI, logic models. Assurance.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">Measurement turns intention into accountability. The reporting landscape: GRI (broad, multi-stakeholder, impact-oriented, most widely used); SASB (industry-specific, financially material, investor-focused, now under ISSB); TCFD (climate risk in financial terms); and the ISSB's IFRS S1/S2 consolidating investor-grade standards, alongside the EU CSRD which mandates double materiality and assurance. For impact itself: theory of change and logic models trace inputs to activities to outputs to outcomes to impact, while SROI monetizes social value as a ratio. The credibility antidote to greenwashing is third-party assurance.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Outputs vs. outcomes vs. impact: counting activities is not measuring change.</li><li>Attribution and the counterfactual: deadweight, displacement, drop-off in SROI.</li><li>Greenhushing: firms under-report to dodge scrutiny, which harms transparency.</li><li>Convergence: ISSB as a global baseline with jurisdictions layering on ('building blocks').</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>Rigor &amp; comparability vs. cost/complexity; greenwashing vs. 'greenhushing'; credibility via verification.</div>
-      </div></div>
-    </div>
-
-    <div class="card" style="border-left-color:var(--p-humanize)">
-      <div class="top" tabindex="0" role="button" aria-expanded="false"><div class="sn" style="background:var(--p-humanize)">12</div><div class="htxt"><div class="phase-tag" style="color:var(--p-humanize)">Humanize</div><h3>Wrap-Up: Anchoring Sustainability to a Humanistic Lens</h3></div><div class="chev">&#9662;</div></div>
-      <div class="body"><div class="body-in">
-        <div class="label">Key Frameworks</div>
-        <div class="fw"><span>Humanistic Management</span><span>Economy of the Common Good</span><span>Purpose-Driven Enterprise</span></div>
-        <div class="label">Core Concepts</div>
-        <div class="concepts">Capstone: human dignity &amp; common good at the center, not just profit. Firm as a community of persons serving human flourishing. Synthesis of the full course arc.</div>
-        <div class="label">In Depth</div>
-        <div class="deep">The capstone reframes everything through humanistic management: the firm exists to serve human flourishing and the common good, not merely to maximize shareholder value or even to balance stakeholders instrumentally. This connects to IPADE's tradition, to integral human development, and to the 'economy of the common good.' Human dignity is treated as non-negotiable and prior to profit, profit is necessary but a means, not the end. The integrative task is to trace the whole arc and argue a coherent position on the purpose of business itself.</div>
-        <div class="label">Further Considerations</div>
-        <ul class="further"><li>Means vs. ends: profit as a condition for, not the purpose of, the enterprise.</li><li>Subsidiarity and solidarity as organizing principles for the firm as a community of persons.</li><li>Contrast with pure shareholder-value and even with instrumental stakeholder theory.</li><li>Be ready to defend a normative thesis with evidence drawn from the course's cases.</li></ul>
-        <div class="label">The Tension</div>
-        <div class="tension"><b>&#9889; </b>What, ultimately, is the purpose of business? Argue a defensible position.</div>
-      </div></div>
-    </div>
-
+<section class="panel" id="sessions" role="tabpanel">
+  <div class="wrap">
+    <div class="kicker">Case by case</div>
+    <h2 class="sec">The sessions, grounded in the materials</h2>
+    <p class="lead">Click any case to expand its real frameworks, the decision on the table, and the tension. Source documents are named so you can check them in the pack.</p>
+    <div class="grid" id="sessgrid"></div>
   </div>
 </section>
 
 <!-- ============ COMPARE ============ -->
-<section class="view" id="v-compare">
-  <div class="eyebrow">Distinctions</div>
-  <h2 class="section-title">Look-alike concepts</h2>
-  <div class="sub">Master these distinctions. Examiners love them.</div>
-  <div class="tbl-wrap"><table>
-    <thead><tr><th>Concept set</th><th>First</th><th>Second</th><th>Note</th></tr></thead>
-    <tbody>
-      <tr><td><b>CSR vs CSV vs ESG</b></td><td>Broad citizenship</td><td>Profit &amp; social value as one strategy</td><td>Investor criteria (E,S,G)</td></tr>
-      <tr><td><b>Single vs Double Materiality</b></td><td>Issue &#8594; firm value</td><td>Firm &#8594; society</td><td>CSRD requires <b>double</b></td></tr>
-      <tr><td><b>Scope 1/2/3</b></td><td>Direct owned</td><td>Purchased energy</td><td>Value chain, usually largest</td></tr>
-      <tr><td><b>GRI/SASB/ISSB</b></td><td>Broad, impact</td><td>Industry, financial</td><td>Investor-grade (IFRS)</td></tr>
-      <tr><td><b>Linear vs Circular</b></td><td>Take-make-dispose</td><td>Keep in use + regenerate</td><td>9R ranks strategies</td></tr>
-      <tr><td><b>Karnani win-win vs trade-off</b></td><td>Profit &amp; society align</td><td>They conflict</td><td>Trade-off needs regulation</td></tr>
-    </tbody>
-  </table></div>
+<section class="panel" id="compare" role="tabpanel">
+  <div class="wrap">
+    <div class="kicker">Look-alike concepts the course actually uses</div>
+    <h2 class="sec">Distinctions worth memorizing</h2>
+    <p class="lead">These are the contrasts that appear in the decks and notes — not generic textbook pairs.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Pair</th><th>First</th><th>Second</th><th>Where / why it matters</th></tr></thead>
+        <tbody>
+          <tr><td><b>Shareholder vs. stakeholder view</b></td><td>Friedman: one duty — profit within the rules (via Karnani note)</td><td>Freeman &amp; Parmar: create value for customers, suppliers, employees, communities, financiers</td><td>Malden Mills + UV7324. The Feuerstein decision is the test case.</td></tr>
+          <tr><td><b>Karnani: win-win vs. trade-off</b></td><td>Zone of opportunity — profit &amp; welfare rise together</td><td>Zone of trade-off — more good now costs the firm</td><td>The course spine. Win-wins are real but <em>bounded</em>; trade-offs need regulation or restraint.</td></tr>
+          <tr><td><b>Constitutive vs. instrumental freedom</b></td><td>Freedom as the <em>end</em> of development</td><td>Freedoms that <em>enable</em> other freedoms (Sen’s 5)</td><td>Coca-Cola/Chiapas. Sen, <em>Development as Freedom</em>.</td></tr>
+          <tr><td><b>Negative vs. positive peace</b></td><td>Absence of violence/fear</td><td>Attitudes, institutions &amp; structures that <em>sustain</em> peace (8 Pillars)</td><td>Cross-sector partnerships session (IEP framework).</td></tr>
+          <tr><td><b>Direct / structural / cultural violence</b></td><td>Direct = visible, manifest acts</td><td>Structural &amp; cultural = latent, “how we think”</td><td>Galtung’s typology — conflict ≠ violence.</td></tr>
+          <tr><td><b>Interactions vs. collaborations</b></td><td>Parties act in the same space</td><td>Players see different parts of one problem; solutions exceed what each could reach alone</td><td>CSP deck (Himmelman 1994; Gray 1989) → collective impact.</td></tr>
+          <tr><td><b>SRI → ESG → Impact</b></td><td>Screening on values (religious roots)</td><td>Intentional, <em>measured</em> social/financial return</td><td>Triodos + SMN-704-E. Spectrum of capital: return · intentionality · measurement.</td></tr>
+          <tr><td><b>CSV: real vs. “theater”</b></td><td>Strategy reconceived so social need is the business</td><td>Reputational add-on bolted onto the model</td><td>Nestlé (Nescafé/Cocoa/Youth) — the deck literally asks “theater?”.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 <!-- ============ DIAGRAMS ============ -->
-<section class="view" id="v-diagrams">
-  <div class="eyebrow">Visual frameworks</div>
-  <h2 class="section-title">Framework diagrams</h2>
-  <div class="sub">The Karnani trade-off diagram, the Kraljic supply portfolio, the materiality matrix, stakeholder salience, and the 9R circularity ladder.</div>
+<section class="panel" id="diagrams" role="tabpanel">
+  <div class="wrap">
+    <div class="kicker">Visuals that are actually in the decks</div>
+    <h2 class="sec">Framework diagrams</h2>
+    <p class="lead">Four diagrams the professor uses on the slides: Karnani’s three zones, the Black Box (see “The model” tab), Sen’s instrumental freedoms, and the eight Pillars of Positive Peace.</p>
 
-  <div class="diagram">
-    <h3>Karnani's Trade-off Diagram <span class="dnum">/ Sessions 1 &amp; 3</span></h3>
-    <div class="cap">Two inverted-U curves over "socially desirable goods": Private Profits peaks at the Private Optimum; Public Interest peaks later at the Social Optimum. Three zones follow.</div>
-    <div class="simple"><b>In plain English</b>Doing good only makes money up to a point. At first, helping society also boosts profit (win-win). Past that point, more good costs the company money, so "doing well by doing good" only works in a limited zone.</div>
-    <svg viewBox="0 0 760 560">
-      <rect x="60" y="30" width="340" height="460" fill="rgba(95,199,154,.10)"></rect>
-      <rect x="400" y="30" width="150" height="460" fill="rgba(226,165,94,.16)"></rect>
-      <rect x="550" y="30" width="160" height="460" fill="rgba(205,97,85,.13)"></rect>
-      <line x1="60" y1="490" x2="710" y2="490" stroke="#92A299" stroke-width="2"></line>
-      <line x1="60" y1="490" x2="60" y2="30" stroke="#92A299" stroke-width="2"></line>
-      <path d="M150,360 Q300,150 475,120 Q620,150 690,300" fill="none" stroke="#8FE3BD" stroke-width="3"></path>
-      <path d="M90,430 Q250,250 400,235 Q560,255 650,430" fill="none" stroke="#F2CF9A" stroke-width="3"></path>
-      <line x1="400" y1="235" x2="400" y2="490" stroke="rgba(255,255,255,.22)" stroke-dasharray="5 5"></line>
-      <line x1="475" y1="120" x2="475" y2="490" stroke="rgba(255,255,255,.22)" stroke-dasharray="5 5"></line>
-      <circle cx="400" cy="235" r="5" fill="#F2CF9A"></circle>
-      <circle cx="475" cy="120" r="5" fill="#8FE3BD"></circle>
-      <rect x="80" y="50" width="170" height="58" rx="7" fill="#0A0E0C" stroke="rgba(255,255,255,.22)"></rect>
-      <text x="93" y="75" style="font:600 16px 'IBM Plex Mono',monospace;fill:#8FE3BD">Zone of</text>
-      <text x="93" y="97" style="font:600 16px 'IBM Plex Mono',monospace;fill:#8FE3BD">Opportunity</text>
-      <rect x="415" y="300" width="120" height="58" rx="7" fill="#0A0E0C" stroke="rgba(255,255,255,.22)"></rect>
-      <text x="428" y="325" style="font:600 14px 'IBM Plex Mono',monospace;fill:#F2CF9A">Zone of</text>
-      <text x="428" y="346" style="font:600 14px 'IBM Plex Mono',monospace;fill:#F2CF9A">Tradeoff</text>
-      <rect x="560" y="50" width="140" height="58" rx="7" fill="#0A0E0C" stroke="rgba(255,255,255,.22)"></rect>
-      <text x="573" y="75" style="font:600 16px 'IBM Plex Mono',monospace;fill:#E78C81">Zone of</text>
-      <text x="573" y="97" style="font:600 16px 'IBM Plex Mono',monospace;fill:#E78C81">Disaster</text>
-      <text x="150" y="412" style="font:600 15px 'IBM Plex Sans',sans-serif;fill:#F2CF9A">Private Profits</text>
-      <text x="598" y="220" style="font:600 15px 'IBM Plex Sans',sans-serif;fill:#8FE3BD">Public Interest</text>
-      <text x="400" y="520" text-anchor="middle" style="font:500 13px 'IBM Plex Mono',monospace;fill:#92A299">Private</text>
-      <text x="400" y="538" text-anchor="middle" style="font:500 13px 'IBM Plex Mono',monospace;fill:#92A299">Optimum</text>
-      <text x="475" y="520" text-anchor="middle" style="font:500 13px 'IBM Plex Mono',monospace;fill:#92A299">Social</text>
-      <text x="475" y="538" text-anchor="middle" style="font:500 13px 'IBM Plex Mono',monospace;fill:#92A299">Optimum</text>
-      <text x="385" y="556" text-anchor="middle" style="font:600 15px 'IBM Plex Sans',sans-serif;fill:#E9EDE6">Socially desirable goods</text>
-    </svg>
-    <div class="explain">
-      <div class="blk"><div class="h">How to read it</div><div class="t">Two inverted-U curves are plotted against the quantity of socially desirable goods a firm produces (x-axis). The lower amber curve is the firm's <b>private profit</b>; the higher green curve is total <b>public interest</b> (social welfare). Each curve rises, peaks, then falls. The profit curve peaks first, at the <b>Private Optimum</b> (the output a self-interested firm would choose). The public-interest curve peaks later, at the <b>Social Optimum</b> (what society would prefer). The gap between those two peaks defines the shaded <b>Zone of Tradeoff</b>.</div></div>
-      <div class="blk"><div class="h">Why it matters</div><div class="t">It visually demolishes the slogan 'doing well by doing good.' Win-wins are real but bounded: only in the Zone of Opportunity (left of the private optimum) does producing more social good also raise profit. The diagram shows precisely where that alignment ends.</div></div>
-      <div class="blk"><div class="h">The parts</div><ul><li><b>Zone of Opportunity:</b> both curves still rising, more social goods means more profit AND more welfare. CSR is easy here because self-interest already points the right way.</li><li><b>Zone of Tradeoff:</b> between the two optima, profit is now falling while public interest still rises. Doing more good genuinely costs the firm money; voluntary CSR is unreliable, so regulation, NGO pressure or self-restraint must intervene.</li><li><b>Zone of Disaster:</b> right of the social optimum, both curves fall. Pushing 'social goods' further now harms profit and society alike (over-provision, waste, unintended damage).</li></ul></div>
-      <div class="blk"><div class="h">Exam use</div><div class="t">Use this as the sharpest counter-argument to Porter &amp; Kramer's Creating Shared Value. If asked to critique CSV or 'win-win' sustainability, cite Karnani: CSV generalizes from the Zone of Opportunity and ignores the Tradeoff and Disaster zones where markets alone fail.</div></div>
-    </div>
-  </div>
+    <figure style="margin-top:18px">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Karnani trade-off diagram">
+        <rect x="70" y="20" width="620" height="300" fill="#fff"/>
+        <!-- zones -->
+        <rect x="70" y="20" width="206" height="300" fill="#f4ecd8"/>
+        <rect x="276" y="20" width="180" height="300" fill="#e9ddf0"/>
+        <rect x="456" y="20" width="234" height="300" fill="#f6e3df"/>
+        <line x1="70" y1="320" x2="690" y2="320" stroke="#33424f" stroke-width="1.5"/>
+        <line x1="70" y1="320" x2="70" y2="20" stroke="#33424f" stroke-width="1.5"/>
+        <!-- profit curve (amber) -->
+        <path d="M70,300 Q230,70 276,90 Q380,150 690,290" fill="none" stroke="#b9892f" stroke-width="3"/>
+        <!-- public interest curve (green) -->
+        <path d="M70,270 Q300,30 456,40 Q560,70 690,250" fill="none" stroke="#2f6b4f" stroke-width="3"/>
+        <line x1="276" y1="20" x2="276" y2="320" stroke="#8a6fae" stroke-dasharray="4 4"/>
+        <line x1="456" y1="20" x2="456" y2="320" stroke="#8a6fae" stroke-dasharray="4 4"/>
+        <g font-family="Georgia,serif" font-size="13" fill="#16314f">
+          <text x="120" y="44">Zone of</text><text x="120" y="60">opportunity</text>
+          <text x="320" y="44">Zone of</text><text x="320" y="60">trade-off</text>
+          <text x="540" y="44">Zone of</text><text x="540" y="60">disaster</text>
+        </g>
+        <g font-size="12" fill="#7a5d1f"><text x="300" y="118">Private profit</text></g>
+        <g font-size="12" fill="#1d4d39"><text x="470" y="84">Public interest</text></g>
+        <g font-size="11.5" fill="#33424f">
+          <text x="232" y="338">Private optimum</text>
+          <text x="412" y="338">Social optimum</text>
+          <text x="300" y="362" font-style="italic">Quantity of socially desirable goods →</text>
+        </g>
+      </svg>
+      <figcaption><b>Karnani — The Grand Illusion.</b> Profit peaks first (private optimum), welfare later (social optimum). “Doing well by doing good” only holds in the left zone; between the optima the firm genuinely pays to do more good, and past the social optimum both fall. Your sharpest critique of any “win-win” claim, including CSV.</figcaption>
+    </figure>
 
-  <div class="diagram">
-    <h3>Supply Portfolio Matrix (Kraljic) <span class="dnum">/ Session 8</span></h3>
-    <div class="cap">Classifies purchased items by supply risk vs. profit/strategic impact to target sustainability scrutiny.</div>
-    <div class="simple"><b>In plain English</b>A way to sort the things you buy by how risky and how important they are. Focus your effort on the risky, important stuff; don't sweat the cheap, easy items.</div>
-    <svg viewBox="0 0 600 400">
-      <rect x="80" y="40" width="220" height="150" fill="rgba(111,168,214,.16)"></rect>
-      <rect x="300" y="40" width="220" height="150" fill="rgba(95,199,154,.18)"></rect>
-      <rect x="80" y="190" width="220" height="150" fill="rgba(146,162,153,.12)"></rect>
-      <rect x="300" y="190" width="220" height="150" fill="rgba(226,165,94,.16)"></rect>
-      <line stroke="#6C7A71" stroke-width="1.5" x1="80" y1="340" x2="520" y2="340"></line>
-      <line stroke="#6C7A71" stroke-width="1.5" x1="80" y1="40" x2="80" y2="340"></line>
-      <text x="110" y="74" style="font:600 15px 'IBM Plex Sans',sans-serif;fill:#E9EDE6">Bottleneck</text>
-      <text x="110" y="94" style="font:11px 'IBM Plex Mono',monospace;fill:#9BA8A0">secure supply, find alts</text>
-      <text x="330" y="74" style="font:600 15px 'IBM Plex Sans',sans-serif;fill:#E9EDE6">Strategic</text>
-      <text x="330" y="94" style="font:11px 'IBM Plex Mono',monospace;fill:#9BA8A0">partner deeply, ESG focus</text>
-      <text x="110" y="224" style="font:600 15px 'IBM Plex Sans',sans-serif;fill:#E9EDE6">Non-critical</text>
-      <text x="110" y="244" style="font:11px 'IBM Plex Mono',monospace;fill:#9BA8A0">simplify, automate</text>
-      <text x="330" y="224" style="font:600 15px 'IBM Plex Sans',sans-serif;fill:#E9EDE6">Leverage</text>
-      <text x="330" y="244" style="font:11px 'IBM Plex Mono',monospace;fill:#9BA8A0">exploit buying power</text>
-      <text x="200" y="368" text-anchor="middle" style="font:500 12px 'IBM Plex Mono',monospace;fill:#92A299">Profit / strategic impact &#8594;</text>
-      <text x="40" y="190" text-anchor="middle" transform="rotate(-90 40 190)" style="font:500 12px 'IBM Plex Mono',monospace;fill:#92A299">Supply risk &#8594;</text>
-    </svg>
-    <div class="explain">
-      <div class="blk"><div class="h">How to read it</div><div class="t">A 2&#215;2 grid. The horizontal axis is the item's <b>profit / strategic impact</b> (how much it matters to the business); the vertical axis is <b>supply risk</b> (scarcity, few suppliers, fragility). Every purchased input falls into one of four quadrants depending on where it sits on those two axes.</div></div>
-      <div class="blk"><div class="h">Why it matters</div><div class="t">You cannot apply equal sustainability scrutiny to every one of thousands of purchased items. The matrix tells you where to concentrate effort, high-risk, high-impact inputs deserve deep supplier partnerships, while low-stakes items can be simplified or automated.</div></div>
-      <div class="blk"><div class="h">The parts</div><ul><li><b>Strategic</b> (high risk, high impact): partner deeply, co-invest, embed ESG and due-diligence, these define your sustainability exposure.</li><li><b>Bottleneck</b> (high risk, low impact): secure supply and find alternatives; risk of disruption outweighs their spend.</li><li><b>Leverage</b> (low risk, high impact): you hold the power, use competition and buying leverage to demand better standards.</li><li><b>Non-critical</b> (low risk, low impact): simplify, standardize, automate; minimal oversight needed.</li></ul></div>
-      <div class="blk"><div class="h">Exam use</div><div class="t">Pair it with Scope 1/2/3: the Strategic quadrant is usually where your biggest Scope 3 emissions and human-rights risks live, so that is where supplier codes, audits and traceability pay off most.</div></div>
-    </div>
-  </div>
+    <figure style="margin-top:24px">
+      <svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sen instrumental freedoms">
+        <text x="20" y="34" font-family="Georgia,serif" font-size="16" fill="#16314f">Sen — five instrumental freedoms (Coca-Cola / Chiapas)</text>
+        <g font-family="-apple-system,system-ui" font-size="13.5">
+          <g><rect x="20" y="60" width="135" height="150" rx="8" fill="#16314f"/><text x="87" y="120" fill="#e3b65a" text-anchor="middle" font-size="12">Political</text><text x="87" y="138" fill="#e3b65a" text-anchor="middle" font-size="12">freedoms</text></g>
+          <g><rect x="168" y="60" width="135" height="150" rx="8" fill="#1f4068"/><text x="235" y="120" fill="#fff" text-anchor="middle" font-size="12">Economic</text><text x="235" y="138" fill="#fff" text-anchor="middle" font-size="12">facilities</text></g>
+          <g><rect x="316" y="60" width="135" height="150" rx="8" fill="#16314f"/><text x="383" y="120" fill="#e3b65a" text-anchor="middle" font-size="12">Social</text><text x="383" y="138" fill="#e3b65a" text-anchor="middle" font-size="12">opportunities</text></g>
+          <g><rect x="464" y="60" width="135" height="150" rx="8" fill="#1f4068"/><text x="531" y="112" fill="#fff" text-anchor="middle" font-size="12">Transparency</text><text x="531" y="130" fill="#fff" text-anchor="middle" font-size="12">guarantees</text></g>
+          <g><rect x="612" y="60" width="128" height="150" rx="8" fill="#16314f"/><text x="676" y="120" fill="#e3b65a" text-anchor="middle" font-size="12">Protective</text><text x="676" y="138" fill="#e3b65a" text-anchor="middle" font-size="12">security</text></g>
+        </g>
+        <text x="20" y="238" font-size="12" fill="#33424f" font-style="italic">Consumer sovereignty needs all three: knowledge · capacity · freedom from coercion.</text>
+      </svg>
+      <figcaption><b>Sen’s instrumental freedoms.</b> The lens for responsibility in weak-institution (“institutional void”) contexts: the firm asks whether it is enforcing <em>unfreedoms</em> or promoting freedoms in the social arrangements it touches.</figcaption>
+    </figure>
 
-  <div class="diagram">
-    <h3>Materiality Matrix <span class="dnum">/ Session 7</span></h3>
-    <div class="cap">Prioritize issues in the top-right: high importance to both stakeholders and the business.</div>
-    <div class="simple"><b>In plain English</b>A way to decide which issues actually matter. Plot each by how much it matters to the business and to people, the ones high on both are what you act on.</div>
-    <svg viewBox="0 0 600 400">
-      <rect x="320" y="40" width="200" height="130" fill="rgba(95,199,154,.20)"></rect>
-      <text x="330" y="60" style="fill:#8FE3BD;font:600 11px 'IBM Plex Mono',monospace">PRIORITIZE</text>
-      <line stroke="#6C7A71" stroke-width="1.5" x1="80" y1="340" x2="520" y2="340"></line>
-      <line stroke="#6C7A71" stroke-width="1.5" x1="80" y1="40" x2="80" y2="340"></line>
-      <circle cx="420" cy="90" r="7" fill="#5FC79A"></circle>
-      <text x="432" y="94" style="font:11px 'IBM Plex Mono',monospace;fill:#9BA8A0">Climate / emissions</text>
-      <circle cx="390" cy="140" r="7" fill="#5FC79A"></circle>
-      <text x="402" y="144" style="font:11px 'IBM Plex Mono',monospace;fill:#9BA8A0">Labor &amp; human rights</text>
-      <circle cx="250" cy="160" r="6" fill="#E2A55E"></circle>
-      <text x="262" y="164" style="font:11px 'IBM Plex Mono',monospace;fill:#9BA8A0">Water use</text>
-      <circle cx="180" cy="270" r="5" fill="#92A299"></circle>
-      <text x="192" y="274" style="font:11px 'IBM Plex Mono',monospace;fill:#9BA8A0">Office recycling</text>
-      <text x="300" y="368" text-anchor="middle" style="font:500 12px 'IBM Plex Mono',monospace;fill:#92A299">Importance to business &#8594;</text>
-      <text x="40" y="190" text-anchor="middle" transform="rotate(-90 40 190)" style="font:500 12px 'IBM Plex Mono',monospace;fill:#92A299">Importance to stakeholders &#8594;</text>
-    </svg>
-    <div class="explain">
-      <div class="blk"><div class="h">How to read it</div><div class="t">A scatter/priority grid. The horizontal axis is an issue's <b>importance to the business</b> (effect on enterprise value); the vertical axis is its <b>importance to stakeholders</b> (society's concern). Each sustainability issue is plotted as a dot; the highlighted top-right box is the <b>priority zone</b>.</div></div>
-      <div class="blk"><div class="h">Why it matters</div><div class="t">Firms face dozens of possible ESG issues but limited attention and reporting capacity. Materiality assessment decides which issues are 'material' enough to act on and disclose, focusing strategy where business and stakeholder concern overlap.</div></div>
-      <div class="blk"><div class="h">The parts</div><ul><li><b>Top-right (prioritize):</b> high to both, these drive strategy and reporting (e.g., climate, labor &amp; human rights).</li><li><b>Top-left:</b> stakeholders care, business impact lower, monitor and engage; reputational risk can escalate them.</li><li><b>Bottom-right:</b> matters to the business but not yet to stakeholders, manage operationally.</li><li><b>Bottom-left:</b> low to both, minimal attention.</li></ul></div>
-      <div class="blk"><div class="h">Exam use</div><div class="t">Connect to single vs. double materiality: the x-axis alone is 'single' (financial) materiality; adding the y-axis (impact on society) makes it 'double' materiality, which the EU CSRD requires. Note dynamic materiality, issues migrate toward the top-right over time.</div></div>
-    </div>
-  </div>
-
-  <div class="diagram">
-    <h3>Stakeholder Salience <span class="dnum">/ Session 7</span></h3>
-    <div class="cap">Mitchell, Agle &amp; Wood: stakeholders holding all three attributes are "definitive".</div>
-    <div class="simple"><b>In plain English</b>Three circles: power, legitimacy, urgency. The more of these a group has, the more attention they need. All three = top priority.</div>
-    <svg viewBox="0 0 600 380">
-      <circle cx="240" cy="160" r="120" fill="rgba(95,199,154,.26)"></circle>
-      <circle cx="360" cy="160" r="120" fill="rgba(111,168,214,.26)"></circle>
-      <circle cx="300" cy="250" r="120" fill="rgba(226,165,94,.26)"></circle>
-      <text x="175" y="120" style="font:600 16px 'IBM Plex Sans',sans-serif;fill:#E9EDE6">Power</text>
-      <text x="375" y="120" style="font:600 16px 'IBM Plex Sans',sans-serif;fill:#E9EDE6">Legitimacy</text>
-      <text x="268" y="330" style="font:600 16px 'IBM Plex Sans',sans-serif;fill:#E9EDE6">Urgency</text>
-      <text x="300" y="205" text-anchor="middle" style="font:600 13px 'IBM Plex Mono',monospace;fill:#fff">DEFINITIVE</text>
-    </svg>
-    <div class="explain">
-      <div class="blk"><div class="h">How to read it</div><div class="t">Three overlapping circles (a Venn diagram) representing the three attributes a stakeholder can hold: <b>Power</b> (ability to impose its will), <b>Legitimacy</b> (its claim is socially valid/appropriate), and <b>Urgency</b> (the claim is time-sensitive and important). Where all three overlap sits the <b>Definitive</b> stakeholder.</div></div>
-      <div class="blk"><div class="h">Why it matters</div><div class="t">Managers can't treat every stakeholder identically. Salience (Mitchell, Agle &amp; Wood) ranks stakeholders by how many attributes they hold, telling managers whose claims demand priority attention right now.</div></div>
-      <div class="blk"><div class="h">The parts</div><ul><li><b>One attribute (latent):</b> dormant (power only), discretionary (legitimacy only), demanding (urgency only), low salience.</li><li><b>Two attributes (expectant):</b> dominant (power+legitimacy), dependent (legitimacy+urgency), dangerous (power+urgency), moderate salience.</li><li><b>Three attributes:</b> <b>Definitive</b>, highest priority; managers must respond immediately.</li><li>Attributes are not fixed: a stakeholder can gain urgency or build a coalition for power, moving toward the center.</li></ul></div>
-      <div class="blk"><div class="h">Exam use</div><div class="t">Use it to justify whose voice weights a materiality assessment (Session 7 link) and which stakeholders to engage first in a partnership (Session 10). 'Dangerous' stakeholders (power + urgency, no legitimacy) explain protests or boycotts.</div></div>
-    </div>
-  </div>
-
-  <div class="diagram">
-    <h3>The 9R Circularity Ladder <span class="dnum">/ Session 6</span></h3>
-    <div class="cap">Higher rungs retain more value. Recycling is the last resort.</div>
-    <div class="simple"><b>In plain English</b>A ranking of ways to cut waste, best at the top. Refusing or reducing beats reusing, which beats recycling. Recycling is the last resort, not the goal.</div>
-    <svg viewBox="0 0 600 360">
-      <rect x="60" y="30" width="480" height="28" rx="6" fill="#5FC79A"></rect>
-      <text x="72" y="49" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R0 Refuse</text>
-      <rect x="60" y="65" width="442" height="28" rx="6" fill="#67BF9A"></rect>
-      <text x="72" y="84" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R1 Rethink</text>
-      <rect x="60" y="100" width="404" height="28" rx="6" fill="#7FB591"></rect>
-      <text x="72" y="119" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R2 Reduce</text>
-      <rect x="60" y="135" width="366" height="28" rx="6" fill="#97AB87"></rect>
-      <text x="72" y="154" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R3 Reuse</text>
-      <rect x="60" y="170" width="328" height="28" rx="6" fill="#AFA17C"></rect>
-      <text x="72" y="189" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R4 Repair</text>
-      <rect x="60" y="205" width="290" height="28" rx="6" fill="#C49872"></rect>
-      <text x="72" y="224" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R5 Refurbish</text>
-      <rect x="60" y="240" width="252" height="28" rx="6" fill="#D29066"></rect>
-      <text x="72" y="259" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R6 Remanufacture</text>
-      <rect x="60" y="275" width="214" height="28" rx="6" fill="#DD8259"></rect>
-      <text x="72" y="294" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R7 Repurpose</text>
-      <rect x="60" y="310" width="176" height="28" rx="6" fill="#E2A55E"></rect>
-      <text x="72" y="329" style="font:600 12px 'IBM Plex Mono',monospace;fill:#0A0E0C">R8 Recycle</text>
-      <text x="555" y="44" text-anchor="end" style="font:600 11px 'IBM Plex Mono',monospace;fill:#92A299">most value</text>
-      <text x="555" y="350" text-anchor="end" style="font:600 11px 'IBM Plex Mono',monospace;fill:#92A299">least value</text>
-    </svg>
-    <div class="explain">
-      <div class="blk"><div class="h">How to read it</div><div class="t">A descending ladder of nine strategies, widest (most valuable) at the top, narrowest at the bottom. Each rung is a way to keep materials and products in use; the higher the rung, the more economic and environmental value is retained and the less energy/material is lost.</div></div>
-      <div class="blk"><div class="h">Why it matters</div><div class="t">Not all 'circular' actions are equal, recycling is often treated as the goal, but it sits near the bottom because it degrades material quality and consumes energy. The ladder reframes circularity as a hierarchy: prevent and slow loops before you close them.</div></div>
-      <div class="blk"><div class="h">The parts</div><ul><li><b>Smarter use/manufacture (top):</b> Refuse, Rethink, Reduce, avoid or minimize material need entirely; highest value.</li><li><b>Extend product lifespan (middle):</b> Reuse, Repair, Refurbish, Remanufacture, keep the product itself circulating.</li><li><b>Useful application of materials (bottom):</b> Repurpose, Recycle, recover materials only when the product can't be kept whole; lowest value, last resort.</li></ul></div>
-      <div class="blk"><div class="h">Exam use</div><div class="t">Tie to the Ellen MacArthur butterfly diagram (technical vs. biological cycles) and to the rebound effect, efficiency at low rungs can increase total consumption. A strong answer argues for designing products to enable the higher rungs (design for disassembly, product-as-a-service).</div></div>
-    </div>
+    <figure style="margin-top:24px">
+      <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Eight Pillars of Positive Peace">
+        <text x="380" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#16314f">POSITIVE</text>
+        <text x="380" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#16314f">PEACE</text>
+        <g font-family="-apple-system,system-ui" font-size="12.5" fill="#16314f" text-anchor="middle">
+          <g><circle cx="380" cy="40" r="34" fill="#eaf1ee" stroke="#2f6b4f"/><text x="380" y="37">Well-funct.</text><text x="380" y="51">government</text></g>
+          <g><circle cx="560" cy="90" r="34" fill="#eaf1ee" stroke="#2f6b4f"/><text x="560" y="87">Equitable</text><text x="560" y="101">resources</text></g>
+          <g><circle cx="640" cy="170" r="34" fill="#eaf1ee" stroke="#2f6b4f"/><text x="640" y="167">Free flow</text><text x="640" y="181">of info</text></g>
+          <g><circle cx="560" cy="250" r="34" fill="#eaf1ee" stroke="#2f6b4f"/><text x="560" y="247">Good nbr.</text><text x="560" y="261">relations</text></g>
+          <g><circle cx="380" cy="300" r="34" fill="#eaf1ee" stroke="#2f6b4f"/><text x="380" y="297">High human</text><text x="380" y="311">capital</text></g>
+          <g><circle cx="200" cy="250" r="34" fill="#eaf1ee" stroke="#2f6b4f"/><text x="200" y="247">Rights of</text><text x="200" y="261">others</text></g>
+          <g><circle cx="120" cy="170" r="34" fill="#eaf1ee" stroke="#2f6b4f"/><text x="120" y="167">Low</text><text x="120" y="181">corruption</text></g>
+          <g><circle cx="200" cy="90" r="34" fill="#eaf1ee" stroke="#2f6b4f"/><text x="200" y="87">Sound bus.</text><text x="200" y="101">environment</text></g>
+        </g>
+      </svg>
+      <figcaption><b>The 8 Pillars of Positive Peace</b> (Institute for Economics &amp; Peace). The systemic, multidimensional frame for the cross-sector-partnerships session — why violence is a business issue (≈ 11.6% of global GDP; ≈ 22.5% of Mexico’s) and why single actors can’t fix it alone.</figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- ============ FLASHCARDS ============ -->
-<section class="view" id="v-flash">
-  <div class="eyebrow">Active recall</div>
-  <h2 class="section-title">Flashcards</h2>
-  <div class="sub">Click the card to flip; arrows to navigate; shuffle to randomize.</div>
-  <div class="fc-stage">
-    <div class="flip" id="flip" tabindex="0" role="button" aria-label="Flashcard, click to flip">
-      <div class="flip-in">
-        <div class="face front"><div class="tag">Question</div><div class="qa" id="fc-q">CSR vs. CSV vs. ESG?</div><div class="hint" style="margin-top:18px;">click to reveal</div></div>
-        <div class="face back"><div class="tag">Answer</div><div class="qa" id="fc-a">CSR = broad corporate responsibility/citizenship (often discretionary). CSV (Creating Shared Value) = profit AND social value as mutually reinforcing strategy. ESG = criteria investors use to assess Environmental, Social, Governance performance.</div></div>
+<section class="panel" id="cards" role="tabpanel">
+  <div class="wrap">
+    <div class="kicker">Active recall</div>
+    <h2 class="sec">Flashcards</h2>
+    <p class="lead">Click to flip. All drawn from the course materials.</p>
+    <div class="deck">
+      <div class="flip" id="flip"><div class="flip-inner">
+        <div class="face q"><span class="lab">Question</span><span id="cq"></span></div>
+        <div class="face a"><span class="lab">Answer</span><div id="ca"></div></div>
+      </div></div>
+      <div class="deckbar">
+        <button id="prev">← Prev</button>
+        <span class="count" id="cc">1 / 12</span>
+        <button id="next">Next →</button>
       </div>
     </div>
-    <div class="fc-controls"><button id="fc-prev" aria-label="Previous">&#8592;</button><div class="fc-count" id="fc-count">1 / 13</div><button id="fc-next" aria-label="Next">&#8594;</button></div>
-    <button class="btn" id="fc-shuffle">Shuffle deck</button>
   </div>
 </section>
 
 <!-- ============ QUIZ ============ -->
-<section class="view" id="v-quiz">
-  <div class="eyebrow">Self-test</div>
-  <h2 class="section-title">Practice quiz</h2>
-  <div class="sub">Pick an answer to see if it is correct.</div>
-  <div class="quiz-box" id="quiz-box">
-    <div class="q"><div class="qn"><span class="qi">Q1.</span>Which framework argues profit and social progress can be mutually reinforcing via reconceiving products, redefining value-chain productivity, and building clusters?</div><button class="opt" data-qi="0" data-oi="0">Carroll's Pyramid</button><button class="opt" data-qi="0" data-oi="1">Creating Shared Value</button><button class="opt" data-qi="0" data-oi="2">Base of the Pyramid</button><button class="opt" data-qi="0" data-oi="3">Collective Impact</button></div>
-    <div class="q"><div class="qn"><span class="qi">Q2.</span>In Karnani's critique, what must address the 'trade-off zone' where profit and social welfare conflict?</div><button class="opt" data-qi="1" data-oi="0">Voluntary CSR</button><button class="opt" data-qi="1" data-oi="1">Regulation / self-restraint</button><button class="opt" data-qi="1" data-oi="2">Shareholder primacy</button><button class="opt" data-qi="1" data-oi="3">Philanthropy</button></div>
-    <div class="q"><div class="qn"><span class="qi">Q3.</span>Double materiality is the defining requirement of which reporting regime?</div><button class="opt" data-qi="2" data-oi="0">SASB</button><button class="opt" data-qi="2" data-oi="1">TCFD</button><button class="opt" data-qi="2" data-oi="2">EU CSRD</button><button class="opt" data-qi="2" data-oi="3">GRI</button></div>
-    <div class="q"><div class="qn"><span class="qi">Q4.</span>In most companies, which emissions scope is typically the largest and hardest to control?</div><button class="opt" data-qi="3" data-oi="0">Scope 1</button><button class="opt" data-qi="3" data-oi="1">Scope 2</button><button class="opt" data-qi="3" data-oi="2">Scope 3</button><button class="opt" data-qi="3" data-oi="3">All equal</button></div>
-    <div class="q"><div class="qn"><span class="qi">Q5.</span>The three attributes of stakeholder salience are:</div><button class="opt" data-qi="4" data-oi="0">Power, Wealth, Size</button><button class="opt" data-qi="4" data-oi="1">Power, Legitimacy, Urgency</button><button class="opt" data-qi="4" data-oi="2">Voice, Vote, Veto</button><button class="opt" data-qi="4" data-oi="3">Risk, Return, Reach</button></div>
-    <div class="q"><div class="qn"><span class="qi">Q6.</span>Which is the highest-value strategy in the 9R circularity hierarchy?</div><button class="opt" data-qi="5" data-oi="0">Recycle</button><button class="opt" data-qi="5" data-oi="1">Remanufacture</button><button class="opt" data-qi="5" data-oi="2">Refuse</button><button class="opt" data-qi="5" data-oi="3">Repair</button></div>
-    <div class="q"><div class="qn"><span class="qi">Q7.</span>A backbone organization is a required element of:</div><button class="opt" data-qi="6" data-oi="0">Blended finance</button><button class="opt" data-qi="6" data-oi="1">Collective impact</button><button class="opt" data-qi="6" data-oi="2">Materiality matrices</button><button class="opt" data-qi="6" data-oi="3">The CSR pyramid</button></div>
-    <div class="q"><div class="qn"><span class="qi">Q8.</span>Sustainability-linked loans tie the interest rate to:</div><button class="opt" data-qi="7" data-oi="0">Stock price</button><button class="opt" data-qi="7" data-oi="1">ESG/sustainability targets</button><button class="opt" data-qi="7" data-oi="2">Credit rating only</button><button class="opt" data-qi="7" data-oi="3">Carbon offsets purchased</button></div>
+<section class="panel" id="quiz" role="tabpanel">
+  <div class="wrap">
+    <div class="kicker">Self-test</div>
+    <h2 class="sec">Practice quiz</h2>
+    <p class="lead">Pick an answer to reveal the result and the reasoning.</p>
+    <div id="quizbox"></div>
+    <div class="score" id="score">Score<span id="scoreval">0 / 8</span></div>
   </div>
-  <div class="score" id="score">Score: 0 / 8</div>
 </section>
 
-<div class="foot">Personal study aid · frameworks from general academic sources, not the licensed case texts.</div>
-</div>
+<!-- ============ CHANGES ============ -->
+<section class="panel" id="changes" role="tabpanel">
+  <div class="wrap">
+    <div class="kicker">Why this differs from the first draft</div>
+    <h2 class="sec">What was removed, and why</h2>
+    <p class="lead">The earlier guide was built from session titles plus standard ESG-textbook frameworks. The items below did not appear anywhere in the cases, technical notes, or presentation decks, so they were cut and replaced with what the course actually teaches.</p>
+    <div class="tablewrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Removed (not in the pack)</th><th>Replaced with (in the pack)</th></tr></thead>
+        <tbody>
+          <tr><td>7-phase arc: Define → Strategize → Finance → Operationalize → Scale → Measure → Humanize</td><td>The “Black Box” / VUCA / five-forces model; each session = a social issue (global risk) + a framework</td></tr>
+          <tr><td>Carroll’s CSR pyramid; instrumental vs. normative CSR</td><td>Friedman (via Karnani) vs. Freeman &amp; Parmar stakeholder view; Malden Mills decision</td></tr>
+          <tr><td>Base of the Pyramid (Prahalad); Khanna &amp; Palepu; jugaad</td><td>Sen’s capability approach &amp; 5 instrumental freedoms; four approaches to poverty; consumer sovereignty</td></tr>
+          <tr><td>Sustainable Business Model Canvas (Osterwalder); Triple Bottom Line (Elkington)</td><td>CSV via Nestlé (Nescafé/Cocoa/Youth) + Kramer &amp; Pfitzer’s “Ecosystem of Shared Value”; BCG’s four-step SBM-I note</td></tr>
+          <tr><td>RBV / Transaction-cost economics / Austin’s Collaboration Continuum</td><td>NGO sustainability dilemma (InRoads: boutique vs. mass model) + future-of-jobs lens</td></tr>
+          <tr><td>Blended finance, green bonds, SLLs, social impact bonds, EU Taxonomy/SFDR</td><td>SRI → ESG → Impact (SMN-704-E); spectrum of capital; Triodos philosophy (anthroposophy, threefold social order)</td></tr>
+          <tr><td>Ellen MacArthur butterfly; 9R ladder; cradle-to-cradle; industrial symbiosis</td><td>Circular economy <em>as social inclusion</em> — NEWSAN: WEEE repair cooperatives / “Productive Units” / reinsertion</td></tr>
+          <tr><td>Single vs. double materiality; materiality matrix; Mitchell/Agle/Wood salience</td><td>The social (“forgotten”) dimension — Pfeffer; La Fageda’s material/relational/transcendence levels; D&amp;I</td></tr>
+          <tr><td>Scope 1/2/3; Kraljic portfolio; conflict minerals; EU CSDDD</td><td>Inclusive/sustainable sourcing — Danone/Margarita: license to operate, involvement spectrum, regenerative ag.</td></tr>
+          <tr><td>Bocken typology; leverage-point diagnosis</td><td>BCG “Four Steps to Sustainable Business Model Innovation” (expanded canvas, resilient model, archetypes)</td></tr>
+          <tr><td>GRI / SASB / ISSB / CSRD / TCFD / SROI / theory of change</td><td>Not evidenced in the pack — left out (verify against Canvas if your exam covers reporting)</td></tr>
+          <tr><td>Collective Impact = Kania &amp; Kramer’s 5 conditions / backbone org / SDG 17</td><td>Galtung + Positive Peace (8 Pillars) + collective impact via Kramer &amp; Pfitzer; TOKS / REINTEGRA cases</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note" style="margin-top:18px">
+      <h4>One honest caveat</h4>
+      <p>This was rebuilt from the documents in the project pack. If your Canvas has extra readings I couldn’t see (e.g. a dedicated reporting/measurement session), check those directly — I flagged the one place (GRI/SASB/ISSB/SROI) where the pack showed no evidence either way.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="pill">Course-grounded</span>
+    &nbsp; Built only from the cases, technical notes, and session presentations in the pack. Frameworks are summarized in plain language; no licensed case text is reproduced.
+  </div>
+</footer>
 
 <script>
-window.__FC=[{"q":"CSR vs. CSV vs. ESG?","a":"CSR = broad corporate responsibility/citizenship (often discretionary). CSV (Creating Shared Value) = profit AND social value as mutually reinforcing strategy. ESG = criteria investors use to assess Environmental, Social, Governance performance."},{"q":"What is Karnani's trade-off zone?","a":"Karnani argues genuine win-wins (profitable AND socially good) are a narrow zone. Outside it, helping society costs profit (trade-off zone) or profit harms society, there voluntary CSR fails and regulation/self-restraint is needed."},{"q":"Single vs. Double Materiality?","a":"Single = how sustainability issues affect the FIRM's financial value (outside-in). Double = ALSO how the firm affects society & environment (inside-out). CSRD requires double."},{"q":"Scope 1, 2, and 3 emissions?","a":"Scope 1 = direct emissions from owned sources. Scope 2 = indirect from purchased energy. Scope 3 = all other value-chain emissions, usually largest & hardest to control."},{"q":"GRI vs. SASB vs. ISSB?","a":"GRI = broad, multi-stakeholder, impact-oriented. SASB = industry-specific, financial-materiality, investor-focused. ISSB (IFRS) = consolidating investor-grade global standards."},{"q":"Linear vs. Circular economy?","a":"Linear = take-make-dispose. Circular = design out waste, keep materials in use (technical cycles) & regenerate natural systems (biological cycles). Ellen MacArthur butterfly diagram."},{"q":"The 9R hierarchy (top to bottom)?","a":"Refuse, Rethink, Reduce, Reuse, Repair, Refurbish, Remanufacture, Repurpose, Recycle. Higher = more value retained."},{"q":"Carroll's CSR Pyramid (bottom to top)?","a":"Economic (be profitable), Legal (obey the law), Ethical (do what's right), Philanthropic (be a good citizen)."},{"q":"Stakeholder salience attributes?","a":"Power, Legitimacy, Urgency (Mitchell, Agle & Wood). More of the three = higher priority. All three = 'definitive'."},{"q":"Five conditions of Collective Impact?","a":"Common agenda, shared measurement, mutually reinforcing activities, continuous communication, backbone organization."},{"q":"Austin's Collaboration Continuum stages?","a":"Philanthropic, Transactional, Integrative (deepening business-NGO engagement)."},{"q":"What is additionality (impact finance)?","a":"Whether the impact would have happened anyway without the investment. No additionality weakens the impact claim."},{"q":"Greenwashing vs. Greenhushing?","a":"Greenwashing = overstating/faking sustainability claims. Greenhushing = under-communicating real efforts to avoid scrutiny."}];
-window.__QZ=[{"q":"Which framework argues profit and social progress can be mutually reinforcing via reconceiving products, redefining value-chain productivity, and building clusters?","opts":["Carroll's Pyramid","Creating Shared Value","Base of the Pyramid","Collective Impact"],"correct":1},{"q":"In Karnani's critique, what must address the 'trade-off zone' where profit and social welfare conflict?","opts":["Voluntary CSR","Regulation / self-restraint","Shareholder primacy","Philanthropy"],"correct":1},{"q":"Double materiality is the defining requirement of which reporting regime?","opts":["SASB","TCFD","EU CSRD","GRI"],"correct":2},{"q":"In most companies, which emissions scope is typically the largest and hardest to control?","opts":["Scope 1","Scope 2","Scope 3","All equal"],"correct":2},{"q":"The three attributes of stakeholder salience are:","opts":["Power, Wealth, Size","Power, Legitimacy, Urgency","Voice, Vote, Veto","Risk, Return, Reach"],"correct":1},{"q":"Which is the highest-value strategy in the 9R circularity hierarchy?","opts":["Recycle","Remanufacture","Refuse","Repair"],"correct":2},{"q":"A backbone organization is a required element of:","opts":["Blended finance","Collective impact","Materiality matrices","The CSR pyramid"],"correct":1},{"q":"Sustainability-linked loans tie the interest rate to:","opts":["Stock price","ESG/sustainability targets","Credit rating only","Carbon offsets purchased"],"correct":1}];
-</script>
-<script>
-var FC=window.__FC, QZ=window.__QZ;
-document.querySelectorAll('nav.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('nav.tabs button').forEach(function(x){x.classList.remove('active');});b.classList.add('active');document.querySelectorAll('section.view').forEach(function(sv){sv.classList.remove('active');});document.getElementById('v-'+b.dataset.v).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});};});
-document.querySelectorAll('.card .top').forEach(function(t){function tog(){var c=t.parentNode;c.classList.toggle('open');t.setAttribute('aria-expanded',c.classList.contains('open'));}t.onclick=tog;t.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}};});
-var order=FC.map(function(_,i){return i;}),idx=0;
-function rfc(){var card=FC[order[idx]];document.getElementById('flip').classList.remove('flipped');document.getElementById('fc-q').textContent=card.q;document.getElementById('fc-a').textContent=card.a;document.getElementById('fc-count').textContent=(idx+1)+' / '+order.length;}
-var flipEl=document.getElementById('flip');
-flipEl.onclick=function(){this.classList.toggle('flipped');};
-flipEl.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();this.classList.toggle('flipped');}};
-document.getElementById('fc-next').onclick=function(){idx=(idx+1)%order.length;rfc();};
-document.getElementById('fc-prev').onclick=function(){idx=(idx-1+order.length)%order.length;rfc();};
-document.getElementById('fc-shuffle').onclick=function(){for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}idx=0;rfc();};
-rfc();
-var answered=0,correct=0;
-document.querySelectorAll('.opt').forEach(function(btn){btn.onclick=function(){var qi=+btn.dataset.qi,oi=+btn.dataset.oi,parent=btn.parentNode;if(parent.dataset.done)return;parent.dataset.done='1';answered++;var right=QZ[qi].correct;parent.querySelectorAll('.opt').forEach(function(b){b.disabled=true;if(+b.dataset.oi===right)b.classList.add('correct');});if(oi===right){correct++;}else{btn.classList.add('wrong');}document.getElementById('score').textContent='Score: '+correct+' / '+QZ.length+(answered===QZ.length?'  Complete!':'');};});
+/* ---------- data ---------- */
+const SESSIONS = [
+  {n:1, phase:"Purpose · the firm & society", title:"Purpose & stakeholders — Malden Mills",
+   src:"Malden Mills (A/B), HBS 9-410-083 / 9-404-073 · UV7324 (Freeman & Parmar) · Karnani, “The Grand Illusion”",
+   frameworks:["Shareholder (Friedman) vs. stakeholder (Freeman)","Stakeholder analysis: short- vs long-term","Business as a community of people (Donaldson & Walsh)","Karnani’s three zones"],
+   concepts:"After the 1995 fire, Aaron Feuerstein keeps paying idled workers and rebuilds in Lawrence, MA — beyond what insurance covered. Map each stakeholder (shareholders, lenders, employees, community, customers, suppliers) on a short-term (1997) vs long-term (2007) grid. The note (UV7324) traces the Berle–Dodd debate and ‘managing for stakeholders’; the purpose question: “law is to justice, medicine is to health, business is to ___ ?”",
+   decision:"Was Feuerstein’s post-fire choice responsible leadership or value-destroying paternalism — and who actually benefited over time?",
+   tension:"Shareholder primacy vs. stakeholder obligation — and whether ‘doing good’ here paid off or sat in Karnani’s trade-off zone."},
+
+  {n:2, phase:"Responsibility in fragile contexts", title:"Institutional voids — Coca-Cola in Chiapas",
+   src:"CIRES 24 eC 07 (Chiapas) · “Responsabilidad Social y Vacíos Institucionales” deck · Sen, Development as Freedom",
+   frameworks:["Institutional voids","Sen: constitutive vs. instrumental freedom","Five instrumental freedoms","Four approaches to poverty","Consumer sovereignty"],
+   concepts:"San Juan Chamula is the world’s top per-capita Coca-Cola consumer amid deep poverty and weak institutions (‘usos y costumbres’). Read poverty four ways (monetary, social-exclusion, participatory, capability) and land on Sen: poverty as deprivation of capabilities; the firm asks whether it enforces unfreedoms or promotes them. Consumer sovereignty requires knowledge, capacity and freedom from coercion.",
+   decision:"What is a firm’s responsibility when it operates in — and profits from — an institutional vacuum?",
+   tension:"Serving a market vs. distorting social arrangements; ‘define macro-objectives but operate locally’, sized to the firm’s real capacities."},
+
+  {n:3, phase:"Strategy · shared value", title:"Creating Shared Value — Nestlé",
+   src:"EPS 17 eC 02 (Nestlé CSV in Mexico) · Nestlé deck · R1610G (Kramer & Pfitzer, “Ecosystem of Shared Value”)",
+   frameworks:["Creating Shared Value","Nescafé Plan / Cocoa Plan / Youth Initiative","Dual formation (theory + practice)","Karnani critique: CSV or ‘theater’?"],
+   concepts:"Nestlé’s CSV in coffee, cocoa and youth employment (dual-formation training). The deck pairs each initiative with one question: is it connected to the business model, or reputational theater? R1610G extends CSV to the surrounding ecosystem (system leadership, common agenda).",
+   decision:"Is CSV a genuine reorientation of strategy, or a polished restatement of self-interest?",
+   tension:"Win-win shared value vs. Karnani’s reminder that win-wins are bounded to the zone of opportunity."},
+
+  {n:4, phase:"Operations · circularity", title:"Circular economy as inclusion — NEWSAN",
+   src:"CIRES 23 eC 01 A/B/C (NEWSAN IN, Argentina)",
+   frameworks:["Circular economy as decent employment","Repair · reuse · reinsertion (WEEE)","‘Productive Units’ / work cooperatives","Impact assessment & poverty pockets"],
+   concepts:"Argentina generates ~500,000 tons of e-waste a year. NEWSAN turns returned/defective appliances into a repair-and-reinsertion model (ELECTROREPARA, ‘Productive Units’) that creates work in poverty pockets. Circularity here is framed as social inclusion, not a 9R/butterfly exercise.",
+   decision:"Can the repair model be made to work (low recovery rate, costly process) while preserving its social-inclusion purpose?",
+   tension:"Circular ambition vs. financial viability of repair; social mission vs. customer-service economics."},
+
+  {n:5, phase:"Finance · conscious money", title:"Responsible finance — Triodos Bank",
+   src:"HBS 9-313-109 (Triodos) · Triodos deck · SMN-704-E (SRI → ESG → Impact)",
+   frameworks:["SRI → ESG → Impact","Spectrum of capital (return · intentionality · measurement)","Triodos philosophy: anthroposophy, threefold social order","Consumer sovereignty for ‘socially desirable’ loans"],
+   concepts:"Triodos funds only mission-aligned activity, backed by savings rather than speculation, with a distinctive governance (SAAT) and a Steiner-rooted philosophy linking economic/rights/cultural life to fraternity/equality/liberty. SMN-704-E traces responsible investing from faith-based screening to intentional, measured impact.",
+   decision:"As Triodos scales, how does it agree on what a ‘socially desirable’ loan is, and where will it find mission-fit people and projects?",
+   tension:"Mission integrity vs. growth; market-rate returns vs. concessionary, impact-first capital."},
+
+  {n:6, phase:"The social dimension", title:"Human dignity & the ‘forgotten’ dimension — La Fageda",
+   src:"IESE DPO-85-E (La Fageda) · La Fageda deck · CIRES 23 eN 01 (social dimension of sustainability)",
+   frameworks:["Social sustainability as the ‘forgotten’ pillar (Pfeffer)","Therapeutic work: material / relational / transcendence levels","‘Adapt to capacities, not disabilities’","Throw-away culture (Pope Francis); D&I"],
+   concepts:"A Catalan work-integration cooperative employing people with mental illness/disability. Work has therapeutic value across material, relational and transcendence levels. The note (eN 01) argues the social dimension is least-developed yet antecedent to the others (Boyer et al.’s five roles), and bridges to diversity & inclusion.",
+   decision:"How do you build a real business around dignity — adapting jobs to people’s capacities — without it collapsing into charity?",
+   tension:"Human dignity as prior to profit vs. the commercial discipline that keeps the enterprise alive."},
+
+  {n:7, phase:"Operations · supply chains", title:"Inclusive supply chains — Danone / Margarita",
+   src:"F 23 eC 07 (Danone: The Margarita Program) · Margarita deck",
+   frameworks:["Sustainable & inclusive sourcing","License to operate","Involvement spectrum","Commercial benefits vs. impact achievements","Regenerative agriculture"],
+   concepts:"Margarita connects ~500 small dairy farmers (most <50 cows, limited credit, ageing, often indigenous) to Danone Mexico with technical assistance and infrastructure — lifting productivity (+12%), price (+12%), herd size (+48%) and net income (≈×2.7) while securing Danone’s milk supply and license to operate.",
+   decision:"Scale the boutique inclusive model, or default to cheaper conventional sourcing — and how to keep impact real, not narrative?",
+   tension:"Cost-efficient sourcing vs. inclusive, higher-touch supply that builds resilience and legitimacy."},
+
+  {n:8, phase:"Scale · the social organization", title:"NGO sustainability & the future of work — InRoads",
+   src:"CIRES 23 eC 02 (INROADS) · InRoads deck (‘paradox of the sustainable conversation’)",
+   frameworks:["Mission vs. financial sustainability","Boutique model vs. mass trainings","Future of jobs (WEF)","Social mobility / youth labour inclusion"],
+   concepts:"INROADS includes young people in the labour market (since 1996 in Mexico). In ‘survival mode’ during COVID, the board asks whether to put it to sleep. The ‘paradox’: the boutique model that creates impact threatens financial sustainability, while the mass model that pays the bills dilutes it — set against WEF future-of-jobs data.",
+   decision:"Preserve the high-impact boutique model, or pivot to mass digital-skills trainings to survive?",
+   tension:"Depth of impact vs. financial sustainability — and mission drift either way."},
+
+  {n:9, phase:"Operations · community", title:"Community & social fabric — Convivencia / VIVO",
+   src:"CIRES 25 eC 01 (Convivencia) · Convivencia deck · (related: Colonia Simi, CIRES 25 eC 04)",
+   frameworks:["Building community through human interaction","Four pillars: Neighborhood org · Community mgmt · Institutions · Urban image","Intervention model","‘A business model can become a movement’ (Colonia Simi)"],
+   concepts:"A real-estate developer (VIVO) treats abandoned/invaded housing as a social problem and builds the social fabric of its developments via Convivencia’s four-pillar model. Colonia Simi (Dr. Simi / Grupo por un País Mejor) shows the same logic at scale — making social welfare public until ‘a business model becomes a movement’.",
+   decision:"Is community-building a developer’s responsibility (and a moat), or marketing dressed up as social value?",
+   tension:"Selling a product vs. owning the long-run social outcome around it."},
+
+  {n:10, phase:"Scale · partnerships", title:"Cross-sector partnerships & peace",
+   src:"sesion_CSPs deck · R1610G (Ecosystem of Shared Value) · IEP Positive Peace",
+   frameworks:["Conflict ≠ violence; Galtung’s typology","Negative vs. positive peace; 8 Pillars","Global Peace Index; economic cost of violence","Resourcefulness model","Collective impact (Kramer & Pfitzer)"],
+   concepts:"Systemic problems (violence/insecurity) are multidimensional, so single actors lack the power to fix them. Positive Peace’s 8 pillars frame where business can contribute; ‘interactions ≠ collaborations’ (Himmelman, Gray). Cases: TOKS ‘Proyectos Productivos’, REINTEGRA, GPB bamboo — inclusive value chains as peace-building.",
+   decision:"How do business, government and civil society move from transactional interaction to transformational collective impact?",
+   tension:"Collaborative advantage vs. collaborative inertia; power asymmetries across very different actors."},
+
+  {n:11, phase:"Strategy · business models", title:"Sustainable business-model innovation (note)",
+   src:"2024 eME 02 — BCG, “Four Steps to Sustainable Business Model Innovation”",
+   frameworks:["Expand the business canvas (system map + materiality scenarios)","Innovate for a resilient model","Archetypal sustainable business models","Build across sectors"],
+   concepts:"A method note running alongside the cases: widen the canvas to the system around the firm, stress-test it, then redesign toward archetypes that optimize for both societal value and long-term advantage — and keep re-engineering the model over time.",
+   decision:"Where is the model’s biggest sustainability leverage point — and biggest risk?",
+   tension:"Incremental product/process tweaks vs. harder, more durable business-model innovation."},
+
+  {n:12, phase:"Capstone · humanistic lens", title:"Wrap-up: business as a community of persons",
+   src:"Synthesis — La Fageda, UV7324, CIRES 23 eN 01, and the running Karnani thread",
+   frameworks:["Human dignity prior to profit","Profit as a means, not the end","Business as a community of people","The social dimension as the integrating thread"],
+   concepts:"The capstone reframes the whole arc through a humanistic lens (the IPADE tradition): the firm serves human flourishing; profit is necessary but instrumental. Tie the cases together and argue a defensible position on the purpose of business.",
+   decision:"Across all the cases, what — ultimately — is the purpose of business?",
+   tension:"Pure shareholder value, or even instrumental stakeholder theory, vs. the firm as a community serving the common good."}
+];
+
+const CARDS = [
+  {q:"Karnani’s core claim about “doing well by doing good”?", a:"In efficient markets, profit and public interest already align (no CSR needed). Where markets fail there’s a real trade-off that managerial goodwill can’t fix — so ‘doing well by doing good’ is, in general, an illusion."},
+  {q:"The three Karnani zones?", a:"Opportunity (profit & welfare rise together), Trade-off (between private and social optimum — more good now costs the firm), Disaster (past the social optimum, both fall)."},
+  {q:"Shareholder vs. stakeholder view — who & where?", a:"Friedman (profit within the rules) vs. Freeman & Parmar ‘managing for stakeholders’ (UV7324). Tested on the Malden Mills / Feuerstein decision."},
+  {q:"Sen’s five instrumental freedoms?", a:"Political freedoms, economic facilities, social opportunities, transparency guarantees, protective security. Plus the constitutive vs. instrumental distinction. (Coca-Cola / Chiapas.)"},
+  {q:"Four approaches to poverty in the Chiapas session?", a:"Monetary, social-exclusion, participatory, and capability (Sen) approaches — the course lands on the capability approach."},
+  {q:"What is CSV, and what’s the deck’s pointed question?", a:"Creating Shared Value — strategy where social need is met profitably (Nescafé/Cocoa/Youth). The deck asks: connected to the business model, or ‘theater’?"},
+  {q:"NEWSAN’s circular-economy angle?", a:"Circular economy as social inclusion: repairing returned/defective appliances (WEEE) via ‘Productive Units’/cooperatives and reinserting them into the market — creating decent work."},
+  {q:"Spectrum of capital — three characteristics of impact investing?", a:"Financial return, intentionality, and measurement. Set within the SRI → ESG → Impact evolution (SMN-704-E / Triodos)."},
+  {q:"La Fageda’s view of work?", a:"Work has therapeutic value across material, relational and transcendence levels; you ‘adapt to capacities, not disabilities’. Anchors the social ‘forgotten’ dimension (Pfeffer)."},
+  {q:"The Margarita program in one line?", a:"An inclusive, sustainable sourcing strategy linking small dairy farmers to Danone — securing supply and license to operate while lifting farmer income (~×2.7)."},
+  {q:"Negative vs. positive peace + the framework?", a:"Negative = absence of violence; positive = the attitudes, institutions and structures that sustain peace — the 8 Pillars of Positive Peace (IEP)."},
+  {q:"InRoads’ ‘paradox of the sustainable conversation’?", a:"The boutique model that creates impact threatens financial survival; the mass model that funds survival dilutes the impact."}
+];
+
+const QUIZ = [
+  {s:"Which diagram is the course’s recurring tool for testing any ‘win-win’ claim?",
+   o:["The materiality matrix","Karnani’s three-zone trade-off curves","The Kraljic portfolio","The 9R ladder"], c:1,
+   why:"Karnani’s ‘Grand Illusion’ reappears across the Nestlé, Coca-Cola and Triodos decks; the others aren’t in the pack."},
+  {s:"In the Coca-Cola / Chiapas session, poverty is ultimately read through which lens?",
+   o:["Base of the Pyramid (Prahalad)","Sen’s capability approach","Triple bottom line","Porter’s five forces"], c:1,
+   why:"The deck builds to Sen’s capabilities and five instrumental freedoms; BoP is not used."},
+  {s:"Which firm anchors the responsible-finance session?",
+   o:["Danone","Triodos Bank","Malden Mills","NEWSAN"], c:1,
+   why:"Triodos: Conscious Money in Action (HBS 9-313-109), paired with SMN-704-E."},
+  {s:"NEWSAN frames circular economy primarily as…",
+   o:["A cradle-to-cradle redesign","Industrial symbiosis","Social inclusion through repair & reinsertion","Carbon accounting (Scope 3)"], c:2,
+   why:"WEEE repair via ‘Productive Units’/cooperatives that reinsert appliances and create work."},
+  {s:"The cross-sector-partnerships session is built on which framework?",
+   o:["GRI/SASB reporting","Positive Peace & its 8 Pillars","Austin’s collaboration continuum","Bocken’s typology"], c:1,
+   why:"Galtung + Positive Peace (IEP), with collective impact via Kramer & Pfitzer; the others aren’t in the pack."},
+  {s:"The three characteristics of impact investing on the ‘spectrum of capital’ are…",
+   o:["Risk, return, liquidity","Financial return, intentionality, measurement","Screening, voting, divesting","Grants, loans, equity"], c:1,
+   why:"From the Triodos deck / SMN-704-E."},
+  {s:"Which decision sits at the centre of the stakeholder-purpose session?",
+   o:["Feuerstein paying idled workers after the fire","Nestlé’s Cocoa Plan","Triodos’ wind fund","Convivencia’s four pillars"], c:0,
+   why:"Malden Mills (A/B) + UV7324 ‘Managing for Stakeholders’."},
+  {s:"La Fageda’s framework treats work as therapeutic across which levels?",
+   o:["Bronze, silver, gold","Material, relational, transcendence","Scope 1, 2, 3","Refuse, reduce, recycle"], c:1,
+   why:"And the principle: adapt to capacities, not disabilities."}
+];
+
+/* ---------- tabs ---------- */
+const tabs=[...document.querySelectorAll('.tabrow button')];
+const panels=[...document.querySelectorAll('section.panel')];
+tabs.forEach(b=>b.addEventListener('click',()=>{
+  tabs.forEach(t=>t.setAttribute('aria-selected', t===b));
+  panels.forEach(p=>p.classList.toggle('active', p.id===b.dataset.tab));
+  window.scrollTo({top:0,behavior:'smooth'});
+}));
+
+/* ---------- sessions ---------- */
+const sg=document.getElementById('sessgrid');
+sg.innerHTML=SESSIONS.map(s=>`
+  <details class="card">
+    <summary>
+      <span class="num">${String(s.n).padStart(2,'0')}</span>
+      <span class="ttl">
+        <span class="phase">${s.phase}</span>
+        <h3>${s.title}</h3>
+        <span class="src">${s.src}</span>
+      </span>
+      <span class="caret">▸</span>
+    </summary>
+    <div class="body">
+      <h5>Frameworks used</h5>
+      <div class="tags">${s.frameworks.map(f=>`<span class="tag">${f}</span>`).join('')}</div>
+      <h5>What happens</h5>
+      <p>${s.concepts}</p>
+      <p class="decision"><b>Decision on the table:</b> ${s.decision}</p>
+      <div class="tension"><b>⚡ Tension —</b> ${s.tension}</div>
+    </div>
+  </details>`).join('');
+
+/* ---------- flashcards ---------- */
+let ci=0;
+const flip=document.getElementById('flip');
+const cq=document.getElementById('cq'), ca=document.getElementById('ca'), cc=document.getElementById('cc');
+function render(){cq.textContent=CARDS[ci].q;ca.textContent=CARDS[ci].a;cc.textContent=`${ci+1} / ${CARDS.length}`;flip.classList.remove('flipped');}
+flip.addEventListener('click',()=>flip.classList.toggle('flipped'));
+document.getElementById('next').addEventListener('click',()=>{ci=(ci+1)%CARDS.length;render();});
+document.getElementById('prev').addEventListener('click',()=>{ci=(ci-1+CARDS.length)%CARDS.length;render();});
+render();
+
+/* ---------- quiz ---------- */
+const qb=document.getElementById('quizbox'); let score=0, answered=0;
+QUIZ.forEach((q,qi)=>{
+  const el=document.createElement('div'); el.className='q';
+  el.innerHTML=`<p class="stem">Q${qi+1}. ${q.s}</p>`+
+    q.o.map((o,oi)=>`<button class="opt" data-q="${qi}" data-o="${oi}">${o}</button>`).join('')+
+    `<p class="why">${q.why}</p>`;
+  qb.appendChild(el);
+});
+qb.addEventListener('click',e=>{
+  const btn=e.target.closest('.opt'); if(!btn) return;
+  const card=btn.closest('.q'); if(card.classList.contains('answered')) return;
+  const qi=+btn.dataset.q, oi=+btn.dataset.o, correct=QUIZ[qi].c;
+  card.classList.add('answered');
+  [...card.querySelectorAll('.opt')].forEach(o=>{
+    const k=+o.dataset.o;
+    if(k===correct)o.classList.add('correct');
+    if(k===oi&&oi!==correct)o.classList.add('wrong');
+    o.disabled=true;
+  });
+  if(oi===correct)score++;
+  answered++;
+  document.getElementById('scoreval').textContent=`${score} / ${QUIZ.length}`;
+});
 </script>
 </body>
 </html>
